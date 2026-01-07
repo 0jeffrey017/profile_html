@@ -8,7 +8,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #fff;
+    background-color: whitesmoke;
     color: #000;
     line-height: 1.6;
 }
@@ -84,7 +84,7 @@ nav a:hover {
 
 .about-image img {
     width: 100%;
-    max-width: 350px;
+    /* max-width: 350px; */
     border-radius: 15px;
     object-fit: cover;
     display: block;
@@ -114,7 +114,6 @@ nav a:hover {
 #activity .slider .game-card .game-image {
     position: relative;
     border-radius: 50%;
-    width: 200px;
     height: 200px;
     overflow: hidden;
     display: flex;
@@ -171,10 +170,6 @@ footer a img {
         grid-template-columns: 1fr;
         text-align: center;
     }
-    .about-text p li{
-        
-    }
-
     .about-image img {
         margin-top: 20px;
     }

@@ -2,7 +2,7 @@ $(function(){
   $("#activity .slider").slick({
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false,          
+    arrows: true,          
     centerMode: true,
     slidesToShow: 3,        
     pauseOnFocus: false,    
