@@ -4,135 +4,182 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
-    <meta name="description" content="ポートフォリオ">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jeffrey LEE | プロフィール</title>
+    <meta name="description" content="Jeffrey LEE's profile - Game Developer & Engineer">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&effect=fire-animation" rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=favorite,home,mail,mobile,search,settings"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
-    <link rel="stylesheet" href="main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="Main.js"></script>
-    <!-- Slick CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=mail,mobile,home,search,settings" rel="stylesheet" />
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Slick JS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
+    <canvas id="canvas"></canvas>
     <div class="container">
-        <header>
-            <nav>
+        <header class="site-header">
+            <div class="logo">Jeffrey LEE</div>
+            <nav class="site-nav">
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#activity">Games</a></li>
+                    <li><a href="#activity">My Games</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </header>
-        <!-- About Section -->
+
+        <!-- Hero / About Section -->
         <section class="about-section">
-            <div class="about-text">
-                <h1>Jeffrey LEE</h1>
-                <h2>profile</h2>
-                <h3>経歴</h3>
-                <p>
-                    <ul>
-                        <li>私立東海大学　食品科学科　卒</li>
-                        <li>千葉県　館山市　須藤牧場　インターンシップ</li>
-                        <li>関西学院大学　交換留学</li>
-                        <li>株式会社萬物智得　カスタマーエンジニア</li>
+            <div class="about-content">
+                <h1 class="hero-title">Hello, I'm <span class="highlight">Jeffrey</span></h1>
+                <h2 class="hero-subtitle">Game Developer & Engineer</h2>
+
+                <div class="info-group">
+                    <h3>Background</h3>
+                    <ul class="timeline-list">
+                        <li>私立東海大学 食品科学科 卒</li>
+                        <li>千葉県 館山市 須藤牧場 インターンシップ</li>
+                        <li>関西学院大学 交換留学</li>
+                        <li>株式会社万物智得 カスタマーエンジニア</li>
+                        <li>東京デザイナーテクノロジーセンター専門学校 ゲームプログラマー専攻卒</li>
                     </ul>
-                </p>
-                <h3>スキル</h3>
-                <p>
-                    <ul>
-                        <li>Unity、C#、UniTask、UniRX</li>
-                        <li>Git、GitHub</li>
-                        <li>PHP</li>
-                        <li>Word、Excel、PowerPoint</li>
-                        <li>日本語能力試験　Ｎ1</li>
+                </div>
+
+                <div class="info-group">
+                    <h3>Skills</h3>
+                    <ul class="skill-list">
+                        <li class="skill-tag font-effect-fire-animation">Unity</li>
+                        <li class="skill-tag font-effect-fire-animation">C#</li>
+                        <li class="skill-tag font-effect-fire-animation">UniTask</li>
+                        <li class="skill-tag font-effect-fire-animation">UniRX</li>
+                        <li class="skill-tag font-effect-fire-animation">Git/GitHub</li>
+                        <li class="skill-tag font-effect-fire-animation">PHP</li>
+                        <li class="skill-tag font-effect-fire-animation">Office</li>
+                        <li class="skill-tag font-effect-fire-animation">JLPT N1</li>
                     </ul>
-                </p>
-                <h3>自己紹介</h3>
-                <p>
-                    <br>台湾出身、ゲーム制作に熱情をもって、いつか自分のゲームを作るという夢を叶うため、
-                    日本に来ました。
-                </p>
+                </div>
+
+                <div class="info-group">
+                    <h3>About Me</h3>
+                    <p class="bio-text">
+                        台湾出身。ゲーム制作に情熱を持ち、いつか自分のゲームを作るという夢を叶えるため日本に来ました。
+                    </p>
+                </div>
             </div>
-            <div class="about-image">
-                <img src="Image/Gemini_Generated_Image_sqk1hnsqk1hnsqk1.png" alt="Profile Image">
+
+            <div class="about-image-container">
+                <img src="Image/Gemini_Generated_Image_sqk1hnsqk1hnsqk1.png" alt="Jeffrey LEE Profile"
+                    class="profile-img">
             </div>
         </section>
 
-        <div id="activity">
+        <!-- Games Section -->
+        <section id="activity" class="games-section">
+            <h2 class="section-title">Game Projects</h2>
             <div class="slider">
                 <div class="game-card">
-                    <a href="Game01.html">
-                        <div class="game-image">
-                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="game-image01">
+                    <a href="Game01.html" class="game-link">
+                        <div class="game-image-wrapper">
+                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="Game 01">
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-name">Game Name 01</h3>
+                            <p class="game-desc">Description of the game project.</p>
                         </div>
                     </a>
-                    <div class="game-name">Game Name01</div>
-                    <div class="game-desc">descriptio</div>
                 </div>
                 <div class="game-card">
-                    <a href="Game02.html">
-                        <div class="game-image">
-                            <img src="Image/Glittery Bokeh Background.png" alt="game-image02">
+                    <a href="Game02.html" class="game-link">
+                        <div class="game-image-wrapper">
+                            <img src="Image/Glittery Bokeh Background.png" alt="Game 02">
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-name">Game Name 02</h3>
+                            <p class="game-desc">Description of the game project.</p>
                         </div>
                     </a>
-                    <div class="game-name">Game Name02</div>
-                    <div class="game-desc">descriptio</div>
                 </div>
                 <div class="game-card">
-                    <a href="Game01.html">
-                        <div class="game-image">
-                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="game-image01">
+                    <a href="Game01.html" class="game-link">
+                        <div class="game-image-wrapper">
+                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="Game 03">
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-name">Game Name 03</h3>
+                            <p class="game-desc">Description of the game project.</p>
                         </div>
                     </a>
-                    <div class="game-name">Game Name03</div>
-                    <div class="game-desc">descriptio</div>
                 </div>
                 <div class="game-card">
-                    <a href="Game01.html">
-                        <div class="game-image">
-                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="game-image01">
+                    <a href="Game01.html" class="game-link">
+                        <div class="game-image-wrapper">
+                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="Game 04">
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-name">Game Name 04</h3>
+                            <p class="game-desc">Description of the game project.</p>
                         </div>
                     </a>
-                    <div class="game-name">Game Name04</div>
-                    <div class="game-desc">descriptio</div>
                 </div>
-                
             </div>
-        </div>
-        <div id="contact">
-            <h1>Contact</h1>
-            <p>: xxxx@xxxxx.xxxx.xxxx</p>
-            <span class="material-symbols-outlined">mail</span>
-            <span class="material-symbols-outlined">mobile</span>
-            <span class="material-symbols-outlined">settings</span>
-            <span class="material-symbols-outlined">favorite</span>
-            <p>: 0000-0000-0000</p>
-            <br>
-            <hr>
-        </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">mail</span>
+                    <p>xxxx@xxxxx.xxxx.xxxx</p>
+                </div>
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">mobile</span>
+                    <p>0000-0000-0000</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
-        <footer>
-            <a target="_blank" href="https://github.com/"><img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub"></a>
-            <a target="_blank" href="https://www.linkedin.com/"><img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn"></a>
-            <a target="_blank" href="https://www.youtube.com/"><img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube"></a>
-            <a target="_blank" href="https://www.instagram.com/"><img src="Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png" alt="IG"></a>
+        <footer class="site-footer">
+            <div class="social-links">
+                <a target="_blank" href="https://github.com/" aria-label="GitHub">
+                    <img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                </a>
+                <a target="_blank" href="https://www.youtube.com/" aria-label="YouTube">
+                    <img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                </a>
+                <a target="_blank" href="https://www.instagram.com/" aria-label="Instagram">
+                    <img src="Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                        alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="Main.js"></script>
 </body>
 
 </html>

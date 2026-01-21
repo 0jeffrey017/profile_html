@@ -1,176 +1,503 @@
-@charset "UTF-8";
+:root {
+    --text-light: #0e0e0e;
+    --bg-color: #f9fafb;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --primary-color: #003371;
+    --text-color: #0e0e0e;
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    /* Fonts */
+    --font-heading: 'Poppins',
+        sans-serif;
+    --font-body: 'Inter',
+        sans-serif;
+
+    /* Spacing */
+    --container-width: 1200px;
+    --header-height: 80px;
+    --border-radius: 12px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: whitesmoke;
-    color: #000;
+    font-family: var(--font-body);
+    /* background-color: var(--bg-color); */
+    color: var(--text-color);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 0;
+    /* background: black; */
+    margin: 0;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+ul {
+    list-style: none;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 0 20px;
 }
 
-/* --- Header & Nav --- */
-header {
-    margin-bottom: 40px;
-}
-
-nav ul {
+/* --- Header --- */
+.site-header {
+    height: var(--header-height);
     display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    gap: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #9ca3af;
-}
-
-/* --- About section --- */
-.about-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
 }
 
-.about-text h1 {
-    font-size: 2.5rem;
+.logo {
+    font-family: var(--font-heading);
     font-weight: 800;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
 }
 
-.about-text h2 {
-    font-size: 1rem;
-    color: #9ca3af;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    color: #444;
-    margin-bottom: 16px;
-}
-
-.about-text p li {
-    margin: auto;
-}
-
-.about-game-data p {
-    color: #444;
-    font-size: 1.2rem;
-    margin-bottom: 4px;
-    padding-left: 50px;
-    padding-top: 10px;
-}
-
-.about-image img {
-    width: 100%;
-    /* max-width: 350px; */
-    border-radius: 15px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-}
-
-.about-image-game img {
-    max-width: 500px;
-    max-height: 500px;
-    border-radius: 15px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-}
-
-/* --- Game Cards --- */
-#activity {
-    padding: 80px 0;
-}
-
-#activity .slider .game-card {
-    max-width: 400;
-    margin: 0 40px;
-    text-align: center;
-}
-
-#activity .slider .game-card .game-image {
-    position: relative;
-    border-radius: 50%;
-    height: 200px;
-    overflow: hidden;
+.site-nav ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: auto;
+    gap: 32px;
 }
 
-#activity .slider .game-card .game-image img {
+.site-nav a {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.site-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- About Section --- */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 100px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -0.03em;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.info-group {
+    margin-bottom: 30px;
+}
+
+.info-group h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+    /* color: #374151; */
+}
+
+.timeline-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+.timeline-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background-color: #eff6ff;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.bio-text {
+    color: var(--text-light);
+}
+
+.about-image-container {
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+}
+
+/* --- Games Section --- */
+.games-section {
+    padding: 60px 0 100px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.slider {
+    margin: 0 -15px;
+}
+
+.game-card {
+    margin: 0 15px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #111827;
+}
+
+.game-card h3 {
+    color: #111827;
+}
+
+.game-card p {
+    color: #4b5563;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.game-link {
+    display: block;
+}
+
+.game-image-wrapper {
+    height: 220px;
+    overflow: hidden;
+}
+
+.game-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    display: block;
+    transition: transform 0.5s ease;
 }
 
-#activity .slider .game-card .game-name {
-    font-weight: 800;
-    font-size: 1.5rem;
-    margin-top: 20px;
+.game-card:hover .game-image-wrapper img {
+    transform: scale(1.05);
 }
 
-#activity .slider .game-card .game-desc {
-    color: #9ca3af;
+.game-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.game-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.game-desc {
     font-size: 0.9rem;
+    color: var(--text-light);
+    font-family: var(--font-body);
+}
+
+/* --- Contact Section --- */
+.contact-section {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    color: #111827;
+    gap: 20px;
+    align-items: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.contact-item .material-symbols-outlined {
+    color: var(--primary-color);
+}
+
+.contact-icons {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    color: var(--text-light);
 }
 
 /* --- Footer --- */
-footer {
+.site-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
     display: flex;
-    justify-content: left;
-    gap: 15px;
-    color: #9ca3af;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+}
+
+.social-links a {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.social-links img {
+    height: 24px;
+    width: auto;
+}
+
+.copyright {
+    color: var(--text-light);
     font-size: 0.9rem;
-    margin-top: 20px;
-}
-
-footer a {
-    color: #9ca3af;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #000;
-}
-footer a img {
-    max-height: 30px;
 }
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
     .about-section {
         grid-template-columns: 1fr;
-        text-align: center;
+        gap: 40px;
     }
-    .about-image img {
-        margin-top: 20px;
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .about-image-container {
+        order: -1;
+        /* Image on top on mobile */
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .site-header {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        padding: 20px 0;
+    }
+}
+
+/* --- Game Detail Page --- */
+.game-detail-main {
+    padding-bottom: 80px;
+}
+
+.breadcrumb {
+    margin-bottom: 40px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+.game-detail-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.game-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.game-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.content-block {
+    margin-bottom: 40px;
+}
+
+.content-block h3 {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.content-block p {
+    color: var(--text-light);
+    margin-bottom: 16px;
+}
+
+/* Game Sidebar */
+.game-meta-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 20px;
+}
+
+.game-detail-image {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.game-detail-image img {
+    width: 100%;
+    display: block;
+}
+
+.meta-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.meta-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.meta-item:last-child {
+    border-bottom: none;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.meta-value {
+    color: var(--text-light);
+}
+
+.play-button {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+.play-button:hover {
+    background-color: var(--primary-hover);
+}
+
+@media (max-width: 900px) {
+    .game-detail-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .game-meta-card {
+        position: static;
+        order: -1;
+        /* Show image/meta on top on mobile? Or keep bottom? Let's keep default (bottom) or maybe top is better for context. Let's try top. */
+        order: -1;
     }
 }

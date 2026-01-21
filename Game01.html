@@ -4,72 +4,133 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
-    <meta name="description" content="ポートフォリオ">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game Name 01 | Jeffrey LEE</title>
+    <meta name="description" content="Game Name 01 - Project Details">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,favorite,home,mail,mobile,search,settings"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="Main.js"></script>
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Slick JS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 
 <body>
+    <canvas id="canvas"></canvas>
     <div class="container">
-        <!-- About Section -->
-        <section class="about-section">
-            <div class="about-text">
-                <h1>Game01Name</h1>
-                <h2>name</h2>
-                <h3>Subheading for description or instructions</h3>
-                <p>
-                    Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out
-                    page might look:
-                </p>
-                <p>
-                    Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
-                    perfect nostrud nisi
-                    intricate Content. Qui international first-class nulla ut. Punctual adipiscing, essential lovely
-                    queen tempor eiusmod irure.
-                    Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur
-                    Melbourne occaecat discerning.
-                    Qui wardrobe aliquip, et Porter destination Toto remarkable officia Helsinki excepteur Basset hound.
-                    Zürich sleepy perfect
-                    consectetur.
-                </p>
+        <header class="site-header">
+            <div class="logo">Jeffrey LEE</div>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="main.html#activity">Games</a></li>
+                    <li><a href="main.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="game-detail-main">
+            <div class="breadcrumb">
+                <a href="main.html" class="back-link">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </a>
             </div>
-            <div class="about-game-data">
-                <div class="about-image-game">
-                    <a target="_blank" href="https://d20nbmf4aviyx5.cloudfront.net/www_defenceGame_1/index.html">
-                        <img src="Image/Glittering Blue Bokeh Effect.png" alt="Profile Image">
-                    </a>
+
+            <section class="game-detail-content">
+                <div class="game-description">
+                    <h1 class="game-title">Game Name 01</h1>
+                    <h2 class="game-subtitle">Action Game / PC</h2>
+
+                    <div class="content-block">
+                        <h3>Overview</h3>
+                        <p>
+                            Body text for your whole article or post. We'll put in some lorem ipsum to show how a
+                            filled-out
+                            page might look.
+                        </p>
+                        <p>
+                            Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+                            exquisite
+                            perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual
+                            adipiscing, essential lovely
+                            queen tempor eiusmod irure.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Technical Details</h3>
+                        <p>
+                            Exclusive izakaya charming Scandinavian impeccable aute quality of life soft power pariatur
+                            Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter destination Toto remarkable
+                            officia Helsinki excepteur Basset hound.
+                        </p>
+                    </div>
                 </div>
-                <p>Player:1<br>Platform:PC<br>Type:Action</p>
-            </div>
 
-        </section>
+                <div class="game-sidebar">
+                    <div class="game-meta-card">
+                        <div class="game-detail-image">
+                            <img src="Image/Glittering Blue Bokeh Effect.png" alt="Game Screenshot">
+                        </div>
 
-        <div><a href="main.html">back</a></div>
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform</span>
+                                <span class="meta-value">PC (Windows)</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Genre</span>
+                                <span class="meta-value">Action</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Players</span>
+                                <span class="meta-value">1 Player</span>
+                            </div>
+                        </div>
+
+                        <a target="_blank" href="https://d20nbmf4aviyx5.cloudfront.net/www_defenceGame_1/index.html"
+                            class="play-button">
+                            Play Game
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
         <!-- Footer -->
-        <footer>
-            <a target="_blank" href="https://github.com/"><img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub"></a>
-            <a target="_blank" href="https://www.linkedin.com/"><img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn"></a>
-            <a target="_blank" href="https://www.youtube.com/"><img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube"></a>
-            <a target="_blank" href="https://www.instagram.com/"><img src="Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png" alt="IG"></a>
+        <footer class="site-footer">
+            <div class="social-links">
+                <a target="_blank" href="https://github.com/" aria-label="GitHub">
+                    <img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                </a>
+                <a target="_blank" href="https://www.youtube.com/" aria-label="YouTube">
+                    <img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                </a>
+                <a target="_blank" href="https://www.instagram.com/" aria-label="Instagram">
+                    <img src="Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                        alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Main.js"></script>
 </body>
 
 </html>
