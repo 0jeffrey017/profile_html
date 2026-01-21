@@ -34,15 +34,15 @@ window.addEventListener('resize', function () {
   ctx = canvas.getContext('2d');
   // ctx.globalCompositeOperation = 'lighter';
 });
-let backgroundColors = ['#0f172a', '#1e293b'];
+let backgroundColors = ['#101624', '#1e293b'];
 let colors = [
   ['rgba(0, 42, 255, 0.2)', "rgba(0, 159, 242, 0.2)"],
   ['rgba(0, 84, 255, 0.2)', 'rgba(39, 228, 155, 0.2)'],
-  ['rgba(32, 43, 197, 0.2)', 'rgba(135, 61, 204, 0.2)']
+  ['rgba(32, 43, 197, 0.2)', 'rgba(241, 168, 9, 0.2)']
 ];
-let count = 70;
+let count = 100;
 let blur = [12, 70];
-let radius = [1, 120];
+let radius = [1, 150];
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 // ctx.globalCompositeOperation = 'lighter';
