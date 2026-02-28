@@ -173,6 +173,21 @@ ul {
     font-weight: 500;
 }
 
+.qualifications-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.qualifications-tag {
+    background-color: #eff6ff;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
 .bio-text {
     color: var(--text-light);
 }
