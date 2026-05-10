@@ -215,19 +215,20 @@ ul {
     margin-bottom: 50px;
 }
 
-.slider {
-    margin: 0 -15px;
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
 }
 
 .game-card {
-    margin: 0 15px;
     background: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #111827;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .game-card h3 {
