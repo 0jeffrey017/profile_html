@@ -40,6 +40,14 @@
         },
         {
             id: "game05",
+            name: "余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語",
+            desc: "グレート-O-カーン選手のランナーゲームです。",
+            image: "Image/余にひれ伏せ愚民ども.png",
+            link: "Game05.html",
+            status: "released"
+        },
+        {
+            id: "game06",
             name: "未公開タイトル",
             desc: "開発中の新作ゲームです。",
             image: "Image/Glittering Blue Bokeh Effect.png",
