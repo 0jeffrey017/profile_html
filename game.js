@@ -28,15 +28,13 @@
         // Use 0 if ts is undefined (first frame)
         const timestamp = ts || 0;
         
-        // Use integer dimensions
         const width = Math.floor(W);
         const height = Math.floor(H);
         
         if (width <= 0 || height <= 0) return;
 
-        const imageData = ctx.getImageData(0, 0, width, height);
-        const data = imageData.data;
         const len = pixels.length;
+        ctx.fillStyle = 'rgb(155, 224, 173)'; // Original green color
 
         for (let i = 0; i < len; i++) {
             const pixel = pixels[i];
@@ -45,11 +43,8 @@
             const y2d = Math.round(pixel.y * scale + height / 2);
 
             if (x2d >= 0 && x2d < width && y2d >= 0 && y2d < height) {
-                const c = (y2d * width + x2d) * 4;
-                data[c] = 0;     // R
-                data[c + 1] = 255; // G
-                data[c + 2] = 80;  // B
-                data[c + 3] = 255; // A
+                // Using 1x1 rects to match original pixel look
+                ctx.fillRect(x2d, y2d, 1, 1);
             }
 
             pixel.z -= 0.4;
@@ -59,8 +54,6 @@
                 pixel.z += 2 * fov;
             }
         }
-
-        ctx.putImageData(imageData, 0, 0);
     }
 
     function drawFrame(ts) {

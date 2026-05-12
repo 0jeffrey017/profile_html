@@ -36,6 +36,27 @@ def generate_games():
             content = content.replace('<!-- TECHNICAL_IMAGE_END -->', '')
             content = content.replace('{{GAME_TECHNICAL_IMAGE}}', tech_image)
             
+        # Handle Video conditional block
+        video_url = game.get('video_embed_url', '')
+        if not video_url:
+            content = re.sub(r'<!-- VIDEO_START -->.*?<!-- VIDEO_END -->', '', content, flags=re.DOTALL)
+        else:
+            content = content.replace('<!-- VIDEO_START -->', '')
+            content = content.replace('<!-- VIDEO_END -->', '')
+            content = content.replace('{{VIDEO_EMBED_URL}}', video_url)
+
+        # Handle Gallery conditional block
+        gallery_items = game.get('screenshot_gallery', [])
+        if not gallery_items:
+            content = re.sub(r'<!-- GALLERY_START -->.*?<!-- GALLERY_END -->', '', content, flags=re.DOTALL)
+        else:
+            content = content.replace('<!-- GALLERY_START -->', '')
+            content = content.replace('<!-- GALLERY_END -->', '')
+            gallery_html = ""
+            for img_path in gallery_items:
+                gallery_html += f'<div class="screenshot-item"><img src="{img_path}" alt="Screenshot"></div>\n'
+            content = content.replace('{{SCREENSHOT_GALLERY}}', gallery_html)
+
         credit = game.get('credit', '')
         if not credit:
             # Remove the entire block including markers
