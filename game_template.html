@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space Cat | Jeffrey LEE</title>
-    <meta name="description" content="Space Cat - Project Details">
+    <title>{{TITLE}} | Jeffrey LEE</title>
+    <meta name="description" content="{{TITLE}} - Project Details">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,56 +43,68 @@
 
             <section class="game-detail-content">
                 <div class="game-description">
-                    <h1 class="game-title">Space Cat</h1>
-                    <h2 class="game-subtitle">Action Game / PC</h2>
+                    <h1 class="game-title">{{TITLE}}</h1>
+                    <h2 class="game-subtitle">{{SUBTITLE}}</h2>
                     <div class="content-block">
                         <h3>Overview  / 概要</h3>
-                        <p>実験体として宇宙戦艦に囚われていた猫。突如発生した爆発により、戦艦は崩壊の危機に瀕する。</p><p>生身では生きられない残酷な宇宙環境から逃れるため、4つの生存装備を探し出せ。不思議な力を持つ「尻尾」を使いこなし、迫りくる危機を回避して出口を目指す、SFサバイバル・アクション。</p>
+                        {{OVERVIEW}}
                     </div>
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity</p>
+                        <p>{{ENGINE}}</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2025/6 - 2026/8</p>
+                        <p>{{PERIOD}}</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
-                        <p>ゲーム全体の基本設計、キャラクターの操作、タイトル画面</p>
+                        <p>{{RESPONSIBLE}}</p>
                     </div>
                     <div class="content-block">
                         <h3>Technical Details / 技術情報</h3>
                         <ul>
-                            <li>Josn の SaveLoad System</li>
+                            {{TECHNICAL_DETAILS}}
                         </ul>
                     </div>
-                    
-                    
+                    <!-- CREDIT_START -->
+                    <div class="content-block">
+                        <h3>Credit / クレジット</h3>
+                        <p>{{CREDIT}}</p>
+                    </div>
+                    <!-- CREDIT_END -->
+                    <!-- TECHNICAL_IMAGE_START -->
+                    <div class="content-block">
+                        <h3>Technical Image / 技術図</h3>
+                        <div class="game-detail-image">
+                            <img src="{{GAME_TECHNICAL_IMAGE}}" alt="{{TITLE}}">
+                        </div>
+                    </div>
+                    <!-- TECHNICAL_IMAGE_END -->
                 </div>
 
                 <div class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png" alt="Space Cat Screenshot">
+                            <img src="{{IMAGE_PATH}}" alt="{{TITLE}} Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows)</span>
+                                <span class="meta-value">{{PLATFORM}}</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">How to Play</span>
-                                <span class="meta-value">KeyBoard</span>
+                                <span class="meta-value">{{HOW_TO_PLAY}}</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">{{PLAYERS}}</span>
                             </div>
                         </div>
 
-                        <a target="_blank" href="https://0jeffrey017.github.io/2026_WebGLTest/4_SpaceCat" class="play-button">
+                        <a target="_blank" href="{{PLAY_LINK}}" class="play-button">
                             Play Game
                         </a>
                     </div>
