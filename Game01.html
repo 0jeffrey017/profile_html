@@ -50,8 +50,8 @@
                 </a>
             </div>
 
-            <section class="game-detail-content">
-                <div class="game-description">
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
                     <h1 class="game-title">Space Cat</h1>
                     <h2 class="game-subtitle">Action Game / PC</h2>
 
@@ -91,17 +91,51 @@
                         <h3>Responsible part / 担当部分</h3>
                         <p>ゲーム全体の基本設計、キャラクターの操作、タイトル画面</p>
                     </div>
-                    <div class="content-block">
-                        <h3>Technical Details / 技術情報</h3>
-                        <ul>
-                            <li>Josn の SaveLoad System</li>
-                        </ul>
-                    </div>
                     
-                    <div class="code-container">
-                        <div class="code-header">Language: csharp</div>
+                </section>
 
-                        <pre><code class="language-csharp">using System.Collections;
+                <aside class="game-sidebar">
+                    <div class="game-meta-card">
+                        <div class="game-detail-image">
+                            <img src="Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png" alt="Space Cat Screenshot">
+                        </div>
+
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform</span>
+                                <span class="meta-value">PC (Windows)</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">How to Play</span>
+                                <span class="meta-value">KeyBoard</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Players</span>
+                                <span class="meta-value">1 Player</span>
+                            </div>
+                        </div>
+
+                        <a target="_blank" rel="noopener noreferrer" href="https://0jeffrey017.github.io/2026_WebGLTest/4_SpaceCat" class="play-button">
+                            Play Game
+                        </a>
+                    </div>
+                </aside>
+            </div>
+            <hr style="border: 2px solid black; width: 50%;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Technical Details / 技術情報</h3>
+                    <ul>
+                        <li>Josn の SaveLoad System</li>
+                    </ul>
+                </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                <div class="code-container">
+                    <div class="code-header">Language: csharp</div>
+                    <pre><code class="language-csharp">using System.Collections;
 public class SaveManager : MonoBehaviour
 {
     private GameData _currentGameData = null;
@@ -283,42 +317,11 @@ public class SaveManager : MonoBehaviour
     }
 }
 </code></pre>
-                    </div>
-                    
-
-                    
-                    
                 </div>
-
-                <div class="game-sidebar">
-                    <div class="game-meta-card">
-                        <div class="game-detail-image">
-                            <img src="Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png" alt="Space Cat Screenshot">
-                        </div>
-
-                        <div class="meta-info">
-                            <div class="meta-item">
-                                <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows)</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">How to Play</span>
-                                <span class="meta-value">KeyBoard</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
-                            </div>
-                        </div>
-
-                        <a target="_blank" rel="noopener noreferrer" href="https://0jeffrey017.github.io/2026_WebGLTest/4_SpaceCat" class="play-button">
-                            Play Game
-                        </a>
-                    </div>
-                </div>
+                
+                
             </section>
         </main>
-
         <!-- Footer -->
         <footer class="site-footer">
             <div class="social-links">

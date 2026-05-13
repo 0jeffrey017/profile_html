@@ -50,8 +50,8 @@
                 </a>
             </div>
 
-            <section class="game-detail-content">
-                <div class="game-description">
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
                     <h1 class="game-title">{{TITLE}}</h1>
                     <h2 class="game-subtitle">{{SUBTITLE}}</h2>
 
@@ -89,39 +89,15 @@
                         <h3>Responsible part / 担当部分</h3>
                         <p>{{RESPONSIBLE}}</p>
                     </div>
-                    <div class="content-block">
-                        <h3>Technical Details / 技術情報</h3>
-                        <ul>
-                            {{TECHNICAL_DETAILS}}
-                        </ul>
-                    </div>
-                    <!-- CODE_SAMPLE_START -->
-                    <div class="code-container">
-                        <div class="code-header">Language: {{CODE_LANG}}</div>
-
-                        <pre><code class="language-{{CODE_LANG}}">{{CODE_SAMPLE}}</code></pre>
-                    </div>
-                    <!-- CODE_SAMPLE_END -->
-
                     <!-- CREDIT_START -->
                     <div class="content-block">
                         <h3>Credit / クレジット</h3>
                         <p>{{CREDIT}}</p>
                     </div>
                     <!-- CREDIT_END -->
-                    <!-- TECHNICAL_IMAGE_START -->
-                    <div class="content-block">
-                        <h3>Technical Image / 技術図</h3>
-                        <div class="game-detail-image">
-                            <a href="{{GAME_TECHNICAL_IMAGE}}" target="_blank">
-                                <img src="{{GAME_TECHNICAL_IMAGE}}" alt="{{TITLE}} Technical Diagram">
-                            </a>
-                        </div>
-                    </div>
-                    <!-- TECHNICAL_IMAGE_END -->
-                </div>
+                </section>
 
-                <div class="game-sidebar">
+                <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
                             <img src="{{IMAGE_PATH}}" alt="{{TITLE}} Screenshot">
@@ -146,10 +122,37 @@
                             Play Game
                         </a>
                     </div>
+                </aside>
+            </div>
+            <hr style="border: 2px solid black; width: 50%;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Technical Details / 技術情報</h3>
+                    <ul>
+                        {{TECHNICAL_DETAILS}}
+                    </ul>
                 </div>
+                <!-- CODE_SAMPLE_START -->
+                <h3>Sample Code / サンプルコード</h3>
+                <div class="code-container">
+                    <div class="code-header">Language: {{CODE_LANG}}</div>
+                    <pre><code class="language-{{CODE_LANG}}">{{CODE_SAMPLE}}</code></pre>
+                </div>
+                <!-- CODE_SAMPLE_END -->
+                <!-- TECHNICAL_IMAGE_START -->
+                <div class="content-block">
+                    <h3>Technical Image / 技術図</h3>
+                    <div class="game-detail-image">
+                        <a href="{{GAME_TECHNICAL_IMAGE}}" target="_blank">
+                            <img src="{{GAME_TECHNICAL_IMAGE}}" alt="{{TITLE}} Technical Diagram">
+                        </a>
+                    </div>
+                </div>
+                <!-- TECHNICAL_IMAGE_END -->
             </section>
         </main>
-
         <!-- Footer -->
         <footer class="site-footer">
             <div class="social-links">

@@ -76,7 +76,7 @@ a {
 }
 
 .code-container {
-    background: #1e1e1e; /* VS2015 預設背景色 */
+    background: #1e1e1e; 
     border-radius: 8px;
     margin: 2rem 0;
     overflow: hidden;
@@ -84,7 +84,6 @@ a {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* 代碼標頭：顯示語言名稱 */
 .code-header {
     background: #2d2d2d;
     color: #999;
@@ -96,10 +95,10 @@ a {
     border-bottom: 1px solid #333;
 }
 
-/* 程式碼本身：設定字體與行高 */
 .code-container pre {
     margin: 0 !important;
     padding: 1.25rem;
+    overflow-x: auto;
 }
 
 .code-container code {
@@ -108,7 +107,6 @@ a {
     line-height: 1.6;
 }
 
-/* 滾動條美化 (針對 Webkit 瀏覽器) */
 .code-container pre::-webkit-scrollbar {
     height: 8px;
 }
@@ -470,11 +468,22 @@ ul {
     color: var(--primary-color);
 }
 
-.game-detail-content {
+.game-detail-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 60px;
     align-items: start;
+    margin-bottom: 60px;
+}
+
+.game-detail-content {
+    min-width: 0;
+}
+
+.game-technical {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .game-title {
@@ -629,15 +638,12 @@ ul {
 }
 
 @media (max-width: 900px) {
-    .game-detail-content {
+    .game-detail-layout {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .game-meta-card {
-        position: static;
-        order: -1;
-        /* Show image/meta on top on mobile? Or keep bottom? Let's keep default (bottom) or maybe top is better for context. Let's try top. */
+    .game-sidebar {
         order: -1;
     }
 }

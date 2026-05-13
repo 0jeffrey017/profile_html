@@ -23,7 +23,6 @@ def generate_games():
         games_data = json.load(f)
 
     # Generate files
-    import re
     for game in games_data:
         content = template_content
         
@@ -60,12 +59,15 @@ def generate_games():
             content = content.replace('{{SCREENSHOT_GALLERY}}', gallery_html)
 
         # Handle Code Sample conditional block
-        code_data = game.get('code_sample')
+        code_config = game.get('code_sample')
+        code_data = None
+        if code_config:
+            code_data = get_code_sample_data(code_config.get('path'), code_config.get('language'))
 
-        if not code_data or not code_data.get('code'):
+        if not code_data:
             content = re.sub(r'<!-- CODE_SAMPLE_START -->.*?<!-- CODE_SAMPLE_END -->', '', content, flags=re.DOTALL)
         else:
-            lang = code_data.get('language', 'plaintext') # 預設為純文字
+            lang = code_data.get('language', 'plaintext')
             raw_code = code_data.get('code', '')
             
             safe_code = html.escape(raw_code)
@@ -106,6 +108,26 @@ def generate_games():
             print(f"Generated: {output_path}")
         else:
             print("Error: 'filename' not specified for a game entry.")
+
+def get_code_sample_data(file_path, language="csharp"):
+    """
+    讀取程式碼檔案並傳回字典格式
+    """
+    if not file_path or not os.path.exists(file_path):
+        return None
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            raw_code = f.read()
+
+        return {
+            "language": language,
+            "code": raw_code
+        }
+
+    except Exception as e:
+        print(f"處理檔案 {file_path} 時發生錯誤: {str(e)}")
+        return None
 
 if __name__ == "__main__":
     generate_games()

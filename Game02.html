@@ -50,8 +50,8 @@
                 </a>
             </div>
 
-            <section class="game-detail-content">
-                <div class="game-description">
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
                     <h1 class="game-title">逢魔々城</h1>
                     <h2 class="game-subtitle">Tower Defense Game / PC</h2>
 
@@ -76,28 +76,10 @@
                         <h3>Responsible part / 担当部分</h3>
                         <p>敵生成システム、武器生成システム、タイトル画面、メインUI</p>
                     </div>
-                    <div class="content-block">
-                        <h3>Technical Details / 技術情報</h3>
-                        <ul>
-                            <li>Strategyパターン、Factory Method パターンを使って敵と武器を生成する、それにデータをScriptableObjectで保存して、プランナーを編集可能にする</li>
-                        </ul>
-                    </div>
                     
+                </section>
 
-                    
-                    
-                    <div class="content-block">
-                        <h3>Technical Image / 技術図</h3>
-                        <div class="game-detail-image">
-                            <a href="Image/defanceGame_class.png" target="_blank">
-                                <img src="Image/defanceGame_class.png" alt="逢魔々城 Technical Diagram">
-                            </a>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <div class="game-sidebar">
+                <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
                             <img src="Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png" alt="逢魔々城 Screenshot">
@@ -122,10 +104,243 @@
                             Play Game
                         </a>
                     </div>
+                </aside>
+            </div>
+            <hr style="border: 2px solid black; width: 50%;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Technical Details / 技術情報</h3>
+                    <ul>
+                        <li>Strategyパターン、Factory Method パターンを使って敵と武器を生成する、それにデータをScriptableObjectで保存して、プランナーを編集可能にする</li>
+                    </ul>
                 </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                <div class="code-container">
+                    <div class="code-header">Language: csharp</div>
+                    <pre><code class="language-csharp">public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEntity, IDieable
+{
+    private EnemyConfig _config;
+
+    private int _currentHealth;
+    private float _beDamageColdDownTimer;
+    private float _attackColdDownTimer;
+    private bool _isAttackTimerCanCount;
+    public FactionType Faction =&gt; FactionType.Enemy;
+    [field: NonSerialized] public event Action&lt;int, int&gt; OnHealthChanged;
+    [field: NonSerialized] public event Action&lt;EffectType&gt; OnDamage;
+    [field: NonSerialized] public event Action&lt;EffectType&gt; OnAttack;
+    [field: NonSerialized] public event Action&lt;EffectType&gt; OnDeathEffect;
+    [field: NonSerialized] public event Action OnDeath;
+    [field: NonSerialized] public event Action&lt;float, float&gt; AttackTimer;
+    [field: NonSerialized] public event Action OnDamageEffectInitialize;
+
+    private void Update()
+    {
+        UpdateTimer();
+        UpdateState();
+    }
+
+    private void UpdateState()
+    {
+        if (transform.position.x &gt;= 20) OnDeath?.Invoke();
+        if (IsTargetInRange(out var go))
+        {
+            if (go.activeInHierarchy)
+            {
+                Attack(go);
+            }
+        }
+        else
+        {
+            Move(Vector3.right);
+        }
+    }
+
+    private void UpdateTimer()
+    {
+        _beDamageColdDownTimer += Time.deltaTime;
+        if (!_isAttackTimerCanCount) return;
+        _attackColdDownTimer += Time.deltaTime;
+        AttackTimer?.Invoke(_attackColdDownTimer, _config.attackColdDownTime);
+    }
+
+    public void Initialize(EnemyConfig config)
+    {
+        _config = config;
+        _currentHealth = _config.maxHealth;
+        _beDamageColdDownTimer = 0;
+        _attackColdDownTimer = 0;
+        _isAttackTimerCanCount = false;
+        OnHealthChanged?.Invoke(_config.maxHealth, _config.maxHealth);
+        _config.moveStrategy.Initialize(transform);
+        OnDamageEffectInitialize?.Invoke();
+    }
+
+    public void TakeDamage(int damage) //TODO TakeDamage Strategy
+    {
+        if (_beDamageColdDownTimer &lt;= _config.damageColdDownTime) return;
+        _beDamageColdDownTimer -= _config.damageColdDownTime;
+
+        _currentHealth -= damage;
+
+        if (_currentHealth &lt;= 0)
+        {
+            _currentHealth = 0;
+            OnHealthChanged?.Invoke(_currentHealth, _config.maxHealth);
+            StartCoroutine(Die());
+            return;
+        }
+        //effectController update effect
+        OnDamage?.Invoke(_config.damageEffect);
+        //UIManager update HP
+        OnHealthChanged?.Invoke(_currentHealth, _config.maxHealth);
+    }
+
+    public bool CanDamage(GameObject target)
+    {
+        if (target == gameObject) return false;
+        if (!target.TryGetComponent&lt;IEntity&gt;(out var entity)) return false;
+        return _config.damageRelationData.CanDamage(entity.Faction);
+    }
+
+    public IEnumerator Die()
+    {
+        yield return null;
+        OnDeathEffect?.Invoke(_config.deathEffect);
+        OnDeath?.Invoke();
+        GameManager.Instance.CurrentMaterials += _config.dropMoney; //TODO ???
+    }
+
+    public void Move(Vector3 direction)
+    {
+        _isAttackTimerCanCount = false;
+        var newPosition = _config.moveStrategy.Move(transform.position, direction, _config.moveSpeed);
+        transform.position = newPosition;
+    }
+
+    public void Attack(GameObject target)
+    {
+        _isAttackTimerCanCount = true;
+        if (_attackColdDownTimer &lt;= _config.attackColdDownTime) return;
+        _attackColdDownTimer -= _config.attackColdDownTime;
+        IFireable enemyBullet = BulletManager.Instance.SpawnBullet(_config.bulletType, transform.position, transform.rotation);
+        OnAttack?.Invoke(_config.attackEffect);
+        enemyBullet?.Fire(target, _config.attackPower);
+        AudioManager.Instance.PlaySE(_config.SeType);
+    }
+
+    public bool IsTargetInRange(out GameObject go)
+    {
+        go = null;
+        LayerMask l = 1 &lt;&lt; LayerMask.NameToLayer(&quot;Target&quot;); // TODO ??
+        var hit = Physics2D.OverlapCircle(transform.position, _config.attackRange, l);
+        if (hit == null) return false;
+        go = hit.gameObject;
+        if (go == gameObject) return false;
+        return CanDamage(go);
+    }
+}
+
+
+public class EnemyConfig : ScriptableObject
+{
+    [Header(&quot;表示属性&quot;)]
+    [Tooltip(&quot;名前&quot;)] public EnemyType enemyName;
+    [Tooltip(&quot;画像&quot;)] public Sprite enemyImage;
+    [Tooltip(&quot;説明&quot;), Multiline(6)] public string description;
+
+    [Header(&quot;基本属性&quot;)]
+    [Tooltip(&quot;資材コスト&quot;), Range(0, 1000)] public int cost;
+    [Tooltip(&quot;生成時間&quot;), Range(0, 500)] public float spawnTime;
+    [Tooltip(&quot;ドロップ資材&quot;), Range(0, 10000)] public int dropMoney;
+    [Tooltip(&quot;HP最大値&quot;), Range(1, 10000)] public int maxHealth;
+    [Tooltip(&quot;攻撃&quot;), Range(0, 1000)] public int attackPower;
+    [Tooltip(&quot;移動速度（m/s）&quot;), Range(0.0f, 20.0f)] public float moveSpeed;
+    [Tooltip(&quot;攻撃範囲（ｍ）&quot;), Range(0.1f, 30.0f)] public float attackRange;
+    [Tooltip(&quot;攻撃頻度（ｓ）&quot;), Range(0.1f, 30.0f)] public float attackColdDownTime;
+    [Tooltip(&quot;ダメージを受ける頻度（ｓ）&quot;), Range(0.1f, 20.0f)] public float damageColdDownTime;
+
+    [Header(&quot;プレハブ&quot;)]
+    public GameObject prefab;
+
+    [Header(&quot;弾の種類&quot;)]
+    public BulletType bulletType;
+    [Header(&quot;弾の音&quot;)]
+    public SEType SeType;
+
+    [Header(&quot;CanTakeDamageBy&quot;)]
+    public DamageRelationData damageRelationData;
+
+    [Header(&quot;EffectType&quot;)]
+    [Tooltip(&quot;ダメージエフェクト&quot;)] public EffectType damageEffect;
+    [Tooltip(&quot;攻撃エフェクト&quot;)] public EffectType attackEffect;
+    [Tooltip(&quot;死亡エフェクト&quot;)] public EffectType deathEffect;
+
+    [Header(&quot;MoveStrategy&quot;)]
+    public MoveStrategy moveStrategy;
+}
+
+public class EnemyFactory
+{
+    private readonly ObjectPool&lt;GameObject&gt; _enemyPool;
+    private readonly EnemyConfig _enemyConfig;
+
+    public EnemyFactory(EnemyConfig enemyConfig, int defaultNumber, int maxSize)
+    {
+        _enemyConfig = enemyConfig;
+
+        _enemyPool = new ObjectPool&lt;GameObject&gt;(
+            createFunc: CreateEnemy,
+            actionOnGet: OnGet,
+            actionOnRelease: OnRelease,
+            actionOnDestroy: OnDestroy,
+            collectionCheck: false,
+            defaultCapacity: defaultNumber,
+            maxSize: maxSize
+        );
+    }
+
+    private GameObject CreateEnemy()
+    {
+        var go = Object.Instantiate(_enemyConfig.prefab);
+        return go;
+    }
+
+    private void OnGet(GameObject go)
+    {
+        go.SetActive(true);
+        if (!go.TryGetComponent&lt;EnemyBase&gt;(out var enemyBase)) return;
+        enemyBase.Initialize(_enemyConfig);
+
+        void OnEnemyDeath() // 死亡したらpoolに返す
+        {
+            enemyBase.OnDeath -= OnEnemyDeath;
+            _enemyPool.Release(go);
+        }
+        enemyBase.OnDeath += OnEnemyDeath;
+    }
+
+    private void OnRelease(GameObject go) =&gt; go.SetActive(false);
+    private void OnDestroy(GameObject go) =&gt; Object.Destroy(go);
+    public GameObject Get() =&gt; _enemyPool.Get();
+}</code></pre>
+                </div>
+                
+                
+                <div class="content-block">
+                    <h3>Technical Image / 技術図</h3>
+                    <div class="game-detail-image">
+                        <a href="Image/defanceGame_class.png" target="_blank">
+                            <img src="Image/defanceGame_class.png" alt="逢魔々城 Technical Diagram">
+                        </a>
+                    </div>
+                </div>
+                
             </section>
         </main>
-
         <!-- Footer -->
         <footer class="site-footer">
             <div class="social-links">
