@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
-    <meta name="description" content="余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 - Project Details: Action Game / PC、WebGL">
+    <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
+    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: Action Game / PC、WebGL">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 | Jeffrey LEE">
-    <meta property="og:description" content="余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 - Action Game / PC、WebGL">
+    <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
+    <meta property="og:description" content="グレート-O-カーンの侵略物語 - Action Game / PC、WebGL">
     <meta property="og:image" content="../Image/余にひれ伏せ愚民ども.png">
     <meta property="og:url" content="https://www.njpw.co.jp/games/great-o-khan/">
 
@@ -55,16 +55,14 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語</h1>
+                    <h1 class="game-title">グレート-O-カーンの侵略物語</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
 
                     
-
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
                         <p>新日本プロレスのグレート-O-カーン選手ドミネーターとして世界を支配するために走る！！</p><p>障害物をよける、アイテムを集めて、最高スコアを競い合う</p>
                     </div>
-
                     
 
                     <div class="content-block">
@@ -77,12 +75,18 @@
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
-                        <p>メインシステム、キャラクター動き、ステートマシン</p>
+                        <ul>
+                            <ul>
+    <li>メインシステム</li>
+    <li>InputSystem</li>
+    <li>StateMachine</li>
+</ul>
+                        </ul>
                     </div>
                     
                     <div class="content-block">
                         <h3>Credit / クレジット</h3>
-                        <p><li>フリーBGM・音楽素材MusMus https://musmus.main.jp</li><li>OtoLogicの素材を使用している</li></p>
+                        <ul><li>フリーBGM・音楽素材MusMus https://musmus.main.jp</li><li>OtoLogicの素材を使用している</li></ul>
                     </div>
                     
                 </section>
@@ -90,7 +94,7 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/余にひれ伏せ愚民ども.png" alt="余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 Screenshot">
+                            <img src="../Image/余にひれ伏せ愚民ども.png" alt="グレート-O-カーンの侵略物語 Screenshot">
                         </div>
 
                         <div class="meta-info">
@@ -114,15 +118,86 @@
                     </div>
                 </aside>
             </div>
-            <hr style="border: 2px solid black; width: 50%;">
+
+            <hr style="border: 2px solid black;">
             <br>
 
             <section class="game-technical">
                 <div class="content-block">
-                    <h3>Technical Details / 技術情報</h3>
-                    <ul>
-                        <li>ステートマシンでゲーム全体の流れを作る</li><li>UniTask,UniRXを使用非同期のイベントを実装</li><li>Dotweenを使ってアニメションを作成</li>
-                    </ul>
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ゲーム全体のフロントを難しくので、仕様変更やデバッグは困難</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>ステートマシンでゲーム全体の流れを作る</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>Playerの入力待ちが必要</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>UniTask,UniRXを使用非同期のイベントを実装</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ゲーム全体の面白い感を増やしたい</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Dotweenを使ってアニメションを作成</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>チームで共同作業</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Git / GitHubのバージョン管理</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>UIとロジックを混ぜて変更は困難</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>MVPを意識しての設計</p>
+                </div>
+
+            </div>
+            
+                    </div>
                 </div>
                 
                 <h3>Sample Code / サンプルコード</h3>
@@ -249,74 +324,6 @@ public static class GameStateMachine
         _nextStateRequest = null;
         return requestedState;
     }
-}
-
-public abstract class BaseState
-{
-    public virtual UniTask OnEnter(CancellationToken token) =&gt; UniTask.CompletedTask;
-    public abstract UniTask&lt;BaseState&gt; RunState(CancellationToken token);
-    public virtual UniTask OnExit(CancellationToken token) =&gt; UniTask.CompletedTask;
-}
-
-public static class StateFactory
-{
-    private static GameContext _gameContext;
-    private static GameResultData _gameResultData;
-    private static GameSettingData _settingData;
-    private static PlayerMovementController _playerMovementController;
-    private static AnimationChange _animationChanger;
-    private static ParticleSystem _speedParticleSystem;
-    private static EventUiViewer _eventUiViewer;
-    private static StageGenerator _stageGenerator;
-    private static PlayerInput _playerInput;
-    private static InvincibleManager _invincibleManager;
-    private static PlayerEffectController _playerEffectController;
-
-    public static void Initialize(GameContext gameContext,
-        PlayerMovementController playerMovementController,
-        ParticleSystem speedParticleSystem,
-        EventUiViewer eventUiViewer,
-        StageGenerator stageGenerator,
-        PlayerInput playerInput,
-        GameSettingData settingData,
-        GameResultData gameResultData,
-        AnimationChange animationChanger,
-        InvincibleManager invincibleManager,
-        PlayerEffectController playerEffectController)
-    {
-        _gameContext = gameContext;
-        _playerMovementController = playerMovementController;
-        _speedParticleSystem = speedParticleSystem;
-        _eventUiViewer = eventUiViewer;
-        _stageGenerator = stageGenerator;
-        _playerInput = playerInput;
-        _settingData = settingData;
-        _gameResultData = gameResultData;
-        _animationChanger = animationChanger;
-        _invincibleManager = invincibleManager;
-        _playerEffectController = playerEffectController;
-    }
-
-    public static BaseState CreateState(EGameState state)
-    {
-        return state switch
-        {
-            EGameState.Initial =&gt; new InitialState(),
-            EGameState.Tutorial =&gt; new TutorialState(_gameContext, _eventUiViewer, _stageGenerator, _playerInput, _playerMovementController),
-            EGameState.CountDown =&gt; new CountDownState(_eventUiViewer, _stageGenerator, _playerMovementController),
-            EGameState.MainGame =&gt; new MainGameState(_gameContext),
-            EGameState.Pause =&gt; new PauseState(_playerInput, _eventUiViewer),
-            EGameState.EventBigEater =&gt; new EventBigEaterState(_gameContext, _eventUiViewer, _stageGenerator, _settingData),
-            EGameState.Horse =&gt; new HorseState(_playerMovementController, _speedParticleSystem, _gameContext, _settingData, _eventUiViewer, _invincibleManager),
-            EGameState.DarkWrestler =&gt; new EventDarkWrestlerState(_gameContext, _playerMovementController, _eventUiViewer, _playerInput, _settingData, _stageGenerator, _playerEffectController),
-            EGameState.StartDarkWrestler =&gt; new StartDarkWrestlerState(_stageGenerator),
-            EGameState.HelpPeople =&gt; new EventHelpPeopleState(_eventUiViewer, _gameContext, _settingData),
-            EGameState.PanCake =&gt; new ItemPanCakeEffectState(_playerMovementController, _settingData, _eventUiViewer, _animationChanger, _gameContext),
-            EGameState.GameOver =&gt; new GameOverState(_playerMovementController, _eventUiViewer, _gameContext, _gameResultData, _playerInput),
-            EGameState.LifeCheckState =&gt; new LifeCheckState(_gameContext, _playerMovementController, _invincibleManager),
-            _ =&gt; null
-        };
-    }
 }</code></pre>
                 </div>
                 
@@ -325,7 +332,7 @@ public static class StateFactory
                     <h3>Technical Image / 技術図</h3>
                     <div class="game-detail-image">
                         <a href="../Image/グレート-O-カーンの侵略物語_class.png" target="_blank">
-                            <img src="../Image/グレート-O-カーンの侵略物語_class.png" alt="余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語 Technical Diagram">
+                            <img src="../Image/グレート-O-カーンの侵略物語_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
                         </a>
                     </div>
                 </div>
@@ -355,7 +362,7 @@ public static class StateFactory
     <!-- JSファイルの読み込み -->
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 
     <script>

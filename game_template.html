@@ -65,12 +65,10 @@
                         </div>
                     </div>
                     <!-- VIDEO_END -->
-
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
                         {{OVERVIEW}}
                     </div>
-
                     <!-- GALLERY_START -->
                     <div class="content-block">
                         <h3>Screenshots / スクリーンショット</h3>
@@ -90,12 +88,14 @@
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
-                        <p>{{RESPONSIBLE}}</p>
+                        <ul>
+                            {{RESPONSIBLE}}
+                        </ul>
                     </div>
                     <!-- CREDIT_START -->
                     <div class="content-block">
                         <h3>Credit / クレジット</h3>
-                        <p>{{CREDIT}}</p>
+                        <ul>{{CREDIT}}</ul>
                     </div>
                     <!-- CREDIT_END -->
                 </section>
@@ -127,15 +127,16 @@
                     </div>
                 </aside>
             </div>
-            <hr style="border: 2px solid black; width: 50%;">
+
+            <hr style="border: 2px solid black;">
             <br>
 
             <section class="game-technical">
                 <div class="content-block">
-                    <h3>Technical Details / 技術情報</h3>
-                    <ul>
-                        {{TECHNICAL_DETAILS}}
-                    </ul>
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        {{CHALLENGES_SOLUTIONS}}
+                    </div>
                 </div>
                 <!-- CODE_SAMPLE_START -->
                 <h3>Sample Code / サンプルコード</h3>
@@ -179,7 +180,7 @@
     <!-- JSファイルの読み込み -->
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 
     <script>

@@ -88,13 +88,42 @@ def generate_games():
             content = content.replace('<!-- CREDIT_END -->', '')
             content = content.replace('{{CREDIT}}', credit)
 
+        responsibles = game.get('responsible', [])
+
+        responsibles_html = "<ul>\n"
+        for res in responsibles:
+            responsibles_html += f"    <li>{res}</li>\n"
+        responsibles_html += "</ul>"
+        content = content.replace('{{RESPONSIBLE}}', responsibles_html)
+
+        challengeAndSolutions = game.get('challenges_solutions', [])
+        challengeAndSolutions_html = ""
+        for cs in challengeAndSolutions:
+            challengeAndSolutions_html += f"""
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>{cs.get('challenge', '')}</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>{cs.get('solution', '')}</p>
+                </div>
+
+            </div>
+            """
+        content = content.replace(
+            '{{CHALLENGES_SOLUTIONS}}',
+            challengeAndSolutions_html
+        )
+        
         content = content.replace('{{TITLE}}', game.get('title', ''))
         content = content.replace('{{SUBTITLE}}', game.get('subtitle', ''))
         content = content.replace('{{OVERVIEW}}', game.get('overview', ''))
         content = content.replace('{{ENGINE}}', game.get('engine', ''))
         content = content.replace('{{PERIOD}}', game.get('period', ''))
-        content = content.replace('{{RESPONSIBLE}}', game.get('responsible', ''))
-        content = content.replace('{{TECHNICAL_DETAILS}}', game.get('technical_details', ''))
         content = content.replace('{{IMAGE_PATH}}', game.get('image_path', ''))
         content = content.replace('{{PLATFORM}}', game.get('platform', ''))
         content = content.replace('{{HOW_TO_PLAY}}', game.get('how_to_play', ''))

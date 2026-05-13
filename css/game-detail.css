@@ -68,6 +68,34 @@
     margin-bottom: 16px;
 }
 
+.challenge-card {
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    background: rgba(255,255,255,0.02);
+}
+
+.challenge-section {
+    margin-bottom: 20px;
+}
+
+.solution-section {
+    border-left: 4px solid #4ade80;
+    padding-left: 16px;
+}
+
+.challenge-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.challenge-card p {
+    line-height: 1.8;
+    color: #0f0f0f;
+}
+
 /* Game Sidebar */
 .game-meta-card {
     background: rgba(255, 255, 255, 0.8);

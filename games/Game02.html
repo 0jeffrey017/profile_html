@@ -59,12 +59,10 @@
                     <h2 class="game-subtitle">Tower Defense Game / PC</h2>
 
                     
-
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
                         <p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>
                     </div>
-
                     
 
                     <div class="content-block">
@@ -77,7 +75,14 @@
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
-                        <p>敵生成システム、武器生成システム、タイトル画面、メインUI</p>
+                        <ul>
+                            <ul>
+    <li>敵生成システム</li>
+    <li>武器生成システム</li>
+    <li>タイトル画面</li>
+    <li>メインUI</li>
+</ul>
+                        </ul>
                     </div>
                     
                 </section>
@@ -109,145 +114,80 @@
                     </div>
                 </aside>
             </div>
-            <hr style="border: 2px solid black; width: 50%;">
+
+            <hr style="border: 2px solid black;">
             <br>
 
             <section class="game-technical">
                 <div class="content-block">
-                    <h3>Technical Details / 技術情報</h3>
-                    <ul>
-                        <li>Strategyパターン、Factory Method パターンを使って敵と武器を生成する、それにデータをScriptableObjectで保存して、プランナーを編集可能にする</li>
-                    </ul>
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ゲームのバランス調整は難しい、プログラムが分からないプランナーにはできない</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>データをScriptableObjectで保存して、プランナーを編集可能にする</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>敵と武器の種類は今後増えるかもしれない</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Strategyパターン、Factory Method パターンを使って敵と武器を生成する</p>
+                </div>
+
+            </div>
+            
+                    </div>
                 </div>
                 
                 <h3>Sample Code / サンプルコード</h3>
                 <div class="code-container">
                     <div class="code-header">Language: csharp</div>
-                    <pre><code class="language-csharp">public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEntity, IDieable
+                    <pre><code class="language-csharp">/// &lt;summary&gt;
+/// EnemyBaseを作成、詳しい攻撃や移動などStrategyパターンで決める
+/// &lt;/summary&gt;
+public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEntity, IDieable
 {
     private EnemyConfig _config;
-
-    private int _currentHealth;
-    private float _beDamageColdDownTimer;
-    private float _attackColdDownTimer;
-    private bool _isAttackTimerCanCount;
     public FactionType Faction =&gt; FactionType.Enemy;
-    [field: NonSerialized] public event Action&lt;int, int&gt; OnHealthChanged;
-    [field: NonSerialized] public event Action&lt;EffectType&gt; OnDamage;
-    [field: NonSerialized] public event Action&lt;EffectType&gt; OnAttack;
-    [field: NonSerialized] public event Action&lt;EffectType&gt; OnDeathEffect;
-    [field: NonSerialized] public event Action OnDeath;
-    [field: NonSerialized] public event Action&lt;float, float&gt; AttackTimer;
-    [field: NonSerialized] public event Action OnDamageEffectInitialize;
-
-    private void Update()
-    {
-        UpdateTimer();
-        UpdateState();
-    }
-
-    private void UpdateState()
-    {
-        if (transform.position.x &gt;= 20) OnDeath?.Invoke();
-        if (IsTargetInRange(out var go))
-        {
-            if (go.activeInHierarchy)
-            {
-                Attack(go);
-            }
-        }
-        else
-        {
-            Move(Vector3.right);
-        }
-    }
-
-    private void UpdateTimer()
-    {
-        _beDamageColdDownTimer += Time.deltaTime;
-        if (!_isAttackTimerCanCount) return;
-        _attackColdDownTimer += Time.deltaTime;
-        AttackTimer?.Invoke(_attackColdDownTimer, _config.attackColdDownTime);
-    }
-
-    public void Initialize(EnemyConfig config)
-    {
-        _config = config;
-        _currentHealth = _config.maxHealth;
-        _beDamageColdDownTimer = 0;
-        _attackColdDownTimer = 0;
-        _isAttackTimerCanCount = false;
-        OnHealthChanged?.Invoke(_config.maxHealth, _config.maxHealth);
-        _config.moveStrategy.Initialize(transform);
-        OnDamageEffectInitialize?.Invoke();
-    }
-
-    public void TakeDamage(int damage) //TODO TakeDamage Strategy
-    {
-        if (_beDamageColdDownTimer &lt;= _config.damageColdDownTime) return;
-        _beDamageColdDownTimer -= _config.damageColdDownTime;
-
-        _currentHealth -= damage;
-
-        if (_currentHealth &lt;= 0)
-        {
-            _currentHealth = 0;
-            OnHealthChanged?.Invoke(_currentHealth, _config.maxHealth);
-            StartCoroutine(Die());
-            return;
-        }
-        //effectController update effect
-        OnDamage?.Invoke(_config.damageEffect);
-        //UIManager update HP
-        OnHealthChanged?.Invoke(_currentHealth, _config.maxHealth);
-    }
-
-    public bool CanDamage(GameObject target)
-    {
-        if (target == gameObject) return false;
-        if (!target.TryGetComponent&lt;IEntity&gt;(out var entity)) return false;
-        return _config.damageRelationData.CanDamage(entity.Faction);
-    }
-
-    public IEnumerator Die()
-    {
-        yield return null;
-        OnDeathEffect?.Invoke(_config.deathEffect);
-        OnDeath?.Invoke();
-        GameManager.Instance.CurrentMaterials += _config.dropMoney; //TODO ???
-    }
-
     public void Move(Vector3 direction)
     {
         _isAttackTimerCanCount = false;
         var newPosition = _config.moveStrategy.Move(transform.position, direction, _config.moveSpeed);
         transform.position = newPosition;
     }
-
     public void Attack(GameObject target)
     {
         _isAttackTimerCanCount = true;
         if (_attackColdDownTimer &lt;= _config.attackColdDownTime) return;
         _attackColdDownTimer -= _config.attackColdDownTime;
+
+        //ObjectPoolを使って、ファクトリーを使って、enemyを生成する、大量のInstantiate,Destoryを避けることができる
         IFireable enemyBullet = BulletManager.Instance.SpawnBullet(_config.bulletType, transform.position, transform.rotation);
+        
         OnAttack?.Invoke(_config.attackEffect);
         enemyBullet?.Fire(target, _config.attackPower);
         AudioManager.Instance.PlaySE(_config.SeType);
     }
-
-    public bool IsTargetInRange(out GameObject go)
-    {
-        go = null;
-        LayerMask l = 1 &lt;&lt; LayerMask.NameToLayer(&quot;Target&quot;); // TODO ??
-        var hit = Physics2D.OverlapCircle(transform.position, _config.attackRange, l);
-        if (hit == null) return false;
-        go = hit.gameObject;
-        if (go == gameObject) return false;
-        return CanDamage(go);
-    }
 }
 
-
+/// &lt;summary&gt;
+/// EnemyのデータをScriptableObjectを所持する、Enemyの詳細変更を簡単にできる
+/// &lt;/summary&gt;
 public class EnemyConfig : ScriptableObject
 {
     [Header(&quot;表示属性&quot;)]
@@ -284,51 +224,6 @@ public class EnemyConfig : ScriptableObject
 
     [Header(&quot;MoveStrategy&quot;)]
     public MoveStrategy moveStrategy;
-}
-
-public class EnemyFactory
-{
-    private readonly ObjectPool&lt;GameObject&gt; _enemyPool;
-    private readonly EnemyConfig _enemyConfig;
-
-    public EnemyFactory(EnemyConfig enemyConfig, int defaultNumber, int maxSize)
-    {
-        _enemyConfig = enemyConfig;
-
-        _enemyPool = new ObjectPool&lt;GameObject&gt;(
-            createFunc: CreateEnemy,
-            actionOnGet: OnGet,
-            actionOnRelease: OnRelease,
-            actionOnDestroy: OnDestroy,
-            collectionCheck: false,
-            defaultCapacity: defaultNumber,
-            maxSize: maxSize
-        );
-    }
-
-    private GameObject CreateEnemy()
-    {
-        var go = Object.Instantiate(_enemyConfig.prefab);
-        return go;
-    }
-
-    private void OnGet(GameObject go)
-    {
-        go.SetActive(true);
-        if (!go.TryGetComponent&lt;EnemyBase&gt;(out var enemyBase)) return;
-        enemyBase.Initialize(_enemyConfig);
-
-        void OnEnemyDeath() // 死亡したらpoolに返す
-        {
-            enemyBase.OnDeath -= OnEnemyDeath;
-            _enemyPool.Release(go);
-        }
-        enemyBase.OnDeath += OnEnemyDeath;
-    }
-
-    private void OnRelease(GameObject go) =&gt; go.SetActive(false);
-    private void OnDestroy(GameObject go) =&gt; Object.Destroy(go);
-    public GameObject Get() =&gt; _enemyPool.Get();
 }</code></pre>
                 </div>
                 
@@ -367,7 +262,7 @@ public class EnemyFactory
     <!-- JSファイルの読み込み -->
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 
     <script>
