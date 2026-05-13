@@ -28,6 +28,7 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
@@ -53,11 +54,11 @@
                 <div class="game-description">
                     <h1 class="game-title">逢魔々城</h1>
                     <h2 class="game-subtitle">Tower Defense Game / PC</h2>
-                    
+
                     
 
                     <div class="content-block">
-                        <h3>Overview  / 概要</h3>
+                        <h3>Overview / 概要</h3>
                         <p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>
                     </div>
 
@@ -81,6 +82,8 @@
                             <li>Strategyパターン、Factory Method パターンを使って敵と武器を生成する、それにデータをScriptableObjectで保存して、プランナーを編集可能にする</li>
                         </ul>
                     </div>
+                    
+
                     
                     
                     <div class="content-block">
@@ -143,6 +146,18 @@
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="game.js"></script>
 </body>

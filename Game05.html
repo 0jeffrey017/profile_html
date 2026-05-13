@@ -28,6 +28,7 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
@@ -53,11 +54,11 @@
                 <div class="game-description">
                     <h1 class="game-title">余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
-                    
+
                     
 
                     <div class="content-block">
-                        <h3>Overview  / 概要</h3>
+                        <h3>Overview / 概要</h3>
                         <p>新日本プロレスのグレート-O-カーン選手ドミネーターとして世界を支配するために走る！！</p><p>障害物をよける、アイテムを集めて、最高スコアを競い合う</p>
                     </div>
 
@@ -81,6 +82,8 @@
                             <li>ステートマシンでゲーム全体の流れを作る</li><li>UniTask,UniRXを使用非同期のイベントを実装</li><li>Dotweenを使ってアニメションを作成</li>
                         </ul>
                     </div>
+                    
+
                     
                     <div class="content-block">
                         <h3>Credit / クレジット</h3>
@@ -148,6 +151,18 @@
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="game.js"></script>
 </body>

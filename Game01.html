@@ -28,6 +28,7 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
@@ -53,17 +54,17 @@
                 <div class="game-description">
                     <h1 class="game-title">Space Cat</h1>
                     <h2 class="game-subtitle">Action Game / PC</h2>
-                    
+
                     
                     <div class="content-block">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/_mwkGeVx6As" allowfullscreen></iframe>
+                            <iframe src="https://youtu.be/_mwkGeVx6As" allowfullscreen></iframe>
                         </div>
                     </div>
                     
 
                     <div class="content-block">
-                        <h3>Overview  / 概要</h3>
+                        <h3>Overview / 概要</h3>
                         <p>実験体として宇宙戦艦に囚われていた猫。突如発生した爆発により、戦艦は崩壊の危機に瀕する。</p><p>生身では生きられない残酷な宇宙環境から逃れるため、4つの生存装備を探し出せ。不思議な力を持つ「尻尾」を使いこなし、迫りくる危機を回避して出口を目指す、SFサバイバル・アクション。</p>
                     </div>
 
@@ -96,6 +97,195 @@
                             <li>Josn の SaveLoad System</li>
                         </ul>
                     </div>
+                    
+                    <div class="code-container">
+                        <div class="code-header">Language: csharp</div>
+
+                        <pre><code class="language-csharp">using System.Collections;
+public class SaveManager : MonoBehaviour
+{
+    private GameData _currentGameData = null;
+    public GameData CurrentGameData
+    {
+        get
+        {
+            _currentGameData ??= GetEnmtyPlayerGameData();
+
+            return _currentGameData;
+        }
+        set =&gt; _currentGameData = value;
+    }
+    private string _currentPlayerName = null;
+    public string CurrentPlayerName
+    {
+        get
+        {
+            _currentPlayerName ??= &quot;Admin&quot;;
+
+            return _currentPlayerName;
+        }
+        set =&gt; _currentPlayerName = value;
+    }
+
+    public void SaveDataToJson&lt;T&gt;(string path, T data)
+    {
+        var s = JsonUtility.ToJson(data, true);
+        if (!File.Exists(path))
+        {
+            File.Create(path).Close();
+        }
+        using StreamWriter writer = new StreamWriter(path);
+        writer.Write(s);
+        writer.Close();
+        Debug.Log($&quot;save success&quot;);
+    }
+
+    public T LoadDataFromJson&lt;T&gt;(string path)
+    {
+        if (File.Exists(path))
+        {
+            using StreamReader reader = new StreamReader(path);
+            var s = reader.ReadToEnd();
+            var data = JsonUtility.FromJson&lt;T&gt;(s);
+            reader.Close();
+            return data;
+        }
+        return default;
+    }
+
+    public bool CreateNewPlayer(string playerName)
+    {
+        var dir = Application.persistentDataPath + &quot;/SaveData&quot;;
+        if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+        var path = dir + &quot;/PlayerList.data&quot;;
+
+        var playerList = LoadDataFromJson&lt;PlayerListData&gt;(path);
+        playerList ??= new PlayerListData();
+
+        var playerDict = new Dictionary&lt;string, GameData&gt;();
+
+        foreach (var entry in playerList.players)
+        {
+            if (playerDict.ContainsKey(entry.playerName)) continue;
+            playerDict[entry.playerName] = entry.data;
+        }
+
+        if (playerDict.ContainsKey(playerName))return false;
+
+        playerDict[playerName] = GetEnmtyPlayerGameData();
+
+        var newPlayer = new PlayerEntry()
+        {
+            playerName = playerName,
+            data = playerDict[playerName],
+        };
+
+        playerList.players.Add(newPlayer);
+        SaveDataToJson(path, playerList);
+
+        _currentGameData = playerDict[playerName];
+        _currentPlayerName = playerName;
+        return true;
+    }
+
+    public Dictionary&lt;string, GameData&gt; LoadPlayers()
+    {
+        var dir = Application.persistentDataPath + &quot;/SaveData&quot;;
+        if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+        var path = dir + &quot;/PlayerList.data&quot;;
+
+        var playerList = LoadDataFromJson&lt;PlayerListData&gt;(path);
+        playerList ??= new PlayerListData();
+
+        var playerDict = new Dictionary&lt;string, GameData&gt;();
+
+        foreach (var entry in playerList.players)
+        {
+            if (playerDict.ContainsKey(entry.playerName)) continue;
+            playerDict[entry.playerName] = entry.data;
+        }
+        return playerDict;
+    }
+
+    public void DeletePlayer(string playerName)
+    {
+        var dir = Application.persistentDataPath + &quot;/SaveData&quot;;
+        if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+        var path = dir + &quot;/PlayerList.data&quot;;
+
+        var playerList = LoadDataFromJson&lt;PlayerListData&gt;(path);
+        playerList ??= new PlayerListData();
+
+        playerList.players.RemoveAll(p =&gt; p.playerName.Equals(playerName));
+
+        SaveDataToJson(path, playerList);
+    }
+
+    public void SavePlayerData()
+    {
+        string dir = Application.persistentDataPath + &quot;/SaveData&quot;;
+        if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+        string path = dir + &quot;/PlayerList.data&quot;;
+
+        PlayerListData playerList = LoadDataFromJson&lt;PlayerListData&gt;(path);
+        playerList ??= new PlayerListData();
+        foreach (var v in playerList.players)
+        {
+            if (v.playerName.Equals(CurrentPlayerName))
+            {
+                v.data = _currentGameData;
+            }
+        }
+        SaveDataToJson(path, playerList);
+    }
+
+    public void ResetPlayerData()
+    {
+        _currentGameData = GetEnmtyPlayerGameData();
+        SavePlayerData();
+    }
+
+    private GameData GetEnmtyPlayerGameData()
+    {
+        GameData gameData;
+        TextAsset data = Resources.Load&lt;TextAsset&gt;(&quot;Data/GameData&quot;);
+        if (data == null)
+        {
+            Debug.LogError(&quot;Data/GameData not finded in Resources&quot;);
+            return null;
+        }
+        gameData = JsonUtility.FromJson&lt;GameData&gt;(data.text);
+
+        TextAsset itemData = Resources.Load&lt;TextAsset&gt;(&quot;Data/ItemData&quot;);
+        if (itemData == null)
+        {
+            Debug.LogError(&quot;not find ItemData.json,in Resources/Data/&quot;);
+            return null;
+        }
+        ItemListWrapper itemDataList = JsonUtility.FromJson&lt;ItemListWrapper&gt;(itemData.text);
+        if (itemDataList == null)
+        {
+            Debug.LogError(&quot;json formater fail&quot;);
+            return null;
+        }
+        else
+        {
+            var itemDatas = itemDataList.items;
+            gameData.items = itemDatas;
+        }
+
+        Debug.Log(JsonUtility.ToJson(gameData, true));
+        return gameData;
+    }
+}
+</code></pre>
+                    </div>
+                    
+
                     
                     
                 </div>
@@ -149,6 +339,18 @@
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="game.js"></script>
 </body>

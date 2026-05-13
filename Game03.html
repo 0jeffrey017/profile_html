@@ -28,6 +28,7 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
@@ -53,11 +54,11 @@
                 <div class="game-description">
                     <h1 class="game-title">ペンギン紙相撲</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
-                    
+
                     
 
                     <div class="content-block">
-                        <h3>Overview  / 概要</h3>
+                        <h3>Overview / 概要</h3>
                         <p>紙相撲のペンギンバージョン</p><p>A,Lで素早くクリックする、振動を起こす、相手の赤いペンギンを倒す</p>
                     </div>
 
@@ -81,6 +82,8 @@
                             <li>物理を使って、紙相撲を再現する</li>
                         </ul>
                     </div>
+                    
+
                     
                     <div class="content-block">
                         <h3>Credit / クレジット</h3>
@@ -139,6 +142,18 @@
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="game.js"></script>
 </body>

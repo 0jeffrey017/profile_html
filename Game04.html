@@ -28,6 +28,7 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
@@ -53,11 +54,11 @@
                 <div class="game-description">
                     <h1 class="game-title">クリックゲーム</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
-                    
+
                     
 
                     <div class="content-block">
-                        <h3>Overview  / 概要</h3>
+                        <h3>Overview / 概要</h3>
                         <p>Vcontainerを実験する、簡単なゲームです。</p><p>マウスでプラスボタンを押すと点数が増える、そうじゃなくて点数が減る</p>
                     </div>
 
@@ -81,6 +82,8 @@
                             <li>Vcontainerを使って、DIの練習</li>
                         </ul>
                     </div>
+                    
+
                     
                     
                 </div>
@@ -134,6 +137,18 @@
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
         </footer>
     </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="game.js"></script>
 </body>

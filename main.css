@@ -69,11 +69,52 @@ h6 {
     font-family: var(--font-heading);
     color: var(--text-color);
 }
-
 a {
     text-decoration: none;
     color: inherit;
     transition: color 0.2s ease;
+}
+
+.code-container {
+    background: #1e1e1e; /* VS2015 預設背景色 */
+    border-radius: 8px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 代碼標頭：顯示語言名稱 */
+.code-header {
+    background: #2d2d2d;
+    color: #999;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+}
+
+/* 程式碼本身：設定字體與行高 */
+.code-container pre {
+    margin: 0 !important;
+    padding: 1.25rem;
+}
+
+.code-container code {
+    font-family: 'Consolas', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* 滾動條美化 (針對 Webkit 瀏覽器) */
+.code-container pre::-webkit-scrollbar {
+    height: 8px;
+}
+.code-container pre::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
 }
 
 ul {

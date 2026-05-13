@@ -1,5 +1,7 @@
 import json
 import os
+import html
+import re
 
 def generate_games():
     # Load template
@@ -56,6 +58,23 @@ def generate_games():
             for img_path in gallery_items:
                 gallery_html += f'<div class="screenshot-item"><img src="{img_path}" alt="Screenshot"></div>\n'
             content = content.replace('{{SCREENSHOT_GALLERY}}', gallery_html)
+
+        # Handle Code Sample conditional block
+        code_data = game.get('code_sample')
+
+        if not code_data or not code_data.get('code'):
+            content = re.sub(r'<!-- CODE_SAMPLE_START -->.*?<!-- CODE_SAMPLE_END -->', '', content, flags=re.DOTALL)
+        else:
+            lang = code_data.get('language', 'plaintext') # 預設為純文字
+            raw_code = code_data.get('code', '')
+            
+            safe_code = html.escape(raw_code)
+            
+            content = content.replace('<!-- CODE_SAMPLE_START -->', '')
+            content = content.replace('<!-- CODE_SAMPLE_END -->', '')
+
+            content = content.replace('{{CODE_LANG}}', lang)
+            content = content.replace('{{CODE_SAMPLE}}', safe_code)
 
         credit = game.get('credit', '')
         if not credit:
