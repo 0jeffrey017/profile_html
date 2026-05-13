@@ -1,0 +1,39 @@
+.code-container {
+    background: #1e1e1e; 
+    border-radius: 8px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.code-header {
+    background: #2d2d2d;
+    color: #999;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+}
+
+.code-container pre {
+    margin: 0 !important;
+    padding: 1.25rem;
+    overflow-x: auto;
+}
+
+.code-container code {
+    font-family: 'Consolas', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.code-container pre::-webkit-scrollbar {
+    height: 8px;
+}
+.code-container pre::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}

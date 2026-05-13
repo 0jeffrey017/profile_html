@@ -14,7 +14,7 @@ def generate_games():
         template_content = f.read()
 
     # Load data
-    data_path = 'games_data.json'
+    data_path = 'data/games_data.json'
     if not os.path.exists(data_path):
         print(f"Error: {data_path} not found.")
         return
@@ -103,6 +103,7 @@ def generate_games():
 
         output_path = game.get('filename')
         if output_path:
+            output_path = os.path.join('games', output_path)
             with open(output_path, 'w', encoding='utf-8') as f:
                 f.write(content)
             print(f"Generated: {output_path}")

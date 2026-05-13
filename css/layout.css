@@ -1,0 +1,74 @@
+/* --- Header --- */
+.site-header {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+}
+
+.site-nav ul {
+    display: flex;
+    gap: 32px;
+}
+
+.site-nav a {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.site-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.site-footer {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+}
+
+.social-links a {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.social-links img {
+    max-height: 30px;
+    width: auto;
+}
+
+.copyright {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+        padding: 20px 0;
+    }
+}

@@ -11,7 +11,7 @@
             name: "SpaceCat",
             desc: "2Dのアクションゲームです",
             image: "Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png",
-            link: "Game01.html",
+            link: "games/Game01.html",
             status: "released"
         },
         {
@@ -19,7 +19,7 @@
             name: "逢魔々城",
             desc: "武器を設置し、怪奇を倒すゲームです。",
             image: "Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png",
-            link: "Game02.html",
+            link: "games/Game02.html",
             status: "released"
         },
         {
@@ -27,7 +27,7 @@
             name: "ペンギン紙相撲",
             desc: "紙相撲ゲーム",
             image: "Image/ペンギン紙相撲.png",
-            link: "Game03.html",
+            link: "games/Game03.html",
             status: "released"
         },
         {
@@ -35,7 +35,7 @@
             name: "クリックゲーム",
             desc: "クリックゲーム",
             image: "Image/マウスでボタンをクリックで点数が増えるゲーム.png",
-            link: "Game04.html",
+            link: "games/Game04.html",
             status: "released"
         },
         {
@@ -43,14 +43,14 @@
             name: "余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語",
             desc: "グレート-O-カーン選手のランナーゲームです。",
             image: "Image/余にひれ伏せ愚民ども.png",
-            link: "Game05.html",
+            link: "games/Game05.html",
             status: "released"
         },
         {
-            id: "game06",
+            id: "game99",
             name: "未公開タイトル",
-            desc: "開発中の新作ゲームです。",
-            image: "Image/Glittering Blue Bokeh Effect.png",
+            desc: "開発中のゲームです。",
+            image: "Image/GameCode.png",
             link: "#",
             status: "released"
         }

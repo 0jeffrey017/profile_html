@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>クリックゲーム | Jeffrey LEE</title>
-    <meta name="description" content="クリックゲーム - Project Details: Action Game / PC、WebGL">
+    <title>ペンギン紙相撲 | Jeffrey LEE</title>
+    <meta name="description" content="ペンギン紙相撲 - Project Details: Action Game / PC、WebGL">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="クリックゲーム | Jeffrey LEE">
-    <meta property="og:description" content="クリックゲーム - Action Game / PC、WebGL">
-    <meta property="og:image" content="Image/マウスでボタンをクリックで点数が増えるゲーム.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/2026_WebGLTest/1_Click">
+    <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
+    <meta property="og:description" content="ペンギン紙相撲 - Action Game / PC、WebGL">
+    <meta property="og:image" content="../Image/ペンギン紙相撲.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/2026_WebGLTest/2_Kamizumo">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
 </head>
 
 <body>
@@ -44,7 +47,7 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="index.html" class="back-link">
+                <a href="../index.html" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
                     Back
                 </a>
@@ -52,14 +55,14 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">クリックゲーム</h1>
+                    <h1 class="game-title">ペンギン紙相撲</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
 
                     
 
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>Vcontainerを実験する、簡単なゲームです。</p><p>マウスでプラスボタンを押すと点数が増える、そうじゃなくて点数が減る</p>
+                        <p>紙相撲のペンギンバージョン</p><p>A,Lで素早くクリックする、振動を起こす、相手の赤いペンギンを倒す</p>
                     </div>
 
                     
@@ -70,11 +73,16 @@
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2026/5(30分）</p>
+                        <p>2026/5(10時間)</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <p>個人製作</p>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h3>Credit / クレジット</h3>
+                        <p><li>BGM :<a href='https://dova-s.jp/bgm/detail/21672'>Who Is the Champion </a></li><li>SE :<a href='https://dova-s.jp/se/detail/355'>デブペンギン </a></li><li>SkyBox :<a href='https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014'>AllSky Free - 10 Sky / Skybox Set </a></li></p>
                     </div>
                     
                 </section>
@@ -82,7 +90,7 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="Image/マウスでボタンをクリックで点数が増えるゲーム.png" alt="クリックゲーム Screenshot">
+                            <img src="../Image/ペンギン紙相撲.png" alt="ペンギン紙相撲 Screenshot">
                         </div>
 
                         <div class="meta-info">
@@ -92,7 +100,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">How to Play</span>
-                                <span class="meta-value">Mouse</span>
+                                <span class="meta-value">A, L Keys</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -100,7 +108,7 @@
                             </div>
                         </div>
 
-                        <a target="_blank" rel="noopener noreferrer" href="https://0jeffrey017.github.io/2026_WebGLTest/1_Click" class="play-button">
+                        <a target="_blank" rel="noopener noreferrer" href="https://0jeffrey017.github.io/2026_WebGLTest/2_Kamizumo" class="play-button">
                             Play Game
                         </a>
                     </div>
@@ -113,7 +121,7 @@
                 <div class="content-block">
                     <h3>Technical Details / 技術情報</h3>
                     <ul>
-                        <li>Vcontainerを使って、DIの練習</li>
+                        <li>物理を使って、紙相撲を再現する</li>
                     </ul>
                 </div>
                 
@@ -124,16 +132,16 @@
         <footer class="site-footer">
             <div class="social-links">
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
-                    <img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
-                    <img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
-                    <img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
                 </a>
                 <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
                         alt="Instagram">
                 </a>
             </div>
@@ -153,7 +161,7 @@
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="game.js"></script>
+    <script src="../js/game.js"></script>
 </body>
 
 </html>
