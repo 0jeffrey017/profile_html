@@ -61,7 +61,12 @@
                     <!-- VIDEO_START -->
                     <div class="content-block">
                         <div class="video-container">
-                            <iframe src="{{VIDEO_EMBED_URL}}" allowfullscreen></iframe>
+                            <iframe src="{{VIDEO_EMBED_URL}}" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write;
+                                encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                     <!-- VIDEO_END -->
@@ -138,13 +143,11 @@
                         {{CHALLENGES_SOLUTIONS}}
                     </div>
                 </div>
-                <!-- CODE_SAMPLE_START -->
+                <!-- CODE_SAMPLES_START -->
                 <h3>Sample Code / サンプルコード</h3>
-                <div class="code-container">
-                    <div class="code-header">Language: {{CODE_LANG}}</div>
-                    <pre><code class="language-{{CODE_LANG}}">{{CODE_SAMPLE}}</code></pre>
-                </div>
-                <!-- CODE_SAMPLE_END -->
+                {{CODE_SAMPLES}}
+                <!-- CODE_SAMPLES_END -->
+
                 <!-- TECHNICAL_IMAGE_START -->
                 <div class="content-block">
                     <h3>Technical Image / 技術図</h3>

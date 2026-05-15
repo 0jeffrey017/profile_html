@@ -72,4 +72,14 @@
     requestAnimationFrame(drawFrame);
     console.log("game.js: Animation started.");
 
+    // UI Interactions
+    $(function() {
+        console.log("game.js: Initializing UI interactions...");
+        
+        // Code container folding
+        $(document).on('click', '.code-header', function() {
+            $(this).parent('.code-container').toggleClass('collapsed');
+        });
+    });
+
 })();

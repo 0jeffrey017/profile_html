@@ -61,7 +61,12 @@
                     
                     <div class="content-block">
                         <div class="video-container">
-                            <iframe src="https://youtu.be/_mwkGeVx6As" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/_mwkGeVx6As" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write;
+                                encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                     
@@ -73,8 +78,8 @@
                     <div class="content-block">
                         <h3>Screenshots / スクリーンショット</h3>
                         <div class="screenshot-gallery">
-                            <div class="screenshot-item"><img src="Image/Space_Cat.png" alt="Screenshot"></div>
-<div class="screenshot-item"><img src="Image/SpaceCat_01.png" alt="Screenshot"></div>
+                            <div class="screenshot-item"><img src="../Image/Space_Cat.png" alt="Screenshot"></div>
+<div class="screenshot-item"><img src="../Image/SpaceCat_01.png" alt="Screenshot"></div>
 
                         </div>
                     </div>
@@ -155,9 +160,10 @@
                 </div>
                 
                 <h3>Sample Code / サンプルコード</h3>
-                <div class="code-container">
-                    <div class="code-header">Language: csharp</div>
-                    <pre><code class="language-csharp">public class SaveManager : MonoBehaviour
+                
+                    <div class="code-container">
+                        <div class="code-header">SaveManager</div>
+                        <pre><code class="language-csharp">public class SaveManager : MonoBehaviour
 {
         public void SaveDataToJson&lt;T&gt;(string path, T data)
     {
@@ -186,8 +192,10 @@
     }
 }
 </code></pre>
-                </div>
+                    </div>
+                    
                 
+
                 
             </section>
         </main>

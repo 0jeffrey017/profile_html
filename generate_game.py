@@ -39,12 +39,14 @@ def generate_games():
             
         # Handle Video conditional block
         video_url = game.get('video_embed_url', '')
+        video_enbed_url = None
         if not video_url:
             content = re.sub(r'<!-- VIDEO_START -->.*?<!-- VIDEO_END -->', '', content, flags=re.DOTALL)
         else:
             content = content.replace('<!-- VIDEO_START -->', '')
             content = content.replace('<!-- VIDEO_END -->', '')
-            content = content.replace('{{VIDEO_EMBED_URL}}', video_url)
+            video_enbed_url = get_embed_url(video_url)
+            content = content.replace('{{VIDEO_EMBED_URL}}', video_enbed_url)
 
         # Handle Gallery conditional block
         gallery_items = game.get('screenshot_gallery', [])
@@ -60,23 +62,43 @@ def generate_games():
 
         # Handle Code Sample conditional block
         code_config = game.get('code_sample')
-        code_data = None
+
+        # Convert to list if it's a single object
+        if code_config and isinstance(code_config, dict):
+            code_config = [code_config]
+
+        code_samples_html = ""
         if code_config:
-            code_data = get_code_sample_data(code_config.get('path'), code_config.get('language'))
+            for config in code_config:
+                lang_config = config.get('language') or config.get('intro', 'plaintext')
+                code_data = get_code_sample_data(config.get('path'), lang_config)
+                if code_data:
+                    lang = code_data.get('language', 'plaintext')
+                    raw_code = code_data.get('code', '')
+                    safe_code = html.escape(raw_code)
 
-        if not code_data:
-            content = re.sub(r'<!-- CODE_SAMPLE_START -->.*?<!-- CODE_SAMPLE_END -->', '', content, flags=re.DOTALL)
+                    file_name = os.path.basename(config.get('path', ''))
+                    intro_text = config.get('intro', '')
+                    
+                    if intro_text:
+                        header_text = f"{intro_text}"
+                    else:
+                        header_text = f"File: {file_name}"
+                    
+                    code_samples_html += f"""
+                    <div class="code-container">
+                        <div class="code-header">{header_text}</div>
+                        <pre><code class="language-{lang}">{safe_code}</code></pre>
+                    </div>
+                    """
+
+        if not code_samples_html:
+            content = re.sub(r'<!-- CODE_SAMPLES_START -->.*?<!-- CODE_SAMPLES_END -->', '', content, flags=re.DOTALL)
         else:
-            lang = code_data.get('language', 'plaintext')
-            raw_code = code_data.get('code', '')
-            
-            safe_code = html.escape(raw_code)
-            
-            content = content.replace('<!-- CODE_SAMPLE_START -->', '')
-            content = content.replace('<!-- CODE_SAMPLE_END -->', '')
+            content = content.replace('<!-- CODE_SAMPLES_START -->', '')
+            content = content.replace('<!-- CODE_SAMPLES_END -->', '')
+            content = content.replace('{{CODE_SAMPLES}}', code_samples_html)
 
-            content = content.replace('{{CODE_LANG}}', lang)
-            content = content.replace('{{CODE_SAMPLE}}', safe_code)
 
         credit = game.get('credit', '')
         if not credit:
@@ -140,9 +162,6 @@ def generate_games():
             print("Error: 'filename' not specified for a game entry.")
 
 def get_code_sample_data(file_path, language="csharp"):
-    """
-    讀取程式碼檔案並傳回字典格式
-    """
     if not file_path or not os.path.exists(file_path):
         return None
 
@@ -156,8 +175,17 @@ def get_code_sample_data(file_path, language="csharp"):
         }
 
     except Exception as e:
-        print(f"處理檔案 {file_path} 時發生錯誤: {str(e)}")
+        print(f" {file_path} Error: {str(e)}")
         return None
+
+def get_embed_url(video_url):
+    if "youtu.be/" in video_url:
+        video_id = video_url.split("/")[-1]
+        return f"https://www.youtube.com/embed/{video_id}"
+    elif "watch?v=" in video_url:
+        video_id = video_url.split("v=")[-1].split("&")[0]
+        return f"https://www.youtube.com/embed/{video_id}"
+    return video_url
 
 if __name__ == "__main__":
     generate_games()

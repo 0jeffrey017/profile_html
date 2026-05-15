@@ -17,11 +17,14 @@
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/4_SpaceCat",
         "video_embed_url": "https://youtu.be/_mwkGeVx6As",
-        "screenshot_gallery": ["Image/Space_Cat.png","Image/SpaceCat_01.png"],
-        "code_sample": {
-            "path" : "Scripts/SpaceCatScripts.cs",
-            "language" : "csharp"
-        }
+        "screenshot_gallery": ["../Image/Space_Cat.png","../Image/SpaceCat_01.png"],
+        "code_sample": [
+            {
+                "path" : "Scripts/SpaceCatScripts.cs",
+                "language" : "csharp",
+                "intro" : "SaveManager"
+            }
+        ]
     },
     {
         "filename": "Game02.html",
@@ -43,10 +46,13 @@
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/3_DefenceGame",
         "game_technical_image" :"Image/defanceGame_class.png",
-        "code_sample": {
-            "path" : "Scripts/DefanceScripts.cs",
-            "language" : "csharp"
-        }
+        "code_sample": [
+            {
+                "path" : "Scripts/DefanceScripts.cs",
+                "language" : "csharp",
+                "intro" : "WeaponSystem"
+            }
+        ]
     },
     {
         "filename": "Game03.html",
@@ -107,9 +113,15 @@
         "players": "1 Player",
         "play_link": "https://www.njpw.co.jp/games/great-o-khan/",
         "game_technical_image" :"Image/グレート-O-カーンの侵略物語_class.png",
-        "code_sample": {
+        "code_sample": [{
             "path" : "Scripts/RunGameScripts.cs",
-            "language" : "csharp"
-        }
+            "language" : "csharp",
+            "intro" : "StateMachine"
+        },
+        {
+            "path" : "Scripts/RunGameScripts.cs",
+            "language" : "csharp",
+            "intro" : "StateMachine"
+        }]
     }
 ]
