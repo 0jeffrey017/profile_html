@@ -331,127 +331,22 @@ public static class GameStateMachine
                     </div>
                     
                     <div class="code-container">
-                        <div class="code-header">StateMachine</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// ゲームの状態を管理する
-/// &lt;/summary&gt;
-public static class GameStateMachine
+                        <div class="code-header">Presenter</div>
+                        <pre><code class="language-csharp">public class MainUIPresenter : MonoBehaviour
 {
-    private static CancellationTokenSource _tokenSource;
-    private static CancellationToken _cancellationToken;
-    private static BaseState CurrentState { get; set; }
-
+    [SerializeField] private MainUIViewer mainUIViewer;
+    [SerializeField] private PlayerModel playerModel;
+    
     /// &lt;summary&gt;
-    /// ステータスマシンを開始する
+    /// playerModel　と　mainUIViewer　の中間者
     /// &lt;/summary&gt;
-    public static void StartStateMachine()
-    {
-        _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
-        _cancellationToken = _tokenSource.Token;
-        RunStateMachineLoop().Forget();
-    }
-
-    /// &lt;summary&gt;
-    /// ステータスマシンのLoop
-    /// &lt;/summary&gt;
-    private static async UniTaskVoid RunStateMachineLoop()
-    {
-        //最初はInitialState
-        CurrentState = StateFactory.CreateState(EGameState.Initial);
-        BaseState nextState = CurrentState;
-
-        try
-        {
-            while (true)
-            {
-                _cancellationToken.ThrowIfCancellationRequested();
-
-                //Stateを切り替える
-                nextState = await TransitionAndRunStateAsync(nextState);
-                if (nextState == null)
-                {
-                    Debug.Log(&quot;GameOver!!&quot;);
-                    break;
-                }
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            Debug.Log(&quot;GameStateMachine is been canceled.&quot;);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
-        }
-        finally
-        {
-            Debug.Log(&quot;GameStateMachine Stopped.&quot;);
-            _tokenSource.Dispose();
-            _tokenSource = null;
-            SceneManager.LoadScene(&quot;Result&quot;);
-        }
-    }
-
-    /// &lt;summary&gt;
-    /// Stateを切り替える
-    /// 前StateをonExitで抜けて
-    /// 次のStateのOnEnterを呼ぶ
-    /// RunStateで完成するを待つ
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;次のState&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
-    {
-        BaseState oldState = CurrentState;
-
-        if (oldState != null &amp;&amp; oldState != nextState)
-        {
-            try
-            {
-                await oldState.OnExit(_cancellationToken);
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.Log($&quot;State {oldState.GetType().Name} : OnExit is been canceled.&quot;);
-            }
-        }
-
-        CurrentState = nextState;
-
-        await CurrentState.OnEnter(_cancellationToken);
-
-        // RunStateで完成するを待つ、完成すると次のStateを返す
-        BaseState next = await CurrentState.RunState(_cancellationToken);
-
-        return next;
-    }
-
-    private static BaseState _nextStateRequest;
-    /// &lt;summary&gt;
-    /// 外からのStateを切り替える
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;替わるState&lt;/param&gt;
-    public static void SwitchState(EGameState nextState)
-    {
-        _nextStateRequest = StateFactory.CreateState(nextState);
-        if (_nextStateRequest == null)
-        {
-            Debug.LogError(&quot;SwitchState failed.&quot;);
-        }
-        else
-        {
-            Debug.Log($&quot;Switch State To : {_nextStateRequest.GetType().Name}&quot;);
-        }
-    }
-    /// &lt;summary&gt;
-    /// MainGameStateで毎フレームで検知する、もしrequestedStateはNullじゃないとStateを切り替わる
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static BaseState ConsumeStateRequest()
-    {
-        var requestedState = _nextStateRequest;
-        _nextStateRequest = null;
-        return requestedState;
+    private void Start()
+    {   
+        playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
+        playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
+        playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
+        playerModel.GameContext.LifeCount.Subscribe(n =&gt; mainUIViewer.SetLife(n));
+        playerModel.GameContext.CurrentSpeed.Subscribe(s =&gt; mainUIViewer.SetSpeed(s));
     }
 }</code></pre>
                     </div>

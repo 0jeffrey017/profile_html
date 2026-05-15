@@ -22,7 +22,7 @@
         "screenshot_gallery": ["../Image/Space_Cat.png","../Image/SpaceCat_01.png"],
         "code_sample": [
             {
-                "path" : "Scripts/SpaceCatScripts.cs",
+                "path" : "Scripts/SpaceCatScript_01.cs",
                 "language" : "csharp",
                 "intro" : "SaveManager"
             }
@@ -55,7 +55,7 @@
         "game_technical_image" :"Image/defanceGame_class.png",
         "code_sample": [
             {
-                "path" : "Scripts/DefanceScripts.cs",
+                "path" : "Scripts/DefanceGameScript_01.cs",
                 "language" : "csharp",
                 "intro" : "WeaponSystem"
             }
@@ -128,14 +128,14 @@
         "play_link": "https://www.njpw.co.jp/games/great-o-khan/",
         "game_technical_image" :"Image/グレート-O-カーンの侵略物語_class.png",
         "code_sample": [{
-            "path" : "Scripts/RunGameScripts.cs",
+            "path" : "Scripts/RunGameScript_01.cs",
             "language" : "csharp",
             "intro" : "StateMachine"
         },
         {
-            "path" : "Scripts/RunGameScripts.cs",
+            "path" : "Scripts/RunGameScript_02.cs",
             "language" : "csharp",
-            "intro" : "StateMachine"
+            "intro" : "Presenter"
         }]
     }
 ]

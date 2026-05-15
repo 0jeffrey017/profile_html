@@ -54,7 +54,41 @@
     border-radius: 50%;
 }
 
-.skill-list, .qualifications-list {
+.skill-detail-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-detail-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.skill-detail-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-detail-item li {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 18px;
+}
+
+.skill-detail-item li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.qualifications-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
