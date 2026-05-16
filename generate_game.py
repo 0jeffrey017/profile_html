@@ -100,7 +100,7 @@ def generate_games():
             content = content.replace('{{CODE_SAMPLES}}', code_samples_html)
 
 
-        credit = game.get('credit', '')
+        credit = game.get('credit', [])
         if not credit:
             # Remove the entire block including markers
             content = re.sub(r'<!-- CREDIT_START -->.*?<!-- CREDIT_END -->', '', content, flags=re.DOTALL)
@@ -108,7 +108,15 @@ def generate_games():
             # Keep the block but remove the markers
             content = content.replace('<!-- CREDIT_START -->', '')
             content = content.replace('<!-- CREDIT_END -->', '')
-            content = content.replace('{{CREDIT}}', credit)
+
+            credit_html = "<ul>\n"
+            for cd in credit:
+                credit_type = cd.get('type','')
+                credit_name = cd.get('name','')
+                credit_url = cd.get('url','')
+                credit_html += f'    <li>{credit_type} : <a herf="{credit_url}">{credit_name}</a></li>\n'
+            credit_html += "<ul>\n"
+            content = content.replace('{{CREDIT}}', credit_html)
 
         responsibles = game.get('responsible', [])
 
