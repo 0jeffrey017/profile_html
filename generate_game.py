@@ -71,6 +71,7 @@ def generate_games():
         if code_config:
             for config in code_config:
                 lang_config = config.get('language') or config.get('intro', 'plaintext')
+                exp_config = config.get('explanation' , 'plaintext')
                 code_data = get_code_sample_data(config.get('path'), lang_config)
                 if code_data:
                     lang = code_data.get('language', 'plaintext')
@@ -84,8 +85,9 @@ def generate_games():
                         header_text = f"{intro_text}"
                     else:
                         header_text = f"File: {file_name}"
-                    
+
                     code_samples_html += f"""
+                    <div class="code-explanation">{exp_config}</div>
                     <div class="code-container">
                         <div class="code-header">{header_text}</div>
                         <pre><code class="language-{lang}">{safe_code}</code></pre>

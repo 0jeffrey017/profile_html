@@ -170,6 +170,7 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
+                    <div class="code-explanation"></div>
                     <div class="code-container">
                         <div class="code-header">WeaponSystem</div>
                         <pre><code class="language-csharp">/// &lt;summary&gt;
@@ -198,9 +199,13 @@ public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEn
         enemyBullet?.Fire(target, _config.attackPower);
         AudioManager.Instance.PlaySE(_config.SeType);
     }
-}
-
-/// &lt;summary&gt;
+}</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">ScriptableObjectで日本語もついてるから、プランナーも調整できる<br>excelでデータをダウンロードできるのは次の目標です</div>
+                    <div class="code-container">
+                        <div class="code-header">EnemyConfig</div>
+                        <pre><code class="language-csharp">/// &lt;summary&gt;
 /// EnemyのデータをScriptableObjectを所持する、Enemyの詳細変更を簡単にできる
 /// &lt;/summary&gt;
 public class EnemyConfig : ScriptableObject

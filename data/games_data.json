@@ -24,7 +24,8 @@
             {
                 "path" : "Scripts/SpaceCatScript_01.cs",
                 "language" : "csharp",
-                "intro" : "SaveManager"
+                "intro" : "SaveManager",
+                "explanation" : ""
             }
         ]
     },
@@ -57,7 +58,13 @@
             {
                 "path" : "Scripts/DefanceGameScript_01.cs",
                 "language" : "csharp",
-                "intro" : "WeaponSystem"
+                "intro" : "WeaponSystem",
+                "explanation" : ""
+            },{
+                "path" : "Scripts/DefanceGameScript_02.cs",
+                "language" : "csharp",
+                "intro" : "EnemyConfig",
+                "explanation" : "ScriptableObjectで日本語もついてるから、プランナーも調整できる<br>excelでデータをダウンロードできるのは次の目標です"
             }
         ]
     },
@@ -143,12 +150,14 @@
         "code_sample": [{
             "path" : "Scripts/RunGameScript_01.cs",
             "language" : "csharp",
-            "intro" : "StateMachine"
+            "intro" : "StateMachine",
+            "explanation" : "UniTask と FSM(ステートマシン)を使って、非同期処理で色んなイベントが実現可能<br>例えば連打で敵を撃退するイベント、時間の計算とプレイヤーインプットを検知し、どちらか完成したらイベント終了"
         },
         {
             "path" : "Scripts/RunGameScript_02.cs",
             "language" : "csharp",
-            "intro" : "Presenter"
+            "intro" : "Presenter",
+            "explanation" : "MVP (Model-View-Presenter) パターンの実現"
         }]
     }
 ]
