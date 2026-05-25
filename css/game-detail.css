@@ -217,6 +217,13 @@
     background-color: var(--primary-hover);
 }
 
+.play-button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 @media (max-width: 900px) {
     .game-detail-layout {
         grid-template-columns: 1fr;

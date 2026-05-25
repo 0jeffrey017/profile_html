@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SFML_Learning | Jeffrey LEE</title>
+    <meta name="description" content="SFML_Learning - Project Details: SFML_Learning　project01">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SFML_Learning | Jeffrey LEE">
+    <meta property="og:description" content="SFML_Learning - SFML_Learning　project01">
+    <meta property="og:image" content="../Image/SFML_01.png">
+    <meta property="og:url" content="#">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,favorite,home,mail,mobile,search,settings"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">Jeffrey LEE</div>
+        </header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="breadcrumb">
+                <a href="../index.html" class="back-link">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </a>
+            </div>
+
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
+                    <h1 class="game-title">SFML_Learning</h1>
+                    <h2 class="game-subtitle">SFML_Learning　project01</h2>
+
+                    
+                    <div class="content-block">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/3qI0puDyEcU" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write;
+                                encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h3>Overview / 概要</h3>
+                        <p>C++を習うためのプロジェクト</p>
+                    </div>
+                    
+
+                    <div class="content-block">
+                        <h3>Game Engine / ゲームエンジン</h3>
+                        <p>SFML 2.6.2</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Production period / 制作期間</h3>
+                        <p>2026/4～</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Responsible part / 担当部分</h3>
+                        <div>
+                            <ul>
+    <li>個人製作</li>
+</ul>
+                        </div>
+                    </div>
+                    
+                </section>
+
+                <aside class="game-sidebar">
+                    <div class="game-meta-card">
+                        <div class="game-detail-image">
+                            <img src="../Image/SFML_01.png" alt="SFML_Learning Screenshot">
+                        </div>
+
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform</span>
+                                <span class="meta-value">PC (Windows、Linux)</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">How to Play</span>
+                                <span class="meta-value"></span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Players</span>
+                                <span class="meta-value"></span>
+                            </div>
+                        </div>
+
+                        <a target="_blank" rel="noopener noreferrer" href="#" class="play-button disabled">
+                            Play Game
+                        </a>
+                    </div>
+                </aside>
+            </div>
+
+            <hr style="border: 2px solid black;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>c++でゲームを作るのはどうしても肥大化しやすい</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Entity Component Systemを意識して、進んでいます</p>
+                </div>
+
+            </div>
+            
+                    </div>
+                </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">データを.txtで読み込む、長方形や三角形を生成する</div>
+                    <div class="code-container">
+                        <div class="code-header">練習</div>
+                        <pre><code class="language-cpp">#include &lt;SFML/Graphics.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+class myCircle : public sf::Transformable{
+    sf::CircleShape circle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_Radius;SFML
+    sf::Text text;
+public:
+    myCircle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float Radius)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B),m_Radius(Radius)
+    {
+        circle.setRadius(Radius);
+        circle.setFillColor(sf::Color(R,G,B));
+        circle.setPosition(X,Y);
+    }
+    sf::CircleShape getShape() const
+    {
+        return circle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        circle.move(m_SX, m_SY);
+        sf::Vector2f pos = circle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            circle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + (m_Radius * 2) &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            circle.setPosition(windowWidth - (m_Radius * 2), pos.y); // Snap to edge
+        }
+
+        pos = circle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, 0);
+        } else if (pos.y + (m_Radius * 2) &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, windowHeight - (m_Radius * 2));
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(circle.getPosition().x + m_Radius, circle.getPosition().y + m_Radius);
+        return text;
+    }
+};
+
+class myRectangle : public sf::Transformable{
+    sf::RectangleShape rectangle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_W,m_H;
+    sf::Text text;
+public:
+    myRectangle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float W, float H)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_W(W), m_H(H)
+    {
+        rectangle.setSize({W,H});
+        rectangle.setFillColor(sf::Color(R,G,B));
+        rectangle.setPosition(X,Y);
+    }
+    sf::RectangleShape getShape() const
+    {
+        return rectangle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        rectangle.move(m_SX, m_SY);
+        sf::Vector2f pos = rectangle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + m_W &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(windowWidth - m_W, pos.y); // Snap to edge
+        }
+
+        pos = rectangle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, 0);
+        } else if (pos.y + m_H &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, windowHeight - m_H);
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(rectangle.getPosition().x + (m_W/2.0f), rectangle.getPosition().y + (m_H/2.0f));
+        return text;
+    }
+};
+
+int main()
+{
+    std::ifstream file(&quot;config.txt&quot;);
+    sf::RenderWindow window;
+    std::string word;
+    std::vector&lt;myCircle&gt; circles;
+    std::vector&lt;myRectangle&gt; rectangles;
+
+    sf::Font font;
+    int font_S, font_R, font_G, font_B;
+    sf::Color fontColor;
+
+    int windowWidth,windowHeight;
+
+    while (file &gt;&gt; word) {
+    if (word == &quot;Window&quot;) {
+        file &gt;&gt; windowWidth &gt;&gt; windowHeight;
+        window.create(sf::VideoMode(windowWidth, windowHeight), &quot;My Game&quot;);
+        } 
+        else if (word == &quot;Font&quot;) {
+            std::string F;
+            file &gt;&gt; F &gt;&gt; font_S &gt;&gt; font_R &gt;&gt; font_G &gt;&gt; font_B;
+            if (!font.loadFromFile(F))
+            {
+                std::cout &lt;&lt; &quot;Cant Load Font&quot;;
+            }
+            fontColor.r = font_R;
+            fontColor.g = font_G;
+            fontColor.b = font_B;
+        } 
+        else if (word == &quot;Circle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float Radius;
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; Radius;
+            myCircle circle(N,X,Y,SX,SY,R,G,B,Radius);
+            circle.setText(font,font_S,fontColor);
+            circles.push_back(circle);
+        }
+        else if (word == &quot;Rectangle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float W, H;
+
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; W &gt;&gt; H;
+            myRectangle rectangle(N,X,Y,SX,SY,R,G,B,W,H);
+            rectangle.setText(font,font_S,fontColor);
+
+            rectangles.push_back(rectangle);
+        }
+        else {
+            // Default case
+        }
+    }
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        for(auto&amp; c : circles){
+            c.move(windowWidth,windowHeight);
+            window.draw(c.getShape());
+            window.draw(c.showName());
+        }
+        for(auto&amp; rt : rectangles){
+            rt.move(windowWidth,windowHeight);
+            window.draw(rt.getShape());
+            window.draw(rt.showName());
+        }
+
+        window.display();
+    }
+
+    file.close();
+    return 0;
+}</code></pre>
+                    </div>
+                    
+                
+
+                
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="social-links">
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
+                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
+                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                        alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
+        </footer>
+    </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/game.js"></script>
+</body>
+
+</html>

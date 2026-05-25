@@ -160,7 +160,15 @@ def generate_games():
         content = content.replace('{{PLATFORM}}', game.get('platform', ''))
         content = content.replace('{{HOW_TO_PLAY}}', game.get('how_to_play', ''))
         content = content.replace('{{PLAYERS}}', game.get('players', ''))
-        content = content.replace('{{PLAY_LINK}}', game.get('play_link', '#'))
+        
+        play_link = game.get('play_link', '#')
+        content = content.replace('{{PLAY_LINK}}', play_link)
+        
+        # Disable button if link is empty or just '#'
+        if not play_link or play_link == '#':
+            content = content.replace('{{PLAY_BUTTON_DISABLED}}', 'disabled')
+        else:
+            content = content.replace('{{PLAY_BUTTON_DISABLED}}', '')
 
         output_path = game.get('filename')
         if output_path:

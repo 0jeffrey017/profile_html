@@ -47,6 +47,14 @@
             status: "released"
         },
         {
+            id: "game06",
+            name: "SFML_project01",
+            desc: "C++の練習プロジェクト",
+            image: "Image/SFML_01.png",
+            link: "games/Game06.html",
+            status: "released"
+        },
+        {
             id: "game99",
             name: "未公開タイトル",
             desc: "開発中のゲームです。",

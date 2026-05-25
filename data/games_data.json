@@ -159,5 +159,30 @@
             "intro" : "Presenter",
             "explanation" : "MVP (Model-View-Presenter) パターンの実現"
         }]
+    },
+    {
+        "filename": "Game06.html",
+        "title": "SFML_Learning",
+        "subtitle": "SFML_Learning　project01",
+        "overview": "<p>C++を習うためのプロジェクト</p>",
+        "engine": "SFML 2.6.2",
+        "period": "2026/4～",
+        "responsible": ["個人製作"],
+        "challenges_solutions": [
+            {"challenge" : "c++でゲームを作るのはどうしても肥大化しやすい",
+            "solution" : "Entity Component Systemを意識して、進んでいます"}
+           ],
+        "image_path": "Image/SFML_01.png",
+        "platform": "PC (Windows、Linux)",
+        "how_to_play": "",
+        "players": "",
+        "play_link": "",
+        "video_embed_url": "https://youtu.be/3qI0puDyEcU",
+        "code_sample": [{
+            "path" : "Scripts/SFML.cpp",
+            "language" : "cpp",
+            "intro" : "練習",
+            "explanation" : "データを.txtで読み込む、長方形や三角形を生成する"
+        }]
     }
 ]
