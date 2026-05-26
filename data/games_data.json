@@ -17,7 +17,7 @@
         "platform": "PC (Windows)",
         "how_to_play": "KeyBoard",
         "players": "1 Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/4_SpaceCat",
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat",
         "video_embed_url": "https://youtu.be/_mwkGeVx6As",
         "screenshot_gallery": ["../Image/Space_Cat.png","../Image/SpaceCat_01.png"],
         "code_sample": [
@@ -52,7 +52,7 @@
         "platform": "PC (Windows)",
         "how_to_play": "Mouse",
         "players": "1 Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/3_DefenceGame",
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame",
         "game_technical_image" :"Image/defanceGame_class.png",
         "code_sample": [
             {
@@ -92,7 +92,7 @@
         "platform": "PC (Windows、WebGL)",
         "how_to_play": "A, L Keys",
         "players": "1 Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/2_Kamizumo"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo"
     },
     {
         "filename": "Game04.html",
@@ -109,7 +109,7 @@
         "platform": "PC (Windows、WebGL)",
         "how_to_play": "Mouse",
         "players": "1 Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/1_Click"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/1_Click"
     },
     {
         "filename": "Game05.html",
@@ -201,7 +201,7 @@
         "platform": "PC (Windows,WebGL)",
         "how_to_play": "AWDS move, Q suicide",
         "players": "1　Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/5_PassTheBaton"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/5_PassTheBaton"
     },
     {
         "filename": "Game08.html",
@@ -219,7 +219,7 @@
         "platform": "PC (Windows,WebGL)",
         "how_to_play": "AWDS move, Mouse 釣り",
         "players": "1　Player",
-        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/6_Dakamenoippai"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai"
     },
     {
         "filename": "Game09.html",
