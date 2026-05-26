@@ -4,7 +4,7 @@
         "title": "Space Cat",
         "subtitle": "Action Game / PC",
         "overview": "<p>実験体として宇宙戦艦に囚われていた猫。突如発生した爆発により、戦艦は崩壊の危機に瀕する。</p><p>生身では生きられない残酷な宇宙環境から逃れるため、4つの生存装備を探し出せ。不思議な力を持つ「尻尾」を使いこなし、迫りくる危機を回避して出口を目指す、SFサバイバル・アクション。</p>",
-        "engine": "Unity",
+        "engine": "Unity　2022.3.61f1",
         "period": "2025/6 - 2025/8",
         "responsible": ["ゲーム全体の基本設計","キャラクターの操作","タイトル画面"],
         "challenges_solutions": [
@@ -34,7 +34,7 @@
         "title": "逢魔々城",
         "subtitle": "Tower Defense Game / PC",
         "overview": "<p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>",
-        "engine": "Unity",
+        "engine": "Unity　2022.3.61f1",
         "period": "2025/8-2025/10",
         "responsible": ["Strategyパターンを使っての敵と武器システム"
             ,"武器のドラッグ＆ドロップシステム"
@@ -73,7 +73,7 @@
         "title": "ペンギン紙相撲",
         "subtitle": "Action Game / PC、WebGL",
         "overview": "<p>紙相撲のペンギンバージョン</p><p>A,Lで素早くクリックする、振動を起こす、相手の赤いペンギンを倒す</p>",
-        "engine": "Unity",
+        "engine": "Unity 6000.3.8f1",
         "period": "2026/5(10時間)",
         "responsible": ["個人製作"],
         "challenges_solutions": [
@@ -99,7 +99,7 @@
         "title": "クリックゲーム",
         "subtitle": "Action Game / PC、WebGL",
         "overview": "<p>Vcontainerを実験する、簡単なゲームです。</p><p>マウスでプラスボタンを押すと点数が増える、そうじゃなくて点数が減る</p>",
-        "engine": "Unity",
+        "engine": "Unity 6000.3.8f1",
         "period": "2026/5(30分）",
         "responsible": ["個人製作"],
         "challenges_solutions": [
@@ -116,7 +116,7 @@
         "title": "グレート-O-カーンの侵略物語",
         "subtitle": "Action Game / PC、WebGL",
         "overview": "<p>新日本プロレスのグレート-O-カーン選手ドミネーターとして世界を支配するために走る！！</p><p>障害物をよける、アイテムを集めて、最高スコアを競い合う</p>",
-        "engine": "Unity",
+        "engine": "Unity　2022.3.61f1",
         "period": "2025/10-2026/2",
         "responsible": ["ゲーム全体のアーキテクチャ設計"
             ,"InputSystemを使ってプレイヤの動きを実現、PCとモバイル両方対応する"
@@ -184,5 +184,59 @@
             "intro" : "練習",
             "explanation" : "データを.txtで読み込む、長方形や三角形を生成する"
         }]
+    },
+    {
+        "filename": "Game07.html",
+        "title": "PassTheBaton",
+        "subtitle": "PassTheBaton",
+        "overview": "<p>Hackathonのプロジェクトテーマ”つなぐ”,<br>命をつなぐ過去の自分を踏み台にしてゴールを目指す</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "2026/4～2026/5",
+        "responsible": ["ゲーム全体のアーキテクチャ設計"],
+        "challenges_solutions": [
+            {"challenge" : "Hackathonで短時間で設計、役割分担",
+            "solution" : "チームメンバーと上手く連携を取って、積極的にコミュニケーションを取る"}
+           ],
+        "image_path": "Image/PassTheBaton_01.png",
+        "platform": "PC (Windows,WebGL)",
+        "how_to_play": "AWDS move, Q suicide",
+        "players": "1　Player",
+        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/5_PassTheBaton"
+    },
+    {
+        "filename": "Game08.html",
+        "title": "デカめの一杯",
+        "subtitle": "デカめの一杯",
+        "overview": "<p>Hackathonのプロジェクトテーマ”いっぱい”,<br>一杯とは～　イカの単位<br>制限時間内に魚を釣ってスコアを稼ぐ,levelを上げて5に到達したら、イカと戦闘が始まるゲーム</p>",
+        "engine": "Unity　2022.3.61f1",
+        "period": "2025/6～2025/7",
+        "responsible": ["ボース戦の全体"],
+        "challenges_solutions": [
+            {"challenge" : "Hackathonで短時間で設計、役割分担",
+            "solution" : "チームメンバーと上手く連携を取って、積極的にコミュニケーションを取る"}
+           ],
+        "image_path": "Image/Ika_01.png",
+        "platform": "PC (Windows,WebGL)",
+        "how_to_play": "AWDS move, Mouse 釣り",
+        "players": "1　Player",
+        "play_link": "https://0jeffrey017.github.io/2026_WebGLTest/6_Dakamenoippai"
+    },
+    {
+        "filename": "Game09.html",
+        "title": "Guilty Lane",
+        "subtitle": "Guilty Lane",
+        "overview": "<p>Hackathonのプロジェクトテーマ”いかす”,<br>これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる</p>",
+        "engine": "Unity　2022.3.61f1",
+        "period": "2025/9～2025/12",
+        "responsible": [""],
+        "challenges_solutions": [
+            {"challenge" : "Hackathonで短時間で設計、役割分担",
+            "solution" : "チームメンバーと上手く連携を取って、積極的にコミュニケーションを取る"}
+           ],
+        "image_path": "Image/PassTheBaton_01.png",
+        "platform": "PC (Windows,WebGL)",
+        "how_to_play": "Mouse",
+        "players": "1　Player",
+        "play_link": ""
     }
 ]

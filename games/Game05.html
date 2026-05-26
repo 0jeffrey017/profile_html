@@ -23,7 +23,7 @@
 
     <!-- Icons -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,favorite,home,mail,mobile,search,settings"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
         rel="stylesheet" />
 
     <!-- CSS Reset & Libs -->
@@ -67,7 +67,7 @@
 
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity</p>
+                        <p>Unity　2022.3.61f1</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
@@ -90,8 +90,8 @@
                         <h3>Credit / クレジット</h3>
                         <div>
                             <ul>
-    <li>BGM,SE : <a herf="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
-    <li>BGM,SE : <a herf="https://otologic.jp/">OtoLogicの素材を使用している</a></li>
+    <li>BGM,SE : <a href="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
+    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogicの素材を使用している</a></li>
 <ul>
 
                         </div>
@@ -111,23 +111,55 @@
                                 <span class="meta-value">PC (Windows、WebGL)</span>
                             </div>
                             <div class="meta-item">
-                                <span class="meta-label">How to Play</span>
-                                <span class="meta-value">KeyBoard</span>
-                            </div>
-                            <div class="meta-item">
                                 <span class="meta-label">Players</span>
                                 <span class="meta-value">1 Player</span>
                             </div>
                         </div>
 
-                        <a target="_blank" rel="noopener noreferrer" href="https://www.njpw.co.jp/games/great-o-khan/" class="play-button ">
-                            Play Game
-                        </a>
-                    </div>
-                </aside>
-            </div>
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/">
+                        Play Game
+                    </button>
+                </div>
+            </aside>
+        </div>
 
-            <hr style="border: 2px solid black;">
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    KeyBoard
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 2px solid black;">
             <br>
 
             <section class="game-technical">

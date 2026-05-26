@@ -116,7 +116,7 @@ def generate_games():
                 credit_type = cd.get('type','')
                 credit_name = cd.get('name','')
                 credit_url = cd.get('url','')
-                credit_html += f'    <li>{credit_type} : <a herf="{credit_url}">{credit_name}</a></li>\n'
+                credit_html += f'    <li>{credit_type} : <a href="{credit_url}">{credit_name}</a></li>\n'
             credit_html += "<ul>\n"
             content = content.replace('{{CREDIT}}', credit_html)
 

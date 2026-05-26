@@ -55,6 +55,30 @@
             status: "released"
         },
         {
+            id: "game07",
+            name: "PassTheBaton",
+            desc: "Hackathon　”つなぐ”",
+            image: "Image/PassTheBaton_01.png",
+            link: "games/Game07.html",
+            status: "released"
+        },
+        {
+            id: "game08",
+            name: "デカめの一杯",
+            desc: "Hackathon　”いっぱい”",
+            image: "Image/Ika_01.png",
+            link: "games/Game08.html",
+            status: "released"
+        },
+        {
+            id: "game09",
+            name: "Guilty Lane",
+            desc: "Hackathon　”いかす”",
+            image: "Image/PassTheBaton_01.png",
+            link: "games/Game09.html",
+            status: "Unreleased"
+        },
+        {
             id: "game99",
             name: "未公開タイトル",
             desc: "開発中のゲームです。",

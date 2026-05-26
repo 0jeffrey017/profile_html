@@ -80,6 +80,61 @@
         $(document).on('click', '.code-header', function() {
             $(this).parent('.code-container').toggleClass('collapsed');
         });
+
+        // Gameplay Overlay Interactions
+        const $overlay = $('#gameplay-overlay');
+        const $instructionScreen = $('#instruction-screen');
+        const $gameContainer = $('#game-container');
+        const $gameIframe = $('#game-iframe');
+
+        $('#play-game-btn').on('click', function() {
+            const gameUrl = $(this).data('url');
+            if (!gameUrl || gameUrl === '#') return;
+
+            $overlay.fadeIn(300);
+            $overlay.removeClass('gameplay-active');
+            $instructionScreen.show();
+            $('#start-btn-container').show(); // Show start button
+            $gameContainer.hide();
+            $gameIframe.attr('src', '');
+            
+            // Store URL for start button
+            $('#start-game-btn').data('url', gameUrl);
+        });
+
+        $('#start-game-btn').on('click', function() {
+            const gameUrl = $(this).data('url');
+            $overlay.addClass('gameplay-active');
+            $('#start-btn-container').hide(); // Hide button after start
+            $gameContainer.fadeIn(300);
+            $gameIframe.attr('src', gameUrl);
+        });
+
+        $('#close-overlay').on('click', function(e) {
+            e.stopPropagation();
+            $overlay.fadeOut(300, function() {
+                $gameIframe.attr('src', '');
+                $overlay.removeClass('gameplay-active');
+            });
+        });
+
+        // Close overlay on background click
+        $overlay.on('click', function(e) {
+            if (e.target === this) {
+                $overlay.fadeOut(300, function() {
+                    $gameIframe.attr('src', '');
+                });
+            }
+        });
+
+        // Close overlay on ESC key
+        $(document).on('keydown', function(e) {
+            if (e.key === "Escape" && $overlay.is(':visible')) {
+                $overlay.fadeOut(300, function() {
+                    $gameIframe.attr('src', '');
+                });
+            }
+        });
     });
 
 })();
