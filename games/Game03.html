@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>クリックゲーム | Jeffrey LEE</title>
-    <meta name="description" content="クリックゲーム - Project Details: Action Game / PC、WebGL">
+    <title>VContainer DI Experiment | Jeffrey LEE</title>
+    <meta name="description" content="VContainer DI Experiment - Project Details: Architecture Experiment Game">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="クリックゲーム | Jeffrey LEE">
-    <meta property="og:description" content="クリックゲーム - Action Game / PC、WebGL">
+    <meta property="og:title" content="VContainer DI Experiment | Jeffrey LEE">
+    <meta property="og:description" content="VContainer DI Experiment - Architecture Experiment Game">
     <meta property="og:image" content="../Image/マウスでボタンをクリックで点数が増えるゲーム.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/1_Click">
 
@@ -47,21 +47,21 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">クリックゲーム</h1>
-                    <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
+                    <h1 class="game-title">VContainer DI Experiment</h1>
+                    <h2 class="game-subtitle">Architecture Experiment Game</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>Vcontainerを実験する、簡単なゲームです。</p>
+                        <p>純粋なゲームロジックとオブジェクトの依存関係を疎結合に保つため、DIコンテナ「VContainer」を導入した実験的ミニゲームです。</p>
                     </div>
                     
 
@@ -87,13 +87,13 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/マウスでボタンをクリックで点数が増えるゲーム.png" alt="クリックゲーム Screenshot">
+                            <img src="../Image/マウスでボタンをクリックで点数が増えるゲーム.png" alt="VContainer DI Experiment Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows、WebGL)</span>
+                                <span class="meta-value">PC (Windows, WebGL)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -156,12 +156,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>シングルトン依存の脱却</p>
+                    <p>密結合になりがちなシングルトンパターンへの過度な依存からの脱却</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Vcontainerを使って、DIの練習</p>
+                    <p>VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築</p>
                 </div>
 
             </div>

@@ -40,6 +40,10 @@
     top: 0;
 }
 
+html {
+    scroll-behavior : auto;
+}
+
 body {
     font-family: var(--font-body);
     color: var(--text-color);

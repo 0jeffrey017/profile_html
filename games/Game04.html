@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PassTheBaton | Jeffrey LEE</title>
-    <meta name="description" content="PassTheBaton - Project Details: PassTheBaton">
+    <meta name="description" content="PassTheBaton - Project Details: 2D Puzzle Action / Hackathon Work">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="PassTheBaton | Jeffrey LEE">
-    <meta property="og:description" content="PassTheBaton - PassTheBaton">
+    <meta property="og:description" content="PassTheBaton - 2D Puzzle Action / Hackathon Work">
     <meta property="og:image" content="../Image/PassTheBaton_01.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/5_PassTheBaton">
 
@@ -47,21 +47,21 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
                     <h1 class="game-title">PassTheBaton</h1>
-                    <h2 class="game-subtitle">PassTheBaton</h2>
+                    <h2 class="game-subtitle">2D Puzzle Action / Hackathon Work</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>命をつなぐ過去の自分を踏み台にしてゴールを目指す。</p>
+                        <p>「命を繋ぐ」をテーマに、ミスした過去の自分の死体を踏み台（ギミック）として活用しながら、協力してゴールを目指すパズルアクションです。</p>
                     </div>
                     
 
@@ -77,7 +77,7 @@
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ゲーム全体のアーキテクチャ設計</li>
+    <li>ゲーム全体のアーキテクチャ設計・進行管理</li>
 </ul>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows,WebGL)</span>
+                                <span class="meta-value">PC (Windows, WebGL)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    AWDS move, Q suicide
+                                    WASD: Move, Q: Suicide
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -156,12 +156,26 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>短時間での設計・役割分担</p>
+                    <p>限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>チームメンバーと積極的に連携</p>
+                    <p>プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール</p>
                 </div>
 
             </div>

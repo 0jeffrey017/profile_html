@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
-    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: Action Game / PC、WebGL">
+    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: 2D Endless Run Game / Enterprise Collaboration">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
-    <meta property="og:description" content="グレート-O-カーンの侵略物語 - Action Game / PC、WebGL">
+    <meta property="og:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
     <meta property="og:image" content="../Image/余にひれ伏せ愚民ども.png">
     <meta property="og:url" content="https://www.njpw.co.jp/games/great-o-khan/">
 
@@ -47,21 +47,21 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
                     <h1 class="game-title">グレート-O-カーンの侵略物語</h1>
-                    <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
+                    <h2 class="game-subtitle">2D Endless Run Game / Enterprise Collaboration</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>ドミネーターとして世界を支配するために走る！</p>
+                        <p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>
                     </div>
                     
 
@@ -77,11 +77,11 @@
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ゲーム全体のアーキテクチャ設計</li>
-    <li>InputSystemを使ってプレイヤの動きを実現、PCとモバイル両方対応する</li>
-    <li>StateMachineを用いたゲームフローの制御</li>
-    <li>マップの生成とアイテムのランダム生成</li>
-    <li>ScriptableObjectによるマスターデータを使ってゲームを設定できる</li>
+    <li>ゲーム全体のメインシステムおよびアーキテクチャの設計</li>
+    <li>New Input Systemを用いた、PC・モバイル両対応のマルチプラットフォーム入力制御</li>
+    <li>有限ステートマシン（FSM）によるゲーム全体のフローおよびキャラクターアクションの管理</li>
+    <li>ステージマップの動的生成およびアイテムの確率ベースランダムスポーンシステムの構築</li>
+    <li>ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）</li>
 </ul>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <div>
                             <ul>
     <li>BGM,SE : <a href="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
-    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogicの素材を使用している</a></li>
+    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogic</a></li>
 <ul>
 
                         </div>
@@ -108,7 +108,7 @@
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows、WebGL)</span>
+                                <span class="meta-value">PC (Windows, WebGL), Mobile</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -144,7 +144,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    KeyBoard
+                                    Keyboard / Touch
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -171,12 +171,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲーム全体のフローが複雑で、仕様変更やデバッグが困難。</p>
+                    <p>ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>様変更やデバッグが困難。ステートマシン (FSM) による堅牢な進行管理。ロジックを状態ごとに分離し、拡張性を向上。</p>
+                    <p>有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現</p>
                 </div>
 
             </div>
@@ -185,12 +185,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>チュートリアルや連打など複雑なイベント待機処理の制御。</p>
+                    <p>チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>UniTask & R3による非同期イベント実装。コードの可読性を確保。</p>
+                    <p>UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保</p>
                 </div>
 
             </div>
@@ -199,12 +199,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>演出が単調で、ゲームとしての手触りや面白みに欠ける。</p>
+                    <p>演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>DOTween を活用した動的なアニメーション実装。ゲーム内のオブジェクトを動いて、ユーザーに面白い体験を</p>
+                    <p>DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供</p>
                 </div>
 
             </div>
@@ -213,12 +213,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>チーム開発におけるソースコードや素材の管理と衝突。</p>
+                    <p>複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Git / GitHub を活用したバージョン管理。ブランチ戦略を運用し、円滑な並行開発を実現。</p>
+                    <p>Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持</p>
                 </div>
 
             </div>
@@ -227,18 +227,170 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>UI表現とゲームロジックが密結合で、修正が困難。</p>
+                    <p>UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>MVP (Model-View-Presenter) パターン を意識した設計。ロジックと表示を分離し、保守性を向上。</p>
+                    <p>MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保</p>
                 </div>
 
             </div>
             
                     </div>
                 </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装</div>
+                    <div class="code-container">
+                        <div class="code-header">FSM & UniTask 連携システム</div>
+                        <pre><code class="language-csharp">/// &lt;summary&gt;
+/// ゲームの状態を管理する
+/// &lt;/summary&gt;
+public static class GameStateMachine
+{
+    private static CancellationTokenSource _tokenSource;
+    private static CancellationToken _cancellationToken;
+    private static BaseState CurrentState { get; set; }
+
+    /// &lt;summary&gt;
+    /// ステータスマシンを開始する
+    /// &lt;/summary&gt;
+    public static void StartStateMachine()
+    {
+        _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
+        _cancellationToken = _tokenSource.Token;
+        RunStateMachineLoop().Forget();
+    }
+
+    /// &lt;summary&gt;
+    /// ステータスマシンのLoop
+    /// &lt;/summary&gt;
+    private static async UniTaskVoid RunStateMachineLoop()
+    {
+        //最初はInitialState
+        CurrentState = StateFactory.CreateState(EGameState.Initial);
+        BaseState nextState = CurrentState;
+
+        try
+        {
+            while (true)
+            {
+                _cancellationToken.ThrowIfCancellationRequested();
+
+                //Stateを切り替える
+                nextState = await TransitionAndRunStateAsync(nextState);
+                if (nextState == null)
+                {
+                    Debug.Log(&quot;GameOver!!&quot;);
+                    break;
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log(&quot;GameStateMachine is been canceled.&quot;);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
+        }
+        finally
+        {
+            Debug.Log(&quot;GameStateMachine Stopped.&quot;);
+            _tokenSource.Dispose();
+            _tokenSource = null;
+            SceneManager.LoadScene(&quot;Result&quot;);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Stateを切り替える
+    /// 前StateをonExitで抜けて
+    /// 次のStateのOnEnterを呼ぶ
+    /// RunStateで完成するを待つ
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;nextState&quot;&gt;次のState&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
+    {
+        BaseState oldState = CurrentState;
+
+        if (oldState != null &amp;&amp; oldState != nextState)
+        {
+            try
+            {
+                await oldState.OnExit(_cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.Log($&quot;State {oldState.GetType().Name} : OnExit is been canceled.&quot;);
+            }
+        }
+
+        CurrentState = nextState;
+
+        await CurrentState.OnEnter(_cancellationToken);
+
+        // RunStateで完成するを待つ、完成すると次のStateを返す
+        BaseState next = await CurrentState.RunState(_cancellationToken);
+
+        return next;
+    }
+
+    private static BaseState _nextStateRequest;
+    /// &lt;summary&gt;
+    /// 外からのStateを切り替える
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;nextState&quot;&gt;替わるState&lt;/param&gt;
+    public static void SwitchState(EGameState nextState)
+    {
+        _nextStateRequest = StateFactory.CreateState(nextState);
+        if (_nextStateRequest == null)
+        {
+            Debug.LogError(&quot;SwitchState failed.&quot;);
+        }
+        else
+        {
+            Debug.Log($&quot;Switch State To : {_nextStateRequest.GetType().Name}&quot;);
+        }
+    }
+    /// &lt;summary&gt;
+    /// MainGameStateで毎フレームで検知する、もしrequestedStateはNullじゃないとStateを切り替わる
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public static BaseState ConsumeStateRequest()
+    {
+        var requestedState = _nextStateRequest;
+        _nextStateRequest = null;
+        return requestedState;
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践</div>
+                    <div class="code-container">
+                        <div class="code-header">MVPアーキテクチャ Presenter層</div>
+                        <pre><code class="language-csharp">public class MainUIPresenter : MonoBehaviour
+{
+    [SerializeField] private MainUIViewer mainUIViewer;
+    [SerializeField] private PlayerModel playerModel;
+    
+    /// &lt;summary&gt;
+    /// playerModel　と　mainUIViewer　の中間者
+    /// &lt;/summary&gt;
+    private void Start()
+    {   
+        playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
+        playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
+        playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
+        playerModel.GameContext.LifeCount.Subscribe(n =&gt; mainUIViewer.SetLife(n));
+        playerModel.GameContext.CurrentSpeed.Subscribe(s =&gt; mainUIViewer.SetSpeed(s));
+    }
+}</code></pre>
+                    </div>
+                    
                 
 
                 

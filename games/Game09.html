@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Space Cat | Jeffrey LEE</title>
-    <meta name="description" content="Space Cat - Project Details: Action Game / PC">
+    <meta name="description" content="Space Cat - Project Details: 2D Sci-Fi Survival Action">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Space Cat | Jeffrey LEE">
-    <meta property="og:description" content="Space Cat - Action Game / PC">
+    <meta property="og:description" content="Space Cat - 2D Sci-Fi Survival Action">
     <meta property="og:image" content="../Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat">
 
@@ -47,21 +47,21 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
                     <h1 class="game-title">Space Cat</h1>
-                    <h2 class="game-subtitle">Action Game / PC</h2>
+                    <h2 class="game-subtitle">2D Sci-Fi Survival Action</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>実験体として宇宙戦艦に囚われていた猫。突如発生した爆発により、戦艦は崩壊の危機に瀕する。</p><p>生身では生きられない残酷な宇宙環境から逃れるため、4つの生存装備を探し出せ。不思議な力を持つ「尻尾」を使いこなし、迫りくる危機を回避して出口を目指す、SFサバイバル・アクション。</p>
+                        <p>宇宙戦艦から脱出するため、4つの生存装備を探し出すSFアクション。ワイヤーアクションなど、ゲーム性のある物理挙動に挑戦した作品です。</p>
                     </div>
                     
 
@@ -77,9 +77,9 @@
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ゲーム全体の基本設計</li>
-    <li>キャラクターの操作</li>
-    <li>タイトル画面</li>
+    <li>ゲーム全体の基本設計・システム構築</li>
+    <li>キャラクターのリジッドボディ制御・ワイヤー挙動の実装</li>
+    <li>タイトルおよびゲーム状態遷移の実装</li>
 </ul>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    KeyBoard
+                                    Keyboard
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -158,12 +158,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>一回クリアは難しくので、セーブポイントがほしい</p>
+                    <p>難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Playerの位置、アイテムの詳細をJsonで書き出す、セーブする</p>
+                    <p>プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築</p>
                 </div>
 
             </div>
@@ -172,18 +172,55 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ワイヤーを使ってのアクションゲームですか、ワイヤーの動きはよくない</p>
+                    <p>ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>現在まだ解決策は見つからない、まだ研究は必要です。</p>
+                    <p>現段階では完全な解決に至っておらず、物理演算（HingeJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中</p>
                 </div>
 
             </div>
             
                     </div>
                 </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現</div>
+                    <div class="code-container">
+                        <div class="code-header">JSONデータセーブシステム</div>
+                        <pre><code class="language-csharp">public class SaveManager : MonoBehaviour
+{
+        public void SaveDataToJson&lt;T&gt;(string path, T data)
+    {
+        var s = JsonUtility.ToJson(data, true);
+        if (!File.Exists(path))
+        {
+            File.Create(path).Close();
+        }
+        using StreamWriter writer = new StreamWriter(path);
+        writer.Write(s);
+        writer.Close();
+        Debug.Log($&quot;save success&quot;);
+    }
+
+    public T LoadDataFromJson&lt;T&gt;(string path)
+    {
+        if (File.Exists(path))
+        {
+            using StreamReader reader = new StreamReader(path);
+            var s = reader.ReadToEnd();
+            var data = JsonUtility.FromJson&lt;T&gt;(s);
+            reader.Close();
+            return data;
+        }
+        return default;
+    }
+}
+</code></pre>
+                    </div>
+                    
                 
 
                 

@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SFML_Learning | Jeffrey LEE</title>
-    <meta name="description" content="SFML_Learning - Project Details: SFML_Learning project01">
+    <meta name="description" content="SFML_Learning - Project Details: C++ & SFML Low-Level Programming Project">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SFML_Learning | Jeffrey LEE">
-    <meta property="og:description" content="SFML_Learning - SFML_Learning project01">
+    <meta property="og:description" content="SFML_Learning - C++ & SFML Low-Level Programming Project">
     <meta property="og:image" content="../Image/SFML_01.png">
     <meta property="og:url" content="">
 
@@ -47,16 +47,16 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
                     <h1 class="game-title">SFML_Learning</h1>
-                    <h2 class="game-subtitle">SFML_Learning project01</h2>
+                    <h2 class="game-subtitle">C++ & SFML Low-Level Programming Project</h2>
 
                     
                     <div class="content-block">
@@ -72,7 +72,7 @@
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>C++を習うためのプロジェクト</p>
+                        <p>ゲームエンジンの内部挙動とC++のメモリ管理、オブジェクト設計を深く理解するために構築した、フレームワーク不使用の学習用プロジェクトです。</p>
                     </div>
                     
 
@@ -108,7 +108,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value"></span>
+                                <span class="meta-value">1 Player</span>
                             </div>
                         </div>
 
@@ -140,7 +140,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    
+                                    Keyboard
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -167,12 +167,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>c++制作の肥大化</p>
+                    <p>C++ネイティブ開発におけるクラス構造の肥大化と密結合化</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Entity Component Systemを意識して開発</p>
+                    <p>データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保</p>
                 </div>
 
             </div>
@@ -182,9 +182,9 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
-                    <div class="code-explanation">データを.txt for reading, generates shapes</div>
+                    <div class="code-explanation">外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装</div>
                     <div class="code-container">
-                        <div class="code-header">練習</div>
+                        <div class="code-header">データ駆動型生成システム</div>
                         <pre><code class="language-cpp">#include &lt;SFML/Graphics.hpp&gt;
 #include &lt;iostream&gt;
 #include &lt;fstream&gt;

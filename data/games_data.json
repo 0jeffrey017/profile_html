@@ -2,20 +2,20 @@
     {
         "id": "game01",
         "filename": "Game01.html",
-        "title": "Unity Job SystemとBurst Compiler",
-        "subtitle": "Unity Job SystemとBurst Compiler",
-        "description": "Unity Job SystemとBurst Compilerの練習プロジェクト",
-        "overview": "<p>C# Job SystemとBurst Compilerの練習プロジェクト</p>",
+        "title": "Unity Job System & Burst Compiler",
+        "subtitle": "High-Performance Data-Oriented Programming",
+        "description": "Unity Job SystemとBurst Compilerを用いた並行処理の検証プロジェクト",
+        "overview": "<p>C# Job SystemとBurst Compilerを活用し、大量のオブジェクトを効率的に処理するデータ指向設計（DOD）の実践プロジェクトです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5～2026/6",
         "status": "released",
         "responsible": ["個人製作"],
         "challenges_solutions": [
-            {"challenge" : "数千個の玉を60FPSで動く", "solution" : "C# Job SystemとBurst Compilerを使って"},
-            {"challenge" : "WebGLに書き出す手間がかかる", "solution" : "GitActionsとGame-CIで自動公開"}
+            {"challenge" : "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する", "solution" : "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"},
+            {"challenge" : "WebGLへのビルドおよびデプロイ作業の手間とタイムロス", "solution" : "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"}
         ],
         "image_path": "Image/Job_01.png",
-        "platform": "PC (Windows,WebGL)",
+        "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/20260523_ClickGame/"
@@ -24,28 +24,23 @@
         "id": "game02",
         "filename": "Game02.html",
         "title": "ペンギン紙相撲",
-        "subtitle": "Action Game / PC、WebGL",
-        "description": "物理演算を活用した、10時間制作の紙相撲ゲーム",
-        "overview": "<p>紙相撲のペンギンバージョン。A,Lで素早くクリックし相手を倒す。</p>",
+        "subtitle": "Physics-Based Action Game",
+        "description": "物理演算を活用した、10時間の短時間制作アクションゲーム",
+        "overview": "<p>伝統的な紙相撲をペンギンモチーフで再現。AキーとLキーを素早く交互に連打し、物理挙動を利用して相手を土俵から押し倒します。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
         "responsible": ["個人製作"],
         "challenges_solutions": [
-            {"challenge" : "短時間でゲームを作成", "solution" : "物理を使って、紙相撲を再現する"}
+            {"challenge" : "ハッカソンを想定した極めて短い制限時間内でのゲームループの完成", "solution" : "Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現"}
         ],
         "credit": [
-            {"type" :"BGM",
-                "name":"Who Is the Champion",
-                "url":"https://dova-s.jp/bgm/detail/21672"},
-            {"type" :"SE",
-                "name":"デブペンギン",
-                "url":"https://dova-s.jp/se/detail/355"},
-            {"type" :"SkyBox",
-                "name":"AllSky Free - 10 Sky / Skybox Set",
-                "url":"https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"}],
+            {"type" :"BGM", "name":"Who Is the Champion", "url":"https://dova-s.jp/bgm/detail/21672"},
+            {"type" :"SE", "name":"デブペンギン", "url":"https://dova-s.jp/se/detail/355"},
+            {"type" :"SkyBox", "name":"AllSky Free - 10 Sky / Skybox Set", "url":"https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"}
+        ],
         "image_path": "Image/ペンギン紙相撲.png",
-        "platform": "PC (Windows、WebGL)",
+        "platform": "PC (Windows, WebGL)",
         "how_to_play": "A, L Keys",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo"
@@ -53,19 +48,19 @@
     {
         "id": "game03",
         "filename": "Game03.html",
-        "title": "クリックゲーム",
-        "subtitle": "Action Game / PC、WebGL",
-        "description": "Vcontainerを用いたDI（依存性の注入）の実装実験",
-        "overview": "<p>Vcontainerを実験する、簡単なゲームです。</p>",
+        "title": "VContainer DI Experiment",
+        "subtitle": "Architecture Experiment Game",
+        "description": "VContainerを用いたDI（依存性の注入）のアーキテクチャ実装実験",
+        "overview": "<p>純粋なゲームロジックとオブジェクトの依存関係を疎結合に保つため、DIコンテナ「VContainer」を導入した実験的ミニゲームです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
         "responsible": ["個人製作"],
         "challenges_solutions": [
-            {"challenge" : "シングルトン依存の脱却", "solution" : "Vcontainerを使って、DIの練習"}
+            {"challenge" : "密結合になりがちなシングルトンパターンへの過度な依存からの脱却", "solution" : "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"}
         ],
         "image_path": "Image/マウスでボタンをクリックで点数が増えるゲーム.png",
-        "platform": "PC (Windows、WebGL)",
+        "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/1_Click"
@@ -74,19 +69,20 @@
         "id": "game04",
         "filename": "Game04.html",
         "title": "PassTheBaton",
-        "subtitle": "PassTheBaton",
-        "description": "Hackathon作品。過去の自分を足場にして進むアクション",
-        "overview": "<p>命をつなぐ過去の自分を踏み台にしてゴールを目指す。</p>",
+        "subtitle": "2D Puzzle Action / Hackathon Work",
+        "description": "ハッカソン制作。過去の自分（骸）を足場にして進むギミックアクションゲーム",
+        "overview": "<p>「命を繋ぐ」をテーマに、ミスした過去の自分の死体を踏み台（ギミック）として活用しながら、協力してゴールを目指すパズルアクションです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/4～2026/5",
         "status": "released",
-        "responsible": ["ゲーム全体のアーキテクチャ設計"],
+        "responsible": ["ゲーム全体のアーキテクチャ設計・進行管理"],
         "challenges_solutions": [
-            {"challenge" : "短時間での設計・役割分担", "solution" : "チームメンバーと積極的に連携"}
+            {"challenge" : "限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担", "solution" : "プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止"},
+            {"challenge" : "状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持", "solution" : "VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール"}
         ],
         "image_path": "Image/PassTheBaton_01.png",
-        "platform": "PC (Windows,WebGL)",
-        "how_to_play": "AWDS move, Q suicide",
+        "platform": "PC (Windows, WebGL)",
+        "how_to_play": "WASD: Move, Q: Suicide",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/5_PassTheBaton"
     },
@@ -94,86 +90,92 @@
         "id": "game05",
         "filename": "Game05.html",
         "title": "SFML_Learning",
-        "subtitle": "SFML_Learning project01",
-        "description": "C++とSFMLを用いた低レイヤー開発の学習プロジェクト",
-        "overview": "<p>C++を習うためのプロジェクト</p>",
+        "subtitle": "C++ & SFML Low-Level Programming Project",
+        "description": "C++とSFMLを用いた低レイヤー開発およびゲームエンジン基礎の学習プロジェクト",
+        "overview": "<p>ゲームエンジンの内部挙動とC++のメモリ管理、オブジェクト設計を深く理解するために構築した、フレームワーク不使用の学習用プロジェクトです。</p>",
         "engine": "SFML 2.6.2",
         "period": "2026/4～",
         "status": "released",
         "responsible": ["個人製作"],
         "challenges_solutions": [
-            {"challenge" : "c++制作の肥大化", "solution" : "Entity Component Systemを意識して開発"}
+            {"challenge" : "C++ネイティブ開発におけるクラス構造の肥大化と密結合化", "solution" : "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"}
         ],
         "image_path": "Image/SFML_01.png",
         "platform": "PC (Windows, Linux)",
-        "how_to_play": "",
-        "players": "",
+        "how_to_play": "Keyboard",
+        "players": "1 Player",
         "play_link": "",
         "video_embed_url": "https://youtu.be/3qI0puDyEcU",
         "code_sample": [{
             "path" : "Scripts/SFML.cpp",
             "language" : "cpp",
-            "intro" : "練習",
-            "explanation" : "データを.txt for reading, generates shapes"
+            "intro" : "データ駆動型生成システム",
+            "explanation" : "外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装"
         }]
     },
     {
         "id": "game06",
         "filename": "Game06.html",
         "title": "グレート-O-カーンの侵略物語",
-        "subtitle": "Action Game / PC、WebGL",
-        "description": "FSMやMVPパターンを用いた本格的なランゲーム",
-        "overview": "<p>ドミネーターとして世界を支配するために走る！</p>",
+        "subtitle": "2D Endless Run Game / Enterprise Collaboration",
+        "description": "FSMやMVPパターン、UniRx、UniTaskを網羅した本格的なランゲーム（企業連携・準優勝作品）",
+        "overview": "<p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/10-2026/2",
         "status": "released",
-        "responsible": ["ゲーム全体のアーキテクチャ設計"
-            ,"InputSystemを使ってプレイヤの動きを実現、PCとモバイル両方対応する"
-            ,"StateMachineを用いたゲームフローの制御"
-            ,"マップの生成とアイテムのランダム生成"
-            ,"ScriptableObjectによるマスターデータを使ってゲームを設定できる"],
+        "responsible": [
+            "ゲーム全体のメインシステムおよびアーキテクチャの設計",
+            "New Input Systemを用いた、PC・モバイル両対応のマルチプラットフォーム入力制御",
+            "有限ステートマシン（FSM）によるゲーム全体のフローおよびキャラクターアクションの管理",
+            "ステージマップの動的生成およびアイテムの確率ベースランダムスポーンシステムの構築",
+            "ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "ゲーム全体のフローが複雑で、仕様変更やデバッグが困難。",
-                "solution" : "様変更やデバッグが困難。ステートマシン (FSM) による堅牢な進行管理。ロジックを状態ごとに分離し、拡張性を向上。"},
-            {"challenge" : "チュートリアルや連打など複雑なイベント待機処理の制御。",
-                "solution" : "UniTask & R3による非同期イベント実装。コードの可読性を確保。"},
-            {"challenge" : "演出が単調で、ゲームとしての手触りや面白みに欠ける。",
-                "solution" : "DOTween を活用した動的なアニメーション実装。ゲーム内のオブジェクトを動いて、ユーザーに面白い体験を"},
-            {"challenge" : "チーム開発におけるソースコードや素材の管理と衝突。",
-                "solution" : "Git / GitHub を活用したバージョン管理。ブランチ戦略を運用し、円滑な並行開発を実現。"},
-            {"challenge" : "UI表現とゲームロジックが密結合で、修正が困難。",
-                "solution" : "MVP (Model-View-Presenter) パターン を意識した設計。ロジックと表示を分離し、保守性を向上。"}
-            ],
+            {"challenge" : "ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる", "solution" : "有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現"},
+            {"challenge" : "チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理", "solution" : "UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保"},
+            {"challenge" : "演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する", "solution" : "DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供"},
+            {"challenge" : "複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発", "solution" : "Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持"},
+            {"challenge" : "UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する", "solution" : "MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保"}
+        ],
         "credit": [
-            {"type" :"BGM,SE",
-                "name":"フリーBGM・音楽素材MusMus",
-                "url":"https://musmus.main.jp"},
-            {"type" :"BGM,SE",
-                "name":"OtoLogicの素材を使用している",
-                "url":"https://otologic.jp/"}],
+            {"type" :"BGM,SE", "name":"フリーBGM・音楽素材MusMus", "url":"https://musmus.main.jp"},
+            {"type" :"BGM,SE", "name":"OtoLogic", "url":"https://otologic.jp/"}
+        ],
         "image_path": "Image/余にひれ伏せ愚民ども.png",
-        "platform": "PC (Windows、WebGL)",
-        "how_to_play": "KeyBoard",
+        "platform": "PC (Windows, WebGL), Mobile",
+        "how_to_play": "Keyboard / Touch",
         "players": "1 Player",
         "play_link": "https://www.njpw.co.jp/games/great-o-khan/",
-        "game_technical_image" :"Image/グレート-O-カーンの侵略物語_class.png"
+        "game_technical_image" :"Image/グレート-O-カーンの侵略物語_class.png",
+        "code_sample": [{
+            "path" : "Scripts/RunGameScript_01.cs",
+            "language" : "csharp",
+            "intro" : "FSM & UniTask 連携システム",
+            "explanation" : "UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装"
+        },
+        {
+            "path" : "Scripts/RunGameScript_02.cs",
+            "language" : "csharp",
+            "intro" : "MVPアーキテクチャ Presenter層",
+            "explanation" : "UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践"
+        }]
     },
     {
         "id": "game07",
         "filename": "Game07.html",
         "title": "Guilty Lane",
-        "subtitle": "Guilty Lane",
-        "description": "Hackathon作品。罪の軌道をテーマにしたADV",
-        "overview": "<p>究極の選択を迫られるストーリー主導のアクション・アドベンチャー。</p>",
+        "subtitle": "Dark Adventure Game / Hackathon Work",
+        "description": "ハッカソン作品。「選択と罪」をテーマにしたナラティブ・アドベンチャーゲーム",
+        "overview": "<p>借金を抱えた主人公は、ある企業の「線路管理業務」に雇われる。その作業は、レバーを引いてトロッコの行き先を決めるだけだった。だがその先には、必ず“誰か”がいる──。これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/9～2025/12",
-        "status": "unreleased",
-        "responsible": ["企画・演出"],
+        "status": "released",
+        "responsible": ["メインアイテムシステム・イベントフラグ管理"],
         "challenges_solutions": [
-            {"challenge" : "複数人開発の仕様統一", "solution" : "密なコミュニケーションとドキュメント化"}
+            {"challenge" : "複数人開発における、ゲーム内データ構造およびイベント仕様の統一", "solution" : "仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止"}
         ],
-        "image_path": "Image/PassTheBaton_01.png",
-        "platform": "PC (Windows,WebGL)",
+        "image_path": "Image/Guilty_Lane01.png",
+        "platform": "調整中",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": ""
@@ -182,71 +184,91 @@
         "id": "game08",
         "filename": "Game08.html",
         "title": "逢魔々城",
-        "subtitle": "Tower Defense Game / PC",
-        "description": "デザインパターンを多用した和風タワーディフェンス",
-        "overview": "<p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>",
+        "subtitle": "Japanese Tower Defense Game / Design Pattern Practice",
+        "description": "各種デザインパターンを多用し、拡張性を限界まで追求した和風タワーディフェンス",
+        "overview": "<p>魑魅魍魎が迫りくる城を舞台にしたタワーディフェンスゲーム。プログラムの美しさと拡張性、パフォーマンスの最適化に重きを置いたプロジェクトです。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/8-2025/10",
         "status": "released",
-         "responsible": ["Strategyパターンを使っての敵と武器システム"
-            ,"武器のドラッグ＆ドロップシステム"
-            ,"タイトル画面の設計と実装"
-            ,"メインUIの設計と実装"],
+        "responsible": [
+            "Strategyパターンを用いた拡張性の高い敵AIおよび武器攻撃システムの設計・実装",
+            "ドラッグ＆ドロップによる直感的な武器配置インターフェースの実装",
+            "タイトル画面およびメインUIシステム全体の設計・レイアウト実装"
+        ],
         "challenges_solutions": [
-            {"challenge" : "ゲームのバランス調整は難しい、プログラムが分からないプランナーにはできない"
-                ,"solution" : "データをScriptableObjectで保存して、プランナーを編集可能にする"},
-            {"challenge" : "敵と武器の種類は今後増えるかもしれない"
-                ,"solution" : "Strategyパターン、Factory パターンを使って敵と武器の種類を増やすことができるように"},
-            {"challenge" : "敵と玉は大量出現するゲーム、InstantiateとDestroyの処理を避けたい"
-                ,"solution" : "ObjectPool パターン使って敵と玉を生成する"}
-            ],
+            {"challenge" : "ゲームバランスの頻繁な調整が必要だが、非エンジニアのプランナーがコードを触れず調整コストが高い",
+             "solution" : "すべての敵・武器データをScriptableObjectに外部化。日本語の注釈をつけ、プランナーがUnityエディタ上で安全に数値を直接調整できる環境を整備"},
+            {"challenge" : "ゲームの仕様上、今後新しい敵のタイプや武器の種類が追加される可能性が非常に高い", 
+            "solution" : "StrategyパターンおよびFactoryパターンを採用。既存のソースコードを修正することなく、クラスの追加だけで新しい挙動を拡張できる設計（開放閉鎖原則の遵守）を確立"},
+            {"challenge" : "敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
+             "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+        ],
         "image_path": "Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png",
         "platform": "PC (Windows)",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame",
-        "game_technical_image" :"Image/defanceGame_class.png"
+        "game_technical_image" :"Image/defanceGame_class.png",
+        "code_sample": [
+            {
+                "path" : "Scripts/DefanceGameScript_01.cs",
+                "language" : "csharp",
+                "intro" : "Strategyパターンによる武器システム",
+                "explanation" : "攻撃ロジックをインターフェース化し、単体攻撃・範囲攻撃・デバフ付与などを動的に切り替え可能にした設計"
+            },{
+                "path" : "Scripts/DefanceGameScript_02.cs",
+                "language" : "csharp",
+                "intro" : "ScriptableObjectデータ設計",
+                "explanation" : "デザイナーやプランナー向けのデータ構成。プログラマーを介さないワークフローの確立。次のステップとしてExcel連携（データインポート自動化）を見据えています"
+            }
+        ]
     },
     {
         "id": "game09",
         "filename": "Game09.html",
         "title": "Space Cat",
-        "subtitle": "Action Game / PC",
-        "description": "Jsonセーブ機能を搭載したSFサバイバルアクション",
-        "overview": "<p>実験体として宇宙戦艦に囚われていた猫。突如発生した爆発により、戦艦は崩壊の危機に瀕する。</p><p>生身では生きられない残酷な宇宙環境から逃れるため、4つの生存装備を探し出せ。不思議な力を持つ「尻尾」を使いこなし、迫りくる危機を回避して出口を目指す、SFサバイバル・アクション。</p>",
+        "subtitle": "2D Sci-Fi Survival Action",
+        "description": "JSON形式によるセーブ/ロード機能を搭載した、SF2Dサバイバルアクションゲーム",
+        "overview": "<p>宇宙戦艦から脱出するため、4つの生存装備を探し出すSFアクション。ワイヤーアクションなど、ゲーム性のある物理挙動に挑戦した作品です。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/6 - 2025/8",
         "status": "released",
-         "responsible": ["ゲーム全体の基本設計","キャラクターの操作","タイトル画面"],
+        "responsible": ["ゲーム全体の基本設計・システム構築", "キャラクターのリジッドボディ制御・ワイヤー挙動の実装", "タイトルおよびゲーム状態遷移の実装"],
         "challenges_solutions": [
-            {"challenge" : "一回クリアは難しくので、セーブポイントがほしい"
-                ,"solution" : "Playerの位置、アイテムの詳細をJsonで書き出す、セーブする"},
-            {"challenge" : "ワイヤーを使ってのアクションゲームですか、ワイヤーの動きはよくない"
-                ,"solution" : "現在まだ解決策は見つからない、まだ研究は必要です。"}
-            ],
+            {"challenge" : "難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須", "solution" : "プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築"},
+            {"challenge" : "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない", "solution" : "現段階では完全な解決に至っておらず、物理演算（HingeJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中"}
+        ],
         "image_path": "Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png",
         "platform": "PC (Windows)",
-        "how_to_play": "KeyBoard",
+        "how_to_play": "Keyboard",
         "players": "1 Player",
-        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat",
+        "code_sample": [
+            {
+                "path" : "Scripts/SpaceCatScript_01.cs",
+                "language" : "csharp",
+                "intro" : "JSONデータセーブシステム",
+                "explanation" : "ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現"
+            }
+        ]
     },
     {
         "id": "game10",
         "filename": "Game10.html",
         "title": "デカめの一杯",
-        "subtitle": "デカめの一杯",
-        "description": "Hackathon作品。釣りとボス戦のハイブリッド",
-        "overview": "<p>制限時間内に魚を釣りスコアを稼ぎ、巨大イカと戦うゲーム。</p>",
+        "subtitle": "Hybrid Action Game / Hackathon Work",
+        "description": "短時間開発。釣りとボスバトルを融合させたハイブリッド・アクションゲーム",
+        "overview": "<p>制限時間内に魚を釣ってスコアを稼ぐ『静』のパートから、巨大イカと死闘を繰り広げる『動』のパートへ移行する、ハッカソン発のゲームです。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/6～2025/7",
         "status": "released",
-        "responsible": ["ボス戦ロジック担当"],
+        "responsible": ["ボス戦（巨大イカ）のAIおよび戦闘ロジックの実装"],
         "challenges_solutions": [
-            {"challenge" : "短時間での異ジャンル融合", "solution" : "迅速なプロトタイプ制作"}
+            {"challenge" : "短期間の開発スケジュールの中で、全く異なる2つのゲームジャンルを違和感なく融合させる", "solution" : "コアとなる面白さを即座に検証するため、迅速なプロトタイピング（イテレーション）を繰り返し、仕様のブラッシュアップを最速で実施"}
         ],
         "image_path": "Image/Ika_01.png",
-        "platform": "PC (Windows,WebGL)",
-        "how_to_play": "AWDS move, Mouse 釣り",
+        "platform": "PC (Windows, WebGL)",
+        "how_to_play": "WASD: Move, Mouse: Fishing / Attack",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai"
     }

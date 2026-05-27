@@ -5,12 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ペンギン紙相撲 | Jeffrey LEE</title>
-    <meta name="description" content="ペンギン紙相撲 - Project Details: Action Game / PC、WebGL">
+    <meta name="description" content="ペンギン紙相撲 - Project Details: Physics-Based Action Game">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
-    <meta property="og:description" content="ペンギン紙相撲 - Action Game / PC、WebGL">
+    <meta property="og:description" content="ペンギン紙相撲 - Physics-Based Action Game">
     <meta property="og:image" content="../Image/ペンギン紙相撲.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
 
@@ -47,21 +47,21 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="breadcrumb">
-                <a href="../index.html" class="back-link">
+                <a href="../index.html#activity" class="back-link">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    Back
+                    Back / 戻る
                 </a>
             </div>
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
                     <h1 class="game-title">ペンギン紙相撲</h1>
-                    <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
+                    <h2 class="game-subtitle">Physics-Based Action Game</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>紙相撲のペンギンバージョン。A,Lで素早くクリックし相手を倒す。</p>
+                        <p>伝統的な紙相撲をペンギンモチーフで再現。AキーとLキーを素早く交互に連打し、物理挙動を利用して相手を土俵から押し倒します。</p>
                     </div>
                     
 
@@ -105,7 +105,7 @@
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows、WebGL)</span>
+                                <span class="meta-value">PC (Windows, WebGL)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -168,12 +168,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>短時間でゲームを作成</p>
+                    <p>ハッカソンを想定した極めて短い制限時間内でのゲームループの完成</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>物理を使って、紙相撲を再現する</p>
+                    <p>Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現</p>
                 </div>
 
             </div>
