@@ -16,7 +16,7 @@
         ],
         "image_path": "Image/Job_01.png",
         "platform": "PC (Windows, WebGL)",
-        "how_to_play": "Mouse",
+        "how_to_play": "Mouse Click The Top ToSpawn Ball",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/20260523_ClickGame/"
     },
@@ -41,7 +41,7 @@
         ],
         "image_path": "Image/ペンギン紙相撲.png",
         "platform": "PC (Windows, WebGL)",
-        "how_to_play": "A, L Keys",
+        "how_to_play": "A, L Key",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo"
     },
@@ -205,7 +205,7 @@
         ],
         "image_path": "Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png",
         "platform": "PC (Windows)",
-        "how_to_play": "Mouse",
+        "how_to_play": "Mouse(drag and drop)",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame",
         "game_technical_image" :"Image/defanceGame_class.png",
@@ -240,7 +240,7 @@
         ],
         "image_path": "Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png",
         "platform": "PC (Windows)",
-        "how_to_play": "Keyboard",
+        "how_to_play": "Keyboard(Please Follow The Game)",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat",
         "code_sample": [
