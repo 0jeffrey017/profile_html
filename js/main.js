@@ -3,133 +3,92 @@
 (function($) {
     "use strict";
 
-    console.log("main.js: Initializing game grid...");
+    let allGames = [];
+    let isNewestFirst = true;
 
-    const gameData = [
-        {
-            id: "game01",
-            name: "SpaceCat",
-            desc: "2Dのアクションゲームです",
-            image: "Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png",
-            link: "games/Game01.html",
-            status: "released"
-        },
-        {
-            id: "game02",
-            name: "逢魔々城",
-            desc: "武器を設置し、怪奇を倒すゲームです。",
-            image: "Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png",
-            link: "games/Game02.html",
-            status: "released"
-        },
-        {
-            id: "game03",
-            name: "ペンギン紙相撲",
-            desc: "紙相撲ゲーム",
-            image: "Image/ペンギン紙相撲.png",
-            link: "games/Game03.html",
-            status: "released"
-        },
-        {
-            id: "game04",
-            name: "クリックゲーム",
-            desc: "クリックゲーム",
-            image: "Image/マウスでボタンをクリックで点数が増えるゲーム.png",
-            link: "games/Game04.html",
-            status: "released"
-        },
-        {
-            id: "game05",
-            name: "余にひれ伏せ愚民ども<br>グレート-O-カーンの侵略物語",
-            desc: "グレート-O-カーン選手のランナーゲームです。",
-            image: "Image/余にひれ伏せ愚民ども.png",
-            link: "games/Game05.html",
-            status: "released"
-        },
-        {
-            id: "game06",
-            name: "SFML_project01",
-            desc: "C++の練習プロジェクト",
-            image: "Image/SFML_01.png",
-            link: "games/Game06.html",
-            status: "released"
-        },
-        {
-            id: "game07",
-            name: "PassTheBaton",
-            desc: "Hackathon　”つなぐ”",
-            image: "Image/PassTheBaton_01.png",
-            link: "games/Game07.html",
-            status: "released"
-        },
-        {
-            id: "game08",
-            name: "デカめの一杯",
-            desc: "Hackathon　”いっぱい”",
-            image: "Image/Ika_01.png",
-            link: "games/Game08.html",
-            status: "released"
-        },
-        {
-            id: "game09",
-            name: "Guilty Lane",
-            desc: "Hackathon　”***”",
-            image: "Image/PassTheBaton_01.png",
-            link: "games/Game09.html",
-            status: "Unreleased"
-        },
-        {
-            id: "game10",
-            name: "Unity Job SystemとBurst Compiler",
-            desc: "Unity Job SystemとBurst Compiler",
-            image: "Image/Job_01.png",
-            link: "games/Game10.html",
-            status: "released"
-        },
-        {
-            id: "game99",
-            name: "未公開タイトル",
-            desc: "開発中のゲームです。",
-            image: "Image/GameCode.png",
-            link: "#",
-            status: "released"
+    async function initGallery() {
+        console.log("main.js: Initializing game grid...");
+        
+        try {
+            // Fetch data from JSON source
+            const response = await fetch('data/games_data.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            allGames = await response.json();
+            
+            renderGameGrid();
+            setupEventListeners();
+        } catch (error) {
+            console.error("main.js: Failed to load game data:", error);
+            $('.game-grid').html('<p class="error-message">Failed to load projects. Please try again later.</p>');
         }
-    ];
+    }
 
     function renderGameGrid() {
         const $grid = $('.game-grid');
-        if (!$grid.length) {
-            console.warn("main.js: .game-grid element not found.");
-            return;
-        }
+        if (!$grid.length) return;
 
-        console.log("main.js: Rendering " + gameData.length + " games.");
         $grid.empty();
 
-        const releasedGames = gameData.filter(game => game.status === "released");
+        // Filter for released games (optional, depends on your preference)
+        const displayGames = allGames.filter(game => game.status === "released");
+        
+        // Sort based on chronological mapping (Game01 is newest, Game10 is oldest)
+        displayGames.sort((a, b) => {
+            const idA = parseInt(a.id.replace('game', ''));
+            const idB = parseInt(b.id.replace('game', ''));
+            return isNewestFirst ? idA - idB : idB - idA;
+        });
 
-        releasedGames.forEach(game => {
+        displayGames.forEach(game => {
             const gameCard = `
                 <div class="game-card" data-id="${game.id}">
-                    <a href="${game.link}" class="game-link">
+                    <a href="games/${game.filename}" class="game-link">
                         <div class="game-image-wrapper">
-                            <img src="${game.image}" alt="${game.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
+                            <img src="${game.image_path}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
                         </div>
                         <div class="game-info">
-                            <h3 class="game-name">${game.name}</h3>
-                            <p class="game-desc">${game.desc}</p>
+                            <span class="game-time">${game.period}</span>
+                            <h3 class="game-name">${game.title}</h3>
+                            <p class="game-desc">${game.description}</p>
                         </div>
                     </a>
                 </div>
             `;
             $grid.append(gameCard);
         });
+
+        // Add "Coming Soon" card at the end if sorting newest first
+        if (isNewestFirst) {
+            $grid.append(`
+                <div class="game-card coming-soon">
+                    <div class="game-image-wrapper">
+                        <img src="Image/GameCode.png" alt="Coming Soon">
+                    </div>
+                    <div class="game-info">
+                        <span class="game-time">Future</span>
+                        <h3 class="game-name">未公開タイトル</h3>
+                        <p class="game-desc">開発中の新しいプロジェクトです。</p>
+                    </div>
+                </div>
+            `);
+        }
         
-        console.log("main.js: Grid rendered successfully.");
+        console.log("main.js: Grid rendered (NewestFirst: " + isNewestFirst + ")");
+    }
+
+    function setupEventListeners() {
+        $('#sort-toggle').on('click', function() {
+            isNewestFirst = !isNewestFirst;
+            $(this).html(`
+                <span class="material-symbols-outlined">search</span>
+                ${isNewestFirst ? 'Newest First' : 'Oldest First'}
+            `);
+            renderGameGrid();
+        });
     }
 
     $(function() {
-        renderGameGrid();
+        initGallery();
     });
 
 })(jQuery);

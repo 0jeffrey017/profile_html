@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
-    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: Action Game / PC、WebGL">
+    <title>SFML_Learning | Jeffrey LEE</title>
+    <meta name="description" content="SFML_Learning - Project Details: SFML_Learning project01">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
-    <meta property="og:description" content="グレート-O-カーンの侵略物語 - Action Game / PC、WebGL">
-    <meta property="og:image" content="../Image/余にひれ伏せ愚民ども.png">
-    <meta property="og:url" content="https://www.njpw.co.jp/games/great-o-khan/">
+    <meta property="og:title" content="SFML_Learning | Jeffrey LEE">
+    <meta property="og:description" content="SFML_Learning - SFML_Learning project01">
+    <meta property="og:image" content="../Image/SFML_01.png">
+    <meta property="og:url" content="">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,45 +55,41 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">グレート-O-カーンの侵略物語</h1>
-                    <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
+                    <h1 class="game-title">SFML_Learning</h1>
+                    <h2 class="game-subtitle">SFML_Learning project01</h2>
 
                     
                     <div class="content-block">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/3qI0puDyEcU" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write;
+                                encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>新日本プロレスのグレート-O-カーン選手ドミネーターとして世界を支配するために走る！！</p><p>障害物をよける、アイテムを集めて、最高スコアを競い合う</p>
+                        <p>C++を習うためのプロジェクト</p>
                     </div>
                     
 
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity　2022.3.61f1</p>
+                        <p>SFML 2.6.2</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2025/10-2026/2</p>
+                        <p>2026/4～</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ゲーム全体のアーキテクチャ設計</li>
-    <li>InputSystemを使ってプレイヤの動きを実現、PCとモバイル両方対応する</li>
-    <li>StateMachineを用いたゲームフローの制御</li>
-    <li>マップの生成とアイテムのランダム生成</li>
-    <li>ScriptableObjectによるマスターデータを使ってゲームを設定できる</li>
+    <li>個人製作</li>
 </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-block">
-                        <h3>Credit / クレジット</h3>
-                        <div>
-                            <ul>
-    <li>BGM,SE : <a href="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
-    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogicの素材を使用している</a></li>
-<ul>
-
                         </div>
                     </div>
                     
@@ -102,21 +98,21 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/余にひれ伏せ愚民ども.png" alt="グレート-O-カーンの侵略物語 Screenshot">
+                            <img src="../Image/SFML_01.png" alt="SFML_Learning Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows、WebGL)</span>
+                                <span class="meta-value">PC (Windows, Linux)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value"></span>
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/">
+                    <button type="button" id="play-game-btn" class="play-button disabled" data-url="">
                         Play Game
                     </button>
                 </div>
@@ -144,7 +140,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    KeyBoard
+                                    
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -171,68 +167,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲーム全体のフローが複雑で、仕様変更やデバッグが困難。</p>
+                    <p>c++制作の肥大化</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>様変更やデバッグが困難。ステートマシン (FSM) による堅牢な進行管理。ロジックを状態ごとに分離し、拡張性を向上。</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>チュートリアルや連打など複雑なイベント待機処理の制御。</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>UniTask & R3による非同期イベント実装。コードの可読性を確保。</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>演出が単調で、ゲームとしての手触りや面白みに欠ける。</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>DOTween を活用した動的なアニメーション実装。ゲーム内のオブジェクトを動いて、ユーザーに面白い体験を</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>チーム開発におけるソースコードや素材の管理と衝突。</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>Git / GitHub を活用したバージョン管理。ブランチ戦略を運用し、円滑な並行開発を実現。</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>UI表現とゲームロジックが密結合で、修正が困難。</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>MVP (Model-View-Presenter) パターン を意識した設計。ロジックと表示を分離し、保守性を向上。</p>
+                    <p>Entity Component Systemを意識して開発</p>
                 </div>
 
             </div>
@@ -242,166 +182,209 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
-                    <div class="code-explanation">UniTask と FSM(ステートマシン)を使って、非同期処理で色んなイベントが実現可能<br>例えば連打で敵を撃退するイベント、時間の計算とプレイヤーインプットを検知し、どちらか完成したらイベント終了</div>
+                    <div class="code-explanation">データを.txt for reading, generates shapes</div>
                     <div class="code-container">
-                        <div class="code-header">StateMachine</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// ゲームの状態を管理する
-/// &lt;/summary&gt;
-public static class GameStateMachine
+                        <div class="code-header">練習</div>
+                        <pre><code class="language-cpp">#include &lt;SFML/Graphics.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+class myCircle : public sf::Transformable{
+    sf::CircleShape circle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_Radius;SFML
+    sf::Text text;
+public:
+    myCircle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float Radius)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B),m_Radius(Radius)
+    {
+        circle.setRadius(Radius);
+        circle.setFillColor(sf::Color(R,G,B));
+        circle.setPosition(X,Y);
+    }
+    sf::CircleShape getShape() const
+    {
+        return circle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        circle.move(m_SX, m_SY);
+        sf::Vector2f pos = circle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            circle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + (m_Radius * 2) &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            circle.setPosition(windowWidth - (m_Radius * 2), pos.y); // Snap to edge
+        }
+
+        pos = circle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, 0);
+        } else if (pos.y + (m_Radius * 2) &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, windowHeight - (m_Radius * 2));
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(circle.getPosition().x + m_Radius, circle.getPosition().y + m_Radius);
+        return text;
+    }
+};
+
+class myRectangle : public sf::Transformable{
+    sf::RectangleShape rectangle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_W,m_H;
+    sf::Text text;
+public:
+    myRectangle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float W, float H)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_W(W), m_H(H)
+    {
+        rectangle.setSize({W,H});
+        rectangle.setFillColor(sf::Color(R,G,B));
+        rectangle.setPosition(X,Y);
+    }
+    sf::RectangleShape getShape() const
+    {
+        return rectangle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        rectangle.move(m_SX, m_SY);
+        sf::Vector2f pos = rectangle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + m_W &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(windowWidth - m_W, pos.y); // Snap to edge
+        }
+
+        pos = rectangle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, 0);
+        } else if (pos.y + m_H &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, windowHeight - m_H);
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(rectangle.getPosition().x + (m_W/2.0f), rectangle.getPosition().y + (m_H/2.0f));
+        return text;
+    }
+};
+
+int main()
 {
-    private static CancellationTokenSource _tokenSource;
-    private static CancellationToken _cancellationToken;
-    private static BaseState CurrentState { get; set; }
+    std::ifstream file(&quot;config.txt&quot;);
+    sf::RenderWindow window;
+    std::string word;
+    std::vector&lt;myCircle&gt; circles;
+    std::vector&lt;myRectangle&gt; rectangles;
 
-    /// &lt;summary&gt;
-    /// ステータスマシンを開始する
-    /// &lt;/summary&gt;
-    public static void StartStateMachine()
-    {
-        _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
-        _cancellationToken = _tokenSource.Token;
-        RunStateMachineLoop().Forget();
-    }
+    sf::Font font;
+    int font_S, font_R, font_G, font_B;
+    sf::Color fontColor;
 
-    /// &lt;summary&gt;
-    /// ステータスマシンのLoop
-    /// &lt;/summary&gt;
-    private static async UniTaskVoid RunStateMachineLoop()
-    {
-        //最初はInitialState
-        CurrentState = StateFactory.CreateState(EGameState.Initial);
-        BaseState nextState = CurrentState;
+    int windowWidth,windowHeight;
 
-        try
-        {
-            while (true)
+    while (file &gt;&gt; word) {
+    if (word == &quot;Window&quot;) {
+        file &gt;&gt; windowWidth &gt;&gt; windowHeight;
+        window.create(sf::VideoMode(windowWidth, windowHeight), &quot;My Game&quot;);
+        } 
+        else if (word == &quot;Font&quot;) {
+            std::string F;
+            file &gt;&gt; F &gt;&gt; font_S &gt;&gt; font_R &gt;&gt; font_G &gt;&gt; font_B;
+            if (!font.loadFromFile(F))
             {
-                _cancellationToken.ThrowIfCancellationRequested();
-
-                //Stateを切り替える
-                nextState = await TransitionAndRunStateAsync(nextState);
-                if (nextState == null)
-                {
-                    Debug.Log(&quot;GameOver!!&quot;);
-                    break;
-                }
+                std::cout &lt;&lt; &quot;Cant Load Font&quot;;
             }
+            fontColor.r = font_R;
+            fontColor.g = font_G;
+            fontColor.b = font_B;
+        } 
+        else if (word == &quot;Circle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float Radius;
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; Radius;
+            myCircle circle(N,X,Y,SX,SY,R,G,B,Radius);
+            circle.setText(font,font_S,fontColor);
+            circles.push_back(circle);
         }
-        catch (OperationCanceledException)
-        {
-            Debug.Log(&quot;GameStateMachine is been canceled.&quot;);
+        else if (word == &quot;Rectangle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float W, H;
+
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; W &gt;&gt; H;
+            myRectangle rectangle(N,X,Y,SX,SY,R,G,B,W,H);
+            rectangle.setText(font,font_S,fontColor);
+
+            rectangles.push_back(rectangle);
         }
-        catch (Exception ex)
-        {
-            Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
-        }
-        finally
-        {
-            Debug.Log(&quot;GameStateMachine Stopped.&quot;);
-            _tokenSource.Dispose();
-            _tokenSource = null;
-            SceneManager.LoadScene(&quot;Result&quot;);
+        else {
+            // Default case
         }
     }
 
-    /// &lt;summary&gt;
-    /// Stateを切り替える
-    /// 前StateをonExitで抜けて
-    /// 次のStateのOnEnterを呼ぶ
-    /// RunStateで完成するを待つ
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;次のState&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
+    while (window.isOpen())
     {
-        BaseState oldState = CurrentState;
-
-        if (oldState != null &amp;&amp; oldState != nextState)
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            try
-            {
-                await oldState.OnExit(_cancellationToken);
-            }
-            catch (OperationCanceledException)
-            {
-                Debug.Log($&quot;State {oldState.GetType().Name} : OnExit is been canceled.&quot;);
-            }
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
 
-        CurrentState = nextState;
-
-        await CurrentState.OnEnter(_cancellationToken);
-
-        // RunStateで完成するを待つ、完成すると次のStateを返す
-        BaseState next = await CurrentState.RunState(_cancellationToken);
-
-        return next;
-    }
-
-    private static BaseState _nextStateRequest;
-    /// &lt;summary&gt;
-    /// 外からのStateを切り替える
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;替わるState&lt;/param&gt;
-    public static void SwitchState(EGameState nextState)
-    {
-        _nextStateRequest = StateFactory.CreateState(nextState);
-        if (_nextStateRequest == null)
-        {
-            Debug.LogError(&quot;SwitchState failed.&quot;);
+        window.clear();
+        for(auto&amp; c : circles){
+            c.move(windowWidth,windowHeight);
+            window.draw(c.getShape());
+            window.draw(c.showName());
         }
-        else
-        {
-            Debug.Log($&quot;Switch State To : {_nextStateRequest.GetType().Name}&quot;);
+        for(auto&amp; rt : rectangles){
+            rt.move(windowWidth,windowHeight);
+            window.draw(rt.getShape());
+            window.draw(rt.showName());
         }
+
+        window.display();
     }
-    /// &lt;summary&gt;
-    /// MainGameStateで毎フレームで検知する、もしrequestedStateはNullじゃないとStateを切り替わる
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static BaseState ConsumeStateRequest()
-    {
-        var requestedState = _nextStateRequest;
-        _nextStateRequest = null;
-        return requestedState;
-    }
-}</code></pre>
-                    </div>
-                    
-                    <div class="code-explanation">MVP (Model-View-Presenter) パターンの実現</div>
-                    <div class="code-container">
-                        <div class="code-header">Presenter</div>
-                        <pre><code class="language-csharp">public class MainUIPresenter : MonoBehaviour
-{
-    [SerializeField] private MainUIViewer mainUIViewer;
-    [SerializeField] private PlayerModel playerModel;
-    
-    /// &lt;summary&gt;
-    /// playerModel　と　mainUIViewer　の中間者
-    /// &lt;/summary&gt;
-    private void Start()
-    {   
-        playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
-        playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
-        playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
-        playerModel.GameContext.LifeCount.Subscribe(n =&gt; mainUIViewer.SetLife(n));
-        playerModel.GameContext.CurrentSpeed.Subscribe(s =&gt; mainUIViewer.SetSpeed(s));
-    }
+
+    file.close();
+    return 0;
 }</code></pre>
                     </div>
                     
                 
 
-                
-                <div class="content-block">
-                    <h3>Technical Image / 技術図</h3>
-                    <div class="game-detail-image">
-                        <a href="../Image/グレート-O-カーンの侵略物語_class.png" target="_blank">
-                            <img src="../Image/グレート-O-カーンの侵略物語_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
-                        </a>
-                    </div>
-                </div>
                 
             </section>
         </main>

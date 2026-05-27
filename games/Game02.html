@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>逢魔々城 | Jeffrey LEE</title>
-    <meta name="description" content="逢魔々城 - Project Details: Tower Defense Game / PC">
+    <title>ペンギン紙相撲 | Jeffrey LEE</title>
+    <meta name="description" content="ペンギン紙相撲 - Project Details: Action Game / PC、WebGL">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="逢魔々城 | Jeffrey LEE">
-    <meta property="og:description" content="逢魔々城 - Tower Defense Game / PC">
-    <meta property="og:image" content="../Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame">
+    <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
+    <meta property="og:description" content="ペンギン紙相撲 - Action Game / PC、WebGL">
+    <meta property="og:image" content="../Image/ペンギン紙相撲.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,33 +55,42 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">逢魔々城</h1>
-                    <h2 class="game-subtitle">Tower Defense Game / PC</h2>
+                    <h1 class="game-title">ペンギン紙相撲</h1>
+                    <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>
+                        <p>紙相撲のペンギンバージョン。A,Lで素早くクリックし相手を倒す。</p>
                     </div>
                     
 
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity　2022.3.61f1</p>
+                        <p>Unity 6000.3.8f1</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2025/8-2025/10</p>
+                        <p>2026/5</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>Strategyパターンを使っての敵と武器システム</li>
-    <li>武器のドラッグ＆ドロップシステム</li>
-    <li>タイトル画面の設計と実装</li>
-    <li>メインUIの設計と実装</li>
+    <li>個人製作</li>
 </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h3>Credit / クレジット</h3>
+                        <div>
+                            <ul>
+    <li>BGM : <a href="https://dova-s.jp/bgm/detail/21672">Who Is the Champion</a></li>
+    <li>SE : <a href="https://dova-s.jp/se/detail/355">デブペンギン</a></li>
+    <li>SkyBox : <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free - 10 Sky / Skybox Set</a></li>
+<ul>
+
                         </div>
                     </div>
                     
@@ -90,13 +99,13 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png" alt="逢魔々城 Screenshot">
+                            <img src="../Image/ペンギン紙相撲.png" alt="ペンギン紙相撲 Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows)</span>
+                                <span class="meta-value">PC (Windows、WebGL)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -104,7 +113,7 @@
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame">
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
                         Play Game
                     </button>
                 </div>
@@ -132,7 +141,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Mouse
+                                    A, L Keys
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -159,40 +168,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲームのバランス調整は難しい、プログラムが分からないプランナーにはできない</p>
+                    <p>短時間でゲームを作成</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>データをScriptableObjectで保存して、プランナーを編集可能にする</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>敵と武器の種類は今後増えるかもしれない</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>Strategyパターン、Factory パターンを使って敵と武器の種類を増やすことができるように</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>敵と玉は大量出現するゲーム、InstantiateとDestroyの処理を避けたい</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>ObjectPool パターン使って敵と玉を生成する</p>
+                    <p>物理を使って、紙相撲を再現する</p>
                 </div>
 
             </div>
@@ -200,96 +181,7 @@
                     </div>
                 </div>
                 
-                <h3>Sample Code / サンプルコード</h3>
-                
-                    <div class="code-explanation"></div>
-                    <div class="code-container">
-                        <div class="code-header">WeaponSystem</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// EnemyBaseを作成、詳しい攻撃や移動などStrategyパターンで決める
-/// &lt;/summary&gt;
-public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEntity, IDieable
-{
-    private EnemyConfig _config;
-    public FactionType Faction =&gt; FactionType.Enemy;
-    public void Move(Vector3 direction)
-    {
-        _isAttackTimerCanCount = false;
-        var newPosition = _config.moveStrategy.Move(transform.position, direction, _config.moveSpeed);
-        transform.position = newPosition;
-    }
-    public void Attack(GameObject target)
-    {
-        _isAttackTimerCanCount = true;
-        if (_attackColdDownTimer &lt;= _config.attackColdDownTime) return;
-        _attackColdDownTimer -= _config.attackColdDownTime;
 
-        //ObjectPoolを使って、ファクトリーを使って、enemyを生成する、大量のInstantiate,Destoryを避けることができる
-        IFireable enemyBullet = BulletManager.Instance.SpawnBullet(_config.bulletType, transform.position, transform.rotation);
-        
-        OnAttack?.Invoke(_config.attackEffect);
-        enemyBullet?.Fire(target, _config.attackPower);
-        AudioManager.Instance.PlaySE(_config.SeType);
-    }
-}</code></pre>
-                    </div>
-                    
-                    <div class="code-explanation">ScriptableObjectで日本語もついてるから、プランナーも調整できる<br>excelでデータをダウンロードできるのは次の目標です</div>
-                    <div class="code-container">
-                        <div class="code-header">EnemyConfig</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// EnemyのデータをScriptableObjectを所持する、Enemyの詳細変更を簡単にできる
-/// &lt;/summary&gt;
-public class EnemyConfig : ScriptableObject
-{
-    [Header(&quot;表示属性&quot;)]
-    [Tooltip(&quot;名前&quot;)] public EnemyType enemyName;
-    [Tooltip(&quot;画像&quot;)] public Sprite enemyImage;
-    [Tooltip(&quot;説明&quot;), Multiline(6)] public string description;
-
-    [Header(&quot;基本属性&quot;)]
-    [Tooltip(&quot;資材コスト&quot;), Range(0, 1000)] public int cost;
-    [Tooltip(&quot;生成時間&quot;), Range(0, 500)] public float spawnTime;
-    [Tooltip(&quot;ドロップ資材&quot;), Range(0, 10000)] public int dropMoney;
-    [Tooltip(&quot;HP最大値&quot;), Range(1, 10000)] public int maxHealth;
-    [Tooltip(&quot;攻撃&quot;), Range(0, 1000)] public int attackPower;
-    [Tooltip(&quot;移動速度（m/s）&quot;), Range(0.0f, 20.0f)] public float moveSpeed;
-    [Tooltip(&quot;攻撃範囲（ｍ）&quot;), Range(0.1f, 30.0f)] public float attackRange;
-    [Tooltip(&quot;攻撃頻度（ｓ）&quot;), Range(0.1f, 30.0f)] public float attackColdDownTime;
-    [Tooltip(&quot;ダメージを受ける頻度（ｓ）&quot;), Range(0.1f, 20.0f)] public float damageColdDownTime;
-
-    [Header(&quot;プレハブ&quot;)]
-    public GameObject prefab;
-
-    [Header(&quot;弾の種類&quot;)]
-    public BulletType bulletType;
-    [Header(&quot;弾の音&quot;)]
-    public SEType SeType;
-
-    [Header(&quot;CanTakeDamageBy&quot;)]
-    public DamageRelationData damageRelationData;
-
-    [Header(&quot;EffectType&quot;)]
-    [Tooltip(&quot;ダメージエフェクト&quot;)] public EffectType damageEffect;
-    [Tooltip(&quot;攻撃エフェクト&quot;)] public EffectType attackEffect;
-    [Tooltip(&quot;死亡エフェクト&quot;)] public EffectType deathEffect;
-
-    [Header(&quot;MoveStrategy&quot;)]
-    public MoveStrategy moveStrategy;
-}</code></pre>
-                    </div>
-                    
-                
-
-                
-                <div class="content-block">
-                    <h3>Technical Image / 技術図</h3>
-                    <div class="game-detail-image">
-                        <a href="../Image/defanceGame_class.png" target="_blank">
-                            <img src="../Image/defanceGame_class.png" alt="逢魔々城 Technical Diagram">
-                        </a>
-                    </div>
-                </div>
                 
             </section>
         </main>

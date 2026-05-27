@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ペンギン紙相撲 | Jeffrey LEE</title>
-    <meta name="description" content="ペンギン紙相撲 - Project Details: Action Game / PC、WebGL">
+    <title>クリックゲーム | Jeffrey LEE</title>
+    <meta name="description" content="クリックゲーム - Project Details: Action Game / PC、WebGL">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
-    <meta property="og:description" content="ペンギン紙相撲 - Action Game / PC、WebGL">
-    <meta property="og:image" content="../Image/ペンギン紙相撲.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
+    <meta property="og:title" content="クリックゲーム | Jeffrey LEE">
+    <meta property="og:description" content="クリックゲーム - Action Game / PC、WebGL">
+    <meta property="og:image" content="../Image/マウスでボタンをクリックで点数が増えるゲーム.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/1_Click">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,13 +55,13 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">ペンギン紙相撲</h1>
+                    <h1 class="game-title">クリックゲーム</h1>
                     <h2 class="game-subtitle">Action Game / PC、WebGL</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>紙相撲のペンギンバージョン</p><p>A,Lで素早くクリックする、振動を起こす、相手の赤いペンギンを倒す</p>
+                        <p>Vcontainerを実験する、簡単なゲームです。</p>
                     </div>
                     
 
@@ -71,7 +71,7 @@
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2026/5(10時間)</p>
+                        <p>2026/5</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
@@ -82,24 +82,12 @@
                         </div>
                     </div>
                     
-                    <div class="content-block">
-                        <h3>Credit / クレジット</h3>
-                        <div>
-                            <ul>
-    <li>BGM : <a href="https://dova-s.jp/bgm/detail/21672">Who Is the Champion</a></li>
-    <li>SE : <a href="https://dova-s.jp/se/detail/355">デブペンギン</a></li>
-    <li>SkyBox : <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free - 10 Sky / Skybox Set</a></li>
-<ul>
-
-                        </div>
-                    </div>
-                    
                 </section>
 
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/ペンギン紙相撲.png" alt="ペンギン紙相撲 Screenshot">
+                            <img src="../Image/マウスでボタンをクリックで点数が増えるゲーム.png" alt="クリックゲーム Screenshot">
                         </div>
 
                         <div class="meta-info">
@@ -113,7 +101,7 @@
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/1_Click">
                         Play Game
                     </button>
                 </div>
@@ -141,7 +129,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    A, L Keys
+                                    Mouse
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -168,12 +156,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>短時間でゲームを作成</p>
+                    <p>シングルトン依存の脱却</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>物理を使って、紙相撲を再現する</p>
+                    <p>Vcontainerを使って、DIの練習</p>
                 </div>
 
             </div>

@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>デカめの一杯 | Jeffrey LEE</title>
-    <meta name="description" content="デカめの一杯 - Project Details: デカめの一杯">
+    <title>逢魔々城 | Jeffrey LEE</title>
+    <meta name="description" content="逢魔々城 - Project Details: Tower Defense Game / PC">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="デカめの一杯 | Jeffrey LEE">
-    <meta property="og:description" content="デカめの一杯 - デカめの一杯">
-    <meta property="og:image" content="../Image/Ika_01.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai">
+    <meta property="og:title" content="逢魔々城 | Jeffrey LEE">
+    <meta property="og:description" content="逢魔々城 - Tower Defense Game / PC">
+    <meta property="og:image" content="../Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,29 +55,32 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">デカめの一杯</h1>
-                    <h2 class="game-subtitle">デカめの一杯</h2>
+                    <h1 class="game-title">逢魔々城</h1>
+                    <h2 class="game-subtitle">Tower Defense Game / PC</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>Hackathonのプロジェクトテーマ”いっぱい”,<br>一杯とは～　イカの単位<br>制限時間内に魚を釣ってスコアを稼ぐ,levelを上げて5に到達したら、イカと戦闘が始まるゲーム</p>
+                        <p>葦原中津國にて、人々は戦乱の中にいた。公家の支配から抜け出した武士どもは、我こそが日ノ本の王にならんと殺し合いを続け、数百年がたった今もなお争い続けていた。</p><p>そんな戦乱の世を嫌い、都の庇護を得て一足早く太平を謳歌していたとある國。平和なその國を支配せんと、黄泉國より這い出た忌まわしき魑魅魍魎の群れが城に迫っていた。城の主であるあなたは、妖怪たちを退け、再びこの國に平和をもたらすことができるのか。</p>
                     </div>
                     
 
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity　2022.3.61f1</p>
+                        <p>Unity 2022.3.61f1</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2025/6～2025/7</p>
+                        <p>2025/8-2025/10</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ボース戦の全体</li>
+    <li>Strategyパターンを使っての敵と武器システム</li>
+    <li>武器のドラッグ＆ドロップシステム</li>
+    <li>タイトル画面の設計と実装</li>
+    <li>メインUIの設計と実装</li>
 </ul>
                         </div>
                     </div>
@@ -87,21 +90,21 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/Ika_01.png" alt="デカめの一杯 Screenshot">
+                            <img src="../Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png" alt="逢魔々城 Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows,WebGL)</span>
+                                <span class="meta-value">PC (Windows)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1　Player</span>
+                                <span class="meta-value">1 Player</span>
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai">
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame">
                         Play Game
                     </button>
                 </div>
@@ -129,7 +132,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    AWDS move, Mouse 釣り
+                                    Mouse
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -156,12 +159,40 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>Hackathonで短時間で設計、役割分担</p>
+                    <p>ゲームのバランス調整は難しい、プログラムが分からないプランナーにはできない</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>チームメンバーと上手く連携を取って、積極的にコミュニケーションを取る</p>
+                    <p>データをScriptableObjectで保存して、プランナーを編集可能にする</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>敵と武器の種類は今後増えるかもしれない</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Strategyパターン、Factory パターンを使って敵と武器の種類を増やすことができるように</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>敵と玉は大量出現するゲーム、InstantiateとDestroyの処理を避けたい</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>ObjectPool パターン使って敵と玉を生成する</p>
                 </div>
 
             </div>
@@ -170,6 +201,15 @@
                 </div>
                 
 
+                
+                <div class="content-block">
+                    <h3>Technical Image / 技術図</h3>
+                    <div class="game-detail-image">
+                        <a href="../Image/defanceGame_class.png" target="_blank">
+                            <img src="../Image/defanceGame_class.png" alt="逢魔々城 Technical Diagram">
+                        </a>
+                    </div>
+                </div>
                 
             </section>
         </main>
