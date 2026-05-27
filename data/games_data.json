@@ -225,7 +225,7 @@
         "filename": "Game09.html",
         "title": "Guilty Lane",
         "subtitle": "Guilty Lane",
-        "overview": "<p>Hackathonのプロジェクトテーマ”いかす”,<br>これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる</p>",
+        "overview": "<p>Hackathonのプロジェクトテーマ”***”,<br>これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる</p>",
         "engine": "Unity　2022.3.61f1",
         "period": "2025/9～2025/12",
         "responsible": [""],
@@ -238,5 +238,27 @@
         "how_to_play": "Mouse",
         "players": "1　Player",
         "play_link": ""
+    },
+    {
+        "filename": "Game10.html",
+        "title": "Unity Job SystemとBurst Compiler",
+        "subtitle": "Unity Job SystemとBurst Compiler",
+        "overview": "<p>C# Job SystemとBurst Compilerの練習プロジェクト</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "2026/5～2026/6",
+        "responsible": ["個人製作"],
+        "challenges_solutions": [
+            {"challenge" : "数千個の玉を60FPSで動く",
+            "solution" : "C# Job SystemとBurst Compilerを使って"},
+            {"challenge" : "WebGLに書き出す、WEBで公開する手間がかかる",
+            "solution" : "GitActionsとGame-CIで自動公開"},
+            {"challenge" : "Unity ECS を使って　Unity　DOTSを完成する",
+            "solution" : "まだ解決してない"}
+           ],
+        "image_path": "Image/Job_01.png",
+        "platform": "PC (Windows,WebGL)",
+        "how_to_play": "Mouse　",
+        "players": "1　Player",
+        "play_link": "https://0jeffrey017.github.io/20260523_ClickGame/"
     }
 ]
