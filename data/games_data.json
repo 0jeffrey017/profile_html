@@ -288,7 +288,7 @@
             {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
         ],
-        "image_path": "../Image/Shark_01.png",
+        "image_path": "Image/Shark_01.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Space　KeyJump",
         "players": "1 Player",
