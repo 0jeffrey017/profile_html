@@ -271,5 +271,27 @@
         "how_to_play": "WASD: Move, Mouse: Fishing / Attack",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai"
+    },
+    {
+        "id": "game11",
+        "filename": "Game11.html",
+        "title": "サメは偏食です。",
+        "subtitle": "弾幕ゲーム",
+        "description": "短時間開発。弾幕系のアクションゲーム",
+        "overview": "<p>食べるものと食べないものを見分けて、スコアを稼ぐ</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "2026/4～2026/5",
+        "status": "released",
+        "responsible": ["個人製作"],
+        "challenges_solutions": [
+            {"challenge" : "3DのUI　オブジェクトを表示したい", "solution" : "UIのカメラを作成、3DUIを表示する"},
+            {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
+             "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+        ],
+        "image_path": "Image/Skark_01.png",
+        "platform": "PC (Windows, WebGL)",
+        "how_to_play": "Space　KeyJump",
+        "players": "1 Player",
+        "play_link": "https://0jeffrey017.github.io/202601516_AvoidGame/"
     }
 ]
