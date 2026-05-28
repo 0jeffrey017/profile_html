@@ -250,7 +250,8 @@
                 "intro" : "JSONデータセーブシステム",
                 "explanation" : "ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現"
             }
-        ]
+        ],
+        "video_embed_url": "https://youtu.be/_mwkGeVx6As"
     },
     {
         "id": "game10",
