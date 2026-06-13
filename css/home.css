@@ -1,10 +1,18 @@
 /* --- About Section --- */
 .about-section {
-    display: grid;
+    display:contents;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     align-items: start;
     margin-bottom: 100px;
+}
+
+.about-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 30px;
 }
 
 .hero-title {
@@ -56,6 +64,7 @@
 
 .skill-detail-list {
     margin-top: 15px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -94,14 +103,14 @@
     gap: 10px;
 }
 
-.skill-tag, .qualifications-tag {
+/* .skill-tag, .qualifications-tag {
     background-color: #eff6ff;
     color: var(--primary-color);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-}
+} */
 
 .bio-text {
     color: var(--text-light);
