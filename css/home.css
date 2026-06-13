@@ -285,6 +285,12 @@
     color: var(--primary-color);
 }
 
+.game-url{
+    text-decoration:double;
+    color: blue;
+    transition: color 0.2s ease;
+}
+
 /* --- Responsive Home --- */
 @media (max-width: 768px) {
     .about-section {
