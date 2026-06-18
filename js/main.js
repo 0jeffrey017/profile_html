@@ -41,38 +41,25 @@
 
         displayGames.forEach(game => {
             const gameCard = `
-                <div class="game-card" data-id="${game.id}">
-                    <a href="games/${game.filename}" class="game-link">
-                        <div class="game-image-wrapper">
-                            <img src="${game.image_path}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
-                        </div>
-                        <div class="game-info">
-                            <span class="game-time">${game.period}</span>
-                            <h3 class="game-name">${game.title}</h3>
-                            <p class="game-desc">${game.description}</p>
-                        </div>
-                    </a>
+                <div class="game-card-wrapper">
+                    ${game.star ? '<span class="star-badge">★ イチオシ</span>' : ''}
+                    <div class="game-card" data-id="${game.id}">
+                        <a href="games/${game.filename}" class="game-link">
+                            <div class="game-image-wrapper">
+                                <img src="${game.image_path}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
+                            </div>
+                            <div class="game-info">
+                                <span class="game-time">${game.period}</span>
+                                <h3 class="game-name">${game.title}</h3>
+                                <p class="game-desc">${game.description}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             `;
             $grid.append(gameCard);
         });
 
-        // Add "Coming Soon" card at the end if sorting newest first
-        if (isNewestFirst) {
-            $grid.append(`
-                <div class="game-card coming-soon">
-                    <div class="game-image-wrapper">
-                        <img src="Image/GameCode.png" alt="Coming Soon">
-                    </div>
-                    <div class="game-info">
-                        <span class="game-time">Future</span>
-                        <h3 class="game-name">未公開タイトル</h3>
-                        <p class="game-desc">開発中の新しいプロジェクトです。</p>
-                    </div>
-                </div>
-            `);
-        }
-        
         console.log("main.js: Grid rendered (NewestFirst: " + isNewestFirst + ")");
     }
 

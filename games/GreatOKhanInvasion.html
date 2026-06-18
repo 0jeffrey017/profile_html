@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
+    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: 2D Endless Run Game / Enterprise Collaboration">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
+    <meta property="og:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta property="og:image" content="../Image/GameImage/RunGame_image.png">
+    <meta property="og:url" content="https://www.njpw.co.jp/games/great-o-khan/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">Jeffrey LEE</div>
+        </header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="breadcrumb">
+                <a href="../index.html#activity" class="back-link">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back / 戻る
+                </a>
+            </div>
+
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
+                    <h1 class="game-title">グレート-O-カーンの侵略物語</h1>
+                    <h2 class="game-subtitle">2D Endless Run Game / Enterprise Collaboration</h2>
+
+                    
+                    <div class="content-block">
+                        <h3>Overview / 概要</h3>
+                        <p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>
+                    </div>
+                    
+
+                    <div class="content-block">
+                        <h3>Game Engine / ゲームエンジン</h3>
+                        <p>Unity 2022.3.61f1</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Production period / 制作期間</h3>
+                        <p>2025/10-2026/2</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Responsible part / 担当部分</h3>
+                        <div>
+                            <ul>
+    <li>ゲーム全体のメインシステムおよびアーキテクチャの設計</li>
+    <li>New Input Systemを用いた、PC・モバイル両対応のマルチプラットフォーム入力制御</li>
+    <li>有限ステートマシン（FSM）によるゲーム全体のフローおよびキャラクターアクションの管理</li>
+    <li>ステージマップの動的生成およびアイテムの確率ベースランダムスポーンシステムの構築</li>
+    <li>ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）</li>
+</ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h3>Credit / クレジット</h3>
+                        <div>
+                            <ul>
+    <li>BGM,SE : <a href="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
+    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogic</a></li>
+<ul>
+
+                        </div>
+                    </div>
+                    
+                </section>
+
+                <aside class="game-sidebar">
+                    <div class="game-meta-card">
+                        <div class="game-detail-image">
+                            <img src="../Image/GameImage/RunGame_image.png" alt="グレート-O-カーンの侵略物語 Screenshot">
+                        </div>
+
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform</span>
+                                <span class="meta-value">PC (Windows, WebGL), Mobile</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Players</span>
+                                <span class="meta-value">1 Player</span>
+                            </div>
+                        </div>
+
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/">
+                        Play Game
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    Keyboard / Touch
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 2px solid black;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保</p>
+                </div>
+
+            </div>
+            
+                    </div>
+                </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装</div>
+                    <div class="code-container">
+                        <div class="code-header">FSM & UniTask 連携システム</div>
+                        <pre><code class="language-csharp">/// &lt;summary&gt;
+/// ゲームの状態を管理する
+/// &lt;/summary&gt;
+public static class GameStateMachine
+{
+    private static CancellationTokenSource _tokenSource;
+    private static CancellationToken _cancellationToken;
+    private static BaseState CurrentState { get; set; }
+
+    /// &lt;summary&gt;
+    /// ステータスマシンを開始する
+    /// &lt;/summary&gt;
+    public static void StartStateMachine()
+    {
+        _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
+        _cancellationToken = _tokenSource.Token;
+        RunStateMachineLoop().Forget();
+    }
+
+    /// &lt;summary&gt;
+    /// ステータスマシンのLoop
+    /// &lt;/summary&gt;
+    private static async UniTaskVoid RunStateMachineLoop()
+    {
+        //最初はInitialState
+        CurrentState = StateFactory.CreateState(EGameState.Initial);
+        BaseState nextState = CurrentState;
+
+        try
+        {
+            while (true)
+            {
+                _cancellationToken.ThrowIfCancellationRequested();
+
+                //Stateを切り替える
+                nextState = await TransitionAndRunStateAsync(nextState);
+                if (nextState == null)
+                {
+                    Debug.Log(&quot;GameOver!!&quot;);
+                    break;
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.Log(&quot;GameStateMachine is been canceled.&quot;);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
+        }
+        finally
+        {
+            Debug.Log(&quot;GameStateMachine Stopped.&quot;);
+            _tokenSource.Dispose();
+            _tokenSource = null;
+            SceneManager.LoadScene(&quot;Result&quot;);
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// Stateを切り替える
+    /// 前StateをonExitで抜けて
+    /// 次のStateのOnEnterを呼ぶ
+    /// RunStateで完成するを待つ
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;nextState&quot;&gt;次のState&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
+    {
+        BaseState oldState = CurrentState;
+
+        if (oldState != null &amp;&amp; oldState != nextState)
+        {
+            try
+            {
+                await oldState.OnExit(_cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                Debug.Log($&quot;State {oldState.GetType().Name} : OnExit is been canceled.&quot;);
+            }
+        }
+
+        CurrentState = nextState;
+
+        await CurrentState.OnEnter(_cancellationToken);
+
+        // RunStateで完成するを待つ、完成すると次のStateを返す
+        BaseState next = await CurrentState.RunState(_cancellationToken);
+
+        return next;
+    }
+
+    private static BaseState _nextStateRequest;
+    /// &lt;summary&gt;
+    /// 外からのStateを切り替える
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;nextState&quot;&gt;替わるState&lt;/param&gt;
+    public static void SwitchState(EGameState nextState)
+    {
+        _nextStateRequest = StateFactory.CreateState(nextState);
+        if (_nextStateRequest == null)
+        {
+            Debug.LogError(&quot;SwitchState failed.&quot;);
+        }
+        else
+        {
+            Debug.Log($&quot;Switch State To : {_nextStateRequest.GetType().Name}&quot;);
+        }
+    }
+    /// &lt;summary&gt;
+    /// MainGameStateで毎フレームで検知する、もしrequestedStateはNullじゃないとStateを切り替わる
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public static BaseState ConsumeStateRequest()
+    {
+        var requestedState = _nextStateRequest;
+        _nextStateRequest = null;
+        return requestedState;
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践</div>
+                    <div class="code-container">
+                        <div class="code-header">MVPアーキテクチャ Presenter層</div>
+                        <pre><code class="language-csharp">public class MainUIPresenter : MonoBehaviour
+{
+    [SerializeField] private MainUIViewer mainUIViewer;
+    [SerializeField] private PlayerModel playerModel;
+    
+    /// &lt;summary&gt;
+    /// playerModel　と　mainUIViewer　の中間者
+    /// &lt;/summary&gt;
+    private void Start()
+    {   
+        playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
+        playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
+        playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
+        playerModel.GameContext.LifeCount.Subscribe(n =&gt; mainUIViewer.SetLife(n));
+        playerModel.GameContext.CurrentSpeed.Subscribe(s =&gt; mainUIViewer.SetSpeed(s));
+    }
+}</code></pre>
+                    </div>
+                    
+                
+
+                
+                <div class="content-block">
+                    <h3>Technical Image / 技術図</h3>
+                    <div class="game-detail-image">
+                        <a href="../Image/グレート-O-カーンの侵略物語_class.png" target="_blank">
+                            <img src="../Image/グレート-O-カーンの侵略物語_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
+                        </a>
+                    </div>
+                </div>
+                
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="social-links">
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
+                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
+                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                        alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
+        </footer>
+    </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/game.js"></script>
+</body>
+
+</html>

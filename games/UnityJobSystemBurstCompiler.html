@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unity Job System & Burst Compiler | Jeffrey LEE</title>
+    <meta name="description" content="Unity Job System & Burst Compiler - Project Details: High-Performance Data-Oriented Programming">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Unity Job System & Burst Compiler | Jeffrey LEE">
+    <meta property="og:description" content="Unity Job System & Burst Compiler - High-Performance Data-Oriented Programming">
+    <meta property="og:image" content="../Image/GameImage/Unity Job System & Burst Compiler_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/20260523_ClickGame/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">Jeffrey LEE</div>
+        </header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="breadcrumb">
+                <a href="../index.html#activity" class="back-link">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back / 戻る
+                </a>
+            </div>
+
+            <div class="game-detail-layout">
+                <section class="game-detail-content">
+                    <h1 class="game-title">Unity Job System & Burst Compiler</h1>
+                    <h2 class="game-subtitle">High-Performance Data-Oriented Programming</h2>
+
+                    
+                    <div class="content-block">
+                        <h3>Overview / 概要</h3>
+                        <p>C# Job SystemとBurst Compilerを活用し、大量のオブジェクトを効率的に処理するデータ指向設計（DOD）の実践プロジェクトです。</p>
+                    </div>
+                    
+
+                    <div class="content-block">
+                        <h3>Game Engine / ゲームエンジン</h3>
+                        <p>Unity 6000.3.8f1</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Production period / 制作期間</h3>
+                        <p>2026/5～2026/6</p>
+                    </div>
+                    <div class="content-block">
+                        <h3>Responsible part / 担当部分</h3>
+                        <div>
+                            <ul>
+    <li>全部</li>
+</ul>
+                        </div>
+                    </div>
+                    
+                </section>
+
+                <aside class="game-sidebar">
+                    <div class="game-meta-card">
+                        <div class="game-detail-image">
+                            <img src="../Image/GameImage/Unity Job System & Burst Compiler_image.png" alt="Unity Job System & Burst Compiler Screenshot">
+                        </div>
+
+                        <div class="meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform</span>
+                                <span class="meta-value">PC (Windows, WebGL)</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Players</span>
+                                <span class="meta-value">1 Player</span>
+                            </div>
+                        </div>
+
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260523_ClickGame/">
+                        Play Game
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    Mouse Click The Top ToSpawn Ball
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 2px solid black;">
+            <br>
+
+            <section class="game-technical">
+                <div class="content-block">
+                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
+                    <div>
+                        
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>WebGLへのビルドおよびデプロイ作業の手間とタイムロス</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築</p>
+                </div>
+
+            </div>
+            
+                    </div>
+                </div>
+                
+
+                
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="social-links">
+                <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
+                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
+                </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
+                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
+                        alt="Instagram">
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
+        </footer>
+    </div>
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/game.js"></script>
+</body>
+
+</html>
