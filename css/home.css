@@ -8,10 +8,10 @@
 }
 
 .about-grid {
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-    align-items: start;
+    align-items: stretch;
     margin-bottom: 30px;
 }
 
@@ -123,14 +123,19 @@
 
 .about-image-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-img {
     width: 100%;
-    height: 768px;
+    height: 100%;
+    min-height: 300px;
     border-radius: 24px;
     box-shadow: var(--shadow-lg);
     object-fit: cover;
+    object-position: top;
+    flex: 1;
 }
 
 /* --- Games Section --- */
@@ -323,6 +328,61 @@
     transition: color 0.2s ease;
 }
 
+/* --- Skill Game Badges --- */
+.skill-games {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.skill-games-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--secondary-text);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    padding-top: 5px;
+}
+
+.skill-game-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-game-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.skill-game-badge:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.skill-game-badge .badge-icon {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
 /* --- Responsive Home --- */
 @media (max-width: 768px) {
     .about-section {
@@ -355,9 +415,23 @@
         font-size: 2.5rem;
     }
 
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
     .about-image-container {
         order: -1;
-        max-width: 400px;
-        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .profile-img {
+        height: auto;
+        min-height: unset;
+        max-height: 360px;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
     }
 }
