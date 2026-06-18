@@ -1,7 +1,7 @@
 [
     {
-        "id": "game01",
-        "filename": "Game01.html",
+        "id": "6",
+        "filename": "UnityJobSystemBurstCompiler.html",
         "title": "Unity Job System & Burst Compiler",
         "subtitle": "High-Performance Data-Oriented Programming",
         "description": "Unity Job SystemとBurst Compilerを用いた並行処理の検証プロジェクト",
@@ -9,20 +9,20 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5～2026/6",
         "status": "released",
-        "responsible": ["個人製作"],
+        "responsible": ["全部"],
         "challenges_solutions": [
             {"challenge" : "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する", "solution" : "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"},
             {"challenge" : "WebGLへのビルドおよびデプロイ作業の手間とタイムロス", "solution" : "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"}
         ],
-        "image_path": "Image/Job_01.png",
+        "image_path": "Image/GameImage/Unity Job System & Burst Compiler_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse Click The Top ToSpawn Ball",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/20260523_ClickGame/"
     },
     {
-        "id": "game02",
-        "filename": "Game02.html",
+        "id": "9",
+        "filename": "PenguinKamizumo.html",
         "title": "ペンギン紙相撲",
         "subtitle": "Physics-Based Action Game",
         "description": "物理演算を活用した、10時間の短時間制作アクションゲーム",
@@ -30,7 +30,7 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
-        "responsible": ["個人製作"],
+        "responsible": ["全部"],
         "challenges_solutions": [
             {"challenge" : "ハッカソンを想定した極めて短い制限時間内でのゲームループの完成", "solution" : "Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現"}
         ],
@@ -39,15 +39,15 @@
             {"type" :"SE", "name":"デブペンギン", "url":"https://dova-s.jp/se/detail/355"},
             {"type" :"SkyBox", "name":"AllSky Free - 10 Sky / Skybox Set", "url":"https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"}
         ],
-        "image_path": "Image/ペンギン紙相撲.png",
+        "image_path": "Image/GameImage/sumoGame_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "A, L Key",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo"
     },
     {
-        "id": "game03",
-        "filename": "Game03.html",
+        "id": "3",
+        "filename": "VContainerDIExperiment.html",
         "title": "VContainer DI Experiment",
         "subtitle": "Architecture Experiment Game",
         "description": "VContainerを用いたDI（依存性の注入）のアーキテクチャ実装実験",
@@ -55,19 +55,19 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
-        "responsible": ["個人製作"],
+        "responsible": ["全部"],
         "challenges_solutions": [
             {"challenge" : "密結合になりがちなシングルトンパターンへの過度な依存からの脱却", "solution" : "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"}
         ],
-        "image_path": "Image/マウスでボタンをクリックで点数が増えるゲーム.png",
+        "image_path": "Image/GameImage/ClickGame_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/1_Click"
     },
     {
-        "id": "game04",
-        "filename": "Game04.html",
+        "id": "4",
+        "filename": "PassTheBaton.html",
         "title": "PassTheBaton",
         "subtitle": "2D Puzzle Action / Hackathon Work",
         "description": "ハッカソン制作。過去の自分（骸）を足場にして進むギミックアクションゲーム",
@@ -80,15 +80,15 @@
             {"challenge" : "限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担", "solution" : "プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止"},
             {"challenge" : "状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持", "solution" : "VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール"}
         ],
-        "image_path": "Image/PassTheBaton_01.png",
+        "image_path": "Image/GameImage/PassTheBaton_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "WASD: Move, Q: Suicide",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/5_PassTheBaton"
     },
     {
-        "id": "game05",
-        "filename": "Game05.html",
+        "id": "5",
+        "filename": "SFMLLearning.html",
         "title": "SFML_Learning",
         "subtitle": "C++ & SFML Low-Level Programming Project",
         "description": "C++とSFMLを用いた低レイヤー開発およびゲームエンジン基礎の学習プロジェクト",
@@ -96,11 +96,11 @@
         "engine": "SFML 2.6.2",
         "period": "2026/4～",
         "status": "released",
-        "responsible": ["個人製作"],
+        "responsible": ["全部"],
         "challenges_solutions": [
             {"challenge" : "C++ネイティブ開発におけるクラス構造の肥大化と密結合化", "solution" : "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"}
         ],
-        "image_path": "Image/SFML_01.png",
+        "image_path": "Image/GameImage/SFML_image.png",
         "platform": "PC (Windows, Linux)",
         "how_to_play": "Keyboard",
         "players": "1 Player",
@@ -114,8 +114,9 @@
         }]
     },
     {
-        "id": "game06",
-        "filename": "Game06.html",
+        "id": "1",
+        "star": true,
+        "filename": "GreatOKhanInvasion.html",
         "title": "グレート-O-カーンの侵略物語",
         "subtitle": "2D Endless Run Game / Enterprise Collaboration",
         "description": "FSMやMVPパターン、UniRx、UniTaskを網羅した本格的なランゲーム（企業連携・準優勝作品）",
@@ -141,7 +142,7 @@
             {"type" :"BGM,SE", "name":"フリーBGM・音楽素材MusMus", "url":"https://musmus.main.jp"},
             {"type" :"BGM,SE", "name":"OtoLogic", "url":"https://otologic.jp/"}
         ],
-        "image_path": "Image/余にひれ伏せ愚民ども.png",
+        "image_path": "Image/GameImage/RunGame_image.png",
         "platform": "PC (Windows, WebGL), Mobile",
         "how_to_play": "Keyboard / Touch",
         "players": "1 Player",
@@ -161,8 +162,8 @@
         }]
     },
     {
-        "id": "game07",
-        "filename": "Game07.html",
+        "id": "7",
+        "filename": "GuiltyLane.html",
         "title": "Guilty Lane",
         "subtitle": "Dark Adventure Game / Hackathon Work",
         "description": "ハッカソン作品。「選択と罪」をテーマにしたナラティブ・アドベンチャーゲーム",
@@ -174,15 +175,15 @@
         "challenges_solutions": [
             {"challenge" : "複数人開発における、ゲーム内データ構造およびイベント仕様の統一", "solution" : "仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止"}
         ],
-        "image_path": "Image/Guilty_Lane01.png",
+        "image_path": "Image/GameImage/Guilty_Lane_image.png",
         "platform": "調整中",
         "how_to_play": "Mouse",
         "players": "1 Player",
         "play_link": ""
     },
     {
-        "id": "game08",
-        "filename": "Game08.html",
+        "id": "8",
+        "filename": "OumajoCastle.html",
         "title": "逢魔々城",
         "subtitle": "Japanese Tower Defense Game / Design Pattern Practice",
         "description": "各種デザインパターンを多用し、拡張性を限界まで追求した和風タワーディフェンス",
@@ -203,7 +204,7 @@
             {"challenge" : "敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
         ],
-        "image_path": "Image/Gemini_Generated_Image_hyd9tdhyd9tdhyd9.png",
+        "image_path": "Image/GameImage/DefanceGame_image.png",
         "platform": "PC (Windows)",
         "how_to_play": "Mouse(drag and drop)",
         "players": "1 Player",
@@ -224,8 +225,9 @@
         ]
     },
     {
-        "id": "game09",
-        "filename": "Game09.html",
+        "id": "2",
+        "star": true,
+        "filename": "SpaceCat.html",
         "title": "Space Cat",
         "subtitle": "2D Sci-Fi Survival Action",
         "description": "JSON形式によるセーブ/ロード機能を搭載した、SF2Dサバイバルアクションゲーム",
@@ -238,7 +240,7 @@
             {"challenge" : "難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須", "solution" : "プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築"},
             {"challenge" : "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない", "solution" : "現段階では完全な解決に至っておらず、物理演算（HingeJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中"}
         ],
-        "image_path": "Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png",
+        "image_path": "Image/GameImage/SpaceCat_image.png",
         "platform": "PC (Windows)",
         "how_to_play": "Keyboard(Please Follow The Game)",
         "players": "1 Player",
@@ -254,8 +256,8 @@
         "video_embed_url": "https://youtu.be/_mwkGeVx6As"
     },
     {
-        "id": "game10",
-        "filename": "Game10.html",
+        "id": "10",
+        "filename": "Ikasu.html",
         "title": "デカめの一杯",
         "subtitle": "Hybrid Action Game / Hackathon Work",
         "description": "短時間開発。釣りとボスバトルを融合させたハイブリッド・アクションゲーム",
@@ -267,15 +269,15 @@
         "challenges_solutions": [
             {"challenge" : "短期間の開発スケジュールの中で、全く異なる2つのゲームジャンルを違和感なく融合させる", "solution" : "コアとなる面白さを即座に検証するため、迅速なプロトタイピング（イテレーション）を繰り返し、仕様のブラッシュアップを最速で実施"}
         ],
-        "image_path": "Image/Ika_01.png",
+        "image_path": "Image/GameImage/Ikasu_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "WASD: Move, Mouse: Fishing / Attack",
         "players": "1 Player",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai"
     },
     {
-        "id": "game11",
-        "filename": "Game11.html",
+        "id": "11",
+        "filename": "SharkAvoidGame.html",
         "title": "サメは偏食です。",
         "subtitle": "弾幕ゲーム",
         "description": "短時間開発。弾幕系のアクションゲーム",
@@ -283,13 +285,13 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/4～2026/5",
         "status": "released",
-        "responsible": ["個人製作"],
+        "responsible": ["全部"],
         "challenges_solutions": [
             {"challenge" : "3DのUI　オブジェクトを表示したい", "solution" : "UIのカメラを作成、3DUIを表示する"},
             {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
         ],
-        "image_path": "Image/Shark_01.png",
+        "image_path": "Image/GameImage/AvoidGame_image.png",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Space　KeyJump",
         "players": "1 Player",

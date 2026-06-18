@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ペンギン紙相撲 | Jeffrey LEE</title>
-    <meta name="description" content="ペンギン紙相撲 - Project Details: Physics-Based Action Game">
+    <title>Unity Job System & Burst Compiler | Jeffrey LEE</title>
+    <meta name="description" content="Unity Job System & Burst Compiler - Project Details: High-Performance Data-Oriented Programming">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
-    <meta property="og:description" content="ペンギン紙相撲 - Physics-Based Action Game">
-    <meta property="og:image" content="../Image/ペンギン紙相撲.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
+    <meta property="og:title" content="Unity Job System & Burst Compiler | Jeffrey LEE">
+    <meta property="og:description" content="Unity Job System & Burst Compiler - High-Performance Data-Oriented Programming">
+    <meta property="og:image" content="../Image/GameImage/Unity Job System & Burst Compiler_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/20260523_ClickGame/">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,13 +55,13 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">ペンギン紙相撲</h1>
-                    <h2 class="game-subtitle">Physics-Based Action Game</h2>
+                    <h1 class="game-title">Unity Job System & Burst Compiler</h1>
+                    <h2 class="game-subtitle">High-Performance Data-Oriented Programming</h2>
 
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>伝統的な紙相撲をペンギンモチーフで再現。AキーとLキーを素早く交互に連打し、物理挙動を利用して相手を土俵から押し倒します。</p>
+                        <p>C# Job SystemとBurst Compilerを活用し、大量のオブジェクトを効率的に処理するデータ指向設計（DOD）の実践プロジェクトです。</p>
                     </div>
                     
 
@@ -71,26 +71,14 @@
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2026/5</p>
+                        <p>2026/5～2026/6</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>個人製作</li>
+    <li>全部</li>
 </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-block">
-                        <h3>Credit / クレジット</h3>
-                        <div>
-                            <ul>
-    <li>BGM : <a href="https://dova-s.jp/bgm/detail/21672">Who Is the Champion</a></li>
-    <li>SE : <a href="https://dova-s.jp/se/detail/355">デブペンギン</a></li>
-    <li>SkyBox : <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free - 10 Sky / Skybox Set</a></li>
-<ul>
-
                         </div>
                     </div>
                     
@@ -99,7 +87,7 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/ペンギン紙相撲.png" alt="ペンギン紙相撲 Screenshot">
+                            <img src="../Image/GameImage/Unity Job System & Burst Compiler_image.png" alt="Unity Job System & Burst Compiler Screenshot">
                         </div>
 
                         <div class="meta-info">
@@ -113,7 +101,7 @@
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
+                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260523_ClickGame/">
                         Play Game
                     </button>
                 </div>
@@ -141,7 +129,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    A, L Key
+                                    Mouse Click The Top ToSpawn Ball
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -168,12 +156,26 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ハッカソンを想定した極めて短い制限時間内でのゲームループの完成</p>
+                    <p>数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現</p>
+                    <p>C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>WebGLへのビルドおよびデプロイ作業の手間とタイムロス</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築</p>
                 </div>
 
             </div>

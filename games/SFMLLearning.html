@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Space Cat | Jeffrey LEE</title>
-    <meta name="description" content="Space Cat - Project Details: 2D Sci-Fi Survival Action">
+    <title>SFML_Learning | Jeffrey LEE</title>
+    <meta name="description" content="SFML_Learning - Project Details: C++ & SFML Low-Level Programming Project">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Space Cat | Jeffrey LEE">
-    <meta property="og:description" content="Space Cat - 2D Sci-Fi Survival Action">
-    <meta property="og:image" content="../Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat">
+    <meta property="og:title" content="SFML_Learning | Jeffrey LEE">
+    <meta property="og:description" content="SFML_Learning - C++ & SFML Low-Level Programming Project">
+    <meta property="og:image" content="../Image/GameImage/SFML_image.png">
+    <meta property="og:url" content="">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,13 +55,13 @@
 
             <div class="game-detail-layout">
                 <section class="game-detail-content">
-                    <h1 class="game-title">Space Cat</h1>
-                    <h2 class="game-subtitle">2D Sci-Fi Survival Action</h2>
+                    <h1 class="game-title">SFML_Learning</h1>
+                    <h2 class="game-subtitle">C++ & SFML Low-Level Programming Project</h2>
 
                     
                     <div class="content-block">
                         <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/_mwkGeVx6As" title="YouTube video player"
+                            <iframe src="https://www.youtube.com/embed/3qI0puDyEcU" title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write;
                                 encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -72,25 +72,23 @@
                     
                     <div class="content-block">
                         <h3>Overview / 概要</h3>
-                        <p>宇宙戦艦から脱出するため、4つの生存装備を探し出すSFアクション。ワイヤーアクションなど、ゲーム性のある物理挙動に挑戦した作品です。</p>
+                        <p>ゲームエンジンの内部挙動とC++のメモリ管理、オブジェクト設計を深く理解するために構築した、フレームワーク不使用の学習用プロジェクトです。</p>
                     </div>
                     
 
                     <div class="content-block">
                         <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity 2022.3.61f1</p>
+                        <p>SFML 2.6.2</p>
                     </div>
                     <div class="content-block">
                         <h3>Production period / 制作期間</h3>
-                        <p>2025/6 - 2025/8</p>
+                        <p>2026/4～</p>
                     </div>
                     <div class="content-block">
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>ゲーム全体の基本設計・システム構築</li>
-    <li>キャラクターのリジッドボディ制御・ワイヤー挙動の実装</li>
-    <li>タイトルおよびゲーム状態遷移の実装</li>
+    <li>全部</li>
 </ul>
                         </div>
                     </div>
@@ -100,13 +98,13 @@
                 <aside class="game-sidebar">
                     <div class="game-meta-card">
                         <div class="game-detail-image">
-                            <img src="../Image/Gemini_Generated_Image_sjdsvksjdsvksjds.png" alt="Space Cat Screenshot">
+                            <img src="../Image/GameImage/SFML_image.png" alt="SFML_Learning Screenshot">
                         </div>
 
                         <div class="meta-info">
                             <div class="meta-item">
                                 <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows)</span>
+                                <span class="meta-value">PC (Windows, Linux)</span>
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
@@ -114,7 +112,7 @@
                             </div>
                         </div>
 
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat">
+                    <button type="button" id="play-game-btn" class="play-button disabled" data-url="">
                         Play Game
                     </button>
                 </div>
@@ -142,7 +140,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Keyboard(Please Follow The Game)
+                                    Keyboard
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -169,26 +167,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須</p>
+                    <p>C++ネイティブ開発におけるクラス構造の肥大化と密結合化</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>現段階では完全な解決に至っておらず、物理演算（HingeJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中</p>
+                    <p>データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保</p>
                 </div>
 
             </div>
@@ -198,38 +182,205 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
-                    <div class="code-explanation">ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現</div>
+                    <div class="code-explanation">外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装</div>
                     <div class="code-container">
-                        <div class="code-header">JSONデータセーブシステム</div>
-                        <pre><code class="language-csharp">public class SaveManager : MonoBehaviour
-{
-        public void SaveDataToJson&lt;T&gt;(string path, T data)
+                        <div class="code-header">データ駆動型生成システム</div>
+                        <pre><code class="language-cpp">#include &lt;SFML/Graphics.hpp&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+class myCircle : public sf::Transformable{
+    sf::CircleShape circle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_Radius;SFML
+    sf::Text text;
+public:
+    myCircle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float Radius)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B),m_Radius(Radius)
     {
-        var s = JsonUtility.ToJson(data, true);
-        if (!File.Exists(path))
-        {
-            File.Create(path).Close();
+        circle.setRadius(Radius);
+        circle.setFillColor(sf::Color(R,G,B));
+        circle.setPosition(X,Y);
+    }
+    sf::CircleShape getShape() const
+    {
+        return circle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        circle.move(m_SX, m_SY);
+        sf::Vector2f pos = circle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            circle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + (m_Radius * 2) &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            circle.setPosition(windowWidth - (m_Radius * 2), pos.y); // Snap to edge
         }
-        using StreamWriter writer = new StreamWriter(path);
-        writer.Write(s);
-        writer.Close();
-        Debug.Log($&quot;save success&quot;);
+
+        pos = circle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, 0);
+        } else if (pos.y + (m_Radius * 2) &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            circle.setPosition(pos.x, windowHeight - (m_Radius * 2));
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(circle.getPosition().x + m_Radius, circle.getPosition().y + m_Radius);
+        return text;
+    }
+};
+
+class myRectangle : public sf::Transformable{
+    sf::RectangleShape rectangle;
+    std::string m_N;
+    float m_X, m_Y, m_SX, m_SY;
+    int m_R, m_G, m_B;
+    float m_W,m_H;
+    sf::Text text;
+public:
+    myRectangle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float W, float H)
+    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_W(W), m_H(H)
+    {
+        rectangle.setSize({W,H});
+        rectangle.setFillColor(sf::Color(R,G,B));
+        rectangle.setPosition(X,Y);
+    }
+    sf::RectangleShape getShape() const
+    {
+        return rectangle;
+    }
+    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+        text.setString(m_N);
+        text.setFont(font);
+        text.setCharacterSize(characterSize);
+        text.setFillColor(color);
+    }
+    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+        rectangle.move(m_SX, m_SY);
+        sf::Vector2f pos = rectangle.getPosition();
+
+        if (pos.x &lt;= 0) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(0, pos.y); // Snap to edge
+        } else if (pos.x + m_W &gt;= windowWidth) {
+            m_SX *= -1.0f;
+            rectangle.setPosition(windowWidth - m_W, pos.y); // Snap to edge
+        }
+
+        pos = rectangle.getPosition(); 
+        if (pos.y &lt;= 0) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, 0);
+        } else if (pos.y + m_H &gt;= windowHeight) {
+            m_SY *= -1.0f;
+            rectangle.setPosition(pos.x, windowHeight - m_H);
+        }
+    }
+    sf::Text showName(){
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setPosition(rectangle.getPosition().x + (m_W/2.0f), rectangle.getPosition().y + (m_H/2.0f));
+        return text;
+    }
+};
+
+int main()
+{
+    std::ifstream file(&quot;config.txt&quot;);
+    sf::RenderWindow window;
+    std::string word;
+    std::vector&lt;myCircle&gt; circles;
+    std::vector&lt;myRectangle&gt; rectangles;
+
+    sf::Font font;
+    int font_S, font_R, font_G, font_B;
+    sf::Color fontColor;
+
+    int windowWidth,windowHeight;
+
+    while (file &gt;&gt; word) {
+    if (word == &quot;Window&quot;) {
+        file &gt;&gt; windowWidth &gt;&gt; windowHeight;
+        window.create(sf::VideoMode(windowWidth, windowHeight), &quot;My Game&quot;);
+        } 
+        else if (word == &quot;Font&quot;) {
+            std::string F;
+            file &gt;&gt; F &gt;&gt; font_S &gt;&gt; font_R &gt;&gt; font_G &gt;&gt; font_B;
+            if (!font.loadFromFile(F))
+            {
+                std::cout &lt;&lt; &quot;Cant Load Font&quot;;
+            }
+            fontColor.r = font_R;
+            fontColor.g = font_G;
+            fontColor.b = font_B;
+        } 
+        else if (word == &quot;Circle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float Radius;
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; Radius;
+            myCircle circle(N,X,Y,SX,SY,R,G,B,Radius);
+            circle.setText(font,font_S,fontColor);
+            circles.push_back(circle);
+        }
+        else if (word == &quot;Rectangle&quot;) {
+            std::string N;
+            float X, Y, SX, SY;
+            int R, G, B;
+            float W, H;
+
+            file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; W &gt;&gt; H;
+            myRectangle rectangle(N,X,Y,SX,SY,R,G,B,W,H);
+            rectangle.setText(font,font_S,fontColor);
+
+            rectangles.push_back(rectangle);
+        }
+        else {
+            // Default case
+        }
     }
 
-    public T LoadDataFromJson&lt;T&gt;(string path)
+    while (window.isOpen())
     {
-        if (File.Exists(path))
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            using StreamReader reader = new StreamReader(path);
-            var s = reader.ReadToEnd();
-            var data = JsonUtility.FromJson&lt;T&gt;(s);
-            reader.Close();
-            return data;
+            if (event.type == sf::Event::Closed)
+                window.close();
         }
-        return default;
+
+        window.clear();
+        for(auto&amp; c : circles){
+            c.move(windowWidth,windowHeight);
+            window.draw(c.getShape());
+            window.draw(c.showName());
+        }
+        for(auto&amp; rt : rectangles){
+            rt.move(windowWidth,windowHeight);
+            window.draw(rt.getShape());
+            window.draw(rt.showName());
+        }
+
+        window.display();
     }
-}
-</code></pre>
+
+    file.close();
+    return 0;
+}</code></pre>
                     </div>
                     
                 
