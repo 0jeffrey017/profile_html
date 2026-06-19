@@ -9,7 +9,7 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5～2026/6",
         "status": "released",
-        "responsible": ["全部"],
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する", "solution" : "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"},
             {"challenge" : "WebGLへのビルドおよびデプロイ作業の手間とタイムロス", "solution" : "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"}
@@ -30,7 +30,7 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
-        "responsible": ["全部"],
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "ハッカソンを想定した極めて短い制限時間内でのゲームループの完成", "solution" : "Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現"}
         ],
@@ -55,7 +55,7 @@
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
         "status": "released",
-        "responsible": ["全部"],
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "密結合になりがちなシングルトンパターンへの過度な依存からの脱却", "solution" : "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"}
         ],
@@ -96,7 +96,7 @@
         "engine": "SFML 2.6.2",
         "period": "2026/4～",
         "status": "released",
-        "responsible": ["全部"],
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "C++ネイティブ開発におけるクラス構造の肥大化と密結合化", "solution" : "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"}
         ],
@@ -250,7 +250,7 @@
                 "path" : "Scripts/SpaceCatScript_01.cs",
                 "language" : "csharp",
                 "intro" : "JSONデータセーブシステム",
-                "explanation" : "ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現"
+                "explanation" : "ゲーム内ステートの永続化を担当するSaveManagerを実装。堅牢なシリアライズ処理を実現"
             }
         ],
         "video_embed_url": "https://youtu.be/_mwkGeVx6As"
@@ -280,14 +280,14 @@
         "filename": "SharkAvoidGame.html",
         "title": "サメは偏食です。",
         "subtitle": "弾幕ゲーム",
-        "description": "短時間開発。弾幕系のアクションゲーム",
-        "overview": "<p>食べるものと食べないものを見分けて、スコアを稼ぐ</p>",
+        "description": "短時間開発。瞬間的な判断力が問われる弾幕アクションゲーム",
+        "overview": "<p>迫りくる食べ物の中から「食べてよいもの」と「避けるべきもの」を瞬時に見分け、ジャンプで回避しながらスコアを稼ぐ弾幕アクションです。大量出現するオブジェクトを安定動作させる最適化に取り組みました。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/4～2026/5",
         "status": "released",
-        "responsible": ["全部"],
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
-            {"challenge" : "3DのUI　オブジェクトを表示したい", "solution" : "UIのカメラを作成、3DUIを表示する"},
+            {"challenge" : "通常のUIでは表現できない、立体的な3DオブジェクトをUIとして画面に表示したい", "solution" : "UI専用カメラを別途構築し、3DオブジェクトをUIレイヤーへ合成描画することで、奥行きのある演出を実現"},
             {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
         ],
