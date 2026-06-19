@@ -3,6 +3,8 @@ import os
 import html
 import re
 
+SITE_BASE_URL = 'https://0jeffrey017.github.io/profile_html'
+
 def generate_games():
     # Load template
     template_path = 'game_template.html'
@@ -116,8 +118,8 @@ def generate_games():
                 credit_type = cd.get('type','')
                 credit_name = cd.get('name','')
                 credit_url = cd.get('url','')
-                credit_html += f'    <li>{credit_type} : <a href="{credit_url}">{credit_name}</a></li>\n'
-            credit_html += "<ul>\n"
+                credit_html += f'    <li>{credit_type} : <a href="{credit_url}" target="_blank" rel="noopener noreferrer">{credit_name}</a></li>\n'
+            credit_html += "</ul>\n"
             content = content.replace('{{CREDIT}}', credit_html)
 
         responsibles = game.get('responsible', [])
@@ -157,6 +159,12 @@ def generate_games():
         content = content.replace('{{ENGINE}}', game.get('engine', ''))
         content = content.replace('{{PERIOD}}', game.get('period', ''))
         content = content.replace('{{IMAGE_PATH}}', game.get('image_path', ''))
+
+        # Absolute URLs for SEO / OGP
+        page_url = f"{SITE_BASE_URL}/games/{game.get('filename', '')}"
+        abs_image = f"{SITE_BASE_URL}/{game.get('image_path', '')}"
+        content = content.replace('{{PAGE_URL}}', page_url)
+        content = content.replace('{{ABS_IMAGE_PATH}}', abs_image)
         content = content.replace('{{PLATFORM}}', game.get('platform', ''))
         content = content.replace('{{HOW_TO_PLAY}}', game.get('how_to_play', ''))
         content = content.replace('{{PLAYERS}}', game.get('players', ''))

@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>デカめの一杯 | Jeffrey LEE</title>
-    <meta name="description" content="デカめの一杯 - Project Details: Hybrid Action Game / Hackathon Work">
+    <meta name="description" content="デカめの一杯 - Hybrid Action Game / Hackathon Work">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/Ikasu.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="デカめの一杯 | Jeffrey LEE">
     <meta property="og:description" content="デカめの一杯 - Hybrid Action Game / Hackathon Work">
-    <meta property="og:image" content="../Image/GameImage/Ikasu_image.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/6_Dakamenoippai">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Ikasu_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/Ikasu.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="デカめの一杯 | Jeffrey LEE">
+    <meta name="twitter:description" content="デカめの一杯 - Hybrid Action Game / Hackathon Work">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Ikasu_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +107,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -169,6 +179,123 @@
                     </div>
                 </div>
                 
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">NavMeshAgentを土台に、プレイヤーとの距離に応じて巡回→追跡→近・中・遠距離攻撃を切り替える多段階AIを実装。弾は y = v0t − ½gt² を初速について逆算し、指定時間で着弾する放物線軌道を物理計算で実現</div>
+                    <div class="code-container">
+                        <div class="code-header">距離ベースのボスAIと放物線弾道</div>
+                        <pre><code class="language-csharp">using UnityEngine;
+using UnityEngine.AI;
+
+/// &lt;summary&gt;
+/// ボス（巨大イカ）のAI制御。NavMeshAgent による移動を土台に、
+/// プレイヤーとの「距離」に応じて 巡回 → 追跡 → 近・中・遠距離攻撃 を切り替える
+/// 多段階の行動ロジックを実装。各攻撃はクールダウンで管理し、
+/// 弾は物理計算で算出した放物線軌道でプレイヤーへ撃ち込む。
+/// （担当：ボス戦のAI・戦闘ロジック全般）
+/// &lt;/summary&gt;
+[RequireComponent(typeof(NavMeshAgent))]
+public class EnemySquidController : MonoBehaviour
+{
+    private NavMeshAgent _agent;
+    public Transform _player;
+    public LayerMask WhatIsPlayer;
+    public BattleSceneManager _battleSceneManager;
+
+    // 視認・各攻撃の有効範囲（半径）
+    public float _signtRange, _attackRange, _attackRange_02, _attackRange_03;
+    public float _timeBetweenAttacks;
+    public float _parabolaTime = 2f;
+
+    public GameObject _squidAttack;       // 放物線で飛ばす弾
+    private bool _alreadyAttacked;
+
+    private void Awake() =&gt; _agent = GetComponent&lt;NavMeshAgent&gt;();
+
+    private void Update()
+    {
+        // プレイヤーとの距離を各範囲の球で判定（近いほど強力な攻撃へ移行）
+        bool inSight   = Physics.CheckSphere(transform.position, _signtRange, WhatIsPlayer);
+        bool inAttack  = Physics.CheckSphere(transform.position, _attackRange, WhatIsPlayer);
+        bool inAttack2 = Physics.CheckSphere(transform.position, _attackRange_02, WhatIsPlayer);
+        bool inAttack3 = Physics.CheckSphere(transform.position, _attackRange_03, WhatIsPlayer);
+
+        // --- 距離に応じた行動分岐（簡易ステートマシン） ---
+        if (!inSight &amp;&amp; !inAttack &amp;&amp; !inAttack2)      Patroling();   // 圏外：巡回
+        else if (inSight &amp;&amp; !inAttack &amp;&amp; !inAttack2)  ChasePlayer(); // 視認：追跡
+        else if (inAttack &amp;&amp; inSight &amp;&amp; !inAttack2)   AttackPlayer(); // 中距離：放物線弾
+
+        if (inAttack &amp;&amp; inSight &amp;&amp; inAttack2)         AttackPlayer02(); // 近距離：ノックバック
+
+        // 遠距離攻撃は「残り時間が一定以下」のときのみ発動する条件付きギミック
+        if (inAttack3 &amp;&amp; _battleSceneManager.GetCountDownTime() &lt; 0.6f)
+            AttackPlayer03();
+    }
+
+    private void ChasePlayer() =&gt; _agent.SetDestination(_player.position);
+
+    /// &lt;summary&gt;中距離攻撃：プレイヤーへ放物線を描く弾を発射する。&lt;/summary&gt;
+    private void AttackPlayer()
+    {
+        _agent.SetDestination(transform.position); // その場で停止
+        transform.LookAt(_player);
+
+        if (_alreadyAttacked) return; // クールダウン中は撃たない
+
+        Rigidbody rb = Instantiate(_squidAttack, transform.position, transform.rotation)
+                       .GetComponent&lt;Rigidbody&gt;();
+        AudioManager.Instance.PlaySE(E_SEType.大砲1);
+
+        Vector3 firePoint = transform.position + Vector3.up * 2f;
+        Vector3 target = GetRandomPointInCircle(_player.position, 2f); // 着弾に揺らぎを与える
+        ParabolaWithTime(rb, firePoint, target, _parabolaTime);
+
+        _alreadyAttacked = true;
+        Invoke(nameof(ResetAttack), _timeBetweenAttacks); // 一定時間後に再攻撃を許可
+    }
+
+    private void ResetAttack() =&gt; _alreadyAttacked = false;
+
+    /// &lt;summary&gt;着弾点を円内にランダム分布させる（角度＋√で一様分布を実現）。&lt;/summary&gt;
+    private Vector3 GetRandomPointInCircle(Vector3 center, float radius)
+    {
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float r = Mathf.Sqrt(Random.value) * radius; // √を取ることで中心に偏らせない
+        return center + new Vector3(Mathf.Cos(angle) * r, 0f, Mathf.Sin(angle) * r);
+    }
+
+    /// &lt;summary&gt;
+    /// 指定時間 totalTime で startPos から targetPos へ到達する放物線の初速を逆算し、
+    /// Rigidbody にインパルスとして与える。
+    /// 水平：v = 距離 / 時間、垂直：y = v0t − ½gt² を v0 について解く。
+    /// &lt;/summary&gt;
+    public void ParabolaWithTime(Rigidbody rb, Vector3 startPos, Vector3 targetPos, float totalTime)
+    {
+        Vector3 displacement = targetPos - startPos;
+
+        // 水平成分：等速とみなして初速を算出
+        Vector3 displacementXZ = new Vector3(displacement.x, 0, displacement.z);
+        Vector3 velocityXZ = displacementXZ / totalTime;
+
+        // 垂直成分：重力を打ち消して目標高度に届く初速を逆算
+        float gravity = Mathf.Abs(Physics.gravity.y);
+        float velocityY = (displacement.y + 0.5f * gravity * totalTime * totalTime) / totalTime;
+
+        Vector3 initialVelocity = velocityXZ + Vector3.up * velocityY;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.AddForce(initialVelocity * 1.05f, ForceMode.Impulse);
+    }
+
+    // Patroling() / AttackPlayer02() / AttackPlayer03() は紙幅の都合で省略
+    private void Patroling() { /* NavMeshでランダムな巡回点へ移動 */ }
+    private void AttackPlayer02() { /* 近距離：周囲をノックバック */ }
+    private void AttackPlayer03() { /* 遠距離：地面から触手を出現させる */ }
+}
+</code></pre>
+                    </div>
+                    
+                
 
                 
             </section>
@@ -179,15 +306,11 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>

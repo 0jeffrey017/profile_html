@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ペンギン紙相撲 | Jeffrey LEE</title>
-    <meta name="description" content="ペンギン紙相撲 - Project Details: Physics-Based Action Game">
+    <meta name="description" content="ペンギン紙相撲 - Physics-Based Action Game">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/PenguinKamizumo.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="ペンギン紙相撲 | Jeffrey LEE">
     <meta property="og:description" content="ペンギン紙相撲 - Physics-Based Action Game">
-    <meta property="og:image" content="../Image/GameImage/sumoGame_image.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/sumoGame_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/PenguinKamizumo.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ペンギン紙相撲 | Jeffrey LEE">
+    <meta name="twitter:description" content="ペンギン紙相撲 - Physics-Based Action Game">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/sumoGame_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +87,7 @@
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>全部</li>
+    <li>個人製作（企画・設計・実装の全工程を担当）</li>
 </ul>
                         </div>
                     </div>
@@ -86,10 +96,10 @@
                         <h3>Credit / クレジット</h3>
                         <div>
                             <ul>
-    <li>BGM : <a href="https://dova-s.jp/bgm/detail/21672">Who Is the Champion</a></li>
-    <li>SE : <a href="https://dova-s.jp/se/detail/355">デブペンギン</a></li>
-    <li>SkyBox : <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free - 10 Sky / Skybox Set</a></li>
-<ul>
+    <li>BGM : <a href="https://dova-s.jp/bgm/detail/21672" target="_blank" rel="noopener noreferrer">Who Is the Champion</a></li>
+    <li>SE : <a href="https://dova-s.jp/se/detail/355" target="_blank" rel="noopener noreferrer">デブペンギン</a></li>
+    <li>SkyBox : <a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014" target="_blank" rel="noopener noreferrer">AllSky Free - 10 Sky / Skybox Set</a></li>
+</ul>
 
                         </div>
                     </div>
@@ -109,7 +119,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -141,7 +151,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    A, L Key
+                                    A / L Key: 連打して攻撃
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -181,6 +191,104 @@
                     </div>
                 </div>
                 
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">タイトル演出（カメラ旋回）と入力待ちを async/await で同時に表現。コールバック地獄を避け、destroyCancellationTokenでシーン破棄時の安全なキャンセルも保証した進行管理</div>
+                    <div class="code-container">
+                        <div class="code-header">UniTaskによる非同期フロー制御</div>
+                        <pre><code class="language-csharp">using System;
+using Audio;
+using Cysharp.Threading.Tasks;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+/// &lt;summary&gt;
+/// タイトル演出・ゲーム開始・リスタートの一連のフローを UniTask で制御するマネージャー。
+/// コルーチンや多重コールバックに頼らず async/await で記述することで、
+/// 「入力待ち」と「カメラ演出」を並行させつつ可読性の高いフロー制御を実現。
+/// destroyCancellationToken でシーン破棄時の安全なキャンセルも保証する。
+/// &lt;/summary&gt;
+public class GameManager : MonoBehaviour
+{
+    [SerializeField] private CanvasGroup uiCanvasGroup;
+    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private TextMeshProUGUI tileText;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private StageController stageController;
+    [SerializeField] private Transform lookAtTarget;
+
+    private float _x;
+    private float _z;
+
+    private async void Start()
+    {
+        try
+        {
+            messageText.text = &quot;Press S to Start&quot;;
+            uiCanvasGroup.alpha = 0;
+            // タイトル演出（カメラ回転＋入力待ち）が終わるまで待機
+            await CameraMovement();
+        }
+        catch (OperationCanceledException e)
+        {
+            // シーン破棄などでキャンセルされた場合は安全に抜ける
+            Debug.LogException(e);
+        }
+    }
+
+    private void OnEnable()  =&gt; stageController.GameOverCallback += HandleGameOver;
+    private void OnDisable() =&gt; stageController.GameOverCallback -= HandleGameOver;
+
+    private void HandleGameOver(string winner) =&gt; WaitForRestart().Forget();
+
+    /// &lt;summary&gt;ゲームオーバー後、S キー入力を待ってシーンをリロードする。&lt;/summary&gt;
+    private async UniTask WaitForRestart()
+    {
+        // 毎フレーム Yield しながら入力を監視（コールバック地獄を回避）
+        while (!Keyboard.current.sKey.wasPressedThisFrame)
+            await UniTask.Yield(PlayerLoopTiming.Update);
+
+        stageController.isGameOver = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// &lt;summary&gt;
+    /// タイトル中はカメラを円軌道で旋回させ、S キーが押されたら本編へ遷移する。
+    /// 「演出（カメラ移動）」と「入力待ち」を 1 つの while ループで同時に表現できるのが
+    /// async/await の利点。
+    /// &lt;/summary&gt;
+    private async UniTask CameraMovement()
+    {
+        AudioManager.Instance.PlayBGM(AudioManager.BGMType.BGM01);
+        Vector3 currPos = mainCamera.transform.position;
+        Quaternion currRot = mainCamera.transform.rotation;
+
+        while (!Keyboard.current.sKey.wasPressedThisFrame)
+        {
+            // 三角関数でカメラを被写体の周囲に円軌道で配置
+            _x = 10 * Mathf.Sin(Time.time * 0.5f);
+            _z = 10 * Mathf.Cos(Time.time * 0.5f);
+            mainCamera.transform.position = new Vector3(_x, currPos.y, _z);
+            mainCamera.transform.LookAt(lookAtTarget);
+
+            // シーン破棄時にトークン経由で自動キャンセルされる
+            await UniTask.WaitForEndOfFrame(this.destroyCancellationToken);
+        }
+
+        // 演出終了：カメラを元に戻してゲーム本編を開始
+        mainCamera.transform.position = currPos;
+        mainCamera.transform.rotation = currRot;
+        stageController.StartGame();
+        uiCanvasGroup.alpha = 1;
+        tileText.gameObject.SetActive(false);
+    }
+}
+</code></pre>
+                    </div>
+                    
+                
 
                 
             </section>
@@ -191,15 +299,11 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
