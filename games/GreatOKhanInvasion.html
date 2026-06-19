@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
-    <meta name="description" content="グレート-O-カーンの侵略物語 - Project Details: 2D Endless Run Game / Enterprise Collaboration">
+    <meta name="description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/GreatOKhanInvasion.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
     <meta property="og:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
-    <meta property="og:image" content="../Image/GameImage/RunGame_image.png">
-    <meta property="og:url" content="https://www.njpw.co.jp/games/great-o-khan/">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RunGame_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/GreatOKhanInvasion.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
+    <meta name="twitter:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RunGame_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,9 +100,9 @@
                         <h3>Credit / クレジット</h3>
                         <div>
                             <ul>
-    <li>BGM,SE : <a href="https://musmus.main.jp">フリーBGM・音楽素材MusMus</a></li>
-    <li>BGM,SE : <a href="https://otologic.jp/">OtoLogic</a></li>
-<ul>
+    <li>BGM,SE : <a href="https://musmus.main.jp" target="_blank" rel="noopener noreferrer">フリーBGM・音楽素材MusMus</a></li>
+    <li>BGM,SE : <a href="https://otologic.jp/" target="_blank" rel="noopener noreferrer">OtoLogic</a></li>
+</ul>
 
                         </div>
                     </div>
@@ -112,7 +122,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -159,7 +169,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -245,150 +255,150 @@
                     <div class="code-explanation">UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装</div>
                     <div class="code-container">
                         <div class="code-header">FSM & UniTask 連携システム</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// ゲームの状態を管理する
-/// &lt;/summary&gt;
-public static class GameStateMachine
+                        <pre><code class="language-csharp">using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using State.Enum;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace State
 {
-    private static CancellationTokenSource _tokenSource;
-    private static CancellationToken _cancellationToken;
-    private static BaseState CurrentState { get; set; }
-
     /// &lt;summary&gt;
-    /// ステータスマシンを開始する
+    /// ゲーム全体の進行を制御する有限ステートマシン（FSM）。
+    /// 各状態（State）は OnEnter → RunState → OnExit のライフサイクルを持ち、
+    /// UniTask により「状態の実行完了」を await で待つことで、複雑なゲーム進行を
+    /// コールバックに頼らず直線的かつ堅牢に記述できる。
+    /// CancellationToken でシーン破棄・アプリ終了時の安全な中断も保証する。
     /// &lt;/summary&gt;
-    public static void StartStateMachine()
+    public static class GameStateMachine
     {
-        _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
-        _cancellationToken = _tokenSource.Token;
-        RunStateMachineLoop().Forget();
-    }
+        private static CancellationTokenSource _tokenSource;
+        private static CancellationToken _cancellationToken;
+        private static BaseState CurrentState { get; set; }
 
-    /// &lt;summary&gt;
-    /// ステータスマシンのLoop
-    /// &lt;/summary&gt;
-    private static async UniTaskVoid RunStateMachineLoop()
-    {
-        //最初はInitialState
-        CurrentState = StateFactory.CreateState(EGameState.Initial);
-        BaseState nextState = CurrentState;
-
-        try
+        /// &lt;summary&gt;ステートマシンを開始する。アプリ終了トークンと連動させる。&lt;/summary&gt;
+        public static void StartStateMachine()
         {
-            while (true)
-            {
-                _cancellationToken.ThrowIfCancellationRequested();
-
-                //Stateを切り替える
-                nextState = await TransitionAndRunStateAsync(nextState);
-                if (nextState == null)
-                {
-                    Debug.Log(&quot;GameOver!!&quot;);
-                    break;
-                }
-            }
+            _tokenSource = CancellationTokenSource.CreateLinkedTokenSource(Application.exitCancellationToken);
+            _cancellationToken = _tokenSource.Token;
+            RunStateMachineLoop().Forget();
         }
-        catch (OperationCanceledException)
-        {
-            Debug.Log(&quot;GameStateMachine is been canceled.&quot;);
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
-        }
-        finally
-        {
-            Debug.Log(&quot;GameStateMachine Stopped.&quot;);
-            _tokenSource.Dispose();
-            _tokenSource = null;
-            SceneManager.LoadScene(&quot;Result&quot;);
-        }
-    }
 
-    /// &lt;summary&gt;
-    /// Stateを切り替える
-    /// 前StateをonExitで抜けて
-    /// 次のStateのOnEnterを呼ぶ
-    /// RunStateで完成するを待つ
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;次のState&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
-    {
-        BaseState oldState = CurrentState;
-
-        if (oldState != null &amp;&amp; oldState != nextState)
+        /// &lt;summary&gt;状態遷移を回し続けるメインループ。次状態が null になれば終了。&lt;/summary&gt;
+        private static async UniTaskVoid RunStateMachineLoop()
         {
+            CurrentState = StateFactory.CreateState(EGameState.Initial); // 初期状態
+            BaseState nextState = CurrentState;
+
             try
             {
-                await oldState.OnExit(_cancellationToken);
+                while (true)
+                {
+                    _cancellationToken.ThrowIfCancellationRequested();
+
+                    nextState = await TransitionAndRunStateAsync(nextState);
+                    if (nextState == null) // ゲームオーバー
+                    {
+                        Debug.Log(&quot;GameOver!!&quot;);
+                        break;
+                    }
+                }
             }
             catch (OperationCanceledException)
             {
-                Debug.Log($&quot;State {oldState.GetType().Name} : OnExit is been canceled.&quot;);
+                Debug.Log(&quot;GameStateMachine is canceled.&quot;);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($&quot;GameStateMachine Error: {ex.Message}&quot;);
+            }
+            finally
+            {
+                // 終了処理は必ず通る finally に集約し、リソース解放とシーン遷移を保証
+                _tokenSource.Dispose();
+                _tokenSource = null;
+                SceneManager.LoadScene(&quot;Result&quot;);
             }
         }
 
-        CurrentState = nextState;
-
-        await CurrentState.OnEnter(_cancellationToken);
-
-        // RunStateで完成するを待つ、完成すると次のStateを返す
-        BaseState next = await CurrentState.RunState(_cancellationToken);
-
-        return next;
-    }
-
-    private static BaseState _nextStateRequest;
-    /// &lt;summary&gt;
-    /// 外からのStateを切り替える
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;nextState&quot;&gt;替わるState&lt;/param&gt;
-    public static void SwitchState(EGameState nextState)
-    {
-        _nextStateRequest = StateFactory.CreateState(nextState);
-        if (_nextStateRequest == null)
+        /// &lt;summary&gt;
+        /// 状態を切り替える：旧状態を OnExit で抜け、新状態を OnEnter →
+        /// RunState の完了まで待ち、その戻り値を次状態として返す。
+        /// &lt;/summary&gt;
+        private static async UniTask&lt;BaseState&gt; TransitionAndRunStateAsync(BaseState nextState)
         {
-            Debug.LogError(&quot;SwitchState failed.&quot;);
+            BaseState oldState = CurrentState;
+
+            if (oldState != null &amp;&amp; oldState != nextState)
+            {
+                try { await oldState.OnExit(_cancellationToken); }
+                catch (OperationCanceledException)
+                {
+                    Debug.Log($&quot;State {oldState.GetType().Name} : OnExit canceled.&quot;);
+                }
+            }
+
+            CurrentState = nextState;
+            await CurrentState.OnEnter(_cancellationToken);
+
+            // RunState が完了する（＝状態の役目が終わる）まで待ち、次状態を受け取る
+            return await CurrentState.RunState(_cancellationToken);
         }
-        else
+
+        private static BaseState _nextStateRequest;
+
+        /// &lt;summary&gt;外部から状態遷移をリクエストする（例：イベント発火による割り込み）。&lt;/summary&gt;
+        public static void SwitchState(EGameState nextState)
         {
-            Debug.Log($&quot;Switch State To : {_nextStateRequest.GetType().Name}&quot;);
+            _nextStateRequest = StateFactory.CreateState(nextState);
+            if (_nextStateRequest == null) Debug.LogError(&quot;SwitchState failed.&quot;);
+        }
+
+        /// &lt;summary&gt;リクエストされた状態を1度だけ取り出す（MainGameStateが毎フレーム検知）。&lt;/summary&gt;
+        public static BaseState ConsumeStateRequest()
+        {
+            var requested = _nextStateRequest;
+            _nextStateRequest = null;
+            return requested;
         }
     }
-    /// &lt;summary&gt;
-    /// MainGameStateで毎フレームで検知する、もしrequestedStateはNullじゃないとStateを切り替わる
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public static BaseState ConsumeStateRequest()
-    {
-        var requestedState = _nextStateRequest;
-        _nextStateRequest = null;
-        return requestedState;
-    }
-}</code></pre>
+}
+</code></pre>
                     </div>
                     
                     <div class="code-explanation">UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践</div>
                     <div class="code-container">
                         <div class="code-header">MVPアーキテクチャ Presenter層</div>
-                        <pre><code class="language-csharp">public class MainUIPresenter : MonoBehaviour
+                        <pre><code class="language-csharp">using Player;
+using UI;
+using UniRx;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// MVP（Model-View-Presenter）パターンの Presenter 層。
+/// Model（PlayerModel の GameContext）の値の変化を UniRx で購読し、
+/// View（MainUIViewer）へ反映するだけの「中間者」に徹する。
+/// Model は View を知らず、View は Model を知らない。両者を Presenter が仲介することで
+/// 結合度を極限まで下げ、UI 刷新やロジック変更が互いに波及しない設計を実現する。
+/// &lt;/summary&gt;
+public class MainUIPresenter : MonoBehaviour
 {
-    [SerializeField] private MainUIViewer mainUIViewer;
-    [SerializeField] private PlayerModel playerModel;
-    
-    /// &lt;summary&gt;
-    /// playerModel　と　mainUIViewer　の中間者
-    /// &lt;/summary&gt;
+    [SerializeField] private MainUIViewer mainUIViewer; // View
+    [SerializeField] private PlayerModel playerModel;   // Model
+
     private void Start()
-    {   
+    {
+        // Model の各 ReactiveProperty を購読し、変化があれば対応する View 更新を呼ぶ。
+        // 「データが変わったら自動で画面に反映される」宣言的なバインディング。
         playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
         playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
         playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
         playerModel.GameContext.LifeCount.Subscribe(n =&gt; mainUIViewer.SetLife(n));
         playerModel.GameContext.CurrentSpeed.Subscribe(s =&gt; mainUIViewer.SetSpeed(s));
     }
-}</code></pre>
+}
+</code></pre>
                     </div>
                     
                 
@@ -397,8 +407,8 @@ public static class GameStateMachine
                 <div class="content-block">
                     <h3>Technical Image / 技術図</h3>
                     <div class="game-detail-image">
-                        <a href="../Image/グレート-O-カーンの侵略物語_class.png" target="_blank">
-                            <img src="../Image/グレート-O-カーンの侵略物語_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
+                        <a href="../Image/RunGame_class.png" target="_blank">
+                            <img src="../Image/RunGame_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
                         </a>
                     </div>
                 </div>
@@ -411,15 +421,11 @@ public static class GameStateMachine
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>

@@ -5,7 +5,10 @@
     --border-color: #e5e7eb;
     --primary-color: #003371;
     --primary-hover: #004494;
+    --accent-color: #c8a14a;
+    --accent-soft: #f4ecd8;
     --text-color: #0e0e0e;
+    --section-gap: 80px;
 
     /* Fonts */
     --font-heading: 'Poppins',
@@ -41,7 +44,8 @@
 }
 
 html {
-    scroll-behavior : auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -60,6 +64,37 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: -1;
+    opacity: 0.35; /* 背景アニメを抑えて本文の可読性を確保 */
+}
+
+/* --- Focus ring (keyboard accessibility) --- */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* --- Scroll fade-in --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 h1,

@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>逢魔々城 | Jeffrey LEE</title>
-    <meta name="description" content="逢魔々城 - Project Details: Japanese Tower Defense Game / Design Pattern Practice">
+    <meta name="description" content="逢魔々城 - Japanese Tower Defense Game / Design Pattern Practice">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/OumajoCastle.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="逢魔々城 | Jeffrey LEE">
     <meta property="og:description" content="逢魔々城 - Japanese Tower Defense Game / Design Pattern Practice">
-    <meta property="og:image" content="../Image/GameImage/DefanceGame_image.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/DefanceGame_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/OumajoCastle.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="逢魔々城 | Jeffrey LEE">
+    <meta name="twitter:description" content="逢魔々城 - Japanese Tower Defense Game / Design Pattern Practice">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/DefanceGame_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,7 +109,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -131,7 +141,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Mouse(drag and drop)
+                                    Mouse (Drag & Dropで武器を配置)
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -146,7 +156,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -201,81 +211,146 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
-                    <div class="code-explanation">攻撃ロジックをインターフェース化し、単体攻撃・範囲攻撃・デバフ付与などを動的に切り替え可能にした設計</div>
+                    <div class="code-explanation">弾の『飛び方・着弾処理』をScriptableObjectの戦略クラス（BulletStrategy）として外部化。直進・放物線・追尾などを、弾本体のコードを変更せずアセット差し替えだけで切り替えられる設計（開放閉鎖原則）</div>
                     <div class="code-container">
-                        <div class="code-header">Strategyパターンによる武器システム</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// EnemyBaseを作成、詳しい攻撃や移動などStrategyパターンで決める
-/// &lt;/summary&gt;
-public class EnemyBase : MonoBehaviour, IMoveable, IAttackable, IDamageable, IEntity, IDieable
-{
-    private EnemyConfig _config;
-    public FactionType Faction =&gt; FactionType.Enemy;
-    public void Move(Vector3 direction)
-    {
-        _isAttackTimerCanCount = false;
-        var newPosition = _config.moveStrategy.Move(transform.position, direction, _config.moveSpeed);
-        transform.position = newPosition;
-    }
-    public void Attack(GameObject target)
-    {
-        _isAttackTimerCanCount = true;
-        if (_attackColdDownTimer &lt;= _config.attackColdDownTime) return;
-        _attackColdDownTimer -= _config.attackColdDownTime;
+                        <div class="code-header">Strategyパターンによる弾挙動システム</div>
+                        <pre><code class="language-csharp">using System.Collections;
+using Enemy.Bullets;
+using Enemy.Interfaces;
+using UnityEngine;
 
-        //ObjectPoolを使って、ファクトリーを使って、enemyを生成する、大量のInstantiate,Destoryを避けることができる
-        IFireable enemyBullet = BulletManager.Instance.SpawnBullet(_config.bulletType, transform.position, transform.rotation);
-        
-        OnAttack?.Invoke(_config.attackEffect);
-        enemyBullet?.Fire(target, _config.attackPower);
-        AudioManager.Instance.PlaySE(_config.SeType);
+/*
+ * 逢魔々城 — 弾の挙動を Strategy パターンで切り替える設計（担当：敵AI・武器攻撃システム）
+ *
+ * 弾の「飛び方」「着弾時の処理」を BulletStrategy（抽象ScriptableObject）として外部化。
+ * 直進・放物線・追尾などの挙動を、弾本体（BulletBase）のコードを一切変更せず、
+ * Strategy アセットを差し替えるだけで切り替えられる（開放閉鎖原則）。
+ * ScriptableObject 化により、プランナーがエディタ上で挙動を組み替えられるのも利点。
+ */
+
+namespace Enemy.Strategy.BulletStrategys
+{
+    /// &lt;summary&gt;
+    /// 全ての弾挙動が継承する抽象戦略クラス。発射時・衝突時の振る舞いを定義する。
+    /// &lt;/summary&gt;
+    public abstract class BulletStrategy : ScriptableObject
+    {
+        public virtual void OnInitialize(BulletBase bullet) { }
+        public abstract void FireBullet(BulletBase bullet, GameObject target);
+        public abstract void BulletTriggerEnter(BulletBase bullet, Collider2D collision);
     }
-}</code></pre>
+
+    /// &lt;summary&gt;
+    /// 具体戦略の例：放物線を描いてターゲットへ着弾する弾。
+    /// sin 波で高さを与えることで山なりの軌道を表現する。
+    /// &lt;/summary&gt;
+    [CreateAssetMenu(menuName = &quot;BulletStrategy/BulletParabola&quot;)]
+    public class BulletParabola : BulletStrategy
+    {
+        private readonly float _bulletHeight = 2.0f;
+        private GameObject _target;
+
+        public override void FireBullet(BulletBase bullet, GameObject target)
+        {
+            _target = target;
+            bullet.StartCoroutine(FireToTarget(bullet, target));
+        }
+
+        public override void BulletTriggerEnter(BulletBase bullet, Collider2D collision)
+        {
+            if (collision.gameObject != _target) return;
+
+            // 着弾相手が IDamageable なら被ダメージ処理を呼び、弾はプールへ返却
+            if (collision.gameObject.TryGetComponent&lt;IDamageable&gt;(out var damageable))
+            {
+                damageable.TakeDamage(bullet.Damage);
+                BulletManager.Instance.RecycleBullet(bullet.Config.bulletType, bullet);
+            }
+        }
+
+        /// &lt;summary&gt;開始点→着弾点を Lerp で進めつつ、sin 波で高さを加えて放物線にする。&lt;/summary&gt;
+        private IEnumerator FireToTarget(BulletBase bullet, GameObject target)
+        {
+            var start = bullet.transform.position;
+            var end = target.transform.position;
+            var time = Vector3.Distance(start, end) / bullet.Config.speed; // 速度から所要時間を算出
+            var elapsed = 0f;
+
+            while (elapsed &lt; time)
+            {
+                elapsed += Time.deltaTime;
+                var t = Mathf.Clamp01(elapsed / time);
+
+                var pos = Vector3.Lerp(start, end, t);
+                pos.y += _bulletHeight * Mathf.Sin(Mathf.PI * t); // 0→頂点→0 の山なり軌道
+                bullet.transform.position = pos;
+
+                yield return null;
+            }
+
+            bullet.transform.position = end;
+            BulletManager.Instance.RecycleBullet(bullet.Config.bulletType, bullet); // 使い回しでGC抑制
+        }
+    }
+}
+</code></pre>
                     </div>
                     
-                    <div class="code-explanation">デザイナーやプランナー向けのデータ構成。プログラマーを介さないワークフローの確立。次のステップとしてExcel連携（データインポート自動化）を見据えています</div>
+                    <div class="code-explanation">敵のHP・攻撃力・移動戦略・弾種などを全てScriptableObjectに外部化。Range/Tooltipで入力ミスを防ぎ、プログラマーを介さずプランナーがエディタ上で敵の新規作成・バランス調整を行えるワークフローを実現</div>
                     <div class="code-container">
-                        <div class="code-header">ScriptableObjectデータ設計</div>
-                        <pre><code class="language-csharp">/// &lt;summary&gt;
-/// EnemyのデータをScriptableObjectを所持する、Enemyの詳細変更を簡単にできる
-/// &lt;/summary&gt;
-public class EnemyConfig : ScriptableObject
+                        <div class="code-header">ScriptableObjectによるマスターデータ設計</div>
+                        <pre><code class="language-csharp">using Enemy.Bullets;
+using Enemy.Strategy;
+using Enemy.Strategy.MoveStrategys;
+using UnityEngine;
+
+namespace Enemy.Enemy
 {
-    [Header(&quot;表示属性&quot;)]
-    [Tooltip(&quot;名前&quot;)] public EnemyType enemyName;
-    [Tooltip(&quot;画像&quot;)] public Sprite enemyImage;
-    [Tooltip(&quot;説明&quot;), Multiline(6)] public string description;
+    /// &lt;summary&gt;
+    /// 敵1種類分のマスターデータを保持する ScriptableObject。
+    /// HP・攻撃力・コスト等の数値に加え、移動方法（MoveStrategy）や弾種・エフェクトまで
+    /// データとして外部化することで、プログラマーを介さずプランナーが
+    /// Unity エディタ上で敵を新規作成・バランス調整できるワークフローを実現する。
+    /// Range / Tooltip / Header で入力ミスを防ぎ、調整コストを下げている。
+    /// &lt;/summary&gt;
+    [CreateAssetMenu(menuName = &quot;CreateConfig/EnemyConfig&quot;, fileName = &quot;EnemyConfig&quot;)]
+    public class EnemyConfig : ScriptableObject
+    {
+        [Header(&quot;表示属性&quot;)]
+        [Tooltip(&quot;名前&quot;)] public EnemyType enemyName;
+        [Tooltip(&quot;画像&quot;)] public Sprite enemyImage;
+        [Tooltip(&quot;説明&quot;), Multiline(6)] public string description;
 
-    [Header(&quot;基本属性&quot;)]
-    [Tooltip(&quot;資材コスト&quot;), Range(0, 1000)] public int cost;
-    [Tooltip(&quot;生成時間&quot;), Range(0, 500)] public float spawnTime;
-    [Tooltip(&quot;ドロップ資材&quot;), Range(0, 10000)] public int dropMoney;
-    [Tooltip(&quot;HP最大値&quot;), Range(1, 10000)] public int maxHealth;
-    [Tooltip(&quot;攻撃&quot;), Range(0, 1000)] public int attackPower;
-    [Tooltip(&quot;移動速度（m/s）&quot;), Range(0.0f, 20.0f)] public float moveSpeed;
-    [Tooltip(&quot;攻撃範囲（ｍ）&quot;), Range(0.1f, 30.0f)] public float attackRange;
-    [Tooltip(&quot;攻撃頻度（ｓ）&quot;), Range(0.1f, 30.0f)] public float attackColdDownTime;
-    [Tooltip(&quot;ダメージを受ける頻度（ｓ）&quot;), Range(0.1f, 20.0f)] public float damageColdDownTime;
+        [Header(&quot;基本属性&quot;)]
+        [Tooltip(&quot;資材コスト&quot;), Range(0, 1000)] public int cost;
+        [Tooltip(&quot;生成時間&quot;), Range(0, 500)] public float spawnTime;
+        [Tooltip(&quot;ドロップ資材&quot;), Range(0, 10000)] public int dropMoney;
+        [Tooltip(&quot;HP最大値&quot;), Range(1, 10000)] public int maxHealth;
+        [Tooltip(&quot;攻撃&quot;), Range(0, 1000)] public int attackPower;
+        [Tooltip(&quot;移動速度（m/s）&quot;), Range(0.0f, 20.0f)] public float moveSpeed;
+        [Tooltip(&quot;攻撃範囲（m）&quot;), Range(0.1f, 30.0f)] public float attackRange;
+        [Tooltip(&quot;攻撃頻度（s）&quot;), Range(0.1f, 30.0f)] public float attackColdDownTime;
 
-    [Header(&quot;プレハブ&quot;)]
-    public GameObject prefab;
+        [Header(&quot;プレハブ&quot;)]
+        public GameObject prefab;
 
-    [Header(&quot;弾の種類&quot;)]
-    public BulletType bulletType;
-    [Header(&quot;弾の音&quot;)]
-    public SEType SeType;
+        [Header(&quot;弾の種類&quot;)] public BulletType bulletType;
 
-    [Header(&quot;CanTakeDamageBy&quot;)]
-    public DamageRelationData damageRelationData;
+        // 移動の「戦略」もデータとして差し替え可能（直進・上下動など）
+        [Header(&quot;MoveStrategy&quot;)] public MoveStrategy moveStrategy;
+    }
 
-    [Header(&quot;EffectType&quot;)]
-    [Tooltip(&quot;ダメージエフェクト&quot;)] public EffectType damageEffect;
-    [Tooltip(&quot;攻撃エフェクト&quot;)] public EffectType attackEffect;
-    [Tooltip(&quot;死亡エフェクト&quot;)] public EffectType deathEffect;
-
-    [Header(&quot;MoveStrategy&quot;)]
-    public MoveStrategy moveStrategy;
-}</code></pre>
+    /// &lt;summary&gt;敵の種類（和風モチーフの妖怪たち）。&lt;/summary&gt;
+    public enum EnemyType
+    {
+        一ツ目小僧,
+        轆轤首,
+        鎌鼬,
+        鬼,
+        餓者髑髏
+    }
+}
+</code></pre>
                     </div>
                     
                 
@@ -298,15 +373,11 @@ public class EnemyConfig : ScriptableObject
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>

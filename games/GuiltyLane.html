@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guilty Lane | Jeffrey LEE</title>
-    <meta name="description" content="Guilty Lane - Project Details: Dark Adventure Game / Hackathon Work">
+    <meta name="description" content="Guilty Lane - Dark Adventure Game / Hackathon Work">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/GuiltyLane.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="Guilty Lane | Jeffrey LEE">
     <meta property="og:description" content="Guilty Lane - Dark Adventure Game / Hackathon Work">
-    <meta property="og:image" content="../Image/GameImage/Guilty_Lane_image.png">
-    <meta property="og:url" content="">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Guilty_Lane_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/GuiltyLane.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Guilty Lane | Jeffrey LEE">
+    <meta name="twitter:description" content="Guilty Lane - Dark Adventure Game / Hackathon Work">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Guilty_Lane_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +107,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -144,7 +154,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -169,6 +179,94 @@
                     </div>
                 </div>
                 
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">抽象基底ItemSOBaseを継承しUseItem()を書くだけで新アイテムを追加でき、既存コードを変更しない（開放閉鎖原則）。効果はGameContextのイベントフラグ経由で本体に伝搬させ、UIとロジックを疎結合に維持。プランナーがエディタ上でアイテムを量産できるワークフローも実現</div>
+                    <div class="code-container">
+                        <div class="code-header">ScriptableObjectによる拡張可能なアイテムシステム</div>
+                        <pre><code class="language-csharp">using UnityEngine;
+
+/*
+ * Guilty Lane — アイテムシステム（担当：メインアイテムシステム・イベントフラグ管理）
+ *
+ * ScriptableObject を基盤に「抽象基底クラス + 各アイテム1クラス」で構成。
+ * 新しいアイテムは ItemSOBase を継承して UseItem() を書くだけで追加でき、
+ * 既存コードを一切変更しない（開放閉鎖原則）。効果は GameContext の
+ * イベントフラグを通じてゲーム本体へ伝搬させ、UI とロジックを疎結合に保つ。
+ */
+
+/// &lt;summary&gt;
+/// 全アイテム共通のデータ（名前・価格・説明など）と「使用」インターフェースを定義する抽象基底。
+/// ScriptableObject 化することで、プランナーが Unity エディタ上でアセットとして
+/// アイテムを量産・調整できる（プログラマーを介さないワークフロー）。
+/// &lt;/summary&gt;
+public abstract class ItemSOBase : ScriptableObject
+{
+    [Header(&quot;Item Data&quot;)]
+    public Sprite itemSprite;
+    public string itemName;
+    public int itemID;
+    [TextArea] public string itemDescription;
+    public int price;
+    public bool permanent; // 永続効果か使い切りか
+    public int quantity;
+
+    /// &lt;summary&gt;各アイテム固有の効果。派生クラスが個別に実装する。&lt;/summary&gt;
+    public abstract void UseItem(GameContext context);
+}
+
+/// &lt;summary&gt;
+/// 具体アイテムの例：「投資」。10%の確率で相続が5倍になるハイリスクな賭け。
+/// 効果は context のイベントフラグを立てるだけに留め、実際の倍率反映は
+/// ゲーム本体が同フラグを参照して行う（責務の分離）。
+/// &lt;/summary&gt;
+[CreateAssetMenu(menuName = &quot;NewItem/Investment&quot;)]
+public class Investment : ItemSOBase
+{
+    public override void UseItem(GameContext context)
+    {
+        // 10% を引ければ成功フラグを立てる
+        if (Random.Range(0, 100) &lt;= 10)
+        {
+            context.IsInvestmentEffect = true;
+            Debug.Log(&quot;Investment success&quot;);
+        }
+        else
+        {
+            Debug.Log(&quot;Investment failed&quot;);
+        }
+    }
+}
+
+/// &lt;summary&gt;
+/// インベントリ管理（抜粋）。スロットの選択／使用を仲介する。
+/// アイテムの「中身」を一切知らず、ItemSOBase 越しに UseItem() を呼ぶだけなので、
+/// アイテムが何種類増えてもこのクラスは変更不要。
+/// &lt;/summary&gt;
+public class NewInventoryManager : MonoBehaviour
+{
+    private ItemSOBase _currentItemSO;
+
+    /// &lt;summary&gt;使用ボタンから呼ばれる。選択中アイテムの効果を発動する。&lt;/summary&gt;
+    public void UseItem()
+    {
+        if (_currentItemSO == null)
+        {
+            Debug.Log(&quot;No item selected&quot;);
+            return;
+        }
+
+        // ポリモーフィズムにより、具体的な効果は各アイテムクラスへ委譲される
+        _currentItemSO.UseItem(/* GameContext */ null);
+
+        // 使用済みアイテムを消費して選択状態をリセット
+        _currentItemSO = null;
+    }
+}
+</code></pre>
+                    </div>
+                    
+                
 
                 
             </section>
@@ -179,15 +277,11 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>

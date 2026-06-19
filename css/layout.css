@@ -5,6 +5,16 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 20px;
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .logo {
@@ -24,10 +34,27 @@
     font-weight: 500;
     font-size: 1rem;
     color: var(--text-light);
+    position: relative;
+    padding: 4px 0;
+}
+
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.25s ease;
 }
 
 .site-nav a:hover {
     color: var(--primary-color);
+}
+
+.site-nav a:hover::after {
+    width: 100%;
 }
 
 /* --- Footer --- */

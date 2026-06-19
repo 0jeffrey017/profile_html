@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Space Cat | Jeffrey LEE</title>
-    <meta name="description" content="Space Cat - Project Details: 2D Sci-Fi Survival Action">
+    <meta name="description" content="Space Cat - 2D Sci-Fi Survival Action">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/SpaceCat.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="Space Cat | Jeffrey LEE">
     <meta property="og:description" content="Space Cat - 2D Sci-Fi Survival Action">
-    <meta property="og:image" content="../Image/GameImage/SpaceCat_image.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/SpaceCat_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/SpaceCat.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Space Cat | Jeffrey LEE">
+    <meta name="twitter:description" content="Space Cat - 2D Sci-Fi Survival Action">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/SpaceCat_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,7 +120,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -142,7 +152,7 @@
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Keyboard(Please Follow The Game)
+                                    Keyboard (ゲーム内の指示に従って操作)
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -157,7 +167,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -198,35 +208,77 @@
                 
                 <h3>Sample Code / サンプルコード</h3>
                 
-                    <div class="code-explanation">ゲーム内ステートの永続化を担当するSaveManagerの実裝。堅牢なシリアライズ処理の実現</div>
+                    <div class="code-explanation">プレイヤー座標・獲得アイテム・進行フラグをシリアライズし、persistentDataPath配下にJSONとして永続化。入出力を型を限定しないジェネリックメソッド化し、どのデータ型でも再利用できる設計とした</div>
                     <div class="code-container">
-                        <div class="code-header">JSONデータセーブシステム</div>
-                        <pre><code class="language-csharp">public class SaveManager : MonoBehaviour
+                        <div class="code-header">ジェネリックなJSONセーブシステム</div>
+                        <pre><code class="language-csharp">using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+/*
+ * Space Cat — JSONによるセーブ／ロードシステム（担当：全体設計・セーブ機能）
+ *
+ * 難易度が高く一画面でのクリアが困難なため、進行度の中断・再開を可能にする
+ * セーブ機能を実装。プレイヤー座標・獲得アイテム・クリアフラグをシリアライズし、
+ * persistentDataPath 配下に JSON として永続化する。
+ * 入出力はジェネリックメソッド化し、どのデータ型でも再利用できる設計とした。
+ */
+
+/// &lt;summary&gt;保存対象のゲーム進行データ（[Serializable] で JSON 化可能にする）。&lt;/summary&gt;
+[System.Serializable]
+public class GameData
 {
-        public void SaveDataToJson&lt;T&gt;(string path, T data)
+    public Vector2 PlayerPostion;       // 中断時のプレイヤー座標
+    public List&lt;ItemData&gt; items;        // 各装備の獲得状況
+    public bool isGameCleared;
+    public bool isGameStarted;
+}
+
+[System.Serializable]
+public class ItemData
+{
+    public string equipmentId;
+    public string displayName;
+    public bool isCollected;
+}
+
+public class SaveManager : MonoBehaviour
+{
+    /// &lt;summary&gt;
+    /// 任意の型 T を JSON 文字列へ変換してファイルへ書き出す汎用セーブ。
+    /// 型を限定しないことで、プレイヤーデータ・設定など用途を問わず再利用できる。
+    /// &lt;/summary&gt;
+    public void SaveDataToJson&lt;T&gt;(string path, T data)
     {
-        var s = JsonUtility.ToJson(data, true);
-        if (!File.Exists(path))
-        {
-            File.Create(path).Close();
-        }
+        var json = JsonUtility.ToJson(data, prettyPrint: true);
+        if (!File.Exists(path)) File.Create(path).Close();
+
         using StreamWriter writer = new StreamWriter(path);
-        writer.Write(s);
-        writer.Close();
-        Debug.Log($&quot;save success&quot;);
+        writer.Write(json);
+        Debug.Log(&quot;save success&quot;);
     }
 
+    /// &lt;summary&gt;JSON ファイルを読み込み、型 T として復元する汎用ロード。&lt;/summary&gt;
     public T LoadDataFromJson&lt;T&gt;(string path)
     {
-        if (File.Exists(path))
-        {
-            using StreamReader reader = new StreamReader(path);
-            var s = reader.ReadToEnd();
-            var data = JsonUtility.FromJson&lt;T&gt;(s);
-            reader.Close();
-            return data;
-        }
-        return default;
+        if (!File.Exists(path)) return default; // 未保存なら既定値を返す
+
+        using StreamReader reader = new StreamReader(path);
+        var json = reader.ReadToEnd();
+        return JsonUtility.FromJson&lt;T&gt;(json);
+    }
+
+    /// &lt;summary&gt;
+    /// 現在の進行データを保存する。保存先ディレクトリが無ければ自動生成し、
+    /// プラットフォーム非依存の persistentDataPath を用いる。
+    /// &lt;/summary&gt;
+    public void SavePlayerData(GameData currentData)
+    {
+        string dir = Application.persistentDataPath + &quot;/SaveData&quot;;
+        if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+        string path = dir + &quot;/PlayerData.json&quot;;
+        SaveDataToJson(path, currentData);
     }
 }
 </code></pre>
@@ -243,15 +295,11 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>

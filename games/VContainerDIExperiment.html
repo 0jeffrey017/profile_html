@@ -5,14 +5,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VContainer DI Experiment | Jeffrey LEE</title>
-    <meta name="description" content="VContainer DI Experiment - Project Details: Architecture Experiment Game">
+    <meta name="description" content="VContainer DI Experiment - Architecture Experiment Game">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/VContainerDIExperiment.html">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="VContainer DI Experiment | Jeffrey LEE">
     <meta property="og:description" content="VContainer DI Experiment - Architecture Experiment Game">
-    <meta property="og:image" content="../Image/GameImage/ClickGame_image.png">
-    <meta property="og:url" content="https://0jeffrey017.github.io/WebGLGames_01/1_Click">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/ClickGame_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/VContainerDIExperiment.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VContainer DI Experiment | Jeffrey LEE">
+    <meta name="twitter:description" content="VContainer DI Experiment - Architecture Experiment Game">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/ClickGame_image.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +87,7 @@
                         <h3>Responsible part / 担当部分</h3>
                         <div>
                             <ul>
-    <li>全部</li>
+    <li>個人製作（企画・設計・実装の全工程を担当）</li>
 </ul>
                         </div>
                     </div>
@@ -97,7 +107,7 @@
                             </div>
                             <div class="meta-item">
                                 <span class="meta-label">Players</span>
-                                <span class="meta-value">1 Player</span>
+                                <span class="meta-value">Single Player（1人用）</span>
                             </div>
                         </div>
 
@@ -144,7 +154,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -169,6 +179,106 @@
                     </div>
                 </div>
                 
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">LifetimeScopeで依存関係の登録を一元管理し、PresenterはコンストラクタインジェクションでModel/Viewを受け取る。new・Find・シングルトン参照を排除して結合度を下げ、テスト・再利用が容易な構成を実現。R3によるリアクティブなデータバインディングも併用</div>
+                    <div class="code-container">
+                        <div class="code-header">VContainerによるDIとMVP統合</div>
+                        <pre><code class="language-csharp">using System;
+using R3;
+using VContainer;
+using VContainer.Unity;
+
+/*
+ * VContainer DI Experiment（担当：個人開発 / アーキテクチャ実験）
+ *
+ * DIコンテナ「VContainer」で依存関係の登録と注入を一元管理。
+ * シングルトンへの直接参照をやめ、各クラスは「必要なものをコンストラクタで受け取る」だけに。
+ * これにより結合度が下がり、テスト・再利用が容易な構成を実現する。
+ */
+
+/// &lt;summary&gt;
+/// 依存関係の登録を行うコンテナの設定クラス（VContainerのエントリポイント）。
+/// 「何を・どの生存期間で・どう生成するか」をここに集約することで、
+/// 各クラスは生成や参照解決の責務から解放される。
+/// &lt;/summary&gt;
+public class GameLifeTimeScope : LifetimeScope
+{
+    protected override void Configure(IContainerBuilder builder)
+    {
+        // Model はアプリ全体で1つ（Singleton）
+        builder.Register&lt;MainGameModel&gt;(Lifetime.Singleton);
+
+        // シーン上の MonoBehaviour を解決対象として登録
+        builder.RegisterComponentInHierarchy&lt;BallSimulationManager&gt;();
+        builder.RegisterComponentInHierarchy&lt;MainGameView&gt;();
+        builder.RegisterComponentInHierarchy&lt;ClickView&gt;();
+
+        // Presenter をエントリポイントとして登録（Start/Dispose が自動で呼ばれる）
+        builder.RegisterEntryPoint&lt;MainGamePresenter&gt;(Lifetime.Scoped);
+    }
+}
+
+/// &lt;summary&gt;
+/// Model と View を仲介する Presenter（MVP）。
+/// 依存物は全て「コンストラクタインジェクション」で受け取るため、newもFindも不要。
+/// IStartable / IDisposable を実装し、初期化と後始末をライフサイクルに乗せる。
+/// &lt;/summary&gt;
+public class MainGamePresenter : IStartable, IDisposable
+{
+    // readonly で注入後の差し替えを禁止し、依存の不変性を保証
+    private readonly MainGameView _mainGameView;
+    private readonly MainGameModel _mainGameModel;
+    private readonly ClickView _clickView;
+    private readonly BallSimulationManager _ballSimulationManager;
+
+    private DisposableBag _disposableBag;
+
+    // コンテナが各依存を自動で解決してこのコンストラクタへ渡す
+    public MainGamePresenter(MainGameView view,
+        BallSimulationManager ballSimulationManager,
+        MainGameModel mainGameModel,
+        ClickView clickView)
+    {
+        _mainGameView = view;
+        _mainGameModel = mainGameModel;
+        _ballSimulationManager = ballSimulationManager;
+        _clickView = clickView;
+    }
+
+    // エントリポイントとしてコンテナ初期化後に自動で呼ばれる
+    public void Start() =&gt; Bind();
+
+    /// &lt;summary&gt;Model（R3のReactiveProperty）を購読し、変化をViewへ反映する。&lt;/summary&gt;
+    private void Bind()
+    {
+        _ballSimulationManager.SetBallsPerClick(_mainGameModel.BallsPerClick.CurrentValue);
+
+        // 所持金が変わったら表示を更新（宣言的バインディング）
+        _mainGameModel.Money
+            .Subscribe(money =&gt; _mainGameView.SetMoneyText(money))
+            .AddTo(ref _disposableBag);
+
+        // 1秒ごとに自動でボールを生成
+        Observable.Interval(TimeSpan.FromSeconds(1))
+            .Subscribe(_ =&gt; _ballSimulationManager.HandleClickSpawn())
+            .AddTo(ref _disposableBag);
+
+        // View からの入力イベントを購読
+        _clickView.OnClick += OnClick;
+        _ballSimulationManager.OnGetMoney += OnGetMoney;
+    }
+
+    private void OnClick() =&gt; _ballSimulationManager.HandleClickSpawn();
+    private void OnGetMoney(uint money) =&gt; _mainGameModel.Money.Value += money;
+
+    // 購読をまとめて破棄し、メモリリークを防ぐ
+    public void Dispose() =&gt; _disposableBag.Dispose();
+}
+</code></pre>
+                    </div>
+                    
+                
 
                 
             </section>
@@ -179,15 +289,11 @@
                 <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
                     <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
                     <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/" aria-label="YouTube">
+                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
                     <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/" aria-label="Instagram">
-                    <img src="../Image/IG_brand_asset_pack_2023/01 Static Glyph/01 Gradient Glyph/Instagram_Glyph_Gradient.png"
-                        alt="Instagram">
                 </a>
             </div>
             <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
