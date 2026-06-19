@@ -74,8 +74,31 @@
         });
     }
 
+    function setupScrollReveal() {
+        const targets = document.querySelectorAll('.reveal');
+        if (!targets.length) return;
+
+        // Fallback: if IntersectionObserver is unavailable, show everything
+        if (!('IntersectionObserver' in window)) {
+            targets.forEach(el => el.classList.add('is-visible'));
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target); // 一度表示したら監視解除
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+        targets.forEach(el => observer.observe(el));
+    }
+
     $(function() {
         initGallery();
+        setupScrollReveal();
     });
 
 })(jQuery);

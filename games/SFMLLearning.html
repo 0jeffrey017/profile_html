@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -199,44 +199,57 @@
 #include &lt;iostream&gt;
 #include &lt;fstream&gt;
 
-class myCircle : public sf::Transformable{
+/*
+ * SFML Learning（担当：個人開発）
+ *
+ * 商業エンジンに頼らず、C++ と SFML だけでゲームの基礎を学ぶ学習プロジェクト。
+ * 外部の config.txt から「ウィンドウ・フォント・図形」の設定を読み込み、
+ * ランタイムで動的に図形を生成・管理する「データ駆動型」の構成を実践している。
+ * 図形は sf::Transformable を継承した自作クラスで表現し、拡張しやすい設計とした。
+ */
+
+/// &lt;summary&gt;移動・反射する円。位置・速度・色・名前ラベルを自身で保持する。&lt;/summary&gt;
+class myCircle : public sf::Transformable {
     sf::CircleShape circle;
-    std::string m_N;
-    float m_X, m_Y, m_SX, m_SY;
-    int m_R, m_G, m_B;
-    float m_Radius;SFML
+    std::string m_N;                 // 表示名
+    float m_X, m_Y, m_SX, m_SY;      // 位置(X,Y) と 速度(SX,SY)
+    int m_R, m_G, m_B;               // 色 (RGB)
+    float m_Radius;                  // 半径
     sf::Text text;
 public:
-    myCircle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float Radius)
-    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B),m_Radius(Radius)
+    myCircle(std::string N, float X, float Y, float SX, float SY, int R, int G, int B, float Radius)
+        : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_Radius(Radius)
     {
         circle.setRadius(Radius);
-        circle.setFillColor(sf::Color(R,G,B));
-        circle.setPosition(X,Y);
+        circle.setFillColor(sf::Color(R, G, B));
+        circle.setPosition(X, Y);
     }
-    sf::CircleShape getShape() const
-    {
-        return circle;
-    }
-    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+
+    sf::CircleShape getShape() const { return circle; }
+
+    void setText(const sf::Font&amp; font, int characterSize, const sf::Color&amp; color) {
         text.setString(m_N);
         text.setFont(font);
         text.setCharacterSize(characterSize);
         text.setFillColor(color);
     }
-    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+
+    /// &lt;summary&gt;速度ぶん移動し、ウィンドウ端に達したら速度を反転して跳ね返す。&lt;/summary&gt;
+    void move(const int&amp; windowWidth, const int&amp; windowHeight) {
         circle.move(m_SX, m_SY);
         sf::Vector2f pos = circle.getPosition();
 
+        // 左右の壁との衝突：はみ出しを端へスナップしてから速度を反転
         if (pos.x &lt;= 0) {
             m_SX *= -1.0f;
-            circle.setPosition(0, pos.y); // Snap to edge
+            circle.setPosition(0, pos.y);
         } else if (pos.x + (m_Radius * 2) &gt;= windowWidth) {
             m_SX *= -1.0f;
-            circle.setPosition(windowWidth - (m_Radius * 2), pos.y); // Snap to edge
+            circle.setPosition(windowWidth - (m_Radius * 2), pos.y);
         }
 
-        pos = circle.getPosition(); 
+        // 上下の壁との衝突
+        pos = circle.getPosition();
         if (pos.y &lt;= 0) {
             m_SY *= -1.0f;
             circle.setPosition(pos.x, 0);
@@ -245,52 +258,55 @@ public:
             circle.setPosition(pos.x, windowHeight - (m_Radius * 2));
         }
     }
-    sf::Text showName(){
+
+    /// &lt;summary&gt;名前ラベルを図形の中心に揃えて返す。&lt;/summary&gt;
+    sf::Text showName() {
         sf::FloatRect textRect = text.getLocalBounds();
-        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
+        text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
         text.setPosition(circle.getPosition().x + m_Radius, circle.getPosition().y + m_Radius);
         return text;
     }
 };
 
-class myRectangle : public sf::Transformable{
+/// &lt;summary&gt;円と同じ振る舞いを持つ矩形版（幅・高さで境界判定する点が異なる）。&lt;/summary&gt;
+class myRectangle : public sf::Transformable {
     sf::RectangleShape rectangle;
     std::string m_N;
     float m_X, m_Y, m_SX, m_SY;
     int m_R, m_G, m_B;
-    float m_W,m_H;
+    float m_W, m_H;                  // 幅・高さ
     sf::Text text;
 public:
-    myRectangle(std::string N,float X, float Y, float SX, float SY,int R, int G, int B,float W, float H)
-    : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_W(W), m_H(H)
+    myRectangle(std::string N, float X, float Y, float SX, float SY, int R, int G, int B, float W, float H)
+        : m_N(N), m_X(X), m_Y(Y), m_SX(SX), m_SY(SY), m_R(R), m_G(G), m_B(B), m_W(W), m_H(H)
     {
-        rectangle.setSize({W,H});
-        rectangle.setFillColor(sf::Color(R,G,B));
-        rectangle.setPosition(X,Y);
+        rectangle.setSize({W, H});
+        rectangle.setFillColor(sf::Color(R, G, B));
+        rectangle.setPosition(X, Y);
     }
-    sf::RectangleShape getShape() const
-    {
-        return rectangle;
-    }
-    void setText(const sf::Font &amp; font,int characterSize,const sf::Color &amp; color){
+
+    sf::RectangleShape getShape() const { return rectangle; }
+
+    void setText(const sf::Font&amp; font, int characterSize, const sf::Color&amp; color) {
         text.setString(m_N);
         text.setFont(font);
         text.setCharacterSize(characterSize);
         text.setFillColor(color);
     }
-    void move(const int &amp; windowWidth,const int &amp; windowHeight) {
+
+    void move(const int&amp; windowWidth, const int&amp; windowHeight) {
         rectangle.move(m_SX, m_SY);
         sf::Vector2f pos = rectangle.getPosition();
 
         if (pos.x &lt;= 0) {
             m_SX *= -1.0f;
-            rectangle.setPosition(0, pos.y); // Snap to edge
+            rectangle.setPosition(0, pos.y);
         } else if (pos.x + m_W &gt;= windowWidth) {
             m_SX *= -1.0f;
-            rectangle.setPosition(windowWidth - m_W, pos.y); // Snap to edge
+            rectangle.setPosition(windowWidth - m_W, pos.y);
         }
 
-        pos = rectangle.getPosition(); 
+        pos = rectangle.getPosition();
         if (pos.y &lt;= 0) {
             m_SY *= -1.0f;
             rectangle.setPosition(pos.x, 0);
@@ -299,16 +315,18 @@ public:
             rectangle.setPosition(pos.x, windowHeight - m_H);
         }
     }
-    sf::Text showName(){
+
+    sf::Text showName() {
         sf::FloatRect textRect = text.getLocalBounds();
-        text.setOrigin(textRect.left + textRect.width/2.0f, textRect.top  + textRect.height/2.0f);
-        text.setPosition(rectangle.getPosition().x + (m_W/2.0f), rectangle.getPosition().y + (m_H/2.0f));
+        text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top + textRect.height / 2.0f);
+        text.setPosition(rectangle.getPosition().x + (m_W / 2.0f), rectangle.getPosition().y + (m_H / 2.0f));
         return text;
     }
 };
 
 int main()
 {
+    // --- データ駆動：config.txt を1単語ずつ読み、キーワードに応じて生成 ---
     std::ifstream file(&quot;config.txt&quot;);
     sf::RenderWindow window;
     std::string word;
@@ -318,52 +336,40 @@ int main()
     sf::Font font;
     int font_S, font_R, font_G, font_B;
     sf::Color fontColor;
-
-    int windowWidth,windowHeight;
+    int windowWidth, windowHeight;
 
     while (file &gt;&gt; word) {
-    if (word == &quot;Window&quot;) {
-        file &gt;&gt; windowWidth &gt;&gt; windowHeight;
-        window.create(sf::VideoMode(windowWidth, windowHeight), &quot;My Game&quot;);
-        } 
+        if (word == &quot;Window&quot;) {
+            // ウィンドウサイズを設定ファイルから生成
+            file &gt;&gt; windowWidth &gt;&gt; windowHeight;
+            window.create(sf::VideoMode(windowWidth, windowHeight), &quot;My Game&quot;);
+        }
         else if (word == &quot;Font&quot;) {
             std::string F;
             file &gt;&gt; F &gt;&gt; font_S &gt;&gt; font_R &gt;&gt; font_G &gt;&gt; font_B;
-            if (!font.loadFromFile(F))
-            {
-                std::cout &lt;&lt; &quot;Cant Load Font&quot;;
-            }
+            if (!font.loadFromFile(F)) std::cout &lt;&lt; &quot;Cant Load Font&quot;;
             fontColor.r = font_R;
             fontColor.g = font_G;
             fontColor.b = font_B;
-        } 
+        }
         else if (word == &quot;Circle&quot;) {
-            std::string N;
-            float X, Y, SX, SY;
-            int R, G, B;
-            float Radius;
+            // 1行のパラメータから円を1つ生成してリストへ追加
+            std::string N; float X, Y, SX, SY; int R, G, B; float Radius;
             file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; Radius;
-            myCircle circle(N,X,Y,SX,SY,R,G,B,Radius);
-            circle.setText(font,font_S,fontColor);
+            myCircle circle(N, X, Y, SX, SY, R, G, B, Radius);
+            circle.setText(font, font_S, fontColor);
             circles.push_back(circle);
         }
         else if (word == &quot;Rectangle&quot;) {
-            std::string N;
-            float X, Y, SX, SY;
-            int R, G, B;
-            float W, H;
-
+            std::string N; float X, Y, SX, SY; int R, G, B; float W, H;
             file &gt;&gt; N &gt;&gt; X &gt;&gt; Y &gt;&gt; SX &gt;&gt; SY &gt;&gt; R &gt;&gt; G &gt;&gt; B &gt;&gt; W &gt;&gt; H;
-            myRectangle rectangle(N,X,Y,SX,SY,R,G,B,W,H);
-            rectangle.setText(font,font_S,fontColor);
-
+            myRectangle rectangle(N, X, Y, SX, SY, R, G, B, W, H);
+            rectangle.setText(font, font_S, fontColor);
             rectangles.push_back(rectangle);
-        }
-        else {
-            // Default case
         }
     }
 
+    // --- メインループ：全図形を移動＆描画 ---
     while (window.isOpen())
     {
         sf::Event event;
@@ -374,23 +380,23 @@ int main()
         }
 
         window.clear();
-        for(auto&amp; c : circles){
-            c.move(windowWidth,windowHeight);
+        for (auto&amp; c : circles) {
+            c.move(windowWidth, windowHeight);
             window.draw(c.getShape());
             window.draw(c.showName());
         }
-        for(auto&amp; rt : rectangles){
-            rt.move(windowWidth,windowHeight);
+        for (auto&amp; rt : rectangles) {
+            rt.move(windowWidth, windowHeight);
             window.draw(rt.getShape());
             window.draw(rt.showName());
         }
-
         window.display();
     }
 
     file.close();
     return 0;
-}</code></pre>
+}
+</code></pre>
                     </div>
                     
                 

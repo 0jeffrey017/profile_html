@@ -154,7 +154,7 @@
             </div>
         </div>
 
-        <hr style="border: 2px solid black;">
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
             <br>
 
             <section class="game-technical">
@@ -178,6 +178,106 @@
             
                     </div>
                 </div>
+                
+                <h3>Sample Code / サンプルコード</h3>
+                
+                    <div class="code-explanation">LifetimeScopeで依存関係の登録を一元管理し、PresenterはコンストラクタインジェクションでModel/Viewを受け取る。new・Find・シングルトン参照を排除して結合度を下げ、テスト・再利用が容易な構成を実現。R3によるリアクティブなデータバインディングも併用</div>
+                    <div class="code-container">
+                        <div class="code-header">VContainerによるDIとMVP統合</div>
+                        <pre><code class="language-csharp">using System;
+using R3;
+using VContainer;
+using VContainer.Unity;
+
+/*
+ * VContainer DI Experiment（担当：個人開発 / アーキテクチャ実験）
+ *
+ * DIコンテナ「VContainer」で依存関係の登録と注入を一元管理。
+ * シングルトンへの直接参照をやめ、各クラスは「必要なものをコンストラクタで受け取る」だけに。
+ * これにより結合度が下がり、テスト・再利用が容易な構成を実現する。
+ */
+
+/// &lt;summary&gt;
+/// 依存関係の登録を行うコンテナの設定クラス（VContainerのエントリポイント）。
+/// 「何を・どの生存期間で・どう生成するか」をここに集約することで、
+/// 各クラスは生成や参照解決の責務から解放される。
+/// &lt;/summary&gt;
+public class GameLifeTimeScope : LifetimeScope
+{
+    protected override void Configure(IContainerBuilder builder)
+    {
+        // Model はアプリ全体で1つ（Singleton）
+        builder.Register&lt;MainGameModel&gt;(Lifetime.Singleton);
+
+        // シーン上の MonoBehaviour を解決対象として登録
+        builder.RegisterComponentInHierarchy&lt;BallSimulationManager&gt;();
+        builder.RegisterComponentInHierarchy&lt;MainGameView&gt;();
+        builder.RegisterComponentInHierarchy&lt;ClickView&gt;();
+
+        // Presenter をエントリポイントとして登録（Start/Dispose が自動で呼ばれる）
+        builder.RegisterEntryPoint&lt;MainGamePresenter&gt;(Lifetime.Scoped);
+    }
+}
+
+/// &lt;summary&gt;
+/// Model と View を仲介する Presenter（MVP）。
+/// 依存物は全て「コンストラクタインジェクション」で受け取るため、newもFindも不要。
+/// IStartable / IDisposable を実装し、初期化と後始末をライフサイクルに乗せる。
+/// &lt;/summary&gt;
+public class MainGamePresenter : IStartable, IDisposable
+{
+    // readonly で注入後の差し替えを禁止し、依存の不変性を保証
+    private readonly MainGameView _mainGameView;
+    private readonly MainGameModel _mainGameModel;
+    private readonly ClickView _clickView;
+    private readonly BallSimulationManager _ballSimulationManager;
+
+    private DisposableBag _disposableBag;
+
+    // コンテナが各依存を自動で解決してこのコンストラクタへ渡す
+    public MainGamePresenter(MainGameView view,
+        BallSimulationManager ballSimulationManager,
+        MainGameModel mainGameModel,
+        ClickView clickView)
+    {
+        _mainGameView = view;
+        _mainGameModel = mainGameModel;
+        _ballSimulationManager = ballSimulationManager;
+        _clickView = clickView;
+    }
+
+    // エントリポイントとしてコンテナ初期化後に自動で呼ばれる
+    public void Start() =&gt; Bind();
+
+    /// &lt;summary&gt;Model（R3のReactiveProperty）を購読し、変化をViewへ反映する。&lt;/summary&gt;
+    private void Bind()
+    {
+        _ballSimulationManager.SetBallsPerClick(_mainGameModel.BallsPerClick.CurrentValue);
+
+        // 所持金が変わったら表示を更新（宣言的バインディング）
+        _mainGameModel.Money
+            .Subscribe(money =&gt; _mainGameView.SetMoneyText(money))
+            .AddTo(ref _disposableBag);
+
+        // 1秒ごとに自動でボールを生成
+        Observable.Interval(TimeSpan.FromSeconds(1))
+            .Subscribe(_ =&gt; _ballSimulationManager.HandleClickSpawn())
+            .AddTo(ref _disposableBag);
+
+        // View からの入力イベントを購読
+        _clickView.OnClick += OnClick;
+        _ballSimulationManager.OnGetMoney += OnGetMoney;
+    }
+
+    private void OnClick() =&gt; _ballSimulationManager.HandleClickSpawn();
+    private void OnGetMoney(uint money) =&gt; _mainGameModel.Money.Value += money;
+
+    // 購読をまとめて破棄し、メモリリークを防ぐ
+    public void Dispose() =&gt; _disposableBag.Dispose();
+}
+</code></pre>
+                    </div>
+                    
                 
 
                 

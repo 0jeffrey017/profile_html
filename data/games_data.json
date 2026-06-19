@@ -85,7 +85,15 @@
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse",
         "players": "Single Player（1人用）",
-        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/1_Click"
+        "play_link": "https://0jeffrey017.github.io/WebGLGames_01/1_Click",
+        "code_sample": [
+            {
+                "path": "Scripts/VContainer_DISample.cs",
+                "language": "csharp",
+                "intro": "VContainerによるDIとMVP統合",
+                "explanation": "LifetimeScopeで依存関係の登録を一元管理し、PresenterはコンストラクタインジェクションでModel/Viewを受け取る。new・Find・シングルトン参照を排除して結合度を下げ、テスト・再利用が容易な構成を実現。R3によるリアクティブなデータバインディングも併用"
+            }
+        ]
     },
     {
         "id": "4",
@@ -209,7 +217,15 @@
         "platform": "調整中",
         "how_to_play": "Mouse",
         "players": "Single Player（1人用）",
-        "play_link": ""
+        "play_link": "",
+        "code_sample": [
+            {
+                "path": "Scripts/GuiltyLane_ItemSystem.cs",
+                "language": "csharp",
+                "intro": "ScriptableObjectによる拡張可能なアイテムシステム",
+                "explanation": "抽象基底ItemSOBaseを継承しUseItem()を書くだけで新アイテムを追加でき、既存コードを変更しない（開放閉鎖原則）。効果はGameContextのイベントフラグ経由で本体に伝搬させ、UIとロジックを疎結合に維持。プランナーがエディタ上でアイテムを量産できるワークフローも実現"
+            }
+        ]
     },
     {
         "id": "8",
@@ -244,13 +260,13 @@
             {
                 "path" : "Scripts/DefanceGameScript_01.cs",
                 "language" : "csharp",
-                "intro" : "Strategyパターンによる武器システム",
-                "explanation" : "攻撃ロジックをインターフェース化し、単体攻撃・範囲攻撃・デバフ付与などを動的に切り替え可能にした設計"
+                "intro" : "Strategyパターンによる弾挙動システム",
+                "explanation" : "弾の『飛び方・着弾処理』をScriptableObjectの戦略クラス（BulletStrategy）として外部化。直進・放物線・追尾などを、弾本体のコードを変更せずアセット差し替えだけで切り替えられる設計（開放閉鎖原則）"
             },{
                 "path" : "Scripts/DefanceGameScript_02.cs",
                 "language" : "csharp",
-                "intro" : "ScriptableObjectデータ設計",
-                "explanation" : "デザイナーやプランナー向けのデータ構成。プログラマーを介さないワークフローの確立。次のステップとしてExcel連携（データインポート自動化）を見据えています"
+                "intro" : "ScriptableObjectによるマスターデータ設計",
+                "explanation" : "敵のHP・攻撃力・移動戦略・弾種などを全てScriptableObjectに外部化。Range/Tooltipで入力ミスを防ぎ、プログラマーを介さずプランナーがエディタ上で敵の新規作成・バランス調整を行えるワークフローを実現"
             }
         ]
     },
@@ -279,8 +295,8 @@
             {
                 "path" : "Scripts/SpaceCatScript_01.cs",
                 "language" : "csharp",
-                "intro" : "JSONデータセーブシステム",
-                "explanation" : "ゲーム内ステートの永続化を担当するSaveManagerを実装。堅牢なシリアライズ処理を実現"
+                "intro" : "ジェネリックなJSONセーブシステム",
+                "explanation" : "プレイヤー座標・獲得アイテム・進行フラグをシリアライズし、persistentDataPath配下にJSONとして永続化。入出力を型を限定しないジェネリックメソッド化し、どのデータ型でも再利用できる設計とした"
             }
         ],
         "video_embed_url": "https://youtu.be/_mwkGeVx6As"

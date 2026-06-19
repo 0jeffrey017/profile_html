@@ -34,7 +34,7 @@
 
     <!-- Icons -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=description,favorite,home,link,mail,mobile,search,settings"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=description,download,favorite,home,link,mail,mobile,search,settings,sports_esports"
         rel="stylesheet" />
 
     <!-- CSS Reset & Libs -->
@@ -56,10 +56,10 @@
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
             <nav class="site-nav">
                 <ul>
-                    <li><a href="#">Home/ホーム</a></li>
-                    <li><a href="#activity">My Games/ゲーム</a></li>
-                    <li><a href="#contact">Contact/連絡</a></li>
-                    <li><a href="Resume/Resume.html">Resume/履歴書</a></li>
+                    <li><a href="#">Home / ホーム</a></li>
+                    <li><a href="#activity">My Games / ゲーム</a></li>
+                    <li><a href="#contact">Contact / 連絡先</a></li>
+                    <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
         </header>
@@ -69,10 +69,25 @@
             <div class="about-content">
                 <h1 class="hero-title"><span class="highlight">リイショウケツ</span></h1>
                 <h2 class="hero-subtitle">Game Developer & Engineer</h2>
+                <p class="hero-tagline">
+                    Unity・C#を中心としたゲームプログラマー。<strong>企業連携プロジェクトでメインプログラマーを務め準優勝</strong>。
+                    FSM・DI・MVPなどモダンな設計で「チームで作りやすく、変化に強いコード」を追求します。
+                </p>
+                <div class="hero-chips">
+                    <span class="hero-chip">Unity</span>
+                    <span class="hero-chip">C#</span>
+                    <span class="hero-chip">C/C++</span>
+                    <span class="hero-chip">CI/CD</span>
+                    <span class="hero-chip is-accent">企業連携・準優勝</span>
+                </div>
+                <a href="#activity" class="hero-cta">
+                    <span class="material-symbols-outlined">sports_esports</span>
+                    制作実績を見る / View Projects
+                </a>
 
                 <div class="about-grid">
                     <div class="info-group bio-text">
-                        <h3>About Me/ 自己紹介</h3>
+                        <h3>About Me / 自己紹介</h3>
                         <p class="bio-text">
                             台湾出身。食品科学を専攻後、5年間のカスタマーエンジニア経験を経て、
                             2025年より東京デザイナーテクノロジーセンター専門学校にてゲームプログラミングを学んでいます。
@@ -95,7 +110,7 @@
                         <img src="Image/Jeffrey_image.jpg" alt="Jeffrey LEE Profile" class="profile-img">
                     </div>
                 </div>
-                <h3>The Feature/ 今後の展望</h3>
+                <h3>The Future / 今後の展望</h3>
                 <p class="bio-text">
                     私が大切にしているのは、「動くものを作る」ことに留まらず、<strong>チームと事業に長期的な価値を残す設計</strong>を追求する姿勢です。C/C++による低レイヤーへの理解を土台に、UnityとDOTSを活用した大規模・高パフォーマンスなタイトル開発で、技術的な意思決定を担えるエンジニアへと成長していきたいと考えています。
                     <br>
@@ -106,8 +121,8 @@
                     加えて、CI/CDによる自動化や開発フローの改善を通じて、<strong>チーム全体の生産性を底上げする</strong>取り組みにも継続して挑戦します。個人の技術力だけでなく、周囲を巻き込みながらプロダクトを前進させられる人材を目指しています。
                 </p>
                 <br>
-                <div class="info-group">
-                    <h3>Background/背景</h3>
+                <div class="info-group reveal">
+                    <h3>Background / 背景</h3>
                     <ul class="timeline-list">
                         <li>2018/7~2018/9&#9千葉県 館山市 須藤牧場 インターンシップ</li>
                         <li>2018/9~2019/7&#9関西学院大学 交換留学</li>
@@ -117,8 +132,8 @@
                     </ul>
                 </div>
 
-                <div class="info-group">
-                    <h3>Skills/スキル</h3>
+                <div class="info-group reveal">
+                    <h3>Skills / スキル</h3>
                     <div class="skill-detail-list">
 
                         <!-- Unity -->
@@ -243,7 +258,7 @@
                         </div>
                     </div>
 
-                    <h3>Qualifications/資格</h3>
+                    <h3>Qualifications / 資格</h3>
                     <ul class="qualifications-list">
                         <li class="qualifications-tag">
                             <strong>基本情報技術者試験 (FE) 合格</strong>
@@ -275,8 +290,8 @@
         </section>
 
         <!-- Games Section -->
-        <section id="activity" class="games-section">
-            <h2 class="section-title">Game Projects</h2>
+        <section id="activity" class="games-section reveal">
+            <h2 class="section-title">Game Projects / 制作実績</h2>
             <div class="sort-container">
                 <button id="sort-toggle" class="sort-button">
                     <span class="material-symbols-outlined">search</span>
@@ -289,8 +304,8 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <h2 class="section-title">Contact</h2>
+        <section id="contact" class="contact-section reveal">
+            <h2 class="section-title">Contact / 連絡先</h2>
             <div class="contact-card">
                 <div class="contact-item">
                     <span class="material-symbols-outlined">mail</span>
@@ -307,6 +322,10 @@
                 <div class="contact-item">
                     <span class="material-symbols-outlined">description</span>
                     <a href="Resume/Resume.html">Resume / 履歴書</a>
+                </div>
+                <div class="contact-item">
+                    <span class="material-symbols-outlined">download</span>
+                    <a href="assets/Resume_Jeffrey.pdf" download target="_blank" rel="noopener noreferrer">Resume PDF / 履歴書ダウンロード</a>
                 </div>
             </div>
         </section>
