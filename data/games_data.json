@@ -4,7 +4,8 @@
         "filename": "UnityJobSystemBurstCompiler.html",
         "title": "Unity Job System & Burst Compiler",
         "subtitle": "High-Performance Data-Oriented Programming",
-        "description": "Unity Job SystemとBurst Compilerを用いた並行処理の検証プロジェクト（個人開発 / 約1ヶ月）",
+        "description": "Unity Job SystemとBurst Compilerを用いた並行処理の検証プロジェクト。",
+        "team": "個人開発",
         "overview": "<p>C# Job SystemとBurst Compilerを活用し、大量のオブジェクトを効率的に処理するデータ指向設計（DOD）の実践プロジェクトです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5～2026/6",
@@ -13,6 +14,15 @@
         "challenges_solutions": [
             {"challenge" : "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する", "solution" : "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"},
             {"challenge" : "WebGLへのビルドおよびデプロイ作業の手間とタイムロス", "solution" : "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "JobSystem"},
+            {"type": "design", "name": "Burst"},
+            {"type": "tech", "name": "GitHubActions"},
+            {"type": "tech", "name": "GameCI"}
         ],
         "image_path": "Image/GameImage/Unity Job System & Burst Compiler_image.png",
         "platform": "PC (Windows, WebGL)",
@@ -39,7 +49,8 @@
         "filename": "PenguinKamizumo.html",
         "title": "ペンギン紙相撲",
         "subtitle": "Physics-Based Action Game",
-        "description": "物理演算を活用した、約10時間で制作したアクションゲーム（個人開発）",
+        "description": "物理演算を活用した、約10時間で制作したアクションゲーム。",
+        "team": "個人開発",
         "overview": "<p>伝統的な紙相撲をペンギンモチーフで再現。AキーとLキーを素早く交互に連打し、物理挙動を利用して相手を土俵から押し倒します。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
@@ -52,6 +63,13 @@
             {"type" :"BGM", "name":"Who Is the Champion", "url":"https://dova-s.jp/bgm/detail/21672"},
             {"type" :"SE", "name":"デブペンギン", "url":"https://dova-s.jp/se/detail/355"},
             {"type" :"SkyBox", "name":"AllSky Free - 10 Sky / Skybox Set", "url":"https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "tech", "name": "UniTask"},
+            {"type": "tech", "name": "物理演算"}
         ],
         "image_path": "Image/GameImage/sumoGame_image.png",
         "platform": "PC (Windows, WebGL)",
@@ -72,7 +90,8 @@
         "filename": "VContainerDIExperiment.html",
         "title": "VContainer DI Experiment",
         "subtitle": "Architecture Experiment Game",
-        "description": "VContainerを用いたDI（依存性の注入）のアーキテクチャ実装実験（個人開発 / 約2週間）",
+        "description": "VContainerを用いたDI（依存性の注入）のアーキテクチャ実装実験。",
+        "team": "個人開発",
         "overview": "<p>純粋なゲームロジックとオブジェクトの依存関係を疎結合に保つため、DIコンテナ「VContainer」を導入した実験的ミニゲームです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/5",
@@ -80,6 +99,15 @@
         "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "密結合になりがちなシングルトンパターンへの過度な依存からの脱却", "solution" : "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "DI"},
+            {"type": "design", "name": "MVP"},
+            {"type": "tech", "name": "VContainer"},
+            {"type": "tech", "name": "R3"}
         ],
         "image_path": "Image/GameImage/ClickGame_image.png",
         "platform": "PC (Windows, WebGL)",
@@ -100,7 +128,8 @@
         "filename": "PassTheBaton.html",
         "title": "Pass The Baton",
         "subtitle": "2D Puzzle Action / Hackathon Work",
-        "description": "ハッカソン制作（約2週間 / チーム開発）。過去の自分を足場に進むギミックアクション。全体アーキテクチャ設計と進行管理を担当。",
+        "description": "ハッカソン制作。過去の自分を足場に進むギミックアクション。全体アーキテクチャ設計と進行管理を担当。",
+        "team": "チーム開発",
         "overview": "<p>「命を繋ぐ」をテーマに、ミスした過去の自分の死体を踏み台（ギミック）として活用しながら、協力してゴールを目指すパズルアクションです。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/4～2026/5",
@@ -109,6 +138,14 @@
         "challenges_solutions": [
             {"challenge" : "限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担", "solution" : "プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止"},
             {"challenge" : "状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持", "solution" : "VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "FSM"},
+            {"type": "design", "name": "責務分離"},
+            {"type": "tech", "name": "VContainer"}
         ],
         "image_path": "Image/GameImage/PassTheBaton_image.png",
         "platform": "PC (Windows, WebGL)",
@@ -129,7 +166,8 @@
         "filename": "SFMLLearning.html",
         "title": "SFML Learning",
         "subtitle": "C++ & SFML Low-Level Programming Project",
-        "description": "C++とSFMLを用いた低レイヤー開発・ゲームエンジン基礎の学習プロジェクト（個人開発 / 継続中）",
+        "description": "C++とSFMLを用いた低レイヤー開発・ゲームエンジン基礎の学習プロジェクト。",
+        "team": "個人開発",
         "overview": "<p>ゲームエンジンの内部挙動とC++のメモリ管理、オブジェクト設計を深く理解するために構築した、フレームワーク不使用の学習用プロジェクトです。</p>",
         "engine": "SFML 2.6.2",
         "period": "2026/4～",
@@ -137,6 +175,13 @@
         "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
         "challenges_solutions": [
             {"challenge" : "C++ネイティブ開発におけるクラス構造の肥大化と密結合化", "solution" : "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"}
+        ],
+        "tags": [
+            {"type": "cpp", "name": "C++"},
+            {"type": "engine", "name": "SFML2.6.2"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "ECS"},
+            {"type": "tech", "name": "データ駆動"}
         ],
         "image_path": "Image/GameImage/SFML_image.png",
         "platform": "PC (Windows, Linux)",
@@ -154,10 +199,12 @@
     {
         "id": "1",
         "star": true,
+        "corporate_project" : true,
         "filename": "GreatOKhanInvasion.html",
         "title": "グレート-O-カーンの侵略物語",
         "subtitle": "2D Endless Run Game / Enterprise Collaboration",
-        "description": "FSM・MVP・UniRx・UniTaskを網羅した本格ランゲーム。多職種5〜7名チームでメインプログラマーを担当し、約5ヶ月の開発で全7チーム中2位（準優勝）。新日本プロレス公式サイトで公開中。",
+        "description": "FSM・MVP・UniRx・UniTaskを網羅した本格ランゲーム。メインプログラマーを担当し、全7チーム中2位（準優勝）。新日本プロレス公式サイトで公開中。",
+        "team": "チーム開発（5〜7名）",
         "overview": "<p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/10-2026/2",
@@ -179,6 +226,15 @@
         "credit": [
             {"type" :"BGM,SE", "name":"フリーBGM・音楽素材MusMus", "url":"https://musmus.main.jp"},
             {"type" :"BGM,SE", "name":"OtoLogic", "url":"https://otologic.jp/"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity2022.3.61f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "FSM"},
+            {"type": "design", "name": "MVP"},
+            {"type": "tech", "name": "UniTask"},
+            {"type": "tech", "name": "UniRx"}
         ],
         "image_path": "Image/GameImage/RunGame_image.png",
         "platform": "PC (Windows, WebGL), Mobile",
@@ -204,7 +260,8 @@
         "filename": "GuiltyLane.html",
         "title": "Guilty Lane",
         "subtitle": "Dark Adventure Game / Hackathon Work",
-        "description": "ハッカソン作品（約4ヶ月 / チーム開発）。「選択と罪」をテーマにしたナラティブ・アドベンチャー。アイテムシステムとイベントフラグ管理を担当。",
+        "description": "ハッカソン作品。「選択と罪」をテーマにしたナラティブ・アドベンチャー。アイテムシステムとイベントフラグ管理を担当。",
+        "team": "チーム開発",
         "overview": "<p>借金を抱えた主人公は、ある企業の「線路管理業務」に雇われる。その作業は、レバーを引いてトロッコの行き先を決めるだけだった。だがその先には、必ず“誰か”がいる──。これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/9～2025/12",
@@ -212,6 +269,14 @@
         "responsible": ["メインアイテムシステム・イベントフラグ管理"],
         "challenges_solutions": [
             {"challenge" : "複数人開発における、ゲーム内データ構造およびイベント仕様の統一", "solution" : "仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity2022.3.61f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "開放閉鎖原則"},
+            {"type": "tech", "name": "ScriptableObject"},
+            {"type": "tech", "name": "アイテムシステム"}
         ],
         "image_path": "Image/GameImage/Guilty_Lane_image.png",
         "platform": "調整中",
@@ -232,7 +297,8 @@
         "filename": "OumajoCastle.html",
         "title": "逢魔々城",
         "subtitle": "Japanese Tower Defense Game / Design Pattern Practice",
-        "description": "各種デザインパターンで拡張性を追求した和風タワーディフェンス（約3ヶ月 / チーム開発）。敵AI・武器システム設計とUI全体を担当。",
+        "description": "各種デザインパターンで拡張性を追求した和風タワーディフェンス。敵AI・武器システム設計とUI全体を担当。",
+        "team": "チーム開発",
         "overview": "<p>魑魅魍魎が迫りくる城を舞台にしたタワーディフェンスゲーム。プログラムの美しさと拡張性、パフォーマンスの最適化に重きを置いたプロジェクトです。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/8-2025/10",
@@ -249,6 +315,15 @@
             "solution" : "StrategyパターンおよびFactoryパターンを採用。既存のソースコードを修正することなく、クラスの追加だけで新しい挙動を拡張できる設計（開放閉鎖原則の遵守）を確立"},
             {"challenge" : "敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity2022.3.61f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "Strategy"},
+            {"type": "design", "name": "Factory"},
+            {"type": "design", "name": "ObjectPool"},
+            {"type": "tech", "name": "ScriptableObject"}
         ],
         "image_path": "Image/GameImage/DefanceGame_image.png",
         "platform": "PC (Windows)",
@@ -276,7 +351,8 @@
         "filename": "SpaceCat.html",
         "title": "Space Cat",
         "subtitle": "2D Sci-Fi Survival Action",
-        "description": "JSONセーブ/ロードを搭載したSF2Dサバイバルアクション（約3ヶ月 / チーム開発）。全体設計とワイヤー物理挙動の実装を担当。",
+        "description": "JSONセーブ/ロードを搭載したSF2Dサバイバルアクション。全体設計とワイヤー物理挙動の実装を担当。",
+        "team": "チーム開発",
         "overview": "<p>宇宙戦艦から脱出するため、4つの生存装備を探し出すSFアクション。ワイヤーアクションなど、ゲーム性のある物理挙動に挑戦した作品です。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/6 - 2025/8",
@@ -284,7 +360,14 @@
         "responsible": ["ゲーム全体の基本設計・システム構築", "キャラクターのリジッドボディ制御・ワイヤー挙動の実装", "タイトルおよびゲーム状態遷移の実装"],
         "challenges_solutions": [
             {"challenge" : "難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須", "solution" : "プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築"},
-            {"challenge" : "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない", "solution" : "現段階では完全な解決に至っておらず、物理演算（HingeJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中"}
+            {"challenge" : "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない", "solution" : "現段階では完全な解決に至っておらず、物理演算（SpringJoint2Dなど）のパラメータ調整およびベクトル計算の再設計を含め、現在も継続して研究中"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity2022.3.61f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "tech", "name": "JSONセーブ"},
+            {"type": "tech", "name": "物理挙動(SpringJoint2D)"}
         ],
         "image_path": "Image/GameImage/SpaceCat_image.png",
         "platform": "PC (Windows)",
@@ -306,7 +389,8 @@
         "filename": "Ikasu.html",
         "title": "デカめの一杯",
         "subtitle": "Hybrid Action Game / Hackathon Work",
-        "description": "ハッカソン制作（約2週間 / チーム開発）。釣りとボスバトルを融合したハイブリッドアクション。ボス戦（巨大イカ）のAI・戦闘ロジックを担当。",
+        "description": "ハッカソン制作。釣りとボスバトルを融合したハイブリッドアクション。ボス戦（巨大イカ）のAI・戦闘ロジックを担当。",
+        "team": "チーム開発",
         "overview": "<p>制限時間内に魚を釣ってスコアを稼ぐ『静』のパートから、巨大イカと死闘を繰り広げる『動』のパートへ移行する、ハッカソン発のゲームです。</p>",
         "engine": "Unity 2022.3.61f1",
         "period": "2025/6～2025/7",
@@ -314,6 +398,14 @@
         "responsible": ["ボス戦（巨大イカ）のAIおよび戦闘ロジックの実装"],
         "challenges_solutions": [
             {"challenge" : "短期間の開発スケジュールの中で、全く異なる2つのゲームジャンルを違和感なく融合させる", "solution" : "コアとなる面白さを即座に検証するため、迅速なプロトタイピング（イテレーション）を繰り返し、仕様のブラッシュアップを最速で実施"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity2022.3.61f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "tech", "name": "敵AI"},
+            {"type": "tech", "name": "NavMesh"},
+            {"type": "tech", "name": "放物線弾道計算"}
         ],
         "image_path": "Image/GameImage/Ikasu_image.png",
         "platform": "PC (Windows, WebGL)",
@@ -334,7 +426,8 @@
         "filename": "SharkAvoidGame.html",
         "title": "サメは偏食です。",
         "subtitle": "弾幕ゲーム",
-        "description": "瞬間的な判断力が問われる弾幕アクション（個人開発 / 約3週間）",
+        "description": "瞬間的な判断力が問われる弾幕アクション。",
+        "team": "個人開発",
         "overview": "<p>迫りくる食べ物の中から「食べてよいもの」と「避けるべきもの」を瞬時に見分け、ジャンプで回避しながらスコアを稼ぐ弾幕アクションです。大量出現するオブジェクトを安定動作させる最適化に取り組みました。</p>",
         "engine": "Unity 6000.3.8f1",
         "period": "2026/4～2026/5",
@@ -344,6 +437,13 @@
             {"challenge" : "通常のUIでは表現できない、立体的な3DオブジェクトをUIとして画面に表示したい", "solution" : "UI専用カメラを別途構築し、3DオブジェクトをUIレイヤーへ合成描画することで、奥行きのある演出を実現"},
             {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
              "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "ObjectPool"},
+            {"type": "tech", "name": "3D-UI"}
         ],
         "image_path": "Image/GameImage/AvoidGame_image.png",
         "platform": "PC (Windows, WebGL)",
