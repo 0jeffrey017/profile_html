@@ -23,6 +23,31 @@
         }
     }
 
+    // Parse "2025/10-2026/2" etc. into a sortable YYYY*12+MM key from the start date
+    function periodStartKey(period) {
+        const m = (period || '').match(/(\d{4})\/(\d{1,2})/);
+        return m ? parseInt(m[1], 10) * 12 + parseInt(m[2], 10) : 0;
+    }
+
+    // Extract the start year (e.g. "2026") for grouping
+    function periodStartYear(period) {
+        const m = (period || '').match(/(\d{4})/);
+        return m ? m[1] : 'Other';
+    }
+
+    // タグは { type, name } の形式。色は type で決まる（lang / engine / design / tech）
+    const TYPE_ORDER = { csharp: 0, cpp: 0, engine: 1, vcs: 2, design: 3, tech: 4 };
+
+    function buildTagsHtml(game) {
+        const tags = (game.tags || []).slice().sort(
+            (a, b) => (TYPE_ORDER[a.type] ?? 9) - (TYPE_ORDER[b.type] ?? 9)
+        );
+        if (!tags.length) return "";
+
+        const chips = tags.map(t => `<span class="game-tag tag-${t.type}">${t.name}</span>`);
+        return `<div class="game-tags">${chips.join("")}</div>`;
+    }
+
     function renderGameGrid() {
         const $grid = $('.game-grid');
         if (!$grid.length) return;
@@ -32,35 +57,48 @@
         // Filter for released games (optional, depends on your preference)
         const displayGames = allGames.filter(game => game.status === "released");
         
-        // Sort based on chronological mapping (Game01 is newest, Game10 is oldest)
+        // Sort chronologically by the start date parsed from the "period" field
         displayGames.sort((a, b) => {
-            const idA = parseInt(a.id.replace('game', ''));
-            const idB = parseInt(b.id.replace('game', ''));
-            return isNewestFirst ? idA - idB : idB - idA;
+            const ka = periodStartKey(a.period);
+            const kb = periodStartKey(b.period);
+            return isNewestFirst ? kb - ka : ka - kb;
         });
 
+        // Group games by year (parsed from the period start date)
+        let currentYear = null;
         displayGames.forEach(game => {
-            const gameCard = `
-                <div class="game-card-wrapper">
-                    ${game.star ? '<span class="star-badge">★ イチオシ</span>' : ''}
-                    <div class="game-card" data-id="${game.id}">
-                        <a href="games/${game.filename}" class="game-link">
-                            <div class="game-image-wrapper">
-                                <img src="${game.image_path}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
-                            </div>
-                            <div class="game-info">
-                                <span class="game-time">${game.period}</span>
-                                <h3 class="game-name">${game.title}</h3>
-                                <p class="game-desc">${game.description}</p>
-                            </div>
-                        </a>
+            const year = periodStartYear(game.period);
+            if (year !== currentYear) {
+                currentYear = year;
+                $grid.append(`<div class="year-divider"><span>${year}</span></div>`);
+            }
+
+            const tagsHtml = buildTagsHtml(game);
+            const row = `
+                <a class="game-row" href="games/${game.filename}" data-id="${game.id}">
+                    <div class="game-row-thumb">
+                        <img src="${game.image_path}" alt="${game.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
                     </div>
-                </div>
+                    <div class="game-row-body">
+                        <div class="game-row-head">
+                            <h3 class="game-row-title">${game.title}</h3>
+                            ${game.star ? '<span class="recommend-badge">★ イチオシ</span>' : ''}
+                            ${game.corporate_project ? '<span class="corporate-badge">★　企業プロジェクト</span>' : ''}
+                        </div>
+                        <div class="game-row-meta">
+                            <span class="meta-pair"><span class="meta-k">制作期間</span><span class="meta-v">${game.period || '—'}</span></span>
+                            <span class="meta-pair"><span class="meta-k">制作人数</span><span class="meta-v">${game.team || '—'}</span></span>
+                        </div>
+                        <p class="game-row-desc">${game.description}</p>
+                        ${tagsHtml}
+                    </div>
+                    <span class="game-row-arrow material-symbols-outlined">arrow_forward</span>
+                </a>
             `;
-            $grid.append(gameCard);
+            $grid.append(row);
         });
 
-        console.log("main.js: Grid rendered (NewestFirst: " + isNewestFirst + ")");
+        console.log("main.js: List rendered (NewestFirst: " + isNewestFirst + ")");
     }
 
     function setupEventListeners() {
