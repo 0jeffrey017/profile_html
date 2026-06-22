@@ -458,5 +458,50 @@
                 "explanation": "大量に出現・消滅する食べ物オブジェクトをUnity標準のObjectPoolでラップし使い回すことで、Instantiate/Destroyの頻発によるGCスパイク（処理落ち）を防止。生成時の初期化処理も一元化"
             }
         ]
+    },
+    {
+        "id": "12",
+        "filename": "RhythmGame.html",
+        "title": "回れ回れ",
+        "subtitle": "Rhythm Action Game",
+        "description": "楽曲に合わせて流れるノーツを叩く、判定精度にこだわったリズムアクション。",
+        "team": "個人開発",
+        "overview": "<p>楽曲に同期して落下するノーツを、レーンごとのキー入力でタイミングよく叩くリズムアクションゲームです。Perfect / Good / Bad / Miss の判定システムと、譜面（チャート）データ駆動の再生処理を実装しました。</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "2026/6",
+        "status": "released",
+        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "challenges_solutions": [
+            {"challenge" : "入力タイミングを正確に判定し、Perfect/Good/Bad/Missを破綻なく振り分ける", "solution" : "レーンごとにノーツをQueueで保持し、常に先頭（最も古い未判定ノーツ）と入力時刻の差分を比較。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理する判定ロジックを構築"},
+            {"challenge" : "大量のノーツを生成・破棄するためのGCスパイク（処理落ち）の懸念", "solution" : "オブジェクトプール（NotePool）パターンを導入。ノーツの使い回しに加え、プール再利用を検知するUseIdで「自分のオブジェクト」のみを安全に返却する仕組みを実装"}
+        ],
+        "credit": [
+            {"type" :"SE", "name":"OtoLogic", "url":"https://otologic.jp/"},
+            {"type" :"BGM", "name":"W&W - OIIA OIIA (Spinning Cat)", "url":"https://www.youtube.com/watch?v=IxX_QHay02M&list=RDIxX_QHay02M&start_radio=1"},
+            {"type" :"VFX", "name":"Cartoon FX Remaster Free", "url":"https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565"},
+            {"type" :"3D Model", "name":"Oiiaioooooiai Cat", "url":"https://sketchfab.com/3d-models/oiiaioooooiai-cat-30d27bf7fb224849b76e208a6eccdb36"}
+            
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "ObjectPool"},
+            {"type": "tech", "name": "判定システム"},
+            {"type": "tech", "name": "譜面駆動"}
+        ],
+        "image_path": "Image/GameImage/RhythmGame_image.png",
+        "platform": "PC (Windows, WebGL)",
+        "how_to_play": "Key Input: レーンのノーツをタイミングよく叩く",
+        "players": "Single Player（1人用）",
+        "play_link": "https://0jeffrey017.github.io/20260620_RhythmGame/",
+        "code_sample": [
+            {
+                "path": "Scripts/RhythmGame_JudgementManager.cs",
+                "language": "csharp",
+                "intro": "レーンQueueによるノーツ判定システム",
+                "explanation": "レーンごとにActiveNoteをQueueで保持し、入力時に先頭ノーツとの時間差からPerfect/Good/Bad/Missを判定。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理。プール再利用を検知するUseIdで、返却すべき視覚オブジェクトの取り違えを防ぐ核心ロジック"
+            }
+        ]
     }
 ]
