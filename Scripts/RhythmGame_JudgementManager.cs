@@ -5,9 +5,9 @@ using UnityEngine;
 namespace RhythmGame
 {
     /// <summary>
-    /// Holds the notes that are currently falling, grouped by lane and ordered
-    /// by hit time, so a key press can instantly find the oldest unjudged note
-    /// in that lane. Judgement logic (Perfect/Good/Miss) is added in Step 2.
+    /// 現在落下中のノーツをレーンごとにヒット時刻順で保持する。
+    /// これにより、キー入力時にそのレーンで最も古い未判定ノーツを即座に取得できる。
+    /// 判定ロジック（Perfect/Good/Miss）はStep2で追加。
     /// </summary>
     public class JudgementManager : MonoBehaviour
     {
@@ -16,17 +16,17 @@ namespace RhythmGame
         [SerializeField] private float goodJudgement = 0.12f;
         [SerializeField] private float badJudgement = 0.2f;
 
-        // One queue per lane. Front of the queue is always the next note to hit.
+        // レーンごとに1つのQueue。先頭は常に次に叩くべきノーツ。
         private Queue<ActiveNote>[] _laneQueues;
-        
+
         public Action<int,JudgeType> OnNoteBeJudged;
 
-        /// <summary>A falling note paired with its on-screen object.</summary>
+        /// <summary>落下中のノーツと、その画面上のオブジェクトを紐付けた構造体。</summary>
         public readonly struct ActiveNote
         {
-            public readonly Note Note;        // timing data (time, lane, ...)
-            public readonly NodeObject Object; // the visual note on screen
-            public readonly int UseId;         // Object.UseId captured at spawn
+            public readonly Note Note;        // タイミングデータ（time, lane など）
+            public readonly NodeObject Object; // 画面上の視覚ノーツ
+            public readonly int UseId;         // 生成時に記録したObject.UseId
 
             public ActiveNote(Note note, NodeObject obj)
             {
@@ -35,14 +35,14 @@ namespace RhythmGame
                 UseId = obj != null ? obj.UseId : -1;
             }
 
-            // The visual object still belongs to this note only if it hasn't been
-            // reused for another note since (its UseId would have changed).
+            // 視覚オブジェクトがまだこのノーツのものであるのは、その後に別のノーツへ
+            // 再利用されていない場合のみ（再利用されるとUseIdが変化している）。
             public bool IsObjectStillMine =>
                 Object != null && Object.UseId == UseId;
         }
 
         public enum JudgeType
-        {   
+        {
             None,
             Perfect,
             Good,
@@ -52,7 +52,7 @@ namespace RhythmGame
 
         private void Awake()
         {
-            // Lane count comes from the chart; default to 4 until it loads.
+            // レーン数は譜面から決まる。読み込まれるまでは暫定で4とする。
             BuildQueues(4);
         }
 
@@ -62,8 +62,8 @@ namespace RhythmGame
 
             float now = chartPlayer.SongTime;
 
-            // Any note whose hit window has fully passed without a press is a
-            // miss. Front of each queue is the oldest, so we drain from there.
+            // 入力されないままヒット窓を完全に過ぎたノーツはMiss。
+            // 各Queueの先頭が最も古いので、そこから順に処理していく。
             for (int lane = 0; lane < _laneQueues.Length; lane++)
             {
                 var queue = _laneQueues[lane];
@@ -71,8 +71,8 @@ namespace RhythmGame
                        now - queue.Peek().Note.time > badJudgement)
                 {
                     queue.Dequeue();
-                    // Leave the visual note falling; it returns itself to the
-                    // pool when it crosses the NoteReturnLine.
+                    // 視覚ノーツはそのまま落下させる。NoteReturnLineを越えた時点で
+                    // 自身でプールに返却される。
                     OnNoteBeJudged?.Invoke(lane, JudgeType.Miss);
                 }
             }
@@ -88,8 +88,8 @@ namespace RhythmGame
         }
 
         /// <summary>
-        /// Called by NoteSpawner right after it spawns a note's visual object.
-        /// Registers it as judgeable in its lane.
+        /// NoteSpawnerがノーツの視覚オブジェクトを生成した直後に呼ばれる。
+        /// そのノーツを所属レーンの判定対象として登録する。
         /// </summary>
         public void Register(Note note, NodeObject obj)
         {
@@ -100,7 +100,7 @@ namespace RhythmGame
             }
             _laneQueues[note.lane].Enqueue(new ActiveNote(note, obj));
         }
-        
+
         /// <summary>
         /// | 判定 | 許容 ||---|---|
         ///| Perfect | ±0.05秒 |
@@ -114,16 +114,16 @@ namespace RhythmGame
         {
             if (_laneQueues[lane].Count == 0)
             {
-                // Empty lane: a stray tap with no note to hit. Ignore.
+                // レーンが空：叩くべきノーツのない空打ち。無視する。
                 return;
             }
 
-            // Peek first — don't consume the note until we know it's in range.
+            // まずPeekする。範囲内だと分かるまでノーツを消費しない。
             ActiveNote active = _laneQueues[lane].Peek();
             var diff = Mathf.Abs(active.Note.time - time);
 
-            // Outside the hit window: treat as an early/stray tap and leave the
-            // note in the queue. Late notes are missed by Update, not here.
+            // ヒット窓の外：早押し・空打ちとして扱い、ノーツはQueueに残す。
+            // 遅れノーツはここではなくUpdateでMissとして処理される。
             if (diff > badJudgement)
             {
                 return;
@@ -134,11 +134,11 @@ namespace RhythmGame
             else if (diff <= goodJudgement) result = JudgeType.Good;
             else result = JudgeType.Bad;
 
-            // The note is consumed: remove it and clear its on-screen object.
-            // Only release the visual if it still belongs to this note — if the
-            // pooled instance was already reused for a later note (e.g. the
-            // original crossed the return line first), releasing it would wrongly
-            // remove that other note from the same lane.
+            // ノーツを消費：Queueから取り除き、画面上のオブジェクトを片付ける。
+            // 視覚オブジェクトの返却は、まだこのノーツのものである場合のみ行う。
+            // プールされたインスタンスが既に後続ノーツへ再利用されている場合
+            // （例：元のノーツが先にリターンラインを越えた）、誤って返却すると
+            // 同じレーンの別ノーツを消してしまうため。
             _laneQueues[lane].Dequeue();
             if (active.IsObjectStillMine) active.Object.ReturnToPool();
 
