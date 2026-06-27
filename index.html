@@ -31,7 +31,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins&effect=fire-animation" rel="stylesheet">
 
     <!-- Icons -->
     <link
@@ -40,49 +39,37 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 
-<body>
+<body class="page">
     <canvas id="canvas"></canvas>
     <div class="container">
         <header class="site-header">
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
             <nav class="site-nav">
                 <ul>
-                    <li><a href="#">Home / ホーム</a></li>
-                    <li><a href="#activity">My Games / ゲーム</a></li>
-                    <li><a href="#contact">Contact / 連絡先</a></li>
+                    <li><a href="index.html" class="is-active">About / 自己紹介</a></li>
+                    <li><a href="games.html">Games / ゲーム</a></li>
+                    <li><a href="background.html">Background / 経歴</a></li>
+                    <li><a href="contact.html">Contact / 連絡先</a></li>
                     <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
         </header>
 
-        <!-- Hero / About Section -->
-        <section class="about-section">
-            <div class="about-content">
-                <div class="hero-grid">
-                    <div class="about-image-container">
-                        <img src="Image/Jeffrey_image.jpg" alt="Jeffrey LEE Profile" class="profile-img">
-                    </div>
-                    <div class="hero-text">
-                        <h1 class="hero-title"><span class="highlight">リイショウケツ</span></h1>
-                        <h2 class="hero-subtitle">Game Developer & Engineer</h2>
-                    </div>
-                </div>
-
-                <div class="info-group bio-text bio-centered">
-                    <p class="hero-tagline">
-                        Unity・C#を中心としたゲームプログラマー。<strong>企業連携プロジェクトでメインプログラマーを務め準優勝</strong>。
-                        FSM・DI・MVPなどモダンな設計で「チームで作りやすく、変化に強いコード」を追求します。
-                    </p>
+        <main class="page-main">
+            <div class="profile-layout">
+                <!-- 左：プロフィール -->
+                <div class="profile-rail">
+                    <img src="Image/Jeffrey_image.jpg" alt="Jeffrey LEE Profile" class="profile-img">
+                    <h1 class="hero-title"><span class="highlight">リイショウケツ</span></h1>
+                    <h2 class="hero-subtitle">Game Developer &amp; Engineer</h2>
                     <div class="hero-chips">
                         <span class="hero-chip">Unity</span>
                         <span class="hero-chip">C#</span>
@@ -90,6 +77,14 @@
                         <span class="hero-chip">CI/CD</span>
                         <span class="hero-chip is-accent">企業プロジェクト・準優勝</span>
                     </div>
+                    <p class="hero-tagline">
+                        Unity・C#を中心としたゲームプログラマー。<strong>企業連携プロジェクトでメインプログラマーを務め準優勝</strong>。
+                        FSM・DI・MVPなどモダンな設計で「チームで作りやすく、変化に強いコード」を追求します。
+                    </p>
+                </div>
+
+                <!-- 中央：自己紹介 -->
+                <div class="profile-col">
                     <h3>About Me / 自己紹介</h3>
                     <p class="bio-text">
                         台湾出身。食品科学を専攻後、5年間のカスタマーエンジニア経験を経て、
@@ -104,136 +99,30 @@
                         「チームで作りやすく、変化に強いコード」を常に意識しています。
                         また、JLPT N1・基本情報技術者試験の取得を通じ、日本語での高度な技術議論と
                         情報科学の基礎力も証明してきました。
+                    </p>
+                </div>
+
+                <!-- 右：今後の展望 -->
+                <div class="profile-col">
+                    <h3>The Future / 今後の展望</h3>
+                    <p class="bio-text">
+                        大切にしているのは、「動くものを作る」ことに留まらず、<strong>チームと事業に長期的な価値を残す設計</strong>を追求する姿勢です。C/C++による低レイヤーへの理解を土台に、UnityとDOTSを活用した大規模・高パフォーマンスなタイトル開発で、技術的な意思決定を担えるエンジニアへ成長していきたいと考えています。
                         <br><br>
-                        「面白いゲームをつくる」という目標のために、新しい技術を学び続け、
-                        チームに貢献できるプログラマーを目指しています。
+                        また、リアルタイム通信やマルチプレイ基盤といった、<strong>安定性と拡張性が事業の生命線となる領域</strong>に強い関心があります。仕様変更や規模拡大に耐えうるアーキテクチャを設計し、プロダクトの寿命を延ばすことで開発組織に貢献したいです。
+                        <br><br>
+                        加えて、CI/CDによる自動化や開発フローの改善を通じて、<strong>チーム全体の生産性を底上げする</strong>取り組みにも継続して挑戦します。周囲を巻き込みながらプロダクトを前進させられる人材を目指しています。
                     </p>
                 </div>
-
-                <h3>The Future / 今後の展望</h3>
-                <p class="bio-text">
-                    私が大切にしているのは、「動くものを作る」ことに留まらず、<strong>チームと事業に長期的な価値を残す設計</strong>を追求する姿勢です。C/C++による低レイヤーへの理解を土台に、UnityとDOTSを活用した大規模・高パフォーマンスなタイトル開発で、技術的な意思決定を担えるエンジニアへと成長していきたいと考えています。
-                    <br>
-                    <br>
-                    また、リアルタイム通信やマルチプレイ基盤といった、<strong>安定性と拡張性が事業の生命線となる領域</strong>に強い関心があります。仕様変更や規模拡大に耐えうるアーキテクチャを設計し、プロダクトの寿命を延ばすことで開発組織に貢献したいです。
-                    <br>
-                    <br>
-                    加えて、CI/CDによる自動化や開発フローの改善を通じて、<strong>チーム全体の生産性を底上げする</strong>取り組みにも継続して挑戦します。個人の技術力だけでなく、周囲を巻き込みながらプロダクトを前進させられる人材を目指しています。
-                </p>
-                <br>
-
-                <div class="info-group reveal">
-                    <h3 id="activity">Game Projects / 制作実績</h3>
-                    <p class="section-sub">
-                        時間順に並べた制作実績
-                    </p>
-                    <div class="sort-container">
-                        <button id="sort-toggle" class="sort-button">
-                            <span class="material-symbols-outlined">search</span>
-                            Newest First
-                        </button>
-                    </div>
-                    <div class="game-grid">
-                        <!-- Dynamically populated by main.js -->
-                    </div>
-
-                    <div class="info-group reveal">
-                        <h3>Background / 背景</h3>
-                        <ul class="timeline-list">
-                            <li>2018/7~2018/9&#9千葉県 館山市 須藤牧場 インターンシップ</li>
-                            <li>2018/9~2019/7&#9関西学院大学 交換留学</li>
-                            <li>~2020/4&#9私立東海大学 食品科学科 卒</li>
-                            <li>2020/9~2025/3&#9株式会社万物智得 カスタマーエンジニア</li>
-                            <li>2025/4~Now&#9東京デザイナーテクノロジーセンター専門学校 ゲームプログラマー専攻</li>
-                        </ul>
-                    </div>
-
-                    <h3>Qualifications / 資格</h3>
-                    <ul class="qualifications-list">
-                        <li class="qualifications-tag">
-                            <strong>基本情報技術者試験 (FE) 合格</strong>
-                            <ul>
-                                <li>経済産業省認定の国家資格。アルゴリズム・データ構造・ネットワーク・Linuxなど、情報科学の体系的な基礎を備えていることを客観的に証明しています。実装の引き出しを支える土台です。
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="qualifications-tag">
-                            <strong>JLPT N1 合格</strong>
-                            <ul>
-                                <li>日本語能力試験の最上位。仕様書の読解・作成から、企画・アート職との技術議論まで、日本の開発現場で円滑に連携できるコミュニケーション力を保証します。</li>
-                            </ul>
-                        </li>
-                        <li class="qualifications-tag">
-                            <strong>Microsoft Azure AI Fundamentals (AI-900)</strong>
-                            <ul>
-                                <li>クラウドおよびAI/機械学習サービスの基礎知識を習得。オンライン基盤やデータ活用が前提となる今後の開発を見据え、インフラ・AI領域へも視野を広げています。</li>
-                            </ul>
-                        </li>
-                        <li class="qualifications-tag">
-                            <strong>MOS Excel 2019 合格</strong>
-                            <ul>
-                                <li>ScriptableObjectと連携するマスターデータ設計や、プランナーが扱う数値管理ツールの構築に応用。データ駆動開発を支える実務スキルとして活用しています。
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </section>
+        </main>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section reveal">
-            <h2 class="section-title">Contact / 連絡先</h2>
-            <div class="contact-card">
-                <div class="contact-item">
-                    <span class="material-symbols-outlined">mail</span>
-                    <a href="mailto:0jeffrey017@gmail.com">0jeffrey017@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <span class="material-symbols-outlined">link</span>
-                    <a target="_blank" rel="noopener noreferrer"
-                        href="https://github.com/0jeffrey017">github.com/0jeffrey017</a>
-                </div>
-                <div class="contact-item">
-                    <span class="material-symbols-outlined">home</span>
-                    <a target="_blank" rel="noopener noreferrer"
-                        href="https://0jeffrey017.github.io/profile_html/index.html">Portfolio / ポートフォリオ</a>
-                </div>
-                <div class="contact-item">
-                    <span class="material-symbols-outlined">description</span>
-                    <a href="Resume/Resume.html">Resume / 履歴書</a>
-                </div>
-                <div class="contact-item">
-                    <span class="material-symbols-outlined">download</span>
-                    <a href="assets/Resume_Jeffrey.pdf" download target="_blank" rel="noopener noreferrer">Resume PDF /
-                        履歴書ダウンロード</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="social-links">
-                <a target="_blank" href="https://github.com/0jeffrey017" aria-label="GitHub">
-                    <img src="Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
-                </a>
-                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
-                    <img src="Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
-                </a>
-                <a target="_blank" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8"
-                    aria-label="YouTube">
-                    <img src="Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
-            </div>
-            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
-        </footer>
+        <div class="page-footer-mini">
+            &copy; 2026 Jeffrey LEE. All rights reserved.
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/game.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

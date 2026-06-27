@@ -1,0 +1,464 @@
+/* ============================================================
+   pages.css — マルチページ no-scroll レイアウト
+   各ページを1ビューポート内に収めることを目標にしたスタイル
+   ============================================================ */
+
+html,
+body {
+    height: 100%;
+}
+
+/* body.page を付けたページはスクロールを抑止し、1画面に収める */
+body.page {
+    overflow: hidden;
+    height: 100vh;
+}
+
+body.page .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* ヘッダーは固定高さ。no-scroll ページでは下マージンを消す */
+body.page .site-header {
+    margin-bottom: 0;
+    flex: 0 0 auto;
+    height: 64px;
+}
+
+/* メイン領域：残りの高さを占有し、中央に配置 */
+.page-main {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px 0;
+    overflow: hidden;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.page-title .en {
+    color: var(--primary-color);
+}
+
+.page-lead {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 18px;
+}
+
+/* 画面下のミニフッター（コピーライトのみ） */
+.page-footer-mini {
+    flex: 0 0 auto;
+    text-align: center;
+    margin-top: 24px;
+    padding: 16px 0 12px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+}
+
+/* アクティブなナビ項目を強調 */
+.site-nav a.is-active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.site-nav a.is-active::after {
+    width: 100%;
+}
+
+/* ============================================================
+   index（自己紹介 + 今後の展望）3カラムレイアウト
+   ============================================================ */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 270px 1fr 1fr;
+    gap: 34px;
+    align-items: start;
+    width: 100%;
+}
+
+.profile-rail {
+    text-align: center;
+}
+
+.profile-rail .profile-img {
+    width: 170px;
+    height: 170px;
+    margin-bottom: 16px;
+}
+
+.profile-rail .hero-title {
+    font-size: 1.9rem;
+    margin-bottom: 6px;
+}
+
+.profile-rail .hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+}
+
+.profile-rail .hero-chips {
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.profile-rail .hero-chip {
+    font-size: 0.75rem;
+    padding: 5px 11px;
+}
+
+.profile-rail .hero-tagline {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.profile-col h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+.profile-col .bio-text {
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.profile-col .bio-text strong {
+    color: var(--primary-color);
+}
+
+/* ============================================================
+   games（制作実績カルーセル）
+   ============================================================ */
+.games-carousel-wrap {
+    width: 100%;
+    min-height: 0;
+    /* 左右にガターを確保し、矢印ボタンをカードの外側に置く */
+    padding: 0 54px;
+}
+
+.games-carousel .slick-slide {
+    height: auto;
+    padding: 8px 12px;
+}
+
+.games-carousel .slick-track {
+    display: flex;
+    align-items: stretch;
+}
+
+.carousel-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: #111827;
+}
+
+.carousel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    color: #111827;
+}
+
+.carousel-card .cc-thumb {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.carousel-card .cc-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.carousel-card:hover .cc-thumb img {
+    transform: scale(1.05);
+}
+
+.carousel-card .cc-badges {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.carousel-card .cc-body {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.carousel-card .cc-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.carousel-card .cc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-bottom: 8px;
+}
+
+.carousel-card .cc-desc {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.55;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.carousel-card .game-tags {
+    justify-content: flex-start;
+    margin-top: auto;
+}
+
+/* slick の矢印・ドットを上下に確保 */
+.games-carousel.slick-dotted {
+    margin-bottom: 0;
+}
+
+.games-carousel .slick-prev,
+.games-carousel .slick-next {
+    width: 36px;
+    height: 36px;
+    z-index: 5;
+}
+
+.games-carousel .slick-prev {
+    left: -46px;
+}
+
+.games-carousel .slick-next {
+    right: -46px;
+}
+
+.games-carousel .slick-prev::before,
+.games-carousel .slick-next::before {
+    color: var(--primary-color);
+    font-size: 32px;
+    opacity: 0.85;
+}
+
+.games-carousel .slick-dots {
+    bottom: -32px;
+}
+
+.games-carousel .slick-dots li button::before {
+    font-size: 10px;
+    color: var(--primary-color);
+}
+
+/* ソートボタンの行 */
+.games-toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+/* ============================================================
+   background（経歴 + 資格）2カラム
+   ============================================================ */
+.bg-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 40px;
+    width: 100%;
+    align-items: start;
+}
+
+.bg-col h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+.bg-col .timeline-list li {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.bg-col .qualifications-list {
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bg-col .qualifications-tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+}
+
+.bg-col .qualifications-tag > strong {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.bg-col .qualifications-tag ul {
+    margin-top: 5px;
+}
+
+.bg-col .qualifications-tag ul li {
+    font-size: 0.76rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   contact（連絡先）
+   ============================================================ */
+.contact-page-main {
+    align-items: center;
+}
+
+.contact-page-main .contact-card {
+    margin: 0 auto;
+    gap: 14px;
+}
+
+/* 連絡先の各行を統一スタイルに（メール / SNS / Resume を同じ見た目に） */
+.contact-page-main .contact-item {
+    width: 100%;
+    max-width: 360px;
+    font-size: 1rem;
+}
+
+/* ブランドアイコン（GitHub / LinkedIn / YouTube）を material アイコンと同寸に */
+.contact-item .brand-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex: 0 0 22px;
+}
+
+/* ============================================================
+   resume（履歴書）no-scroll レイアウト
+   ============================================================ */
+.resume-main {
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+.resume-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.resume-toolbar .page-title {
+    margin-bottom: 0;
+}
+
+.resume-frame {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    background: var(--card-bg);
+}
+
+.resume-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.resume-download:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+/* ============================================================
+   レスポンシブ：狭い/低い画面では no-scroll を諦めスクロール許可
+   ============================================================ */
+@media (max-width: 900px),
+(max-height: 640px) {
+
+    body.page {
+        overflow: auto;
+        height: auto;
+    }
+
+    body.page .container {
+        height: auto;
+    }
+
+    .page-main {
+        overflow: visible;
+        justify-content: flex-start;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .bg-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .profile-col .bio-text,
+    .profile-rail .hero-tagline {
+        font-size: 0.9rem;
+    }
+}
