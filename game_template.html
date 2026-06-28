@@ -54,7 +54,7 @@
     <div class="container">
         <header class="site-header">
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav">
+            <nav class="site-nav" id="site-nav">
                 <ul>
                     <li><a href="../index.html">About / 自己紹介</a></li>
                     <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
@@ -63,16 +63,13 @@
                     <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
-                <div class="breadcrumb">
-                    <a href="../games.html" class="back-link">
-                        <span class="material-symbols-outlined">arrow_back</span>
-                        Back / 戻る
-                    </a>
-                </div>
                 <h1 class="detail-title">{{TITLE}}</h1>
                 <p class="detail-subtitle">{{SUBTITLE}}</p>
                 <div class="tab-bar">
@@ -160,23 +157,6 @@
                                 <button type="button" id="play-game-btn" class="play-button {{PLAY_BUTTON_DISABLED}}" data-url="{{PLAY_LINK}}">
                                     Play Game
                                 </button>
-
-                                <div class="jump-buttons">
-                                    <button type="button" class="jump-btn" data-tab-target="problems">
-                                        問題点と解決を見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                    <!-- TECHNICAL_IMAGE_START -->
-                                    <button type="button" class="jump-btn" data-tab-target="technical">
-                                        技術図を見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                    <!-- TECHNICAL_IMAGE_END -->
-                                    <button type="button" class="jump-btn" data-tab-target="code">
-                                        サンプルコードを見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                </div>
                             </div>
                         </aside>
                     </div>
@@ -254,7 +234,13 @@
         </div>
 
         <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
+            <a class="game-nav-link prev" href="{{PREV_FILENAME}}" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">{{PREV_TITLE}}</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="{{NEXT_FILENAME}}" rel="next">
+                <span class="gnl-title">{{NEXT_TITLE}}</span><span class="gnl-arrow">→</span>
+            </a>
         </div>
     </div>
 

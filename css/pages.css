@@ -29,6 +29,23 @@ body.page .site-header {
     height: 64px;
 }
 
+/* games ページは内容が1画面に収まらないため縦スクロールを許可する */
+body.games-page {
+    overflow: auto;
+    height: auto;
+}
+
+body.games-page .container {
+    height: auto;
+    min-height: 100vh;
+}
+
+body.games-page .page-main {
+    overflow: visible;
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+
 /* メイン領域：残りの高さを占有し、中央に配置 */
 .page-main {
     flex: 1 1 auto;
@@ -148,25 +165,58 @@ body.page .site-header {
 }
 
 /* ============================================================
-   games（制作実績カルーセル）
+   イチオシ作品（カルーセル上部の独立セクション）
    ============================================================ */
-.games-carousel-wrap {
-    width: 100%;
-    min-height: 0;
-    /* 左右にガターを確保し、矢印ボタンをカードの外側に置く */
-    padding: 0 54px;
+.featured-games {
+    flex: 0 0 auto;
+    margin-bottom: 18px;
+    text-align: center;
 }
 
-.games-carousel .slick-slide {
-    height: auto;
-    padding: 8px 12px;
+/* 背景キャンバスに埋もれないよう淡いピル状の下地を敷く */
+.featured-heading {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #7a5c12;
+    margin-bottom: 12px;
+    padding: 4px 16px;
+    background: var(--accent-soft);
+    border: 1px solid #e6d6a8;
+    border-radius: 999px;
 }
 
-.games-carousel .slick-track {
+/* イチオシ・グリッドとも同じタイルカードでサイズを統一する */
+.featured-list,
+.games-grid {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: stretch;
+    gap: 16px 24px;
 }
 
+.games-grid {
+    margin-top: 8px;
+}
+
+/* cardHtml() が返す各カードのラッパー（カード1枚分の幅に固定） */
+.featured-list > div,
+.games-grid > div {
+    width: 327px;
+    max-width: 100%;
+    display: flex;
+}
+
+.featured-list > div > .carousel-card,
+.games-grid > div > .carousel-card {
+    width: 100%;
+}
+
+/* ============================================================
+   games（制作実績カード）
+   ============================================================ */
 .carousel-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -229,9 +279,27 @@ body.page .site-header {
 
 .carousel-card .cc-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px 12px;
+    flex-direction: column;
+    gap: 4px;
     margin-bottom: 8px;
+}
+
+/* 制作期間 / 制作人数 を必ず2行に並べ、各行は1行に収める */
+.carousel-card .cc-meta .meta-pair {
+    display: flex;
+    max-width: 100%;
+}
+
+.carousel-card .cc-meta .meta-k {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.carousel-card .cc-meta .meta-v {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .carousel-card .cc-desc {
@@ -248,49 +316,6 @@ body.page .site-header {
 .carousel-card .game-tags {
     justify-content: flex-start;
     margin-top: auto;
-}
-
-/* slick の矢印・ドットを上下に確保 */
-.games-carousel.slick-dotted {
-    margin-bottom: 0;
-}
-
-.games-carousel .slick-prev,
-.games-carousel .slick-next {
-    width: 36px;
-    height: 36px;
-    z-index: 5;
-}
-
-.games-carousel .slick-prev {
-    left: -46px;
-}
-
-.games-carousel .slick-next {
-    right: -46px;
-}
-
-.games-carousel .slick-prev::before,
-.games-carousel .slick-next::before {
-    color: var(--primary-color);
-    font-size: 32px;
-    opacity: 0.85;
-}
-
-.games-carousel .slick-dots {
-    bottom: -32px;
-}
-
-.games-carousel .slick-dots li button::before {
-    font-size: 10px;
-    color: var(--primary-color);
-}
-
-/* ソートボタンの行 */
-.games-toolbar {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 14px;
 }
 
 /* ============================================================

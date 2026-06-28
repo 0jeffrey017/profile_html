@@ -1,16 +1,9 @@
-// games-carousel.js — 制作実績を slick カルーセルで1画面に表示
+// games-carousel.js — 制作実績を「イチオシ（上）＋グリッド（下）」で表示する
 
 (function ($) {
     "use strict";
 
     let allGames = [];
-    let isNewestFirst = true;
-
-    // "2025/10-2026/2" 等を開始年月から並べ替え用キーに変換
-    function periodStartKey(period) {
-        const m = (period || '').match(/(\d{4})\/(\d{1,2})/);
-        return m ? parseInt(m[1], 10) * 12 + parseInt(m[2], 10) : 0;
-    }
 
     const TYPE_ORDER = { csharp: 0, cpp: 0, engine: 1, vcs: 2, design: 3, tech: 4 };
 
@@ -23,16 +16,28 @@
         return `<div class="game-tags">${chips.join("")}</div>`;
     }
 
-    function cardHtml(game) {
-        const badges = `
+    function buildBadgesHtml(game) {
+        return `
             ${game.star ? '<span class="recommend-badge">★ イチオシ</span>' : ''}
             ${game.corporate_project ? '<span class="corporate-badge">★ 企業プロジェクト</span>' : ''}
         `;
+    }
+
+    // 静止画(ポスター)と同名の .gif を対にする。image_gif があればそれを優先。
+    function gifPathFor(game) {
+        if (game.image_gif) return game.image_gif;
+        return (game.image_path || '').replace(/\.(png|jpe?g|webp)$/i, '.gif');
+    }
+
+    function cardHtml(game) {
+        const badges = buildBadgesHtml(game);
+        const gif = gifPathFor(game);
         return `
             <div>
                 <a class="carousel-card" href="games/${game.filename}" data-id="${game.id}">
                     <div class="cc-thumb">
-                        <img src="${game.image_path}" alt="${game.title}"
+                        <img class="cc-img" src="${game.image_path}" alt="${game.title}"
+                            data-poster="${game.image_path}" data-gif="${gif}" loading="lazy"
                             onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
                         <div class="cc-badges">${badges}</div>
                     </div>
@@ -50,37 +55,53 @@
         `;
     }
 
-    function renderCarousel() {
-        const $c = $('.games-carousel');
-        if (!$c.length) return;
+    // イチオシ作品（star）は上部の独立セクションに表示する
+    function renderFeatured() {
+        const $f = $('#featured-list');
+        if (!$f.length) return;
 
-        // 既存スライダーを破棄してから再構築（並び替え対応）
-        if ($c.hasClass('slick-initialized')) {
-            $c.slick('unslick');
+        const featured = allGames.filter(g => g.status === "released" && g.star);
+        if (!featured.length) {
+            $('#featured-games').hide();
+            return;
         }
-        $c.empty();
+        $f.html(featured.map(cardHtml).join(''));
+    }
 
-        const displayGames = allGames.filter(g => g.status === "released");
-        displayGames.sort((a, b) => {
-            const ka = periodStartKey(a.period);
-            const kb = periodStartKey(b.period);
-            return isNewestFirst ? kb - ka : ka - kb;
-        });
+    // それ以外の作品はグリッドで一覧表示する（並び替えなし・JSON順）
+    function renderGrid() {
+        const $g = $('#games-grid');
+        if (!$g.length) return;
 
-        displayGames.forEach(g => $c.append(cardHtml(g)));
+        const games = allGames.filter(g => g.status === "released" && !g.star);
+        $g.html(games.map(cardHtml).join(''));
+    }
 
-        $c.slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            dots: true,
-            infinite: true,
-            speed: 400,
-            responsive: [
-                { breakpoint: 1100, settings: { slidesToShow: 2 } },
-                { breakpoint: 760, settings: { slidesToShow: 1 } }
-            ]
-        });
+    // カーソルを合わせると .gif を再生（差し替え）、外すと静止画に戻す＝停止
+    function playGif(card) {
+        const img = card.querySelector('.cc-img');
+        if (!img) return;
+        const gif = img.dataset.gif;
+        // gif 未指定 / 読み込み失敗済み / 既に再生中なら何もしない
+        if (!gif || img.dataset.gifFailed || img.src.endsWith(gif)) return;
+
+        // 先読みして、存在する場合のみ差し替える（壊れ画像のチラつきを防ぐ）
+        const pre = new Image();
+        pre.onload = () => { if (card.matches(':hover')) img.src = gif; };
+        pre.onerror = () => { img.dataset.gifFailed = '1'; };
+        pre.src = gif;
+    }
+
+    function stopGif(card) {
+        const img = card.querySelector('.cc-img');
+        if (img && img.dataset.poster) img.src = img.dataset.poster;
+    }
+
+    function bindHoverGif() {
+        // 動的生成カードに対応するため委譲で登録（jQuery は mouseenter/leave を委譲対応）
+        $(document)
+            .on('mouseenter.gif', '.carousel-card', function () { playGif(this); })
+            .on('mouseleave.gif', '.carousel-card', function () { stopGif(this); });
     }
 
     async function init() {
@@ -88,19 +109,12 @@
             const res = await fetch('data/games_data.json');
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             allGames = await res.json();
-            renderCarousel();
-
-            $('#sort-toggle').on('click', function () {
-                isNewestFirst = !isNewestFirst;
-                $(this).html(`
-                    <span class="material-symbols-outlined">search</span>
-                    ${isNewestFirst ? 'Newest First' : 'Oldest First'}
-                `);
-                renderCarousel();
-            });
+            renderFeatured();
+            renderGrid();
+            bindHoverGif();
         } catch (err) {
             console.error("games-carousel.js: failed to load:", err);
-            $('.games-carousel').html('<p class="error-message">作品データの読み込みに失敗しました。</p>');
+            $('#games-grid').html('<p class="error-message">作品データの読み込みに失敗しました。</p>');
         }
     }
 

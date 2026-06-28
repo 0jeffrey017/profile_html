@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>回れ回れ | Jeffrey LEE</title>
-    <meta name="description" content="回れ回れ - Rhythm Action Game">
+    <meta name="description" content="回れ回れ - Rhythm Game">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/RhythmGame.html">
 
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="回れ回れ | Jeffrey LEE">
-    <meta property="og:description" content="回れ回れ - Rhythm Action Game">
+    <meta property="og:description" content="回れ回れ - Rhythm Game">
     <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RhythmGame_image.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/RhythmGame.html">
     <meta property="og:locale" content="ja_JP">
@@ -21,7 +21,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="回れ回れ | Jeffrey LEE">
-    <meta name="twitter:description" content="回れ回れ - Rhythm Action Game">
+    <meta name="twitter:description" content="回れ回れ - Rhythm Game">
     <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RhythmGame_image.png">
 
     <!-- Google Fonts -->
@@ -54,7 +54,7 @@
     <div class="container">
         <header class="site-header">
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav">
+            <nav class="site-nav" id="site-nav">
                 <ul>
                     <li><a href="../index.html">About / 自己紹介</a></li>
                     <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
@@ -63,18 +63,15 @@
                     <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
-                <div class="breadcrumb">
-                    <a href="../games.html" class="back-link">
-                        <span class="material-symbols-outlined">arrow_back</span>
-                        Back / 戻る
-                    </a>
-                </div>
                 <h1 class="detail-title">回れ回れ</h1>
-                <p class="detail-subtitle">Rhythm Action Game</p>
+                <p class="detail-subtitle">Rhythm Game</p>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
                     <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
@@ -101,7 +98,7 @@
                                     </div>
                                     <div class="meta-item">
                                         <span class="meta-label">Period</span>
-                                        <span class="meta-value">2026/6</span>
+                                        <span class="meta-value">14日</span>
                                     </div>
                                     <div class="meta-item">
                                         <span class="meta-label">Platform</span>
@@ -148,18 +145,6 @@
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260620_RhythmGame/">
                                     Play Game
                                 </button>
-
-                                <div class="jump-buttons">
-                                    <button type="button" class="jump-btn" data-tab-target="problems">
-                                        問題点と解決を見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                    
-                                    <button type="button" class="jump-btn" data-tab-target="code">
-                                        サンプルコードを見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                </div>
                             </div>
                         </aside>
                     </div>
@@ -392,7 +377,7 @@ namespace RhythmGame
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Key Input: レーンのノーツをタイミングよく叩く
+                                    Key Input: XCNMでレーンのノーツをタイミングよく叩く
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
@@ -408,7 +393,13 @@ namespace RhythmGame
         </div>
 
         <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
+            <a class="game-nav-link prev" href="SharkAvoidGame.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">サメは偏食です。</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
         </div>
     </div>
 

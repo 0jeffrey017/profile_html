@@ -22,9 +22,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/base.css">
@@ -33,12 +30,12 @@
     <link rel="stylesheet" href="css/pages.css">
 </head>
 
-<body class="page">
+<body class="page games-page">
     <canvas id="canvas"></canvas>
     <div class="container">
         <header class="site-header">
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav">
+            <nav class="site-nav" id="site-nav">
                 <ul>
                     <li><a href="index.html">About / 自己紹介</a></li>
                     <li><a href="games.html" class="is-active">Games / ゲーム</a></li>
@@ -47,21 +44,22 @@
                     <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="page-main">
-            
-            <div class="games-toolbar">
-                <button id="sort-toggle" class="sort-button">
-                    <span class="material-symbols-outlined">search</span>
-                    Newest First
-                </button>
-            </div>
 
-            <div class="games-carousel-wrap">
-                <div class="games-carousel">
+            <section class="featured-games" id="featured-games" aria-label="イチオシ作品 / Featured">
+                <h2 class="featured-heading">★ イチオシ作品 / Featured</h2>
+                <div class="featured-list" id="featured-list">
                     <!-- games-carousel.js が動的に生成 -->
                 </div>
+            </section>
+
+            <div class="games-grid" id="games-grid">
+                <!-- games-carousel.js が動的に生成 -->
             </div>
         </main>
 
@@ -72,7 +70,6 @@
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/game.js"></script>
     <script src="js/games-carousel.js"></script>
 </body>

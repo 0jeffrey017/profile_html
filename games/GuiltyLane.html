@@ -54,7 +54,7 @@
     <div class="container">
         <header class="site-header">
             <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav">
+            <nav class="site-nav" id="site-nav">
                 <ul>
                     <li><a href="../index.html">About / 自己紹介</a></li>
                     <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
@@ -63,16 +63,13 @@
                     <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
                 </ul>
             </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
-                <div class="breadcrumb">
-                    <a href="../games.html" class="back-link">
-                        <span class="material-symbols-outlined">arrow_back</span>
-                        Back / 戻る
-                    </a>
-                </div>
                 <h1 class="detail-title">Guilty Lane</h1>
                 <p class="detail-subtitle">Dark Adventure Game / Hackathon Work</p>
                 <div class="tab-bar">
@@ -101,7 +98,7 @@
                                     </div>
                                     <div class="meta-item">
                                         <span class="meta-label">Period</span>
-                                        <span class="meta-value">2025/9～2025/12</span>
+                                        <span class="meta-value">4ヶ月</span>
                                     </div>
                                     <div class="meta-item">
                                         <span class="meta-label">Platform</span>
@@ -135,18 +132,6 @@
                                 <button type="button" id="play-game-btn" class="play-button disabled" data-url="">
                                     Play Game
                                 </button>
-
-                                <div class="jump-buttons">
-                                    <button type="button" class="jump-btn" data-tab-target="problems">
-                                        問題点と解決を見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                    
-                                    <button type="button" class="jump-btn" data-tab-target="code">
-                                        サンプルコードを見る
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </button>
-                                </div>
                             </div>
                         </aside>
                     </div>
@@ -312,7 +297,13 @@ public class NewInventoryManager : MonoBehaviour
         </div>
 
         <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
+            <a class="game-nav-link prev" href="GreatOKhanInvasion.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">グレート-O-カーンの侵略物語</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="OumajoCastle.html" rel="next">
+                <span class="gnl-title">逢魔々城</span><span class="gnl-arrow">→</span>
+            </a>
         </div>
     </div>
 

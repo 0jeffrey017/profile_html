@@ -50,6 +50,7 @@ body.game-detail-page .game-detail-main {
     font-weight: 800;
     line-height: 1.15;
     margin-bottom: 2px;
+    margin-top: 50px;
 }
 
 .detail-subtitle {
@@ -125,7 +126,7 @@ body.game-detail-page .game-detail-main {
 /* --- Overview パネル：2カラム --- */
 .overview-grid {
     display: grid;
-    grid-template-columns: 1fr 330px;
+    grid-template-columns: 1fr 550px;
     gap: 34px;
     align-items: start;
 }
@@ -147,13 +148,6 @@ body.game-detail-page .game-meta-card {
 
 body.game-detail-page .game-detail-image {
     margin-bottom: 16px;
-}
-
-/* サイドバー画像の高さを抑えて概要を1画面に収める */
-body.game-detail-page .game-sidebar .game-detail-image img {
-    height: 128px;
-    object-fit: cover;
-    object-position: top;
 }
 
 body.game-detail-page .meta-info {
@@ -252,14 +246,68 @@ body.game-detail-page .game-detail-image:has(+ .sidebar-video) {
     display: inline-block;
 }
 
-/* --- ミニフッター --- */
+/* --- ミニフッター（前後ゲームナビ付き） --- */
 body.game-detail-page .page-footer-mini {
     flex: 0 0 auto;
-    text-align: center;
-    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 4px;
     font-size: 0.75rem;
     color: var(--text-light);
     border-top: 1px solid var(--border-color);
+}
+
+.page-footer-mini .footer-copy {
+    flex: 0 1 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.game-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 42%;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.game-nav-link.prev {
+    justify-content: flex-start;
+}
+
+.game-nav-link.next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.game-nav-link:hover {
+    color: var(--accent-color);
+}
+
+.game-nav-link.prev:hover {
+    transform: translateX(-2px);
+}
+
+.game-nav-link.next:hover {
+    transform: translateX(2px);
+}
+
+.game-nav-link .gnl-arrow {
+    flex: 0 0 auto;
+    font-weight: 700;
+}
+
+.game-nav-link .gnl-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* --- 狭い/低い画面では1画面制限を解除 --- */
@@ -287,5 +335,16 @@ body.game-detail-page .page-footer-mini {
 
     body.game-detail-page .game-sidebar {
         order: -1;
+    }
+}
+
+/* 狭い画面ではコピーライトを隠して前後ナビ用の幅を確保 */
+@media (max-width: 480px) {
+    .page-footer-mini .footer-copy {
+        display: none;
+    }
+
+    .game-nav-link {
+        max-width: 50%;
     }
 }
