@@ -3,6 +3,46 @@
 (function() {
     "use strict";
 
+    // --- Mobile hamburger navigation (vanilla JS; runs on every page,
+    //     including pages where jQuery is not loaded) ---
+    function initNav() {
+        const toggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('.site-nav');
+        if (!toggle || !nav) return;
+
+        function setOpen(open) {
+            nav.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setOpen(!nav.classList.contains('is-open'));
+        });
+
+        // close when a link is tapped
+        nav.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setOpen(false);
+        });
+
+        // close on outside click / Escape
+        document.addEventListener('click', function (e) {
+            if (nav.classList.contains('is-open') &&
+                !nav.contains(e.target) && !toggle.contains(e.target)) {
+                setOpen(false);
+            }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNav);
+    } else {
+        initNav();
+    }
+
     console.log("game.js: Initializing background animation...");
 
     const canvas = document.getElementById('canvas');

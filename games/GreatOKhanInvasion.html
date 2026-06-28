@@ -33,7 +33,7 @@
 
     <!-- Icons -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
         rel="stylesheet" />
 
     <!-- CSS Reset & Libs -->
@@ -45,138 +45,121 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
 </head>
 
-<body>
+<body class="game-detail-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas id="canvas"></canvas>
     <div class="container">
         <header class="site-header">
-            <div class="logo">Jeffrey LEE</div>
+            <div class="logo">リイショウケツ/Jeffrey LEE</div>
+            <nav class="site-nav" id="site-nav">
+                <ul>
+                    <li><a href="../index.html">About / 自己紹介</a></li>
+                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
+                    <li><a href="../background.html">Background / 経歴</a></li>
+                    <li><a href="../contact.html">Contact / 連絡先</a></li>
+                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="game-detail-main" id="main-content">
-            <div class="breadcrumb">
-                <a href="../index.html#activity" class="back-link">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Back / 戻る
-                </a>
+            <div class="detail-head">
+                <h1 class="detail-title">グレート-O-カーンの侵略物語</h1>
+                <p class="detail-subtitle">2D Endless Run Game / Enterprise Collaboration</p>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="technical">技術図 / Technical</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
             </div>
 
-            <div class="game-detail-layout">
-                <section class="game-detail-content">
-                    <h1 class="game-title">グレート-O-カーンの侵略物語</h1>
-                    <h2 class="game-subtitle">2D Endless Run Game / Enterprise Collaboration</h2>
-
-                    
-                    <div class="content-block">
-                        <h3>Overview / 概要</h3>
-                        <p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>
-                    </div>
-                    
-
-                    <div class="content-block">
-                        <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity 2022.3.61f1</p>
-                    </div>
-                    <div class="content-block">
-                        <h3>Production period / 制作期間</h3>
-                        <p>2025/10-2026/2</p>
-                    </div>
-                    <div class="content-block">
-                        <h3>Responsible part / 担当部分</h3>
-                        <div>
-                            <ul>
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>Information / 情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-value">Unity 2022.3.61f1</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Period</span>
+                                        <span class="meta-value">4ヶ月</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-value">PC (Windows, WebGL), Mobile</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Players</span>
+                                        <span class="meta-value">Single Player（1人用）</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>Responsible part / 担当部分</h3>
+                                <div>
+                                    <ul>
     <li>ゲーム全体のメインシステムおよびアーキテクチャの設計</li>
     <li>New Input Systemを用いた、PC・モバイル両対応のマルチプラットフォーム入力制御</li>
     <li>有限ステートマシン（FSM）によるゲーム全体のフローおよびキャラクターアクションの管理</li>
     <li>ステージマップの動的生成およびアイテムの確率ベースランダムスポーンシステムの構築</li>
     <li>ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）</li>
 </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-block">
-                        <h3>Credit / クレジット</h3>
-                        <div>
-                            <ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-block">
+                                <h3>Credit / クレジット</h3>
+                                <div>
+                                    <ul>
     <li>BGM,SE : <a href="https://musmus.main.jp" target="_blank" rel="noopener noreferrer">フリーBGM・音楽素材MusMus</a></li>
     <li>BGM,SE : <a href="https://otologic.jp/" target="_blank" rel="noopener noreferrer">OtoLogic</a></li>
 </ul>
 
-                        </div>
-                    </div>
-                    
-                </section>
-
-                <aside class="game-sidebar">
-                    <div class="game-meta-card">
-                        <div class="game-detail-image">
-                            <img src="../Image/GameImage/RunGame_image.png" alt="グレート-O-カーンの侵略物語 Screenshot">
-                        </div>
-
-                        <div class="meta-info">
-                            <div class="meta-item">
-                                <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows, WebGL), Mobile</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Players</span>
-                                <span class="meta-value">Single Player（1人用）</span>
-                            </div>
-                        </div>
-
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/">
-                        Play Game
-                    </button>
-                </div>
-            </aside>
-        </div>
-
-        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
-            <div class="overlay-content">
-                <div class="overlay-header">
-                    <button class="close-overlay" id="close-overlay" aria-label="Close">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                
-                <div class="overlay-scroll-container">
-                    <div id="game-container" class="game-container" style="display: none;">
-                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
-                    </div>
-
-                    <div id="instruction-screen" class="instruction-screen">
-                        <div class="instruction-card">
-                            <div class="instruction-header">
-                                <span class="material-symbols-outlined header-icon">sports_esports</span>
-                                <h2>How to Play / 操作方法</h2>
-                            </div>
-                            <div class="instruction-body">
-                                <div class="instruction-details">
-                                    Keyboard / Touch
                                 </div>
                             </div>
-                            <div id="start-btn-container" class="instruction-footer">
-                                <button id="start-game-btn" class="start-game-btn">
-                                    <span>Start Game</span>
-                                    <span class="material-symbols-outlined">play_arrow</span>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <div class="game-detail-image">
+                                    <img src="../Image/GameImage/RunGame_image.png" alt="グレート-O-カーンの侵略物語 Screenshot">
+                                </div>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/">
+                                    Play Game
                                 </button>
                             </div>
-                        </div>
+                        </aside>
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
 
-        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
-            <br>
-
-            <section class="game-technical">
-                <div class="content-block">
-                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
-                    <div>
-                        
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <div>
+                            
             <div class="challenge-card">
 
                 <div class="challenge-section">
@@ -247,11 +230,29 @@
 
             </div>
             
+                        </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
                 
-                <h3>Sample Code / サンプルコード</h3>
+                <section class="tab-panel" data-panel="technical">
+                    <div class="content-block">
+                        <h3>Technical Image / 技術図</h3>
+                        <div class="game-detail-image tech-image">
+                            <a href="../Image/RunGame_class.png" target="_blank">
+                                <img src="../Image/RunGame_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
+                            </a>
+                        </div>
+                    </div>
+                </section>
                 
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    
                     <div class="code-explanation">UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装</div>
                     <div class="code-container">
                         <div class="code-header">FSM & UniTask 連携システム</div>
@@ -401,42 +402,63 @@ public class MainUIPresenter : MonoBehaviour
 </code></pre>
                     </div>
                     
-                
+                    
+                </section>
+            </div>
+        </main>
 
-                
-                <div class="content-block">
-                    <h3>Technical Image / 技術図</h3>
-                    <div class="game-detail-image">
-                        <a href="../Image/RunGame_class.png" target="_blank">
-                            <img src="../Image/RunGame_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram">
-                        </a>
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    Keyboard / Touch
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-            </section>
-        </main>
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="social-links">
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
-                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
-                </a>
-                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
-                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
-                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
             </div>
-            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
-        </footer>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="SFMLLearning.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">SFML Learning</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="GuiltyLane.html" rel="next">
+                <span class="gnl-title">Guilty Lane</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
     </div>
+
     <!-- JSファイルの読み込み -->
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             hljs.highlightAll();
@@ -445,6 +467,7 @@ public class MainUIPresenter : MonoBehaviour
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
 </body>
 
 </html>

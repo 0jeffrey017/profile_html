@@ -1,0 +1,350 @@
+/* ============================================================
+   game-tabs.css — タブ式ゲーム詳細ページ
+   概要 / 問題解決 は1画面に収め、コードはスクロール可
+   ============================================================ */
+
+html,
+body {
+    height: 100%;
+}
+
+body.game-detail-page {
+    overflow: hidden;
+    height: 100vh;
+}
+
+body.game-detail-page .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+body.game-detail-page .site-header {
+    margin-bottom: 0;
+    flex: 0 0 auto;
+    height: 60px;
+}
+
+/* 既存 .game-detail-main の余白をリセットしてフレックス化 */
+body.game-detail-page .game-detail-main {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+}
+
+/* --- 見出し + タブバー（固定領域） --- */
+.detail-head {
+    flex: 0 0 auto;
+}
+
+.detail-head .breadcrumb {
+    margin-bottom: 6px;
+}
+
+.detail-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 2px;
+    margin-top: 50px;
+}
+
+.detail-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 14px;
+}
+
+.tab-btn {
+    padding: 8px 18px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.is-active {
+    color: var(--primary-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* --- パネル領域（残りの高さ） --- */
+.detail-body {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.tab-panel {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.tab-panel.is-active {
+    display: block;
+}
+
+/* パネル内の余白を圧縮 */
+.tab-panel .content-block {
+    margin-bottom: 8px;
+}
+
+/* セクション見出しは全ページ共通のアクセント下線スタイルに統一 */
+.tab-panel .content-block h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+/* --- Overview パネル：2カラム --- */
+.overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 550px;
+    gap: 34px;
+    align-items: start;
+}
+
+.overview-content {
+    min-width: 0;
+}
+
+.overview-content p,
+.overview-content .bio-text {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+body.game-detail-page .game-meta-card {
+    position: static;
+    padding: 18px;
+}
+
+body.game-detail-page .game-detail-image {
+    margin-bottom: 16px;
+}
+
+body.game-detail-page .meta-info {
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+body.game-detail-page .meta-item {
+    padding-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+body.game-detail-page .play-button {
+    padding: 11px;
+    font-size: 1rem;
+}
+
+body.game-detail-page .video-container {
+    margin-bottom: 16px;
+}
+
+/* 概要右の動画（サイドバー内）。動画がある場合は静止画像を隠して高さを節約 */
+.sidebar-video {
+    margin-bottom: 16px;
+}
+
+.sidebar-video .video-container {
+    margin-bottom: 0;
+}
+
+body.game-detail-page .game-detail-image:has(+ .sidebar-video) {
+    display: none;
+}
+
+/* 概要左の情報（Engine / Period / Platform / Players）2カラム */
+.overview-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+}
+
+.overview-meta .meta-item {
+    font-size: 0.85rem;
+    padding-bottom: 6px;
+}
+
+/* 技術図パネル：はみ出す場合はスクロールで全体確認 */
+.tech-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 概要から各タブへ飛ぶボタン */
+.jump-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.jump-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: #7a5c12;
+    border: 1px solid #e6d6a8;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.jump-btn:hover {
+    background: #ecdfba;
+    transform: translateY(-2px);
+}
+
+.jump-btn .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+/* --- Code パネル --- */
+.code-panel-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+/* --- ミニフッター（前後ゲームナビ付き） --- */
+body.game-detail-page .page-footer-mini {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 4px;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+}
+
+.page-footer-mini .footer-copy {
+    flex: 0 1 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.game-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 42%;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.game-nav-link.prev {
+    justify-content: flex-start;
+}
+
+.game-nav-link.next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.game-nav-link:hover {
+    color: var(--accent-color);
+}
+
+.game-nav-link.prev:hover {
+    transform: translateX(-2px);
+}
+
+.game-nav-link.next:hover {
+    transform: translateX(2px);
+}
+
+.game-nav-link .gnl-arrow {
+    flex: 0 0 auto;
+    font-weight: 700;
+}
+
+.game-nav-link .gnl-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- 狭い/低い画面では1画面制限を解除 --- */
+@media (max-width: 900px),
+(max-height: 640px) {
+
+    body.game-detail-page {
+        overflow: auto;
+        height: auto;
+    }
+
+    body.game-detail-page .container {
+        height: auto;
+    }
+
+    .tab-panel {
+        overflow: visible;
+        height: auto;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    body.game-detail-page .game-sidebar {
+        order: -1;
+    }
+}
+
+/* 狭い画面ではコピーライトを隠して前後ナビ用の幅を確保 */
+@media (max-width: 480px) {
+    .page-footer-mini .footer-copy {
+        display: none;
+    }
+
+    .game-nav-link {
+        max-width: 50%;
+    }
+}

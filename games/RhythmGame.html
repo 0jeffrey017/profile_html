@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>回れ回れ | Jeffrey LEE</title>
-    <meta name="description" content="回れ回れ - Rhythm Action Game">
+    <meta name="description" content="回れ回れ - Rhythm Game">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/RhythmGame.html">
 
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="回れ回れ | Jeffrey LEE">
-    <meta property="og:description" content="回れ回れ - Rhythm Action Game">
+    <meta property="og:description" content="回れ回れ - Rhythm Game">
     <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RhythmGame_image.png">
     <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/RhythmGame.html">
     <meta property="og:locale" content="ja_JP">
@@ -21,7 +21,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="回れ回れ | Jeffrey LEE">
-    <meta name="twitter:description" content="回れ回れ - Rhythm Action Game">
+    <meta name="twitter:description" content="回れ回れ - Rhythm Game">
     <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RhythmGame_image.png">
 
     <!-- Google Fonts -->
@@ -33,7 +33,7 @@
 
     <!-- Icons -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
         rel="stylesheet" />
 
     <!-- CSS Reset & Libs -->
@@ -45,136 +45,117 @@
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
 </head>
 
-<body>
+<body class="game-detail-page">
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <canvas id="canvas"></canvas>
     <div class="container">
         <header class="site-header">
-            <div class="logo">Jeffrey LEE</div>
+            <div class="logo">リイショウケツ/Jeffrey LEE</div>
+            <nav class="site-nav" id="site-nav">
+                <ul>
+                    <li><a href="../index.html">About / 自己紹介</a></li>
+                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
+                    <li><a href="../background.html">Background / 経歴</a></li>
+                    <li><a href="../contact.html">Contact / 連絡先</a></li>
+                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </header>
 
         <main class="game-detail-main" id="main-content">
-            <div class="breadcrumb">
-                <a href="../index.html#activity" class="back-link">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Back / 戻る
-                </a>
+            <div class="detail-head">
+                <h1 class="detail-title">回れ回れ</h1>
+                <p class="detail-subtitle">Rhythm Game</p>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
             </div>
 
-            <div class="game-detail-layout">
-                <section class="game-detail-content">
-                    <h1 class="game-title">回れ回れ</h1>
-                    <h2 class="game-subtitle">Rhythm Action Game</h2>
-
-                    
-                    <div class="content-block">
-                        <h3>Overview / 概要</h3>
-                        <p>楽曲に同期して落下するノーツを、レーンごとのキー入力でタイミングよく叩くリズムアクションゲームです。Perfect / Good / Bad / Miss の判定システムと、譜面（チャート）データ駆動の再生処理を実装しました。</p>
-                    </div>
-                    
-
-                    <div class="content-block">
-                        <h3>Game Engine / ゲームエンジン</h3>
-                        <p>Unity 6000.3.8f1</p>
-                    </div>
-                    <div class="content-block">
-                        <h3>Production period / 制作期間</h3>
-                        <p>2026/6</p>
-                    </div>
-                    <div class="content-block">
-                        <h3>Responsible part / 担当部分</h3>
-                        <div>
-                            <ul>
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>楽曲に同期して落下するノーツを、レーンごとのキー入力でタイミングよく叩くリズムアクションゲームです。Perfect / Good / Bad / Miss の判定システムと、譜面（チャート）データ駆動の再生処理を実装しました。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>Information / 情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-value">Unity 6000.3.8f1</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Period</span>
+                                        <span class="meta-value">14日</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-value">PC (Windows, WebGL)</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Players</span>
+                                        <span class="meta-value">Single Player（1人用）</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>Responsible part / 担当部分</h3>
+                                <div>
+                                    <ul>
     <li>個人製作（企画・設計・実装の全工程を担当）</li>
 </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-block">
-                        <h3>Credit / クレジット</h3>
-                        <div>
-                            <ul>
+                                </div>
+                            </div>
+                            
+                            <div class="content-block">
+                                <h3>Credit / クレジット</h3>
+                                <div>
+                                    <ul>
     <li>SE : <a href="https://otologic.jp/" target="_blank" rel="noopener noreferrer">OtoLogic</a></li>
     <li>BGM : <a href="https://www.youtube.com/watch?v=IxX_QHay02M&list=RDIxX_QHay02M&start_radio=1" target="_blank" rel="noopener noreferrer">W&W - OIIA OIIA (Spinning Cat)</a></li>
     <li>VFX : <a href="https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565" target="_blank" rel="noopener noreferrer">Cartoon FX Remaster Free</a></li>
     <li>3D Model : <a href="https://sketchfab.com/3d-models/oiiaioooooiai-cat-30d27bf7fb224849b76e208a6eccdb36" target="_blank" rel="noopener noreferrer">Oiiaioooooiai Cat</a></li>
 </ul>
 
-                        </div>
-                    </div>
-                    
-                </section>
-
-                <aside class="game-sidebar">
-                    <div class="game-meta-card">
-                        <div class="game-detail-image">
-                            <img src="../Image/GameImage/RhythmGame_image.png" alt="回れ回れ Screenshot">
-                        </div>
-
-                        <div class="meta-info">
-                            <div class="meta-item">
-                                <span class="meta-label">Platform</span>
-                                <span class="meta-value">PC (Windows, WebGL)</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">Players</span>
-                                <span class="meta-value">Single Player（1人用）</span>
-                            </div>
-                        </div>
-
-                    <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260620_RhythmGame/">
-                        Play Game
-                    </button>
-                </div>
-            </aside>
-        </div>
-
-        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
-            <div class="overlay-content">
-                <div class="overlay-header">
-                    <button class="close-overlay" id="close-overlay" aria-label="Close">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
-                
-                <div class="overlay-scroll-container">
-                    <div id="game-container" class="game-container" style="display: none;">
-                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
-                    </div>
-
-                    <div id="instruction-screen" class="instruction-screen">
-                        <div class="instruction-card">
-                            <div class="instruction-header">
-                                <span class="material-symbols-outlined header-icon">sports_esports</span>
-                                <h2>How to Play / 操作方法</h2>
-                            </div>
-                            <div class="instruction-body">
-                                <div class="instruction-details">
-                                    Key Input: レーンのノーツをタイミングよく叩く
                                 </div>
                             </div>
-                            <div id="start-btn-container" class="instruction-footer">
-                                <button id="start-game-btn" class="start-game-btn">
-                                    <span>Start Game</span>
-                                    <span class="material-symbols-outlined">play_arrow</span>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <div class="game-detail-image">
+                                    <img src="../Image/GameImage/RhythmGame_image.png" alt="回れ回れ Screenshot">
+                                </div>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260620_RhythmGame/">
+                                    Play Game
                                 </button>
                             </div>
-                        </div>
+                        </aside>
                     </div>
-                </div>
-            </div>
-        </div>
+                </section>
 
-        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 8px 0;">
-            <br>
-
-            <section class="game-technical">
-                <div class="content-block">
-                    <h3>Challenges & Solutions / 問題点と解決方法</h3>
-                    <div>
-                        
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <div>
+                            
             <div class="challenge-card">
 
                 <div class="challenge-section">
@@ -203,11 +184,18 @@
 
             </div>
             
+                        </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
                 
-                <h3>Sample Code / サンプルコード</h3>
-                
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    
                     <div class="code-explanation">レーンごとにActiveNoteをQueueで保持し、入力時に先頭ノーツとの時間差からPerfect/Good/Bad/Missを判定。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理。プール再利用を検知するUseIdで、返却すべき視覚オブジェクトの取り違えを防ぐ核心ロジック</div>
                     <div class="code-container">
                         <div class="code-header">レーンQueueによるノーツ判定システム</div>
@@ -218,9 +206,9 @@ using UnityEngine;
 namespace RhythmGame
 {
     /// &lt;summary&gt;
-    /// Holds the notes that are currently falling, grouped by lane and ordered
-    /// by hit time, so a key press can instantly find the oldest unjudged note
-    /// in that lane. Judgement logic (Perfect/Good/Miss) is added in Step 2.
+    /// 現在落下中のノーツをレーンごとにヒット時刻順で保持する。
+    /// これにより、キー入力時にそのレーンで最も古い未判定ノーツを即座に取得できる。
+    /// 判定ロジック（Perfect/Good/Miss）はStep2で追加。
     /// &lt;/summary&gt;
     public class JudgementManager : MonoBehaviour
     {
@@ -229,17 +217,17 @@ namespace RhythmGame
         [SerializeField] private float goodJudgement = 0.12f;
         [SerializeField] private float badJudgement = 0.2f;
 
-        // One queue per lane. Front of the queue is always the next note to hit.
+        // レーンごとに1つのQueue。先頭は常に次に叩くべきノーツ。
         private Queue&lt;ActiveNote&gt;[] _laneQueues;
-        
+
         public Action&lt;int,JudgeType&gt; OnNoteBeJudged;
 
-        /// &lt;summary&gt;A falling note paired with its on-screen object.&lt;/summary&gt;
+        /// &lt;summary&gt;落下中のノーツと、その画面上のオブジェクトを紐付けた構造体。&lt;/summary&gt;
         public readonly struct ActiveNote
         {
-            public readonly Note Note;        // timing data (time, lane, ...)
-            public readonly NodeObject Object; // the visual note on screen
-            public readonly int UseId;         // Object.UseId captured at spawn
+            public readonly Note Note;        // タイミングデータ（time, lane など）
+            public readonly NodeObject Object; // 画面上の視覚ノーツ
+            public readonly int UseId;         // 生成時に記録したObject.UseId
 
             public ActiveNote(Note note, NodeObject obj)
             {
@@ -248,14 +236,14 @@ namespace RhythmGame
                 UseId = obj != null ? obj.UseId : -1;
             }
 
-            // The visual object still belongs to this note only if it hasn&#x27;t been
-            // reused for another note since (its UseId would have changed).
+            // 視覚オブジェクトがまだこのノーツのものであるのは、その後に別のノーツへ
+            // 再利用されていない場合のみ（再利用されるとUseIdが変化している）。
             public bool IsObjectStillMine =&gt;
                 Object != null &amp;&amp; Object.UseId == UseId;
         }
 
         public enum JudgeType
-        {   
+        {
             None,
             Perfect,
             Good,
@@ -265,7 +253,7 @@ namespace RhythmGame
 
         private void Awake()
         {
-            // Lane count comes from the chart; default to 4 until it loads.
+            // レーン数は譜面から決まる。読み込まれるまでは暫定で4とする。
             BuildQueues(4);
         }
 
@@ -275,8 +263,8 @@ namespace RhythmGame
 
             float now = chartPlayer.SongTime;
 
-            // Any note whose hit window has fully passed without a press is a
-            // miss. Front of each queue is the oldest, so we drain from there.
+            // 入力されないままヒット窓を完全に過ぎたノーツはMiss。
+            // 各Queueの先頭が最も古いので、そこから順に処理していく。
             for (int lane = 0; lane &lt; _laneQueues.Length; lane++)
             {
                 var queue = _laneQueues[lane];
@@ -284,8 +272,8 @@ namespace RhythmGame
                        now - queue.Peek().Note.time &gt; badJudgement)
                 {
                     queue.Dequeue();
-                    // Leave the visual note falling; it returns itself to the
-                    // pool when it crosses the NoteReturnLine.
+                    // 視覚ノーツはそのまま落下させる。NoteReturnLineを越えた時点で
+                    // 自身でプールに返却される。
                     OnNoteBeJudged?.Invoke(lane, JudgeType.Miss);
                 }
             }
@@ -301,8 +289,8 @@ namespace RhythmGame
         }
 
         /// &lt;summary&gt;
-        /// Called by NoteSpawner right after it spawns a note&#x27;s visual object.
-        /// Registers it as judgeable in its lane.
+        /// NoteSpawnerがノーツの視覚オブジェクトを生成した直後に呼ばれる。
+        /// そのノーツを所属レーンの判定対象として登録する。
         /// &lt;/summary&gt;
         public void Register(Note note, NodeObject obj)
         {
@@ -313,7 +301,7 @@ namespace RhythmGame
             }
             _laneQueues[note.lane].Enqueue(new ActiveNote(note, obj));
         }
-        
+
         /// &lt;summary&gt;
         /// | 判定 | 許容 ||---|---|
         ///| Perfect | ±0.05秒 |
@@ -327,16 +315,16 @@ namespace RhythmGame
         {
             if (_laneQueues[lane].Count == 0)
             {
-                // Empty lane: a stray tap with no note to hit. Ignore.
+                // レーンが空：叩くべきノーツのない空打ち。無視する。
                 return;
             }
 
-            // Peek first — don&#x27;t consume the note until we know it&#x27;s in range.
+            // まずPeekする。範囲内だと分かるまでノーツを消費しない。
             ActiveNote active = _laneQueues[lane].Peek();
             var diff = Mathf.Abs(active.Note.time - time);
 
-            // Outside the hit window: treat as an early/stray tap and leave the
-            // note in the queue. Late notes are missed by Update, not here.
+            // ヒット窓の外：早押し・空打ちとして扱い、ノーツはQueueに残す。
+            // 遅れノーツはここではなくUpdateでMissとして処理される。
             if (diff &gt; badJudgement)
             {
                 return;
@@ -347,11 +335,11 @@ namespace RhythmGame
             else if (diff &lt;= goodJudgement) result = JudgeType.Good;
             else result = JudgeType.Bad;
 
-            // The note is consumed: remove it and clear its on-screen object.
-            // Only release the visual if it still belongs to this note — if the
-            // pooled instance was already reused for a later note (e.g. the
-            // original crossed the return line first), releasing it would wrongly
-            // remove that other note from the same lane.
+            // ノーツを消費：Queueから取り除き、画面上のオブジェクトを片付ける。
+            // 視覚オブジェクトの返却は、まだこのノーツのものである場合のみ行う。
+            // プールされたインスタンスが既に後続ノーツへ再利用されている場合
+            // （例：元のノーツが先にリターンラインを越えた）、誤って返却すると
+            // 同じレーンの別ノーツを消してしまうため。
             _laneQueues[lane].Dequeue();
             if (active.IsObjectStillMine) active.Object.ReturnToPool();
 
@@ -362,33 +350,63 @@ namespace RhythmGame
 </code></pre>
                     </div>
                     
-                
-
-                
-            </section>
-        </main>
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="social-links">
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/0jeffrey017" aria-label="GitHub">
-                    <img src="../Image/github-mark-c791e9551fe4/github-mark/github-mark.svg" alt="GitHub">
-                </a>
-                <a target="_blank" href="https://www.linkedin.com/in/ショウケツ-リイ-986b351b1" aria-label="LinkedIn">
-                    <img src="../Image/in-logo/in-logo/LI-In-Bug.png" alt="LinkedIn">
-                </a>
-                <a target="_blank" rel="noopener noreferrer" href="https://youtube.com/channel/UCp0pHE3am2skaKm4KJlKYRg?si=RJOVmtpqBRHRhRq8" aria-label="YouTube">
-                    <img src="../Image/youtube-icon/YouTube_Icon/Digital/01 Red/yt_icon_red_digital.png" alt="YouTube">
-                </a>
+                    
+                </section>
             </div>
-            <p class="copyright">&copy; 2026 Jeffrey LEE. All rights reserved.</p>
-        </footer>
+        </main>
+
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    Key Input: XCNMでレーンのノーツをタイミングよく叩く
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="SharkAvoidGame.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">サメは偏食です。</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
     </div>
+
     <!-- JSファイルの読み込み -->
     <!-- highlight.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             hljs.highlightAll();
@@ -397,6 +415,7 @@ namespace RhythmGame
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
 </body>
 
 </html>

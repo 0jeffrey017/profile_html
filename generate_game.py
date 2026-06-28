@@ -24,9 +24,27 @@ def generate_games():
     with open(data_path, 'r', encoding='utf-8') as f:
         games_data = json.load(f)
 
+    # Prev/Next navigation order: released games in JSON array order (wraparound).
+    nav_list = [g for g in games_data if g.get('status') == 'released']
+    nav_index = {id(g): i for i, g in enumerate(nav_list)}
+
     # Generate files
     for game in games_data:
         content = template_content
+
+        # --- Prev / Next game links (wraparound over released games) ---
+        n = len(nav_list)
+        if n > 1 and id(game) in nav_index:
+            i = nav_index[id(game)]
+            prev_game = nav_list[(i - 1) % n]
+            next_game = nav_list[(i + 1) % n]
+        else:
+            # Unreleased game (not in nav list) or only one game: link to self.
+            prev_game = next_game = game
+        content = content.replace('{{PREV_FILENAME}}', prev_game.get('filename', '#'))
+        content = content.replace('{{PREV_TITLE}}', html.escape(prev_game.get('title', '')))
+        content = content.replace('{{NEXT_FILENAME}}', next_game.get('filename', '#'))
+        content = content.replace('{{NEXT_TITLE}}', html.escape(next_game.get('title', '')))
         
         # Handle Technical Image conditional block
         tech_image = game.get('game_technical_image', '')
