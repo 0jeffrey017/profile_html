@@ -187,26 +187,31 @@ body.games-page .page-main {
     border-radius: 999px;
 }
 
-/* イチオシ・グリッドとも同じタイルカードでサイズを統一する */
+/* イチオシ・グリッドとも同じレスポンシブグリッドで、ページ端に揃えて幅いっぱいに並べる */
 .featured-list,
 .games-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px 24px;
+    align-items: stretch;
 }
 
 .games-grid {
     margin-top: 8px;
 }
 
-/* cardHtml() が返す各カードのラッパー（カード1枚分の幅に固定） */
+.page-main-Line {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    border: none;
+    border-top: 2px dotted #333;
+}
+
+/* cardHtml() のラッパーとカード本体はセル幅いっぱいに */
 .featured-list > div,
 .games-grid > div {
-    width: 327px;
-    max-width: 100%;
     display: flex;
+    min-width: 0;
 }
 
 .featured-list > div > .carousel-card,

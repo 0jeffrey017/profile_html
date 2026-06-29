@@ -46,6 +46,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    /* 全ページでスクロールバー領域を予約し、中央寄せレイアウトのズレを防ぐ */
+    scrollbar-gutter: stable;
 }
 
 body {
