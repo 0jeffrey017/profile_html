@@ -131,12 +131,25 @@ body.games-page .page-main {
 .profile-rail .hero-chips {
     justify-content: center;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .profile-rail .hero-chip {
     font-size: 0.75rem;
     padding: 5px 11px;
+}
+
+.profile-rail .hero-stat {
+    padding: 6px 14px;
+    margin-bottom: 12px;
+}
+
+.profile-rail .hero-stat-num {
+    font-size: 0.95rem;
+}
+
+.profile-rail .hero-stat-label {
+    font-size: 0.65rem;
 }
 
 .profile-rail .hero-tagline {
@@ -162,6 +175,22 @@ body.games-page .page-main {
 
 .profile-col .bio-text strong {
     color: var(--primary-color);
+}
+
+.profile-col .self-pr-block {
+    margin-top: 12px;
+}
+
+.profile-col .self-pr-block h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.profile-col .self-pr-block .bio-text {
+    font-size: 0.78rem;
+    line-height: 1.55;
 }
 
 /* ============================================================
@@ -355,6 +384,9 @@ body.games-page .page-main {
 }
 
 .bg-col .qualifications-tag {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-left: 3px solid var(--accent-color);
@@ -364,16 +396,30 @@ body.games-page .page-main {
     width: 100%;
 }
 
-.bg-col .qualifications-tag > strong {
+.bg-col .qualifications-tag .qual-icon {
+    flex: 0 0 auto;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    background: var(--accent-soft);
+    border-radius: 50%;
+    padding: 5px;
+    line-height: 1;
+}
+
+.bg-col .qualifications-tag .qual-body {
+    min-width: 0;
+}
+
+.bg-col .qualifications-tag .qual-body > strong {
     font-size: 0.9rem;
     color: var(--primary-color);
 }
 
-.bg-col .qualifications-tag ul {
+.bg-col .qualifications-tag .qual-body ul {
     margin-top: 5px;
 }
 
-.bg-col .qualifications-tag ul li {
+.bg-col .qualifications-tag .qual-body ul li {
     font-size: 0.76rem;
     color: var(--text-light);
     line-height: 1.5;

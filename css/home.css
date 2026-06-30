@@ -88,6 +88,32 @@
     border-color: #e6d6a8;
 }
 
+/* 控えめな実績ハイライト（準優勝などの定量的な事実を1行で提示） */
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    background: var(--accent-soft);
+}
+
+.hero-stat-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+.hero-stat-label {
+    font-size: 0.7rem;
+    color: #7a5c12;
+    letter-spacing: 0.02em;
+}
+
 .hero-cta {
     display: inline-flex;
     align-items: center;

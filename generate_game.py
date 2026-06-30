@@ -231,5 +231,38 @@ def get_embed_url(video_url):
         return f"https://www.youtube.com/embed/{video_id}"
     return video_url
 
+def generate_sitemap():
+    data_path = 'data/games_data.json'
+    if not os.path.exists(data_path):
+        print(f"Error: {data_path} not found.")
+        return
+
+    with open(data_path, 'r', encoding='utf-8') as f:
+        games_data = json.load(f)
+
+    static_pages = [
+        'index.html',
+        'games.html',
+        'background.html',
+        'contact.html',
+        'Resume/Resume.html',
+    ]
+
+    urls = [f"{SITE_BASE_URL}/{page}" for page in static_pages]
+    urls += [
+        f"{SITE_BASE_URL}/games/{game.get('filename', '')}"
+        for game in games_data if game.get('filename')
+    ]
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    lines += [f"  <url><loc>{url}</loc></url>" for url in urls]
+    lines.append('</urlset>')
+
+    with open('sitemap.xml', 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines) + '\n')
+    print(f"Generated: sitemap.xml ({len(urls)} URLs)")
+
 if __name__ == "__main__":
     generate_games()
+    generate_sitemap()
