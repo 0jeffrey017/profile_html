@@ -503,5 +503,48 @@
                 "explanation": "レーンごとにActiveNoteをQueueで保持し、入力時に先頭ノーツとの時間差からPerfect/Good/Bad/Missを判定。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理。プール再利用を検知するUseIdで、返却すべき視覚オブジェクトの取り違えを防ぐ核心ロジック"
             }
         ]
+    },
+    {
+        "id": "13",
+        "filename": "ShootingGame.html",
+        "title": "撃つ",
+        "subtitle": "ShootingGame",
+        "description": "マウスで照準し敵を撃つ2Dトップダウン・シューティング。VContainer・R3・UniTaskによるリアクティブ設計と、オブジェクトプール／NavMesh AIを検証した作品。",
+        "team": "個人開発",
+        "overview": "<p>WASDで移動し、マウスで照準して敵を撃ち抜く2Dトップダウン・シューティングです。時間経過で敵の同時出現数が増えるサバイバル形式で、VContainer（DI）＋R3（リアクティブ）＋UniTask（非同期）を土台に、弾のオブジェクトプール、NavMeshによる敵AI、Timeline／シェーダーによる演出までを実装しています。</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "7日",
+        "status": "released",
+        "responsible": ["個人製作（企画・設計・実装・演出の全工程を担当）"],
+        "challenges_solutions": [
+            {"challenge" : "移動・照準・射撃・リロードなど多数の入力と状態・演出が密結合になりやすい", "solution" : "VContainer（DI）で依存を一元管理し、R3のReactiveProperty/Observableで入力→状態→UIをリアクティブに接続。MVP構成とUniTaskによる非同期演出（リロード・ディゾルブ死亡演出）で疎結合化"},
+            {"challenge" : "弾を毎フレーム大量に生成・破棄することによるGCスパイクと処理落ち", "solution" : "UnityEngine.PoolのObjectPoolで弾（BulletView）を使い回して生成/破棄コストを削減し、着弾時はVFX Graphでエフェクトのみ再生"},
+            {"challenge" : "敵がプレイヤーを追跡しつつ、壁越しには撃たない自然なAI挙動", "solution" : "NavMeshPlus（2D NavMesh）で経路探索し、Physics2D.Raycastで壁を含む射線判定を行い、視線が通るときのみ攻撃する制御を実装"}
+        ],
+        "tags": [
+            {"type": "csharp", "name": "C#"},
+            {"type": "engine", "name": "Unity6000.3.8f1"},
+            {"type": "vcs", "name": "Git/GitHub"},
+            {"type": "design", "name": "DI"},
+            {"type": "design", "name": "MVP"},
+            {"type": "design", "name": "ObjectPool"},
+            {"type": "tech", "name": "VContainer"},
+            {"type": "tech", "name": "R3"},
+            {"type": "tech", "name": "UniTask"},
+            {"type": "tech", "name": "NavMesh"}
+        ],
+        "image_path": "Image/GameImage/ShootingGame_image.png",
+        "platform": "PC (Windows, WebGL)",
+        "how_to_play": "WASD / 矢印キー: 移動 ／ マウス: 照準 ／ 左クリック: 射撃 ／ 右クリック: リロード",
+        "players": "Single Player（1人用）",
+        "play_link": "https://0jeffrey017.github.io/20260704_ShootingGame/",
+        "code_sample": [
+            {
+                "path": "Scripts/ShootingGame_EnemyView.cs",
+                "language": "csharp",
+                "intro": "NavMesh追跡と射線判定による敵AI",
+                "explanation": "NavMeshPlus（2D NavMesh）で一定間隔ごとにプレイヤーへ経路を再設定し、攻撃範囲内かつPhysics2D.Raycastの射線が通るときのみ発砲。被弾時はR3のSubjectでスコアを通知し、UniTaskでシェーダーのディゾルブ演出を再生してから破棄する、DI（VContainer）・R3・UniTaskを組み合わせた敵制御の核心ロジック"
+            }
+        ]
     }
 ]

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>撃つ | Jeffrey LEE</title>
+    <meta name="description" content="撃つ - ShootingGame">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/ShootingGame.html">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
+    <meta property="og:title" content="撃つ | Jeffrey LEE">
+    <meta property="og:description" content="撃つ - ShootingGame">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/ShootingGame_image.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/ShootingGame.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="撃つ | Jeffrey LEE">
+    <meta name="twitter:description" content="撃つ - ShootingGame">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/ShootingGame_image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
+</head>
+
+<body class="game-detail-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">リイショウケツ/Jeffrey LEE</div>
+            <nav class="site-nav" id="site-nav">
+                <ul>
+                    <li><a href="../index.html">About / 自己紹介</a></li>
+                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
+                    <li><a href="../background.html">Background / 経歴</a></li>
+                    <li><a href="../contact.html">Contact / 連絡先</a></li>
+                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="detail-head">
+                <h1 class="detail-title">撃つ</h1>
+                <p class="detail-subtitle">ShootingGame</p>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>WASDで移動し、マウスで照準して敵を撃ち抜く2Dトップダウン・シューティングです。時間経過で敵の同時出現数が増えるサバイバル形式で、VContainer（DI）＋R3（リアクティブ）＋UniTask（非同期）を土台に、弾のオブジェクトプール、NavMeshによる敵AI、Timeline／シェーダーによる演出までを実装しています。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>Information / 情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-value">Unity 6000.3.8f1</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Period</span>
+                                        <span class="meta-value">7日</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-value">PC (Windows, WebGL)</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Players</span>
+                                        <span class="meta-value">Single Player（1人用）</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>Responsible part / 担当部分</h3>
+                                <div>
+                                    <ul>
+    <li>個人製作（企画・設計・実装・演出の全工程を担当）</li>
+</ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <div class="game-detail-image">
+                                    <img src="../Image/GameImage/ShootingGame_image.png" alt="撃つ Screenshot">
+                                </div>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260704_ShootingGame/">
+                                    Play Game
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <div>
+                            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>移動・照準・射撃・リロードなど多数の入力と状態・演出が密結合になりやすい</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>VContainer（DI）で依存を一元管理し、R3のReactiveProperty/Observableで入力→状態→UIをリアクティブに接続。MVP構成とUniTaskによる非同期演出（リロード・ディゾルブ死亡演出）で疎結合化</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>弾を毎フレーム大量に生成・破棄することによるGCスパイクと処理落ち</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>UnityEngine.PoolのObjectPoolで弾（BulletView）を使い回して生成/破棄コストを削減し、着弾時はVFX Graphでエフェクトのみ再生</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>敵がプレイヤーを追跡しつつ、壁越しには撃たない自然なAI挙動</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>NavMeshPlus（2D NavMesh）で経路探索し、Physics2D.Raycastで壁を含む射線判定を行い、視線が通るときのみ攻撃する制御を実装</p>
+                </div>
+
+            </div>
+            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
+                
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    
+                    <div class="code-explanation">NavMeshPlus（2D NavMesh）で一定間隔ごとにプレイヤーへ経路を再設定し、攻撃範囲内かつPhysics2D.Raycastの射線が通るときのみ発砲。被弾時はR3のSubjectでスコアを通知し、UniTaskでシェーダーのディゾルブ演出を再生してから破棄する、DI（VContainer）・R3・UniTaskを組み合わせた敵制御の核心ロジック</div>
+                    <div class="code-container">
+                        <div class="code-header">NavMesh追跡と射線判定による敵AI</div>
+                        <pre><code class="language-csharp">using Cysharp.Threading.Tasks;
+using R3;
+using UnityEngine;
+using UnityEngine.AI;
+using VContainer;
+
+[RequireComponent(typeof(NavMeshAgent))]
+public class EnemyView : MonoBehaviour, IDamageable
+{
+    private static readonly int Step = Shader.PropertyToID(&quot;_Step&quot;);
+    [SerializeField] private float repathInterval = 0.2f;
+    [SerializeField] private float stoppingDistance = 0.6f;
+
+    [SerializeField] private float health = 3.0f;
+    [SerializeField] private float attackRange = 3.0f;
+    [SerializeField] private float attackCooldownTime = 1.0f;
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private LayerMask playLayer;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private int scoreValue = 100;
+
+    private readonly Subject&lt;int&gt; _onEnemyDie = new Subject&lt;int&gt;();
+    public Observable&lt;int&gt; OnEnemyDie =&gt; _onEnemyDie;
+
+    private NavMeshAgent _agent;
+    private Transform _target;
+    private float _lastRepathTime = float.NegativeInfinity;
+    private float _lastAttackTime = float.NegativeInfinity;
+
+    private BulletPool _bulletPool;
+    private Material _material;
+    private bool _isDead;
+
+    [Inject]
+    public void Construct(PlayerView player, BulletPool bulletPool)
+    {
+        _target = player ? player.transform : null;
+        _bulletPool = bulletPool;
+    }
+
+    private void Awake()
+    {   
+        _material = GetComponent&lt;Renderer&gt;().material;
+        _agent = GetComponent&lt;NavMeshAgent&gt;();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
+        _agent.stoppingDistance = stoppingDistance;
+    }
+
+    private void Update()
+    {
+        if (_target == null || !_agent.isOnNavMesh) return;
+        if(_isDead) return;
+        Vector2 toTarget = _target.position - transform.position;
+
+        if (CanAttack(toTarget))
+        {
+            _agent.isStopped = true;
+            RotateTowards(toTarget);
+            TryShoot(toTarget.normalized);
+        }
+        else
+        {
+            _agent.isStopped = false;
+            if (Time.time - _lastRepathTime &gt;= repathInterval)
+            {
+                _lastRepathTime = Time.time;
+                _agent.SetDestination(_target.position);
+            }
+            RotateTowards(_agent.velocity);
+        }
+    }
+    
+    private bool CanAttack(Vector2 toTarget)
+    {
+        if (toTarget.sqrMagnitude &gt; attackRange * attackRange) return false;
+
+        // 壁も含めてRayを飛ばし、最初に当たったのがプレイヤーなら視線が通っている
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, toTarget.normalized, attackRange, playLayer | wallLayer);
+        
+        return hit.collider != null &amp;&amp; hit.transform == _target;
+    }
+
+    private void TryShoot(Vector2 direction)
+    {
+        if (Time.time - _lastAttackTime &lt; attackCooldownTime) return;
+        _lastAttackTime = Time.time;
+        LayerMask l = playLayer | wallLayer;
+        _bulletPool.Fire(transform.position, direction, attackDamage, l);
+    }
+
+    private void RotateTowards(Vector2 direction)
+    {
+        if (direction.sqrMagnitude &lt; 0.01f) return;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (health &lt;= 0f) return; // 死亡処理中の多重ヒットで二重加算しない
+
+        health -= damage;
+        if (health &lt;= 0f)
+        {
+            _onEnemyDie.OnNext(scoreValue);
+            HandleDie().Forget();
+        }
+    }
+
+    private async UniTaskVoid HandleDie()
+    {   
+        _isDead = true;
+        float timer = 2.0f;
+        float time = 0.0f;
+        while (time &lt;= timer)
+        {   
+            time += Time.deltaTime;
+            var t = Mathf.Clamp01(time / timer);
+            _material.SetFloat(Step, t);
+            await UniTask.Yield();
+        }
+        Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        _onEnemyDie.Dispose();
+    }
+}
+</code></pre>
+                    </div>
+                    
+                    
+                </section>
+            </div>
+        </main>
+
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    WASD / 矢印キー: 移動 ／ マウス: 照準 ／ 左クリック: 射撃 ／ 右クリック: リロード
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="RhythmGame.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">回れ回れ</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
+</body>
+
+</html>
