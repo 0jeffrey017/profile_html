@@ -220,7 +220,7 @@ body.games-page .page-main {
 .featured-list,
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: 16px 24px;
     align-items: stretch;
 }
@@ -286,6 +286,22 @@ body.games-page .page-main {
 
 .carousel-card:hover .cc-thumb img {
     transform: scale(1.05);
+}
+
+/* MP4プレビュー：ポスター画像の上に重ね、再生中のみフェードイン */
+.carousel-card .cc-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.carousel-card .cc-video.is-playing {
+    opacity: 1;
 }
 
 .carousel-card .cc-badges {
@@ -504,6 +520,36 @@ body.games-page .page-main {
 }
 
 /* ============================================================
+   レスポンシブ：900〜1100px は 3カラムが窮屈なので
+   プロフィールを 2カラム（レール + 本文）に落とし、スクロールを許可
+   ============================================================ */
+@media (max-width: 1100px) {
+
+    body.page {
+        overflow: auto;
+        height: auto;
+    }
+
+    body.page .container {
+        height: auto;
+    }
+
+    .page-main {
+        overflow: visible;
+        justify-content: flex-start;
+    }
+
+    .profile-layout {
+        grid-template-columns: 240px 1fr;
+        gap: 28px;
+    }
+
+    .profile-rail {
+        grid-row: span 2;
+    }
+}
+
+/* ============================================================
    レスポンシブ：狭い/低い画面では no-scroll を諦めスクロール許可
    ============================================================ */
 @media (max-width: 900px),
@@ -526,6 +572,10 @@ body.games-page .page-main {
     .profile-layout {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+
+    .profile-rail {
+        grid-row: auto;
     }
 
     .bg-layout {

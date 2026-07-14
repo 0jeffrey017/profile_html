@@ -24,7 +24,7 @@
             {"type": "tech", "name": "GitHubActions"},
             {"type": "tech", "name": "GameCI"}
         ],
-        "image_path": "Image/GameImage/Unity Job System & Burst Compiler_image.png",
+        "image_path": "Image/GameImage/Unity Job System & Burst Compiler_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse Click: Spawn Ball",
         "players": "Single Player（1人用）",
@@ -71,7 +71,7 @@
             {"type": "tech", "name": "UniTask"},
             {"type": "tech", "name": "物理演算"}
         ],
-        "image_path": "Image/GameImage/sumoGame_image.png",
+        "image_path": "Image/GameImage/sumoGame_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "A / L Key: 連打して攻撃",
         "players": "Single Player（1人用）",
@@ -109,7 +109,7 @@
             {"type": "tech", "name": "VContainer"},
             {"type": "tech", "name": "R3"}
         ],
-        "image_path": "Image/GameImage/ClickGame_image.png",
+        "image_path": "Image/GameImage/ClickGame_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Mouse",
         "players": "Single Player（1人用）",
@@ -147,7 +147,7 @@
             {"type": "design", "name": "責務分離"},
             {"type": "tech", "name": "VContainer"}
         ],
-        "image_path": "Image/GameImage/PassTheBaton_image.png",
+        "image_path": "Image/GameImage/PassTheBaton_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "WASD: Move, Q: Restart (過去の自分を足場化)",
         "players": "Single Player（1人用）",
@@ -183,7 +183,7 @@
             {"type": "design", "name": "ECS"},
             {"type": "tech", "name": "データ駆動"}
         ],
-        "image_path": "Image/GameImage/SFML_image.png",
+        "image_path": "Image/GameImage/SFML_image.webp",
         "platform": "PC (Windows, Linux)",
         "how_to_play": "Keyboard",
         "players": "Single Player（1人用）",
@@ -236,7 +236,7 @@
             {"type": "tech", "name": "UniTask"},
             {"type": "tech", "name": "UniRx"}
         ],
-        "image_path": "Image/GameImage/RunGame_image.png",
+        "image_path": "Image/GameImage/RunGame_image.webp",
         "platform": "PC (Windows, WebGL), Mobile",
         "how_to_play": "Keyboard / Touch",
         "players": "Single Player（1人用）",
@@ -278,7 +278,7 @@
             {"type": "tech", "name": "ScriptableObject"},
             {"type": "tech", "name": "アイテムシステム"}
         ],
-        "image_path": "Image/GameImage/Guilty_Lane_image.png",
+        "image_path": "Image/GameImage/Guilty_Lane_image.webp",
         "platform": "調整中",
         "how_to_play": "Mouse",
         "players": "Single Player（1人用）",
@@ -325,7 +325,7 @@
             {"type": "design", "name": "ObjectPool"},
             {"type": "tech", "name": "ScriptableObject"}
         ],
-        "image_path": "Image/GameImage/DefanceGame_image.png",
+        "image_path": "Image/GameImage/DefanceGame_image.webp",
         "platform": "PC (Windows)",
         "how_to_play": "Mouse (Drag & Dropで武器を配置)",
         "players": "Single Player（1人用）",
@@ -369,7 +369,7 @@
             {"type": "tech", "name": "JSONセーブ"},
             {"type": "tech", "name": "物理挙動(SpringJoint2D)"}
         ],
-        "image_path": "Image/GameImage/SpaceCat_image.png",
+        "image_path": "Image/GameImage/SpaceCat_image.webp",
         "platform": "PC (Windows)",
         "how_to_play": "Keyboard (ゲーム内の指示に従って操作)",
         "players": "Single Player（1人用）",
@@ -407,7 +407,7 @@
             {"type": "tech", "name": "NavMesh"},
             {"type": "tech", "name": "放物線弾道計算"}
         ],
-        "image_path": "Image/GameImage/Ikasu_image.png",
+        "image_path": "Image/GameImage/Ikasu_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "WASD: Move, Mouse: Fishing / Attack",
         "players": "Single Player（1人用）",
@@ -445,7 +445,7 @@
             {"type": "design", "name": "ObjectPool"},
             {"type": "tech", "name": "3D-UI"}
         ],
-        "image_path": "Image/GameImage/AvoidGame_image.png",
+        "image_path": "Image/GameImage/AvoidGame_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Space Key: Jump",
         "players": "Single Player（1人用）",
@@ -490,7 +490,7 @@
             {"type": "tech", "name": "判定システム"},
             {"type": "tech", "name": "譜面駆動"}
         ],
-        "image_path": "Image/GameImage/RhythmGame_image.png",
+        "image_path": "Image/GameImage/RhythmGame_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "Key Input: XCNMでレーンのノーツをタイミングよく叩く",
         "players": "Single Player（1人用）",
@@ -533,7 +533,7 @@
             {"type": "tech", "name": "UniTask"},
             {"type": "tech", "name": "NavMesh"}
         ],
-        "image_path": "Image/GameImage/ShootingGame_image.png",
+        "image_path": "Image/GameImage/ShootingGame_image.webp",
         "platform": "PC (Windows, WebGL)",
         "how_to_play": "WASD / 矢印キー: 移動 ／ マウス: 照準 ／ 左クリック: 射撃 ／ 右クリック: リロード",
         "players": "Single Player（1人用）",
