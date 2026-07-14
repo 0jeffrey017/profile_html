@@ -23,22 +23,26 @@
         `;
     }
 
-    // 静止画(ポスター)と同名の .gif を対にする。image_gif があればそれを優先。
-    function gifPathFor(game) {
-        if (game.image_gif) return game.image_gif;
-        return (game.image_path || '').replace(/\.(png|jpe?g|webp)$/i, '.gif');
+    // 静止画(ポスター)と同名の .mp4 を対にする。video_preview があればそれを優先。
+    function videoPathFor(game) {
+        if (game.video_preview) return game.video_preview;
+        return (game.image_path || '').replace(/\.(png|jpe?g|webp)$/i, '.mp4');
     }
 
     function cardHtml(game) {
         const badges = buildBadgesHtml(game);
-        const gif = gifPathFor(game);
+        const video = videoPathFor(game);
+        const videoHtml = video
+            ? `<video class="cc-video" src="${video}" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>`
+            : '';
         return `
             <div>
                 <a class="carousel-card" href="games/${game.filename}" data-id="${game.id}">
                     <div class="cc-thumb">
                         <img class="cc-img" src="${game.image_path}" alt="${game.title}"
-                            data-poster="${game.image_path}" data-gif="${gif}" loading="lazy"
-                            onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'">
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='Image/placeholder.svg'">
+                        ${videoHtml}
                         <div class="cc-badges">${badges}</div>
                     </div>
                     <div class="cc-body">
@@ -77,31 +81,48 @@
         $g.html(games.map(cardHtml).join(''));
     }
 
-    // カーソルを合わせると .gif を再生（差し替え）、外すと静止画に戻す＝停止
-    function playGif(card) {
-        const img = card.querySelector('.cc-img');
-        if (!img) return;
-        const gif = img.dataset.gif;
-        // gif 未指定 / 読み込み失敗済み / 既に再生中なら何もしない
-        if (!gif || img.dataset.gifFailed || img.src.endsWith(gif)) return;
+    // カーソルを合わせると .mp4 プレビューをフェードイン再生、外すと停止してポスターに戻す
+    function playPreview(card) {
+        const video = card.querySelector('.cc-video');
+        // 動画なし / 過去に読み込み失敗なら何もしない（ポスターのまま）
+        if (!video || video.dataset.failed) return;
 
-        // 先読みして、存在する場合のみ差し替える（壊れ画像のチラつきを防ぐ）
-        const pre = new Image();
-        pre.onload = () => { if (card.matches(':hover')) img.src = gif; };
-        pre.onerror = () => { img.dataset.gifFailed = '1'; };
-        pre.src = gif;
+        video.play()
+            .then(() => video.classList.add('is-playing'))
+            .catch(() => { video.dataset.failed = '1'; });
     }
 
-    function stopGif(card) {
-        const img = card.querySelector('.cc-img');
-        if (img && img.dataset.poster) img.src = img.dataset.poster;
+    function stopPreview(card) {
+        const video = card.querySelector('.cc-video');
+        if (!video) return;
+        video.pause();
+        video.classList.remove('is-playing');
+        try { video.currentTime = 0; } catch (e) { /* 未読み込み時は無視 */ }
     }
 
-    function bindHoverGif() {
-        // 動的生成カードに対応するため委譲で登録（jQuery は mouseenter/leave を委譲対応）
-        $(document)
-            .on('mouseenter.gif', '.carousel-card', function () { playGif(this); })
-            .on('mouseleave.gif', '.carousel-card', function () { stopGif(this); });
+    function bindPreview() {
+        const touchLike = window.matchMedia('(hover: none)').matches;
+
+        if (!touchLike) {
+            // デスクトップ：ホバーで再生（動的生成カードに対応するため委譲で登録）
+            $(document)
+                .on('mouseenter.preview', '.carousel-card', function () { playPreview(this); })
+                .on('mouseleave.preview', '.carousel-card', function () { stopPreview(this); });
+            return;
+        }
+
+        // タッチ端末：ホバーが無いので、画面内に入ったカードを自動再生する
+        if (!('IntersectionObserver' in window)) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    playPreview(entry.target);
+                } else {
+                    stopPreview(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        document.querySelectorAll('.carousel-card').forEach(card => observer.observe(card));
     }
 
     async function init() {
@@ -111,7 +132,7 @@
             allGames = await res.json();
             renderFeatured();
             renderGrid();
-            bindHoverGif();
+            bindPreview();
         } catch (err) {
             console.error("games-carousel.js: failed to load:", err);
             $('#games-grid').html('<p class="error-message">作品データの読み込みに失敗しました。</p>');

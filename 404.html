@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Not Found | Jeffrey LEE</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="https://0jeffrey017.github.io/profile_html/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://0jeffrey017.github.io/profile_html/favicon.ico" sizes="48x48">
+    <!-- 404はどのパスでも配信されるため、外部CSSに依存しない自己完結ページにする -->
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: #f9fafb;
+            color: #0e0e0e;
+        }
+
+        .notfound {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .notfound-code {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #003371;
+            line-height: 1;
+            margin: 0 0 8px;
+        }
+
+        .notfound-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 12px;
+        }
+
+        .notfound-text {
+            color: #555;
+            margin: 0 0 28px;
+        }
+
+        .notfound-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #003371;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .notfound-btn:hover {
+            background: #004494;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="notfound">
+        <p class="notfound-code">404</p>
+        <h1 class="notfound-title">ページが見つかりません / Page Not Found</h1>
+        <p class="notfound-text">お探しのページは移動または削除された可能性があります。</p>
+        <a class="notfound-btn" href="https://0jeffrey017.github.io/profile_html/index.html">トップページへ戻る</a>
+    </main>
+</body>
+
+</html>

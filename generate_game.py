@@ -77,7 +77,7 @@ def generate_games():
             content = content.replace('<!-- GALLERY_END -->', '')
             gallery_html = ""
             for img_path in gallery_items:
-                gallery_html += f'<div class="screenshot-item"><img src="{img_path}" alt="Screenshot"></div>\n'
+                gallery_html += f'<div class="screenshot-item"><img src="{img_path}" alt="Screenshot" loading="lazy"></div>\n'
             content = content.replace('{{SCREENSHOT_GALLERY}}', gallery_html)
 
         # Handle Code Sample conditional block
