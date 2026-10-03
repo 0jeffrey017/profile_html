@@ -546,5 +546,105 @@
                 "explanation": "NavMeshPlus（2D NavMesh）で一定間隔ごとにプレイヤーへ経路を再設定し、攻撃範囲内かつPhysics2D.Raycastの射線が通るときのみ発砲。被弾時はR3のSubjectでスコアを通知し、UniTaskでシェーダーのディゾルブ演出を再生してから破棄する、DI（VContainer）・R3・UniTaskを組み合わせた敵制御の核心ロジック"
             }
         ]
+    },
+    {
+        "id": "14",
+        "filename": "Crescent_Moon.html",
+        "title": "Crescent_Moon",
+        "subtitle": "2D Exploration Action Game",
+        "description": "月が照らす異世界の回廊を探索する2Dアクション。月を見上げることで変化するマップを、FSM・VContainer・R3・UniTaskで制御。",
+        "team": "チーム開発（人数確認中）",
+        "overview": "<p>目覚めると、月が照らす異世界の回廊を彷徨っていた。月に見守られながら、敵を倒し、躱しつつ脱出を目指す2D探索アクションゲームです。</p><p>月を見上げるとプレイヤーの現在位置をもとにマップを再生成。探索・戦闘・月の演出・分岐するエンディングを、非同期ステートマシンとイベント通知で接続しています。</p><p>画像は仮素材です。制作期間・人数および公開リンクは確認後に更新予定です。</p>",
+        "engine": "Unity 6000.3.8f1",
+        "period": "確認中",
+        "status": "released",
+        "responsible": [
+            "ゲーム進行の FSM と非同期状態遷移の実装",
+            "VContainer の LifetimeScope / Installer による依存関係の構成",
+            "マップ生成と月イベントに連動する再生成処理",
+            "R3・UniTask によるイベント通知と Model / View / Presenter の接続",
+            "Addressables によるアセット読み込みと初期化フロー"
+        ],
+        "challenges_solutions": [
+            {
+                "challenge": "演出やシーン読み込み中に状態遷移が重なり、進行処理が競合する",
+                "solution": "遷移要求をキューで直列化し、同じ状態への重複要求を集約。OnExit / OnEnter を await し、終了判定とキャンセル処理を組み込んで進行を管理。"
+            },
+            {
+                "challenge": "マップ再生成時に表示・敵の経路・アイテム配置の更新順序を揃える必要がある",
+                "solution": "R3 でマップデータの変更を購読し、表示更新の完了後に NavMesh・アイテム・花・出口の生成イベントを順番に配信。生成ロジックと表示側を分離。"
+            },
+            {
+                "challenge": "多くのゲームシステムを直接参照すると変更の影響が広がる",
+                "solution": "VContainer の Installer で依存の登録を分割し、型付き EventBroker を通じてシステム間を連携。非同期ハンドラーの完了を UniTask.WhenAll で待ち、購読解除を IDisposable で管理。"
+            }
+        ],
+        "tags": [
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "FSM"
+            },
+            {
+                "type": "design",
+                "name": "MVP"
+            },
+            {
+                "type": "tech",
+                "name": "VContainer"
+            },
+            {
+                "type": "tech",
+                "name": "R3"
+            },
+            {
+                "type": "tech",
+                "name": "UniTask"
+            },
+            {
+                "type": "tech",
+                "name": "Addressables"
+            },
+            {
+                "type": "tech",
+                "name": "NavMesh"
+            }
+        ],
+        "image_path": "Image/GameImage/Crescent_Moon_placeholder.svg",
+        "platform": "PC（Windows）",
+        "players": "Single Player（1人用）",
+        "how_to_play": "WASD / 矢印キー: 移動 ／ Shift: ダッシュ ／ Space: 攻撃 ／ C: 月を見上げる ／ M: ミニマップ ／ Esc: メニュー（ゲームパッドにも対応）",
+        "play_link": "",
+        "code_sample": [
+            {
+                "path": "Scripts/CrescentMoon_GameStateMachine.cs",
+                "language": "csharp",
+                "intro": "遷移キューによる非同期 FSM（コア処理）",
+                "explanation": "状態遷移要求を Queue で直列化し、重複要求をまとめて処理。OnExit / OnEnter の完了を待ち、待機中の要求には完了・例外・キャンセルを通知します。"
+            },
+            {
+                "path": "Scripts/CrescentMoon_MapPresenter.cs",
+                "language": "csharp",
+                "intro": "R3 とイベント通知によるマップ更新（コア処理）",
+                "explanation": "CurrentMap の変更から表示更新、NavMesh 再構築、アイテム配置を順に通知。月を見上げるイベントでは現在のプレイヤー位置を取得してマップ生成を開始します。"
+            },
+            {
+                "path": "Scripts/CrescentMoon_GameEventBroker.cs",
+                "language": "csharp",
+                "intro": "UniTask による型付きイベント配信（コア処理）",
+                "explanation": "イベント型ごとに購読者を保持し、複数の非同期ハンドラーを UniTask.WhenAll で待機。購読解除を IDisposable で管理し、通知元と受信側の直接参照を減らします。"
+            }
+        ]
     }
 ]

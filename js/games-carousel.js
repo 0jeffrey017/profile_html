@@ -26,7 +26,10 @@
     // 静止画(ポスター)と同名の .mp4 を対にする。video_preview があればそれを優先。
     function videoPathFor(game) {
         if (game.video_preview) return game.video_preview;
-        return (game.image_path || '').replace(/\.(png|jpe?g|webp)$/i, '.mp4');
+        const imagePath = game.image_path || '';
+        return /\.(png|jpe?g|webp)$/i.test(imagePath)
+            ? imagePath.replace(/\.(png|jpe?g|webp)$/i, '.mp4')
+            : '';
     }
 
     function cardHtml(game) {
