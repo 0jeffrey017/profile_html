@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crescent_Moon | Jeffrey LEE</title>
+    <meta name="description" content="Crescent_Moon - 2D Exploration Action Game">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/Crescent_Moon.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
+    <meta property="og:title" content="Crescent_Moon | Jeffrey LEE">
+    <meta property="og:description" content="Crescent_Moon - 2D Exploration Action Game">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Crescent_Moon_placeholder.svg">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/Crescent_Moon.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crescent_Moon | Jeffrey LEE">
+    <meta name="twitter:description" content="Crescent_Moon - 2D Exploration Action Game">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Crescent_Moon_placeholder.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
+</head>
+
+<body class="game-detail-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">リイショウケツ/Jeffrey LEE</div>
+            <nav class="site-nav" id="site-nav">
+                <ul>
+                    <li><a href="../index.html">About / 自己紹介</a></li>
+                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
+                    <li><a href="../background.html">Background / 経歴</a></li>
+                    <li><a href="../contact.html">Contact / 連絡先</a></li>
+                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="detail-head">
+                <h1 class="detail-title">Crescent_Moon</h1>
+                <p class="detail-subtitle">2D Exploration Action Game</p>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>目覚めると、月が照らす異世界の回廊を彷徨っていた。月に見守られながら、敵を倒し、躱しつつ脱出を目指す2D探索アクションゲームです。</p><p>月を見上げるとプレイヤーの現在位置をもとにマップを再生成。探索・戦闘・月の演出・分岐するエンディングを、非同期ステートマシンとイベント通知で接続しています。</p><p>画像は仮素材です。制作期間・人数および公開リンクは確認後に更新予定です。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>Information / 情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-value">Unity 6000.3.8f1</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Period</span>
+                                        <span class="meta-value">確認中</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-value">PC（Windows）</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Players</span>
+                                        <span class="meta-value">Single Player（1人用）</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>Responsible part / 担当部分</h3>
+                                <div>
+                                    <ul>
+    <li>ゲーム進行の FSM と非同期状態遷移の実装</li>
+    <li>VContainer の LifetimeScope / Installer による依存関係の構成</li>
+    <li>マップ生成と月イベントに連動する再生成処理</li>
+    <li>R3・UniTask によるイベント通知と Model / View / Presenter の接続</li>
+    <li>Addressables によるアセット読み込みと初期化フロー</li>
+</ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <div class="game-detail-image">
+                                    <img src="../Image/GameImage/Crescent_Moon_placeholder.svg" alt="Crescent_Moon Screenshot" loading="lazy">
+                                </div>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button disabled" data-url="">
+                                    Play Game
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <div>
+                            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>演出やシーン読み込み中に状態遷移が重なり、進行処理が競合する</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>遷移要求をキューで直列化し、同じ状態への重複要求を集約。OnExit / OnEnter を await し、終了判定とキャンセル処理を組み込んで進行を管理。</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>マップ再生成時に表示・敵の経路・アイテム配置の更新順序を揃える必要がある</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>R3 でマップデータの変更を購読し、表示更新の完了後に NavMesh・アイテム・花・出口の生成イベントを順番に配信。生成ロジックと表示側を分離。</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>多くのゲームシステムを直接参照すると変更の影響が広がる</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>VContainer の Installer で依存の登録を分割し、型付き EventBroker を通じてシステム間を連携。非同期ハンドラーの完了を UniTask.WhenAll で待ち、購読解除を IDisposable で管理。</p>
+                </div>
+
+            </div>
+            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
+                
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    
+                    <div class="code-explanation">状態遷移要求を Queue で直列化し、重複要求をまとめて処理。OnExit / OnEnter の完了を待ち、待機中の要求には完了・例外・キャンセルを通知します。</div>
+                    <div class="code-container">
+                        <div class="code-header">遷移キューによる非同期 FSM（コア処理）</div>
+                        <pre><code class="language-csharp">/*
+ * Crescent_Moon / 非同期 FSM のコア処理（抜粋）
+ * 遷移要求の登録、フィールド、補助メソッド、using・namespace は省略。
+ * TransitionRequest は完了・例外・キャンセルを待機者へ通知する要求オブジェクト。
+ */
+
+private async UniTask ProcessTransitionQueueAsync(CancellationToken token)
+{
+    try
+    {
+        // 要求を一つずつ処理し、非同期の状態遷移が重なるのを防ぐ。
+        while (_transitionQueue.Count &gt; 0)
+        {
+            token.ThrowIfCancellationRequested();
+
+            TransitionRequest request = _transitionQueue.Dequeue();
+            _activeRequest = request;
+            if (_transitionQueue.Count == 0)
+            {
+                _lastQueuedRequest = null;
+            }
+
+            try
+            {
+                // 終了処理と開始処理が完了してから、待機者へ完了を通知。
+                await TransitionTo(request.State, token);
+                request.Complete();
+            }
+            catch (OperationCanceledException)
+            {
+                // 中断時は処理中・待機中の要求をまとめてキャンセル。
+                request.Cancel(token);
+                CancelPendingRequests(token);
+                throw;
+            }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+                InvalidOperationException transitionException = new(
+                    $&quot;[GameStateMachine] Transition to {request.State} failed.&quot;,
+                    exception);
+                request.Fail(transitionException);
+                CancelPendingRequests(token);
+                throw transitionException;
+            }
+            finally
+            {
+                _activeRequest = null;
+            }
+        }
+    }
+    finally
+    {
+        _isProcessingQueue = false;
+
+        if (_transitionQueue.Count &gt; 0 &amp;&amp; !token.IsCancellationRequested)
+        {
+            _isProcessingQueue = true;
+            ProcessTransitionQueueAsync(token).ForgetSafely();
+        }
+    }
+}
+
+private async UniTask TransitionTo(EGameState nextState, CancellationToken token)
+{
+    // 遷移中はゲームプレイを停止し、旧状態の終了を待つ。
+    _pauseService.SetPaused(true);
+
+    if (_currentState != null)
+    {
+        await _currentState.OnExit(token);
+    }
+
+    _currentState = _stateFactory.Create(nextState);
+    _currentStateType = nextState;
+
+    // 新状態の初期化・演出が完了してからプレイ可能な状態だけ再開。
+    await _currentState.OnEnter(token);
+    _pauseService.SetPaused(nextState is not EGameState.MainGame and not EGameState.Tutorial);
+}
+</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">CurrentMap の変更から表示更新、NavMesh 再構築、アイテム配置を順に通知。月を見上げるイベントでは現在のプレイヤー位置を取得してマップ生成を開始します。</div>
+                    <div class="code-container">
+                        <div class="code-header">R3 とイベント通知によるマップ更新（コア処理）</div>
+                        <pre><code class="language-csharp">/*
+ * Crescent_Moon / マップ更新と月イベントの連携（抜粋）
+ * DI・Addressables の初期化、フィールド、他のイベントハンドラーは省略。
+ * 購読は AddTo でまとめて保持し、Dispose 時に解除する。
+ */
+
+private void Bind()
+{
+    // Model の変更を購読し、View の更新完了後に各システムへ通知。
+    _mapGeneratorModel.CurrentMap
+        .SubscribeAwait(async (v, ct) =&gt;
+        {
+            await _mapViewer.HandleMapView(v);
+            // マップ表示 → 経路再構築 → アイテム配置の順序を揃える。
+            await _gameEventBroker.Publish(new MapNavMeshGenerationEvent(), ct);
+            await _gameEventBroker.Publish(new MapItemGenerationEvent(v), ct);
+            await _gameEventBroker.Publish(new MapSunFlowerGenerationEvent( _mapGeneratorModel.CurrentSunFlowerMap.CurrentValue), ct);
+            await _gameEventBroker.Publish(new MapTempleExitGenerationEvent( _mapGeneratorModel.CurrentTempleExitMap.CurrentValue), ct);
+            // 新しいマップ通知が来たら、前の購読処理のキャンセルを要求。
+        }, AwaitOperation.Switch).AddTo(_Disposable);
+    
+    _gameEventBroker
+        .Subscribe&lt;SunFlowerCollectedEvent&gt;(HandleSunFlowerCollectedEvent)
+        .AddTo(_Disposable);
+    
+    _gameEventBroker
+        .Subscribe&lt;GameStartEvent&gt;(HandleGameStartEvent)
+        .AddTo(_Disposable);
+    _gameEventBroker
+        .Subscribe&lt;GazingMoonEvent&gt;(HandleGazingMoonEvent)
+        .AddTo(_Disposable);
+}
+
+private async UniTask HandleGazingMoonEvent(GazingMoonEvent e, CancellationToken token)
+{    
+    await _gameEventBroker.Publish(new MapGenerationStartedEvent(), token);
+    // 月イベントに含まれる現在位置を、新しいマップの生成基準にする。
+    MapCell player = _mapGeneratorModel.GetMapCellByPosition(e.X,e.Y);
+    await _mapGeneratorModel.StartGeneration(player);
+}
+</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">イベント型ごとに購読者を保持し、複数の非同期ハンドラーを UniTask.WhenAll で待機。購読解除を IDisposable で管理し、通知元と受信側の直接参照を減らします。</div>
+                    <div class="code-container">
+                        <div class="code-header">UniTask による型付きイベント配信（コア処理）</div>
+                        <pre><code class="language-csharp">/*
+ * Crescent_Moon / 型付き非同期 EventBroker のコア処理（抜粋）
+ * using・namespace・クラス定義は省略。
+ * _events は Dictionary&lt;Type, Delegate&gt;、Subscription は Dispose で解除処理を実行。
+ */
+
+public async UniTask Publish&lt;T&gt;(T message,CancellationToken token) where T : IEvent
+{
+    // 型ごとに配信先を取得。発行側は購読者の具体的なクラスを知らなくてよい。
+    if (!_events.TryGetValue(typeof(T), out Delegate eventDelegate))
+    {
+        Debug.LogWarning($&quot;[EventBroker] No one is listening to {typeof(T).Name}&quot;);
+        return;
+    }
+
+    Delegate[] invocationList = eventDelegate.GetInvocationList();
+    if (invocationList.Length == 1)
+    {
+        await ((Func&lt;T, CancellationToken, UniTask&gt;)invocationList[0])(message, token);
+        return;
+    }
+
+    var tasks = new UniTask[invocationList.Length];
+    for (int i = 0; i &lt; invocationList.Length; i++)
+    {
+        tasks[i] = ((Func&lt;T, CancellationToken, UniTask&gt;)invocationList[i])(message, token);
+    }
+    // 全ハンドラーの完了を待つため、呼び出し側も await で順序を制御できる。
+    await UniTask.WhenAll(tasks);
+}
+
+public IDisposable Subscribe&lt;T&gt;(Func&lt;T,CancellationToken,UniTask&gt; action) where T : IEvent
+{
+    Type type = typeof(T);
+
+    _events[type] = _events.TryGetValue(type, out var existing) ? Delegate.Combine(existing, action) : action;
+    // 返した購読オブジェクトを Dispose すると、このハンドラーだけ解除する。
+    return new Subscription(() =&gt;
+    {
+        if (_events.TryGetValue(type, out Delegate current))
+        {
+            Delegate removed = Delegate.Remove(current, action);
+            if (removed == null)
+            {
+                _events.Remove(type);
+            }
+            else
+            {
+                _events[type] = removed;
+            }
+        }
+    });
+}
+</code></pre>
+                    </div>
+                    
+                    
+                </section>
+            </div>
+        </main>
+
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    WASD / 矢印キー: 移動 ／ Shift: ダッシュ ／ Space: 攻撃 ／ C: 月を見上げる ／ M: ミニマップ ／ Esc: メニュー（ゲームパッドにも対応）
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="ShootingGame.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">撃つ</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            hljs.highlightAll();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
+</body>
+
+</html>
