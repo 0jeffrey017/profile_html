@@ -10,19 +10,48 @@
         "engine": "Unity 6000.3.8f1",
         "period": "14日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する", "solution" : "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"},
-            {"challenge" : "WebGLへのビルドおよびデプロイ作業の手間とタイムロス", "solution" : "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"}
+            {
+                "challenge": "数千個のオブジェクトを同時に制御しつつ、60FPSの安定稼働を維持する",
+                "solution": "C# Job Systemによるマルチスレッド化とBurst Compilerによるネイティブコード最適化の導入"
+            },
+            {
+                "challenge": "WebGLへのビルドおよびデプロイ作業の手間とタイムロス",
+                "solution": "GitHub ActionsとGame-CIを組み合わせた、自動ビルド・公開のCI/CDパイプライン構築"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "JobSystem"},
-            {"type": "design", "name": "Burst"},
-            {"type": "tech", "name": "GitHubActions"},
-            {"type": "tech", "name": "GameCI"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "JobSystem"
+            },
+            {
+                "type": "design",
+                "name": "Burst"
+            },
+            {
+                "type": "tech",
+                "name": "GitHubActions"
+            },
+            {
+                "type": "tech",
+                "name": "GameCI"
+            }
         ],
         "image_path": "Image/GameImage/Unity Job System & Burst Compiler_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -55,21 +84,53 @@
         "engine": "Unity 6000.3.8f1",
         "period": "7日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "ハッカソンを想定した極めて短い制限時間内でのゲームループの完成", "solution" : "Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現"}
+            {
+                "challenge": "ハッカソンを想定した極めて短い制限時間内でのゲームループの完成",
+                "solution": "Unityの物理演算システム（Rigidbody/AddForce）を主軸に据え、低コストでコミカルかつ直感的なゲーム挙動を再現"
+            }
         ],
         "credit": [
-            {"type" :"BGM", "name":"Who Is the Champion", "url":"https://dova-s.jp/bgm/detail/21672"},
-            {"type" :"SE", "name":"デブペンギン", "url":"https://dova-s.jp/se/detail/355"},
-            {"type" :"SkyBox", "name":"AllSky Free - 10 Sky / Skybox Set", "url":"https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"}
+            {
+                "type": "BGM",
+                "name": "Who Is the Champion",
+                "url": "https://dova-s.jp/bgm/detail/21672"
+            },
+            {
+                "type": "SE",
+                "name": "デブペンギン",
+                "url": "https://dova-s.jp/se/detail/355"
+            },
+            {
+                "type": "SkyBox",
+                "name": "AllSky Free - 10 Sky / Skybox Set",
+                "url": "https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "tech", "name": "UniTask"},
-            {"type": "tech", "name": "物理演算"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "tech",
+                "name": "UniTask"
+            },
+            {
+                "type": "tech",
+                "name": "物理演算"
+            }
         ],
         "image_path": "Image/GameImage/sumoGame_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -96,18 +157,44 @@
         "engine": "Unity 6000.3.8f1",
         "period": "7日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "密結合になりがちなシングルトンパターンへの過度な依存からの脱却", "solution" : "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"}
+            {
+                "challenge": "密結合になりがちなシングルトンパターンへの過度な依存からの脱却",
+                "solution": "VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "DI"},
-            {"type": "design", "name": "MVP"},
-            {"type": "tech", "name": "VContainer"},
-            {"type": "tech", "name": "R3"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "DI"
+            },
+            {
+                "type": "design",
+                "name": "MVP"
+            },
+            {
+                "type": "tech",
+                "name": "VContainer"
+            },
+            {
+                "type": "tech",
+                "name": "R3"
+            }
         ],
         "image_path": "Image/GameImage/ClickGame_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -134,18 +221,44 @@
         "engine": "Unity 6000.3.8f1",
         "period": "1ヶ月",
         "status": "released",
-        "responsible": ["ゲーム全体のアーキテクチャ設計・進行管理"],
+        "responsible": [
+            "ゲーム全体のアーキテクチャ設計・進行管理"
+        ],
         "challenges_solutions": [
-            {"challenge" : "限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担", "solution" : "プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止"},
-            {"challenge" : "状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持", "solution" : "VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール"}
+            {
+                "challenge": "限られたハッカソン期間内での効率的なアーキテクチャ設計と迅速な役割分担",
+                "solution": "プロトタイプを最優先で作成し、チームメンバーとの密な連携によって要件のズレを未然に防止"
+            },
+            {
+                "challenge": "状態管理が複雑化しやすいゲーム進行（フロー）のクリーンな維持",
+                "solution": "VContainerによるDI環境にステートマシン（FSM）を組み込み、シーン内およびゲーム全体のフローを確実かつ堅牢にコントロール"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "FSM"},
-            {"type": "design", "name": "責務分離"},
-            {"type": "tech", "name": "VContainer"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "FSM"
+            },
+            {
+                "type": "design",
+                "name": "責務分離"
+            },
+            {
+                "type": "tech",
+                "name": "VContainer"
+            }
         ],
         "image_path": "Image/GameImage/PassTheBaton_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -172,16 +285,36 @@
         "engine": "SFML 2.6.2",
         "period": "1ヶ月",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "C++ネイティブ開発におけるクラス構造の肥大化と密結合化", "solution" : "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"}
+            {
+                "challenge": "C++ネイティブ開発におけるクラス構造の肥大化と密結合化",
+                "solution": "データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保"
+            }
         ],
         "tags": [
-            {"type": "cpp", "name": "C++"},
-            {"type": "engine", "name": "SFML2.6.2"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "ECS"},
-            {"type": "tech", "name": "データ駆動"}
+            {
+                "type": "cpp",
+                "name": "C++"
+            },
+            {
+                "type": "engine",
+                "name": "SFML2.6.2"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "ECS"
+            },
+            {
+                "type": "tech",
+                "name": "データ駆動"
+            }
         ],
         "image_path": "Image/GameImage/SFML_image.webp",
         "platform": "PC (Windows, Linux)",
@@ -189,17 +322,19 @@
         "players": "Single Player（1人用）",
         "play_link": "",
         "video_embed_url": "https://youtu.be/3qI0puDyEcU",
-        "code_sample": [{
-            "path" : "Scripts/SFML.cpp",
-            "language" : "cpp",
-            "intro" : "データ駆動型生成システム",
-            "explanation" : "外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装"
-        }]
+        "code_sample": [
+            {
+                "path": "Scripts/SFML.cpp",
+                "language": "cpp",
+                "intro": "データ駆動型生成システム",
+                "explanation": "外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装"
+            }
+        ]
     },
     {
         "id": "1",
         "star": true,
-        "corporate_project" : true,
+        "corporate_project": true,
         "filename": "GreatOKhanInvasion.html",
         "title": "グレート-O-カーンの侵略物語",
         "subtitle": "2D Endless Run Game / Enterprise Collaboration",
@@ -217,43 +352,89 @@
             "ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）"
         ],
         "challenges_solutions": [
-            {"challenge" : "ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる", "solution" : "有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現"},
-            {"challenge" : "チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理", "solution" : "UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保"},
-            {"challenge" : "演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する", "solution" : "DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供"},
-            {"challenge" : "複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発", "solution" : "Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持"},
-            {"challenge" : "UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する", "solution" : "MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保"}
+            {
+                "challenge": "ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる",
+                "solution": "有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現"
+            },
+            {
+                "challenge": "チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理",
+                "solution": "UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保"
+            },
+            {
+                "challenge": "演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する",
+                "solution": "DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供"
+            },
+            {
+                "challenge": "複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発",
+                "solution": "Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持"
+            },
+            {
+                "challenge": "UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する",
+                "solution": "MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保"
+            }
         ],
         "credit": [
-            {"type" :"BGM,SE", "name":"フリーBGM・音楽素材MusMus", "url":"https://musmus.main.jp"},
-            {"type" :"BGM,SE", "name":"OtoLogic", "url":"https://otologic.jp/"}
+            {
+                "type": "BGM,SE",
+                "name": "フリーBGM・音楽素材MusMus",
+                "url": "https://musmus.main.jp"
+            },
+            {
+                "type": "BGM,SE",
+                "name": "OtoLogic",
+                "url": "https://otologic.jp/"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity2022.3.61f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "FSM"},
-            {"type": "design", "name": "MVP"},
-            {"type": "tech", "name": "UniTask"},
-            {"type": "tech", "name": "UniRx"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity2022.3.61f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "FSM"
+            },
+            {
+                "type": "design",
+                "name": "MVP"
+            },
+            {
+                "type": "tech",
+                "name": "UniTask"
+            },
+            {
+                "type": "tech",
+                "name": "UniRx"
+            }
         ],
         "image_path": "Image/GameImage/RunGame_image.webp",
         "platform": "PC (Windows, WebGL), Mobile",
         "how_to_play": "Keyboard / Touch",
         "players": "Single Player（1人用）",
         "play_link": "https://www.njpw.co.jp/games/great-o-khan/",
-        "game_technical_image" :"Image/RunGame_class.png",
-        "code_sample": [{
-            "path" : "Scripts/RunGameScript_01.cs",
-            "language" : "csharp",
-            "intro" : "FSM & UniTask 連携システム",
-            "explanation" : "UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装"
-        },
-        {
-            "path" : "Scripts/RunGameScript_02.cs",
-            "language" : "csharp",
-            "intro" : "MVPアーキテクチャ Presenter層",
-            "explanation" : "UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践"
-        }]
+        "game_technical_image": "Image/RunGame_class.png",
+        "code_sample": [
+            {
+                "path": "Scripts/RunGameScript_01.cs",
+                "language": "csharp",
+                "intro": "FSM & UniTask 連携システム",
+                "explanation": "UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装"
+            },
+            {
+                "path": "Scripts/RunGameScript_02.cs",
+                "language": "csharp",
+                "intro": "MVPアーキテクチャ Presenter層",
+                "explanation": "UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践"
+            }
+        ]
     },
     {
         "id": "7",
@@ -266,17 +447,40 @@
         "engine": "Unity 2022.3.61f1",
         "period": "4ヶ月",
         "status": "released",
-        "responsible": ["メインアイテムシステム・イベントフラグ管理"],
+        "responsible": [
+            "メインアイテムシステム・イベントフラグ管理"
+        ],
         "challenges_solutions": [
-            {"challenge" : "複数人開発における、ゲーム内データ構造およびイベント仕様の統一", "solution" : "仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止"}
+            {
+                "challenge": "複数人開発における、ゲーム内データ構造およびイベント仕様の統一",
+                "solution": "仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity2022.3.61f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "開放閉鎖原則"},
-            {"type": "tech", "name": "ScriptableObject"},
-            {"type": "tech", "name": "アイテムシステム"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity2022.3.61f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "開放閉鎖原則"
+            },
+            {
+                "type": "tech",
+                "name": "ScriptableObject"
+            },
+            {
+                "type": "tech",
+                "name": "アイテムシステム"
+            }
         ],
         "image_path": "Image/GameImage/Guilty_Lane_image.webp",
         "platform": "調整中",
@@ -309,45 +513,72 @@
             "タイトル画面およびメインUIシステム全体の設計・レイアウト実装"
         ],
         "challenges_solutions": [
-            {"challenge" : "ゲームバランスの頻繁な調整が必要だが、非エンジニアのプランナーがコードを触れず調整コストが高い",
-             "solution" : "すべての敵・武器データをScriptableObjectに外部化。日本語の注釈をつけ、プランナーがUnityエディタ上で安全に数値を直接調整できる環境を整備"},
-            {"challenge" : "ゲームの仕様上、今後新しい敵のタイプや武器の種類が追加される可能性が非常に高い", 
-            "solution" : "StrategyパターンおよびFactoryパターンを採用。既存のソースコードを修正することなく、クラスの追加だけで新しい挙動を拡張できる設計（開放閉鎖原則の遵守）を確立"},
-            {"challenge" : "敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
-             "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+            {
+                "challenge": "ゲームバランスの頻繁な調整が必要だが、非エンジニアのプランナーがコードを触れず調整コストが高い",
+                "solution": "すべての敵・武器データをScriptableObjectに外部化。日本語の注釈をつけ、プランナーがUnityエディタ上で安全に数値を直接調整できる環境を整備"
+            },
+            {
+                "challenge": "ゲームの仕様上、今後新しい敵のタイプや武器の種類が追加される可能性が非常に高い",
+                "solution": "StrategyパターンおよびFactoryパターンを採用。既存のソースコードを修正することなく、クラスの追加だけで新しい挙動を拡張できる設計（開放閉鎖原則の遵守）を確立"
+            },
+            {
+                "challenge": "敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
+                "solution": "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity2022.3.61f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "Strategy"},
-            {"type": "design", "name": "Factory"},
-            {"type": "design", "name": "ObjectPool"},
-            {"type": "tech", "name": "ScriptableObject"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity2022.3.61f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "Strategy"
+            },
+            {
+                "type": "design",
+                "name": "Factory"
+            },
+            {
+                "type": "design",
+                "name": "ObjectPool"
+            },
+            {
+                "type": "tech",
+                "name": "ScriptableObject"
+            }
         ],
         "image_path": "Image/GameImage/DefanceGame_image.webp",
         "platform": "PC (Windows)",
         "how_to_play": "Mouse (Drag & Dropで武器を配置)",
         "players": "Single Player（1人用）",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame",
-        "game_technical_image" :"Image/defanceGame_class.png",
+        "game_technical_image": "Image/defanceGame_class.png",
         "code_sample": [
             {
-                "path" : "Scripts/DefanceGameScript_01.cs",
-                "language" : "csharp",
-                "intro" : "Strategyパターンによる弾挙動システム",
-                "explanation" : "弾の『飛び方・着弾処理』をScriptableObjectの戦略クラス（BulletStrategy）として外部化。直進・放物線・追尾などを、弾本体のコードを変更せずアセット差し替えだけで切り替えられる設計（開放閉鎖原則）"
-            },{
-                "path" : "Scripts/DefanceGameScript_02.cs",
-                "language" : "csharp",
-                "intro" : "ScriptableObjectによるマスターデータ設計",
-                "explanation" : "敵のHP・攻撃力・移動戦略・弾種などを全てScriptableObjectに外部化。Range/Tooltipで入力ミスを防ぎ、プログラマーを介さずプランナーがエディタ上で敵の新規作成・バランス調整を行えるワークフローを実現"
+                "path": "Scripts/DefanceGameScript_01.cs",
+                "language": "csharp",
+                "intro": "Strategyパターンによる弾挙動システム",
+                "explanation": "弾の『飛び方・着弾処理』をScriptableObjectの戦略クラス（BulletStrategy）として外部化。直進・放物線・追尾などを、弾本体のコードを変更せずアセット差し替えだけで切り替えられる設計（開放閉鎖原則）"
+            },
+            {
+                "path": "Scripts/DefanceGameScript_02.cs",
+                "language": "csharp",
+                "intro": "ScriptableObjectによるマスターデータ設計",
+                "explanation": "敵のHP・攻撃力・移動戦略・弾種などを全てScriptableObjectに外部化。Range/Tooltipで入力ミスを防ぎ、プログラマーを介さずプランナーがエディタ上で敵の新規作成・バランス調整を行えるワークフローを実現"
             }
         ]
     },
     {
         "id": "2",
-        "star": true,
         "filename": "SpaceCat.html",
         "title": "Space Cat",
         "subtitle": "2D Sci-Fi Survival Action",
@@ -357,17 +588,42 @@
         "engine": "Unity 2022.3.61f1",
         "period": "2ヶ月",
         "status": "released",
-        "responsible": ["ゲーム全体の基本設計・システム構築", "キャラクターのリジッドボディ制御・ワイヤー挙動の実装", "タイトルおよびゲーム状態遷移の実装"],
+        "responsible": [
+            "ゲーム全体の基本設計・システム構築",
+            "キャラクターのリジッドボディ制御・ワイヤー挙動の実装",
+            "タイトルおよびゲーム状態遷移の実装"
+        ],
         "challenges_solutions": [
-            {"challenge" : "難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須", "solution" : "プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築"},
-            {"challenge" : "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない", "solution" : "SpringJoint2Dのパラメータ調整とベクトル計算の再設計を重ね、初期版から挙動の安定性を段階的に改善。理想の手触りに近づけるための物理パラメータ検証プロセスを確立し、継続的な改善を前提とした設計知見を得た"}
+            {
+                "challenge": "難易度が高く一画面でのクリアが困難なため、ゲーム進行度の中断・再開機能（セーブ機能）が必須",
+                "solution": "プレイヤーの位置座標、獲得アイテムの状態をシリアライズし、JSONファイルとしてローカルに書き出し・読み込みを行うセーブシステムを構築"
+            },
+            {
+                "challenge": "ワイヤーを用いたスイングアクションの挙動に違和感があり、手触りが理想に届いていない",
+                "solution": "SpringJoint2Dのパラメータ調整とベクトル計算の再設計を重ね、初期版から挙動の安定性を段階的に改善。理想の手触りに近づけるための物理パラメータ検証プロセスを確立し、継続的な改善を前提とした設計知見を得た"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity2022.3.61f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "tech", "name": "JSONセーブ"},
-            {"type": "tech", "name": "物理挙動(SpringJoint2D)"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity2022.3.61f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "tech",
+                "name": "JSONセーブ"
+            },
+            {
+                "type": "tech",
+                "name": "物理挙動(SpringJoint2D)"
+            }
         ],
         "image_path": "Image/GameImage/SpaceCat_image.webp",
         "platform": "PC (Windows)",
@@ -376,10 +632,10 @@
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/4_SpaceCat",
         "code_sample": [
             {
-                "path" : "Scripts/SpaceCatScript_01.cs",
-                "language" : "csharp",
-                "intro" : "ジェネリックなJSONセーブシステム",
-                "explanation" : "プレイヤー座標・獲得アイテム・進行フラグをシリアライズし、persistentDataPath配下にJSONとして永続化。入出力を型を限定しないジェネリックメソッド化し、どのデータ型でも再利用できる設計とした"
+                "path": "Scripts/SpaceCatScript_01.cs",
+                "language": "csharp",
+                "intro": "ジェネリックなJSONセーブシステム",
+                "explanation": "プレイヤー座標・獲得アイテム・進行フラグをシリアライズし、persistentDataPath配下にJSONとして永続化。入出力を型を限定しないジェネリックメソッド化し、どのデータ型でも再利用できる設計とした"
             }
         ],
         "video_embed_url": "https://youtu.be/_mwkGeVx6As"
@@ -395,17 +651,40 @@
         "engine": "Unity 2022.3.61f1",
         "period": "2ヶ月",
         "status": "released",
-        "responsible": ["ボス戦（巨大イカ）のAIおよび戦闘ロジックの実装"],
+        "responsible": [
+            "ボス戦（巨大イカ）のAIおよび戦闘ロジックの実装"
+        ],
         "challenges_solutions": [
-            {"challenge" : "短期間の開発スケジュールの中で、全く異なる2つのゲームジャンルを違和感なく融合させる", "solution" : "コアとなる面白さを即座に検証するため、迅速なプロトタイピング（イテレーション）を繰り返し、仕様のブラッシュアップを最速で実施"}
+            {
+                "challenge": "短期間の開発スケジュールの中で、全く異なる2つのゲームジャンルを違和感なく融合させる",
+                "solution": "コアとなる面白さを即座に検証するため、迅速なプロトタイピング（イテレーション）を繰り返し、仕様のブラッシュアップを最速で実施"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity2022.3.61f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "tech", "name": "敵AI"},
-            {"type": "tech", "name": "NavMesh"},
-            {"type": "tech", "name": "放物線弾道計算"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity2022.3.61f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "tech",
+                "name": "敵AI"
+            },
+            {
+                "type": "tech",
+                "name": "NavMesh"
+            },
+            {
+                "type": "tech",
+                "name": "放物線弾道計算"
+            }
         ],
         "image_path": "Image/GameImage/Ikasu_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -432,18 +711,40 @@
         "engine": "Unity 6000.3.8f1",
         "period": "7日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "通常のUIでは表現できない、立体的な3DオブジェクトをUIとして画面に表示したい", "solution" : "UI専用カメラを別途構築し、3DオブジェクトをUIレイヤーへ合成描画することで、奥行きのある演出を実現"},
-            {"challenge" : "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
-             "solution" : "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"}
+            {
+                "challenge": "通常のUIでは表現できない、立体的な3DオブジェクトをUIとして画面に表示したい",
+                "solution": "UI専用カメラを別途構築し、3DオブジェクトをUIレイヤーへ合成描画することで、奥行きのある演出を実現"
+            },
+            {
+                "challenge": "食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念",
+                "solution": "オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "ObjectPool"},
-            {"type": "tech", "name": "3D-UI"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "ObjectPool"
+            },
+            {
+                "type": "tech",
+                "name": "3D-UI"
+            }
         ],
         "image_path": "Image/GameImage/AvoidGame_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -470,25 +771,66 @@
         "engine": "Unity 6000.3.8f1",
         "period": "14日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "入力タイミングを正確に判定し、Perfect/Good/Bad/Missを破綻なく振り分ける", "solution" : "レーンごとにノーツをQueueで保持し、常に先頭（最も古い未判定ノーツ）と入力時刻の差分を比較。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理する判定ロジックを構築"},
-            {"challenge" : "大量のノーツを生成・破棄するためのGCスパイク（処理落ち）の懸念", "solution" : "オブジェクトプール（NotePool）パターンを導入。ノーツの使い回しに加え、プール再利用を検知するUseIdで「自分のオブジェクト」のみを安全に返却する仕組みを実装"}
+            {
+                "challenge": "入力タイミングを正確に判定し、Perfect/Good/Bad/Missを破綻なく振り分ける",
+                "solution": "レーンごとにノーツをQueueで保持し、常に先頭（最も古い未判定ノーツ）と入力時刻の差分を比較。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理する判定ロジックを構築"
+            },
+            {
+                "challenge": "大量のノーツを生成・破棄するためのGCスパイク（処理落ち）の懸念",
+                "solution": "オブジェクトプール（NotePool）パターンを導入。ノーツの使い回しに加え、プール再利用を検知するUseIdで「自分のオブジェクト」のみを安全に返却する仕組みを実装"
+            }
         ],
         "credit": [
-            {"type" :"SE", "name":"OtoLogic", "url":"https://otologic.jp/"},
-            {"type" :"BGM", "name":"W&W - OIIA OIIA (Spinning Cat)", "url":"https://www.youtube.com/watch?v=IxX_QHay02M&list=RDIxX_QHay02M&start_radio=1"},
-            {"type" :"VFX", "name":"Cartoon FX Remaster Free", "url":"https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565"},
-            {"type" :"3D Model", "name":"Oiiaioooooiai Cat", "url":"https://sketchfab.com/3d-models/oiiaioooooiai-cat-30d27bf7fb224849b76e208a6eccdb36"}
-            
+            {
+                "type": "SE",
+                "name": "OtoLogic",
+                "url": "https://otologic.jp/"
+            },
+            {
+                "type": "BGM",
+                "name": "W&W - OIIA OIIA (Spinning Cat)",
+                "url": "https://www.youtube.com/watch?v=IxX_QHay02M&list=RDIxX_QHay02M&start_radio=1"
+            },
+            {
+                "type": "VFX",
+                "name": "Cartoon FX Remaster Free",
+                "url": "https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565"
+            },
+            {
+                "type": "3D Model",
+                "name": "Oiiaioooooiai Cat",
+                "url": "https://sketchfab.com/3d-models/oiiaioooooiai-cat-30d27bf7fb224849b76e208a6eccdb36"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "ObjectPool"},
-            {"type": "tech", "name": "判定システム"},
-            {"type": "tech", "name": "譜面駆動"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "ObjectPool"
+            },
+            {
+                "type": "tech",
+                "name": "判定システム"
+            },
+            {
+                "type": "tech",
+                "name": "譜面駆動"
+            }
         ],
         "image_path": "Image/GameImage/RhythmGame_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -515,23 +857,64 @@
         "engine": "Unity 6000.3.8f1",
         "period": "7日",
         "status": "released",
-        "responsible": ["個人製作（企画・設計・実装・演出の全工程を担当）"],
+        "responsible": [
+            "個人製作（企画・設計・実装・演出の全工程を担当）"
+        ],
         "challenges_solutions": [
-            {"challenge" : "移動・照準・射撃・リロードなど多数の入力と状態・演出が密結合になりやすい", "solution" : "VContainer（DI）で依存を一元管理し、R3のReactiveProperty/Observableで入力→状態→UIをリアクティブに接続。MVP構成とUniTaskによる非同期演出（リロード・ディゾルブ死亡演出）で疎結合化"},
-            {"challenge" : "弾を毎フレーム大量に生成・破棄することによるGCスパイクと処理落ち", "solution" : "UnityEngine.PoolのObjectPoolで弾（BulletView）を使い回して生成/破棄コストを削減し、着弾時はVFX Graphでエフェクトのみ再生"},
-            {"challenge" : "敵がプレイヤーを追跡しつつ、壁越しには撃たない自然なAI挙動", "solution" : "NavMeshPlus（2D NavMesh）で経路探索し、Physics2D.Raycastで壁を含む射線判定を行い、視線が通るときのみ攻撃する制御を実装"}
+            {
+                "challenge": "移動・照準・射撃・リロードなど多数の入力と状態・演出が密結合になりやすい",
+                "solution": "VContainer（DI）で依存を一元管理し、R3のReactiveProperty/Observableで入力→状態→UIをリアクティブに接続。MVP構成とUniTaskによる非同期演出（リロード・ディゾルブ死亡演出）で疎結合化"
+            },
+            {
+                "challenge": "弾を毎フレーム大量に生成・破棄することによるGCスパイクと処理落ち",
+                "solution": "UnityEngine.PoolのObjectPoolで弾（BulletView）を使い回して生成/破棄コストを削減し、着弾時はVFX Graphでエフェクトのみ再生"
+            },
+            {
+                "challenge": "敵がプレイヤーを追跡しつつ、壁越しには撃たない自然なAI挙動",
+                "solution": "NavMeshPlus（2D NavMesh）で経路探索し、Physics2D.Raycastで壁を含む射線判定を行い、視線が通るときのみ攻撃する制御を実装"
+            }
         ],
         "tags": [
-            {"type": "csharp", "name": "C#"},
-            {"type": "engine", "name": "Unity6000.3.8f1"},
-            {"type": "vcs", "name": "Git/GitHub"},
-            {"type": "design", "name": "DI"},
-            {"type": "design", "name": "MVP"},
-            {"type": "design", "name": "ObjectPool"},
-            {"type": "tech", "name": "VContainer"},
-            {"type": "tech", "name": "R3"},
-            {"type": "tech", "name": "UniTask"},
-            {"type": "tech", "name": "NavMesh"}
+            {
+                "type": "csharp",
+                "name": "C#"
+            },
+            {
+                "type": "engine",
+                "name": "Unity6000.3.8f1"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            },
+            {
+                "type": "design",
+                "name": "DI"
+            },
+            {
+                "type": "design",
+                "name": "MVP"
+            },
+            {
+                "type": "design",
+                "name": "ObjectPool"
+            },
+            {
+                "type": "tech",
+                "name": "VContainer"
+            },
+            {
+                "type": "tech",
+                "name": "R3"
+            },
+            {
+                "type": "tech",
+                "name": "UniTask"
+            },
+            {
+                "type": "tech",
+                "name": "NavMesh"
+            }
         ],
         "image_path": "Image/GameImage/ShootingGame_image.webp",
         "platform": "PC (Windows, WebGL)",
@@ -549,14 +932,15 @@
     },
     {
         "id": "14",
+        "star": true,
         "filename": "Crescent_Moon.html",
         "title": "Crescent_Moon",
         "subtitle": "2D Exploration Action Game",
         "description": "月が照らす異世界の回廊を探索する2Dアクション。月を見上げることで変化するマップを、FSM・VContainer・R3・UniTaskで制御。",
-        "team": "チーム開発（人数確認中）",
+        "team": "チーム開発(プランナー3人/プログラマ5人/2Dデザイナー5人)",
         "overview": "<p>目覚めると、月が照らす異世界の回廊を彷徨っていた。月に見守られながら、敵を倒し、躱しつつ脱出を目指す2D探索アクションゲームです。</p><p>月を見上げるとプレイヤーの現在位置をもとにマップを再生成。探索・戦闘・月の演出・分岐するエンディングを、非同期ステートマシンとイベント通知で接続しています。</p><p>画像は仮素材です。制作期間・人数および公開リンクは確認後に更新予定です。</p>",
         "engine": "Unity 6000.3.8f1",
-        "period": "確認中",
+        "period": "5ヶ月",
         "status": "released",
         "responsible": [
             "ゲーム進行の FSM と非同期状態遷移の実装",
@@ -618,10 +1002,10 @@
             },
             {
                 "type": "tech",
-                "name": "NavMesh"
+                "name": "NavMesh2D"
             }
         ],
-        "image_path": "Image/GameImage/Crescent_Moon_placeholder.svg",
+        "image_path": "Image/GameImage/Crescent_Moon_image.webp",
         "platform": "PC（Windows）",
         "players": "Single Player（1人用）",
         "how_to_play": "WASD / 矢印キー: 移動 ／ Shift: ダッシュ ／ Space: 攻撃 ／ C: 月を見上げる ／ M: ミニマップ ／ Esc: メニュー（ゲームパッドにも対応）",
