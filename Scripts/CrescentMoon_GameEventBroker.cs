@@ -1,6 +1,5 @@
 /*
- * Crescent_Moon / 型付き非同期 EventBroker のコア処理（抜粋）
- * using・namespace・クラス定義は省略。
+ * Crescent_Moon / 型付き非同期 EventBroker のコア処理
  * _events は Dictionary<Type, Delegate>、Subscription は Dispose で解除処理を実行。
  */
 
