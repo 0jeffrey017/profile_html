@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crescent_Moon | Jeffrey LEE</title>
-    <meta name="description" content="Crescent_Moon - 2D Exploration Action Game">
+    <title>廻り月 | Jeffrey LEE</title>
+    <meta name="description" content="廻り月 - 2D Exploration Action Game">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/Crescent_Moon.html">
 
@@ -17,16 +17,16 @@
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jeffrey LEE Portfolio">
-    <meta property="og:title" content="Crescent_Moon | Jeffrey LEE">
-    <meta property="og:description" content="Crescent_Moon - 2D Exploration Action Game">
+    <meta property="og:title" content="廻り月 | Jeffrey LEE">
+    <meta property="og:description" content="廻り月 - 2D Exploration Action Game">
     <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Crescent_Moon_image.webp">
     <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/Crescent_Moon.html">
     <meta property="og:locale" content="ja_JP">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Crescent_Moon | Jeffrey LEE">
-    <meta name="twitter:description" content="Crescent_Moon - 2D Exploration Action Game">
+    <meta name="twitter:title" content="廻り月 | Jeffrey LEE">
+    <meta name="twitter:description" content="廻り月 - 2D Exploration Action Game">
     <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Crescent_Moon_image.webp">
 
     <!-- Google Fonts -->
@@ -75,7 +75,7 @@
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
-                <h1 class="detail-title">Crescent_Moon</h1>
+                <h1 class="detail-title">廻り月</h1>
                 <p class="detail-subtitle">2D Exploration Action Game</p>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
@@ -92,7 +92,7 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>目覚めると、月が照らす異世界の回廊を彷徨っていた。月に見守られながら、敵を倒し、躱しつつ脱出を目指す2D探索アクションゲームです。</p><p>月を見上げるとプレイヤーの現在位置をもとにマップを再生成。探索・戦闘・月の演出・分岐するエンディングを、非同期ステートマシンとイベント通知で接続しています。</p><p>画像は仮素材です。制作期間・人数および公開リンクは確認後に更新予定です。</p>
+                                <p>東京ゲームショウ2026に出展した、月が照らす異世界の回廊から脱出を目指す2D探索アクションです。プランナー3人・プログラマー5人・2Dデザイナー5人の計13人で、5ヶ月間制作しました。</p><p>月を見上げるとプレイヤーの現在位置をもとにマップが再生成されます。敵を倒し、攻撃を躱しながら、変化する回廊を探索します。</p><p>私の担当は、ゲーム進行の非同期FSM、VContainerによる依存関係の構成、マップ再生成、R3・UniTaskによるイベント連携、Addressablesによる初期化フローです。状態遷移の競合やマップ更新順序の問題に対する設計と実装を、問題解決・コードの各タブで紹介しています。</p>
                             </div>
                             <div class="content-block">
                                 <h3>Information / 情報</h3>
@@ -134,12 +134,12 @@
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
                                 <div class="game-detail-image">
-                                    <img src="../Image/GameImage/Crescent_Moon_image.webp" alt="Crescent_Moon Screenshot" loading="lazy">
+                                    <img src="../Image/GameImage/Crescent_Moon_image.webp" alt="廻り月 Screenshot" loading="lazy">
                                 </div>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button disabled" data-url="">
-                                    Comming Soon On Steam
+                                    Play Game
                                 </button>
                             </div>
                         </aside>
@@ -211,7 +211,6 @@
                         <div class="code-header">遷移キューによる非同期 FSM（コア処理）</div>
                         <pre><code class="language-csharp">/*
  * Crescent_Moon / 非同期 FSM のコア処理（抜粋）
- * 遷移要求の登録、フィールド、補助メソッド、using・namespace は省略。
  * TransitionRequest は完了・例外・キャンセルを待機者へ通知する要求オブジェクト。
  */
 
@@ -296,7 +295,6 @@ private async UniTask TransitionTo(EGameState nextState, CancellationToken token
                         <div class="code-header">R3 とイベント通知によるマップ更新（コア処理）</div>
                         <pre><code class="language-csharp">/*
  * Crescent_Moon / マップ更新と月イベントの連携（抜粋）
- * DI・Addressables の初期化、フィールド、他のイベントハンドラーは省略。
  * 購読は AddTo でまとめて保持し、Dispose 時に解除する。
  */
 
@@ -341,8 +339,7 @@ private async UniTask HandleGazingMoonEvent(GazingMoonEvent e, CancellationToken
                     <div class="code-container">
                         <div class="code-header">UniTask による型付きイベント配信（コア処理）</div>
                         <pre><code class="language-csharp">/*
- * Crescent_Moon / 型付き非同期 EventBroker のコア処理（抜粋）
- * using・namespace・クラス定義は省略。
+ * Crescent_Moon / 型付き非同期 EventBroker のコア処理
  * _events は Dictionary&lt;Type, Delegate&gt;、Subscription は Dispose で解除処理を実行。
  */
 

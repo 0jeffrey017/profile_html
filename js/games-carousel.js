@@ -67,7 +67,9 @@
         const $f = $('#featured-list');
         if (!$f.length) return;
 
-        const featured = allGames.filter(g => g.status === "released" && g.star);
+        const featured = allGames
+            .filter(game => game.status === "released" && game.star)
+            .sort((first, second) => (first.featured_order ?? Number.MAX_SAFE_INTEGER) - (second.featured_order ?? Number.MAX_SAFE_INTEGER));
         if (!featured.length) {
             $('#featured-games').hide();
             return;

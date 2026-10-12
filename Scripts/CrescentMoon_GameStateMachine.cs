@@ -1,6 +1,5 @@
 /*
  * Crescent_Moon / 非同期 FSM のコア処理（抜粋）
- * 遷移要求の登録、フィールド、補助メソッド、using・namespace は省略。
  * TransitionRequest は完了・例外・キャンセルを待機者へ通知する要求オブジェクト。
  */
 

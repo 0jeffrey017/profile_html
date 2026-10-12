@@ -1,6 +1,5 @@
 /*
  * Crescent_Moon / マップ更新と月イベントの連携（抜粋）
- * DI・Addressables の初期化、フィールド、他のイベントハンドラーは省略。
  * 購読は AddTo でまとめて保持し、Dispose 時に解除する。
  */
 
