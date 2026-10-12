@@ -130,6 +130,10 @@
         $('#play-game-btn').on('click', function() {
             const gameUrl = $(this).data('url');
             if (!gameUrl || gameUrl === '#') return;
+            if ($(this).data('link-type') === 'download') {
+                window.open(gameUrl, '_blank', 'noopener,noreferrer');
+                return;
+            }
 
             $overlay.fadeIn(300);
             $overlay.removeClass('gameplay-active');

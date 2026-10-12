@@ -188,6 +188,9 @@ def generate_games():
         content = content.replace('{{PLAYERS}}', game.get('players', ''))
         
         play_link = game.get('play_link', '#')
+        play_link_type = game.get('play_link_type', 'play')
+        content = content.replace('{{PLAY_LINK_TYPE}}', html.escape(play_link_type, quote=True))
+        content = content.replace('{{PLAY_BUTTON_LABEL}}', 'Google Driveからダウンロード' if play_link_type == 'download' else 'Play Game')
         content = content.replace('{{PLAY_LINK}}', play_link)
         
         # Disable button if link is empty or just '#'
