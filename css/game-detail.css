@@ -229,6 +229,10 @@
     background-color: var(--primary-hover);
 }
 
+.manual-button {
+    margin-top: 12px;
+}
+
 .play-button.disabled {
     background-color: #ccc;
     cursor: not-allowed;
