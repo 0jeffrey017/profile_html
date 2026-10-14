@@ -1,93 +1,59 @@
-# Jeffrey LEE | ゲームプログラマー ポートフォリオ
+# Jeffrey LEE｜ゲームプログラマー ポートフォリオ
 
-Unity・C# を中心としたゲームプログラマー、リイショウケツ（Jeffrey LEE）のポートフォリオサイトです。
-ビルド不要の静的 HTML/CSS/JS で構成され、GitHub Pages で公開しています。
+リイショウケツ（Jeffrey LEE）のゲーム制作実績を紹介するポートフォリオです。Unity・C#を中心に、個人制作、ハッカソン、企業連携プロジェクトに取り組んでいます。
 
-🔗 https://0jeffrey017.github.io/profile_html/
+作品ごとに、ゲームの概要、私の担当範囲、開発中の課題と解決方法、コードサンプルを掲載しています。
 
-## ページ構成
+**[ポートフォリオを見る](https://0jeffrey017.github.io/profile_html/)** · **[作品一覧](https://0jeffrey017.github.io/profile_html/games.html)** · **[連絡先](https://0jeffrey017.github.io/profile_html/contact.html)**
 
-各ページは1画面（スクロールなし）に収まるレイアウトを基本とし、共通ヘッダーナビ（モバイルではハンバーガーメニュー）で遷移します。
+## 代表作品
 
-| ページ | 内容 |
-|---|---|
-| [index.html](index.html) | About / 自己紹介・自己PR・The Future / 今後の展望 |
-| [games.html](games.html) | Game Projects / 制作実績（`games_data.json` から動的生成されるカードグリッド。ホバー / 画面内表示で MP4 プレビューを再生） |
-| [background.html](background.html) | Background / 経歴・Qualifications / 資格 |
-| [contact.html](contact.html) | Contact / 連絡先（メール・GitHub・LinkedIn・YouTube・履歴書） |
-| [Resume/Resume.html](Resume/Resume.html) | Resume / 履歴書（PDF埋め込み・ダウンロード） |
-| `games/*.html` | ゲーム個別詳細ページ（生成物、直接編集しない） |
+### 廻り月（Crescent_Moon）
 
-## ゲーム詳細ページ（生成パイプライン）
+**東京ゲームショウ2026出展｜13人チーム｜制作期間：5ヶ月｜Windows向け**
 
-`games/` 配下の各ページは手書きではなく、テンプレートとデータから自動生成しています。
+月が照らす異世界の回廊から脱出を目指す2D探索アクションです。月を見上げることで、プレイヤーの現在位置をもとにマップが再生成されます。
 
-```
-data/games_data.json  →  game_template.html  →  python generate_game.py  →  games/*.html + sitemap.xml
-```
+プランナー3人・プログラマー5人・2Dデザイナー5人で制作しました。私の主な担当は次のとおりです。
 
-- **[data/games_data.json](data/games_data.json)** — 全ゲームの情報（タイトル・期間・担当・課題と解決策・タグ・コードサンプル参照パス等）を持つ唯一のソース
-- **[game_template.html](game_template.html)** — `{{PLACEHOLDER}}` とコメントマーカー（`<!-- XXX_START/END -->`）による条件付きブロックを持つテンプレート。タブ構成は 概要 / 問題解決 / 技術図（任意）/ コード
-- **[generate_game.py](generate_game.py)** — `games_data.json` を読み込みテンプレートへ流し込んで `games/*.html` を出力。あわせて `sitemap.xml` も自動生成（手動メンテによる乖離を防止）。前後のゲームへのナビゲーション（Prev/Next）も自動付与
+- ゲーム進行の非同期ステートマシン（FSM）と状態遷移の競合対策
+- 月イベントに連動するマップ再生成と、表示・経路・配置の更新順序の制御
+- VContainerによる依存関係の構成、R3・UniTaskによるシステム間のイベント連携
+- Addressablesによるアセット読み込みと初期化フロー
 
-ゲーム情報やテンプレートを変更した場合は、必ず以下を再実行してください。
+使用技術：Unity 6000.3 / C# / VContainer / R3 / UniTask / Addressables / NavMesh2D
 
-```bash
-python generate_game.py
-```
+[作品詳細・コード解説](https://0jeffrey017.github.io/profile_html/games/Crescent_Moon.html) · [ゲームをダウンロード（Google Drive）](https://drive.google.com/file/d/104uoYHInbPZnVooUKUsclEOVSfv-0T6D/view?usp=sharing) · [ゲームマニュアル](assets/廻り月_ゲームマニュアル.html)
 
-`games/*.html` を直接編集しても、次回の生成で上書きされるため変更は反映されません。
+### グレート-O-カーンの侵略物語
 
-## ディレクトリ構成
+**企業連携プロジェクト｜全7チーム中2位（準優勝）｜8人チーム｜制作期間：4ヶ月**
 
-```
-.
-├── index.html / games.html / background.html / contact.html   # メインページ
-├── Resume/Resume.html                                          # 履歴書ページ
-├── games/                                                      # 生成されたゲーム詳細ページ
-├── game_template.html                                          # ゲーム詳細ページのテンプレート
-├── generate_game.py                                            # ゲーム詳細ページ + sitemap.xml の生成スクリプト
-├── data/games_data.json                                        # ゲーム実績データ（唯一のソース）
-├── css/                                                        # base / layout / home / pages / game-detail / game-tabs / code-sample / Resume
-├── js/                                                          # game.js（背景アニメ・モバイルナビ等）/ games-carousel.js（カルーセル）/ game-tabs.js（タブ切替）
-├── Scripts/                                                     # 各ゲームのサンプルコード（コード詳細タブの参照元）
-├── Image/                                                       # ポスター(WebP)・プレビュー動画(MP4)・プロフィール写真・アイコン(Image/icons)
-├── favicon.svg / favicon.ico / apple-touch-icon.png            # ファビコン一式
-├── 404.html                                                     # GitHub Pages 用 404 ページ
-├── assets/Resume_Jeffrey.pdf                                    # 履歴書PDF
-└── sitemap.xml / robots.txt                                     # SEO（sitemap.xml は generate_game.py の生成物）
-```
+新日本プロレス所属選手を題材にしたランゲームです。メインプログラマーとしてゲーム全体のメインシステムとアーキテクチャ設計を担当しました。FSMによる進行・アクション管理、MVPによるUIとロジックの分離、PC・モバイルの入力制御に取り組みました。
 
-## ローカルでの確認
+使用技術：Unity 2022.3 / C# / UniRx / UniTask / New Input System / FSM / MVP
 
-ビルド不要ですが、`fetch` で JSON を読み込む都合上 `file://` では動作しないため、簡易サーバー経由で開いてください。
+[作品詳細・コード解説](https://0jeffrey017.github.io/profile_html/games/GreatOKhanInvasion.html) · [公開ゲーム（新日本プロレス公式サイト）](https://www.njpw.co.jp/games/great-o-khan/)
 
-```bash
-python -m http.server 8000
-# http://localhost:8000/index.html
-```
+### Pass The Baton
 
-## 技術スタック
+**ハッカソン制作｜プログラマー5人｜制作期間：1ヶ月**
 
-- HTML / CSS / Vanilla JS（フレームワークなし）
-- [highlight.js](https://highlightjs.org/) — サンプルコードのシンタックスハイライト
-- Google Fonts（Poppins / Inter）, Material Symbols
-- schema.org の JSON-LD 構造化データ（`index.html`）
+過去の自分を足場として活用する2Dパズルアクションです。ゲーム全体のアーキテクチャ設計と進行管理を担当し、VContainerとFSMによるフロー制御、EventBusによるリスポーン・エフェクトの連携に取り組みました。
 
-## 画像・動画アセットの方針
+[作品詳細・コード解説](https://0jeffrey017.github.io/profile_html/games/PassTheBaton.html) · [ブラウザでプレイ](https://0jeffrey017.github.io/WebGLGames_01/5_PassTheBaton)
 
-- ゲームのポスター画像は **WebP**（`Image/GameImage/*_image.webp`）
-- ホバープレビューは **H.264 MP4**（`Image/GameImage/*_image.mp4`、GIF から変換済み・音声なし）
-  - デスクトップ: カードにマウスを乗せると再生
-  - タッチ端末: 画面内に入ったカードを自動再生（IntersectionObserver）
-- 新しいゲームを追加する場合は、ポスターを `<名前>_image.webp`、プレビュー動画を `<名前>_image.mp4` の同名ペアで `Image/GameImage/` に置く（`games_data.json` の `image_path` から `.mp4` が自動導出される。別パスにしたい場合は `video_preview` フィールドで明示可能）
-- GIF からの変換例（ffmpeg）:
+## 技術経験
 
-```bash
-ffmpeg -i input.gif -pix_fmt yuv420p -vf scale=640:-2 -an -crf 28 -movflags +faststart output.mp4
-ffmpeg -i input.png -q:v 82 output.webp
-```
+- **設計・システム連携：** FSM、MVP、依存性注入、イベント通知、ScriptableObjectによるデータ管理
+- **非同期・リアクティブ処理：** UniTask、R3、UniRxを用いた進行制御と状態通知
+- **性能改善の取り組み：** ObjectPoolによるオブジェクト再利用、C# Job System・Burst Compilerの検証
+- **チーム制作：** 他職種との仕様調整、タスク分担、Git・GitHubを使った共同開発
 
-## デプロイ
+## コード・実績の確認について
 
-`main` ブランチへの反映が GitHub Pages にそのまま公開されます（ビルドステップなし）。
+各作品の詳細ページでは「概要」「問題解決」「コード」のタブから、担当内容と実装例をご覧いただけます。[Scripts](Scripts/)にもコードサンプルを掲載しています。これらは担当実装の一部を紹介するもので、ゲーム全体のソースコードではありません。
+
+このリポジトリはポートフォリオサイトのHTML・CSS・JavaScriptと、掲載用の素材・コードサンプルを管理しています。
+
+[経歴・資格](https://0jeffrey017.github.io/profile_html/background.html) · [履歴書](https://0jeffrey017.github.io/profile_html/Resume/Resume.html) · [GitHub](https://github.com/0jeffrey017) · [お問い合わせ](https://0jeffrey017.github.io/profile_html/contact.html)

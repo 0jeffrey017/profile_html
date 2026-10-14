@@ -192,6 +192,12 @@ def generate_games():
         content = content.replace('{{PLAY_LINK_TYPE}}', html.escape(play_link_type, quote=True))
         content = content.replace('{{PLAY_BUTTON_LABEL}}', 'Google Driveからダウンロード' if play_link_type == 'download' else 'Play Game')
         content = content.replace('{{PLAY_LINK}}', play_link)
+        manual_link = game.get('manual_link', '')
+        manual_button = (
+            f'<a class="play-button manual-button" href="../{html.escape(manual_link, quote=True)}" target="_blank" rel="noopener noreferrer">ゲームマニュアル</a>'
+            if manual_link else ''
+        )
+        content = content.replace('                                {{MANUAL_BUTTON}}\n', f'                                {manual_button}\n' if manual_button else '')
         
         # Disable button if link is empty or just '#'
         if not play_link or play_link == '#':
