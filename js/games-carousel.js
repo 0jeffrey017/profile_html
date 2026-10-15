@@ -1,149 +1,42 @@
-// games-carousel.js — 制作実績を「イチオシ（上）＋グリッド（下）」で表示する
-
-(function ($) {
-    "use strict";
-
-    let allGames = [];
-
-    const TYPE_ORDER = { csharp: 0, cpp: 0, engine: 1, vcs: 2, design: 3, tech: 4 };
-
-    function buildTagsHtml(game) {
-        const tags = (game.tags || []).slice().sort(
-            (a, b) => (TYPE_ORDER[a.type] ?? 9) - (TYPE_ORDER[b.type] ?? 9)
-        );
-        if (!tags.length) return "";
-        const chips = tags.map(t => `<span class="game-tag tag-${t.type}">${t.name}</span>`);
-        return `<div class="game-tags">${chips.join("")}</div>`;
+(async () => {
+  'use strict';
+  const home = document.getElementById('home-featured');
+  const featured = document.getElementById('featured-list');
+  const grid = document.getElementById('games-grid');
+  if (!home && !grid) return;
+  const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  try {
+    const response = await fetch('data/games_data.json');
+    if (!response.ok) throw new Error(response.status);
+    const all = (await response.json()).filter(game => game.status === 'released');
+    const solo = game => /個人/.test(game.team);
+    function card(game, index) {
+      const video = game.video_preview || '';
+      return `<a class="work-card" href="games/${escape(game.filename)}"><div class="work-media"><img src="${escape(game.image_path)}" alt="${escape(game.title)}" loading="lazy" width="800" height="500">${video ? `<video src="${escape(video)}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>` : ''}<span class="work-index">${String(index+1).padStart(2,'0')} / ${game.corporate_project ? '企業連携' : solo(game) ? '個人制作' : 'チーム制作'}</span></div><div class="work-content">${game.review_focus ? `<p class="work-evidence">${escape(game.review_focus.evidence)}</p>` : ''}<p class="work-kind">${escape(game.engine || 'GAME DEVELOPMENT')}</p><div class="work-top"><h3>${escape(game.title)}</h3><span aria-hidden="true">↗</span></div><div class="work-meta"><span>制作期間 ${escape(game.period)}</span><span>${escape(game.team)}</span></div><p class="work-description">${escape(game.description)}</p><dl class="work-contribution"><dt>私の担当</dt><dd>${escape(game.review_focus?.role || (game.responsible || []).join(" / "))}</dd></dl>${game.review_focus ? `<p class="work-focus"><span>実装の見どころ</span>${escape(game.review_focus.detail)}</p>` : ''}<span class="work-readmore">担当・課題・コードを見る <span aria-hidden="true">→</span></span><div class="work-tags">${(game.tags || []).slice(0,5).map(tag=>`<span>${escape(tag.name)}</span>`).join('')}</div></div></a>`;
     }
-
-    function buildBadgesHtml(game) {
-        return `
-            ${game.star ? '<span class="recommend-badge">★ イチオシ</span>' : ''}
-            ${game.corporate_project ? '<span class="corporate-badge">★ 企業プロジェクト</span>' : ''}
-        `;
+    function previews() {
+      if (!matchMedia('(hover: hover)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.querySelectorAll('.work-card').forEach(card => {
+        const video = card.querySelector('video'); if (!video) return;
+        card.addEventListener('mouseenter', () => { video.play().then(() => { if (card.matches(':hover')) video.classList.add('is-playing'); else video.pause(); }).catch(()=>{}); });
+        card.addEventListener('mouseleave', () => { video.pause(); video.classList.remove('is-playing'); });
+      });
     }
-
-    // 静止画(ポスター)と同名の .mp4 を対にする。video_preview があればそれを優先。
-    function videoPathFor(game) {
-        if (game.video_preview) return game.video_preview;
-        const imagePath = game.image_path || '';
-        return /\.(png|jpe?g|webp)$/i.test(imagePath)
-            ? imagePath.replace(/\.(png|jpe?g|webp)$/i, '.mp4')
-            : '';
+    function render(filter = 'all') {
+      const games = all.filter(game => filter === 'all' || (filter === 'solo' ? solo(game) : !solo(game)));
+      const selected = games.filter(game => game.star).sort((a,b)=>(a.featured_order ?? 99)-(b.featured_order ?? 99));
+      if (home) home.innerHTML = selected.map(card).join('');
+      if (featured) { featured.innerHTML = selected.map(card).join(''); document.getElementById('featured-games').hidden = !selected.length; }
+      if (grid) { const others = games.filter(game => !game.star); grid.innerHTML = others.map(card).join(''); document.getElementById('all-games').hidden = !others.length; }
+      const count = document.getElementById('results-count'); if (count) count.textContent = `${filter === 'all' ? 'すべて' : filter === 'team' ? 'チーム制作' : '個人制作'}：${games.length}作品`;
+      previews();
     }
-
-    function cardHtml(game) {
-        const badges = buildBadgesHtml(game);
-        const video = videoPathFor(game);
-        const videoHtml = video
-            ? `<video class="cc-video" src="${video}" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>`
-            : '';
-        return `
-            <div>
-                <a class="carousel-card" href="games/${game.filename}" data-id="${game.id}">
-                    <div class="cc-thumb">
-                        <img class="cc-img" src="${game.image_path}" alt="${game.title}"
-                            loading="lazy"
-                            onerror="this.onerror=null;this.src='Image/placeholder.svg'">
-                        ${videoHtml}
-                        <div class="cc-badges">${badges}</div>
-                    </div>
-                    <div class="cc-body">
-                        <h3 class="cc-title">${game.title}</h3>
-                        <div class="cc-meta game-row-meta">
-                            <span class="meta-pair"><span class="meta-k">制作期間</span><span class="meta-v">${game.period || '—'}</span></span>
-                            <span class="meta-pair"><span class="meta-k">制作人数</span><span class="meta-v">${game.team || '—'}</span></span>
-                        </div>
-                        <p class="cc-desc">${game.description}</p>
-                        ${buildTagsHtml(game)}
-                    </div>
-                </a>
-            </div>
-        `;
-    }
-
-    // イチオシ作品（star）は上部の独立セクションに表示する
-    function renderFeatured() {
-        const $f = $('#featured-list');
-        if (!$f.length) return;
-
-        const featured = allGames
-            .filter(game => game.status === "released" && game.star)
-            .sort((first, second) => (first.featured_order ?? Number.MAX_SAFE_INTEGER) - (second.featured_order ?? Number.MAX_SAFE_INTEGER));
-        if (!featured.length) {
-            $('#featured-games').hide();
-            return;
-        }
-        $f.html(featured.map(cardHtml).join(''));
-    }
-
-    // それ以外の作品はグリッドで一覧表示する（並び替えなし・JSON順）
-    function renderGrid() {
-        const $g = $('#games-grid');
-        if (!$g.length) return;
-
-        const games = allGames.filter(g => g.status === "released" && !g.star);
-        $g.html(games.map(cardHtml).join(''));
-    }
-
-    // カーソルを合わせると .mp4 プレビューをフェードイン再生、外すと停止してポスターに戻す
-    function playPreview(card) {
-        const video = card.querySelector('.cc-video');
-        // 動画なし / 過去に読み込み失敗なら何もしない（ポスターのまま）
-        if (!video || video.dataset.failed) return;
-
-        video.play()
-            .then(() => video.classList.add('is-playing'))
-            .catch(() => { video.dataset.failed = '1'; });
-    }
-
-    function stopPreview(card) {
-        const video = card.querySelector('.cc-video');
-        if (!video) return;
-        video.pause();
-        video.classList.remove('is-playing');
-        try { video.currentTime = 0; } catch (e) { /* 未読み込み時は無視 */ }
-    }
-
-    function bindPreview() {
-        const touchLike = window.matchMedia('(hover: none)').matches;
-
-        if (!touchLike) {
-            // デスクトップ：ホバーで再生（動的生成カードに対応するため委譲で登録）
-            $(document)
-                .on('mouseenter.preview', '.carousel-card', function () { playPreview(this); })
-                .on('mouseleave.preview', '.carousel-card', function () { stopPreview(this); });
-            return;
-        }
-
-        // タッチ端末：ホバーが無いので、画面内に入ったカードを自動再生する
-        if (!('IntersectionObserver' in window)) return;
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    playPreview(entry.target);
-                } else {
-                    stopPreview(entry.target);
-                }
-            });
-        }, { threshold: 0.6 });
-        document.querySelectorAll('.carousel-card').forEach(card => observer.observe(card));
-    }
-
-    async function init() {
-        try {
-            const res = await fetch('data/games_data.json');
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            allGames = await res.json();
-            renderFeatured();
-            renderGrid();
-            bindPreview();
-        } catch (err) {
-            console.error("games-carousel.js: failed to load:", err);
-            $('#games-grid').html('<p class="error-message">作品データの読み込みに失敗しました。</p>');
-        }
-    }
-
-    $(init);
-
-})(jQuery);
+    document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); render(button.dataset.filter);
+    }));
+    render();
+  } catch (error) {
+    (grid || home).innerHTML = '<p class="error-message">作品を読み込めませんでした。ページを再読み込みしてください。</p>';
+    console.error(error);
+  }
+})();

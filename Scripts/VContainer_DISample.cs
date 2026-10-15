@@ -20,7 +20,7 @@ public class GameLifeTimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
-        // Model はアプリ全体で1つ（Singleton）
+        // このスコープで単一の Model を共有する（Singleton）
         builder.Register<MainGameModel>(Lifetime.Singleton);
 
         // シーン上の MonoBehaviour を解決対象として登録
@@ -86,6 +86,6 @@ public class MainGamePresenter : IStartable, IDisposable
     private void OnClick() => _ballSimulationManager.HandleClickSpawn();
     private void OnGetMoney(uint money) => _mainGameModel.Money.Value += money;
 
-    // 購読をまとめて破棄し、メモリリークを防ぐ
+    // DisposableBag に登録した R3 の購読を解除する
     public void Dispose() => _disposableBag.Dispose();
 }

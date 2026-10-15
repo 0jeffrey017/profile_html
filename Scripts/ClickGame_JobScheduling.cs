@@ -4,9 +4,9 @@ using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
-/// BallPhysicsJob を毎フレーム安全にスケジュール／完了させる管理クラスの抜粋。
-/// Update でジョブを発行し、LateUpdate で完了を待つことでメインスレッドの
-/// 待ち時間を最小化。NativeArray の確保・破棄を徹底し、メモリリークを防ぐ。
+/// BallPhysicsJob の実行と結果の反映を管理するクラスの抜粋。
+/// Update でジョブを登録し、LateUpdate で完了を待って結果を反映する。
+/// 一時配列はジョブの完了後に解放する。
 /// </summary>
 public partial class BallSimulationManager : MonoBehaviour
 {
@@ -63,7 +63,7 @@ public partial class BallSimulationManager : MonoBehaviour
         _inputPositionsCopy.Dispose(_jobHandle);
         _inputVelocitiesCopy.Dispose(_jobHandle);
 
-        // ここで初めてメインスレッドが結果を待つ → 待機時間を最小化
+        // LateUpdate でジョブの完了を待ってから結果を反映する
         _jobHandle.Complete();
 
         // 計算結果を Transform へ反映（描画はメインスレッドの責務）

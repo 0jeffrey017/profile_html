@@ -8,7 +8,7 @@ using Unity.Mathematics;
 /// 数千個のボールの物理挙動（重力・ボール同士／ピン／壁との衝突）を
 /// マルチスレッドで並列計算する Burst コンパイル済みジョブ。
 /// IJobParallelFor により 1 ボール = 1 インデックスとして分散処理し、
-/// [BurstCompile] でネイティブコードへ最適化することで 60FPS を維持する。
+/// [BurstCompile] を使い、ボールの計算処理を最適化する。
 /// </summary>
 [BurstCompile]
 public struct BallPhysicsJob : IJobParallelFor
@@ -18,7 +18,7 @@ public struct BallPhysicsJob : IJobParallelFor
     public NativeArray<float3> Velocities;
     public NativeArray<int> PinBeHit;
 
-    // 読み取り専用データ（[ReadOnly] でスレッド間の安全性をコンパイラに保証させる）
+    // ジョブから書き換えない配列に [ReadOnly] を付ける
     [ReadOnly] public NativeArray<float3> PinPositions;
     [ReadOnly] public NativeArray<float3> InputPositions;
     [ReadOnly] public NativeArray<float3> InputVelocities;

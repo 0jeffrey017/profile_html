@@ -5,10 +5,10 @@ using UnityEngine;
 /*
  * Space Cat — JSONによるセーブ／ロードシステム（担当：全体設計・セーブ機能）
  *
- * 難易度が高く一画面でのクリアが困難なため、進行度の中断・再開を可能にする
+ * 探索の途中で中断し、続きから再開できるようにするため、
  * セーブ機能を実装。プレイヤー座標・獲得アイテム・クリアフラグをシリアライズし、
  * persistentDataPath 配下に JSON として永続化する。
- * 入出力はジェネリックメソッド化し、どのデータ型でも再利用できる設計とした。
+ * 入出力はジェネリックメソッドにまとめ、JsonUtility が扱える型に利用する。
  */
 
 /// <summary>保存対象のゲーム進行データ（[Serializable] で JSON 化可能にする）。</summary>
@@ -32,8 +32,8 @@ public class ItemData
 public class SaveManager : MonoBehaviour
 {
     /// <summary>
-    /// 任意の型 T を JSON 文字列へ変換してファイルへ書き出す汎用セーブ。
-    /// 型を限定しないことで、プレイヤーデータ・設定など用途を問わず再利用できる。
+    /// JsonUtility が扱える型 T を JSON 文字列へ変換し、ファイルへ書き出す。
+    /// プレイヤーデータなど、保存対象ごとに型を指定して利用する。
     /// </summary>
     public void SaveDataToJson<T>(string path, T data)
     {

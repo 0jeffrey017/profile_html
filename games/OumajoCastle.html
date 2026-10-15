@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">逢魔々城</h1>
                 <p class="detail-subtitle">Japanese Tower Defense Game / Design Pattern Practice</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>チーム開発(プランナー2人/プログラマー3人)</dd></div><div><dt>制作期間</dt><dd>2か月</dd></div><div><dt>私の担当</dt><dd>敵AIと武器・弾のシステムの設計・実装 / ドラッグ＆ドロップによる武器配置の実装</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="technical">技術図 / Technical</button>
                     
@@ -94,36 +80,37 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>魑魅魍魎が迫りくる城を舞台にしたタワーディフェンスゲーム。プログラムの美しさと拡張性、パフォーマンスの最適化に重きを置いたプロジェクトです。</p>
+                                <p>魑魅魍魎から城を守るタワーディフェンスです。敵・武器の種類を追加しやすい構成と、多数の弾を扱う処理に取り組みました。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 2022.3.61f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
-                                        <span class="meta-value">2ヶ月</span>
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">2か月</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows)</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows）</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>Strategyパターンを用いた拡張性の高い敵AIおよび武器攻撃システムの設計・実装</li>
-    <li>ドラッグ＆ドロップによる直感的な武器配置インターフェースの実装</li>
-    <li>タイトル画面およびメインUIシステム全体の設計・レイアウト実装</li>
+    <li>敵AIと武器・弾のシステムの設計・実装</li>
+    <li>ドラッグ＆ドロップによる武器配置の実装</li>
+    <li>タイトル画面とメインUIの設計・レイアウト調整</li>
 </ul>
                                 </div>
                             </div>
@@ -133,9 +120,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/DefanceGame_image.webp" alt="逢魔々城 Screenshot" loading="lazy">
-                                </div>
+                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/DefanceGame_image.webp" aria-label="逢魔々城のプレイ動画"><source src="../Image/GameImage/DefanceGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/DefanceGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/3_DefenceGame" data-link-type="play">
@@ -149,19 +134,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲームバランスの頻繁な調整が必要だが、非エンジニアのプランナーがコードを触れず調整コストが高い</p>
+                    <p>プランナーがコードを編集せずにバランスを調整できる仕組み</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>すべての敵・武器データをScriptableObjectに外部化。日本語の注釈をつけ、プランナーがUnityエディタ上で安全に数値を直接調整できる環境を整備</p>
+                    <p>敵・武器の設定をScriptableObjectにまとめ、プランナーがエディター上で数値を調整できるようにしました。</p>
                 </div>
 
             </div>
@@ -170,12 +155,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲームの仕様上、今後新しい敵のタイプや武器の種類が追加される可能性が非常に高い</p>
+                    <p>敵や武器の種類を追加するときに、既存の処理への変更を抑える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>StrategyパターンおよびFactoryパターンを採用。既存のソースコードを修正することなく、クラスの追加だけで新しい挙動を拡張できる設計（開放閉鎖原則の遵守）を確立</p>
+                    <p>挙動をStrategyとして分け、生成処理をFactoryへまとめました。挙動の設定や、生成する敵・武器の種類を差し替えられる構成にしました。</p>
                 </div>
 
             </div>
@@ -184,12 +169,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>敵や弾丸が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念</p>
+                    <p>多数の敵や弾を生成・破棄する処理の負荷が課題でした。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現</p>
+                    <p>オブジェクトプールで再利用し、生成と破棄の回数を減らしました。</p>
                 </div>
 
             </div>
@@ -202,7 +187,7 @@
                 
                 <section class="tab-panel" data-panel="technical">
                     <div class="content-block">
-                        <h3>Technical Image / 技術図</h3>
+                        <h3>設計・処理の流れ / Architecture &amp; Flow</h3>
                         <div class="game-detail-image tech-image">
                             <a href="../Image/defanceGame_class.png" target="_blank">
                                 <img src="../Image/defanceGame_class.png" alt="逢魔々城 Technical Diagram" loading="lazy">
@@ -215,9 +200,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">弾の『飛び方・着弾処理』をScriptableObjectの戦略クラス（BulletStrategy）として外部化。直進・放物線・追尾などを、弾本体のコードを変更せずアセット差し替えだけで切り替えられる設計（開放閉鎖原則）</div>
+                    <div class="code-explanation">弾の移動と着弾処理をBulletStrategyへ分離しています。弾本体を変えずに、設定する戦略を差し替えて動きを変更できます。</div>
                     <div class="code-container">
                         <div class="code-header">Strategyパターンによる弾挙動システム</div>
                         <pre><code class="language-csharp">using System.Collections;
@@ -229,7 +214,7 @@ using UnityEngine;
  * 逢魔々城 — 弾の挙動を Strategy パターンで切り替える設計（担当：敵AI・武器攻撃システム）
  *
  * 弾の「飛び方」「着弾時の処理」を BulletStrategy（抽象ScriptableObject）として外部化。
- * 直進・放物線・追尾などの挙動を、弾本体（BulletBase）のコードを一切変更せず、
+ * 直進・山なり・追尾などの挙動を、弾本体（BulletBase）と分けて、
  * Strategy アセットを差し替えるだけで切り替えられる（開放閉鎖原則）。
  * ScriptableObject 化により、プランナーがエディタ上で挙動を組み替えられるのも利点。
  */
@@ -247,7 +232,7 @@ namespace Enemy.Strategy.BulletStrategys
     }
 
     /// &lt;summary&gt;
-    /// 具体戦略の例：放物線を描いてターゲットへ着弾する弾。
+    /// 具体戦略の例：山なりの軌道でターゲットへ着弾する弾。
     /// sin 波で高さを与えることで山なりの軌道を表現する。
     /// &lt;/summary&gt;
     [CreateAssetMenu(menuName = &quot;BulletStrategy/BulletParabola&quot;)]
@@ -274,7 +259,7 @@ namespace Enemy.Strategy.BulletStrategys
             }
         }
 
-        /// &lt;summary&gt;開始点→着弾点を Lerp で進めつつ、sin 波で高さを加えて放物線にする。&lt;/summary&gt;
+        /// &lt;summary&gt;開始点から着弾点まで Lerp で進めつつ、sin 波で高さを加える。&lt;/summary&gt;
         private IEnumerator FireToTarget(BulletBase bullet, GameObject target)
         {
             var start = bullet.transform.position;
@@ -302,7 +287,7 @@ namespace Enemy.Strategy.BulletStrategys
 </code></pre>
                     </div>
                     
-                    <div class="code-explanation">敵のHP・攻撃力・移動戦略・弾種などを全てScriptableObjectに外部化。Range/Tooltipで入力ミスを防ぎ、プログラマーを介さずプランナーがエディタ上で敵の新規作成・バランス調整を行えるワークフローを実現</div>
+                    <div class="code-explanation">敵のHP、攻撃力、移動方法、弾種をScriptableObjectで設定します。Tooltipで項目の意味を示し、Rangeで数値の入力範囲を制限しています。</div>
                     <div class="code-container">
                         <div class="code-header">ScriptableObjectによるマスターデータ設計</div>
                         <pre><code class="language-csharp">using Enemy.Bullets;
@@ -317,7 +302,7 @@ namespace Enemy.Enemy
     /// HP・攻撃力・コスト等の数値に加え、移動方法（MoveStrategy）や弾種・エフェクトまで
     /// データとして外部化することで、プログラマーを介さずプランナーが
     /// Unity エディタ上で敵を新規作成・バランス調整できるワークフローを実現する。
-    /// Range / Tooltip / Header で入力ミスを防ぎ、調整コストを下げている。
+    /// Range で入力範囲を制限し、Tooltip で項目を説明し、Header で設定を分類する。
     /// &lt;/summary&gt;
     [CreateAssetMenu(menuName = &quot;CreateConfig/EnemyConfig&quot;, fileName = &quot;EnemyConfig&quot;)]
     public class EnemyConfig : ScriptableObject
@@ -418,11 +403,9 @@ namespace Enemy.Enemy
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

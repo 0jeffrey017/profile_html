@@ -7,7 +7,7 @@ using UnityEngine;
  * 逢魔々城 — 弾の挙動を Strategy パターンで切り替える設計（担当：敵AI・武器攻撃システム）
  *
  * 弾の「飛び方」「着弾時の処理」を BulletStrategy（抽象ScriptableObject）として外部化。
- * 直進・放物線・追尾などの挙動を、弾本体（BulletBase）のコードを一切変更せず、
+ * 直進・山なり・追尾などの挙動を、弾本体（BulletBase）と分けて、
  * Strategy アセットを差し替えるだけで切り替えられる（開放閉鎖原則）。
  * ScriptableObject 化により、プランナーがエディタ上で挙動を組み替えられるのも利点。
  */
@@ -25,7 +25,7 @@ namespace Enemy.Strategy.BulletStrategys
     }
 
     /// <summary>
-    /// 具体戦略の例：放物線を描いてターゲットへ着弾する弾。
+    /// 具体戦略の例：山なりの軌道でターゲットへ着弾する弾。
     /// sin 波で高さを与えることで山なりの軌道を表現する。
     /// </summary>
     [CreateAssetMenu(menuName = "BulletStrategy/BulletParabola")]
@@ -52,7 +52,7 @@ namespace Enemy.Strategy.BulletStrategys
             }
         }
 
-        /// <summary>開始点→着弾点を Lerp で進めつつ、sin 波で高さを加えて放物線にする。</summary>
+        /// <summary>開始点から着弾点まで Lerp で進めつつ、sin 波で高さを加える。</summary>
         private IEnumerator FireToTarget(BulletBase bullet, GameObject target)
         {
             var start = bullet.transform.position;

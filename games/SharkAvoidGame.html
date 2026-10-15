@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">サメは偏食です。</h1>
                 <p class="detail-subtitle">弾幕ゲーム</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>7日</dd></div><div><dt>私の担当</dt><dd>企画・設計・実装（個人制作）</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
                 </div>
@@ -92,34 +78,35 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>迫りくる食べ物の中から「食べてよいもの」と「避けるべきもの」を瞬時に見分け、ジャンプで回避しながらスコアを稼ぐ弾幕アクションです。大量出現するオブジェクトを安定動作させる最適化に取り組みました。</p>
+                                <p>迫る食べ物から、食べてよいものと避けるものを見分ける弾幕アクションです。ジャンプで回避しながらスコアを稼ぎます。多数の食べ物を再利用する仕組みと、3Dオブジェクトを使ったUI演出を実装しました。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 6000.3.8f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
+                                        <span class="meta-label">制作期間</span>
                                         <span class="meta-value">7日</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows, WebGL)</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows・WebGL）</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>個人製作（企画・設計・実装の全工程を担当）</li>
+    <li>企画・設計・実装（個人制作）</li>
 </ul>
                                 </div>
                             </div>
@@ -129,9 +116,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/AvoidGame_image.webp" alt="サメは偏食です。 Screenshot" loading="lazy">
-                                </div>
+                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/AvoidGame_image.webp" aria-label="サメは偏食です。のプレイ動画"><source src="../Image/GameImage/AvoidGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/AvoidGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/202601516_AvoidGame/" data-link-type="play">
@@ -145,19 +130,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>通常のUIでは表現できない、立体的な3DオブジェクトをUIとして画面に表示したい</p>
+                    <p>3Dオブジェクトを、画面上のUIとして表示する必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>UI専用カメラを別途構築し、3DオブジェクトをUIレイヤーへ合成描画することで、奥行きのある演出を実現</p>
+                    <p>UI専用のカメラで3Dオブジェクトを描画し、ゲーム画面に重ねました。</p>
                 </div>
 
             </div>
@@ -166,12 +151,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>食べ物が画面内に大量に出現するため、InstantiateとDestroyの頻発によるGCスパイク（処理落ち）の懸念</p>
+                    <p>食べ物の生成と破棄が繰り返されるため、処理の負荷を抑える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>オブジェクトプール（ObjectPool）パターンを導入。メモリ割り当てを最小限に抑え、大量発生時も処理落ちのない安定した動作を実現</p>
+                    <p>オブジェクトプールで食べ物を再利用し、生成と破棄の回数を減らしました。</p>
                 </div>
 
             </div>
@@ -186,9 +171,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">大量に出現・消滅する食べ物オブジェクトをUnity標準のObjectPoolでラップし使い回すことで、Instantiate/Destroyの頻発によるGCスパイク（処理落ち）を防止。生成時の初期化処理も一元化</div>
+                    <div class="code-explanation">Unity標準のObjectPoolで食べ物を再利用します。取り出すと表示し、返却すると非表示にします。新規生成時のレイヤーや当たり判定の設定もまとめています。</div>
                     <div class="code-container">
                         <div class="code-header">ObjectPoolによるGCスパイク対策</div>
                         <pre><code class="language-csharp">using UnityEngine;
@@ -196,13 +181,13 @@ using UnityEngine.Pool;
 
 /// &lt;summary&gt;
 /// 大量に出現・消滅する食べ物オブジェクトを使い回すためのオブジェクトプール。
-/// Instantiate / Destroy の頻発による GC スパイク（処理落ち）を防ぐため、
+/// Instantiate / Destroy の回数を減らすため、
 /// Unity 標準の ObjectPool をラップし、生成時の初期化処理を一元化する。
 /// &lt;/summary&gt;
 public class GObjectPool
 {
     private readonly ObjectPool&lt;GameObject&gt; _pool;
-    private readonly int _defaultNumber = 30; // 事前確保数
+    private readonly int _defaultNumber = 30; // プールの初期容量（オブジェクトの事前生成数ではない）
     private readonly int _maxSize = 100;       // 上限（超過分は破棄）
 
     public GObjectPool(GameObject prefab, int layerID, int defaultNumber = 30, int maxSize = 100)
@@ -228,7 +213,7 @@ public class GObjectPool
         return go;
     }
 
-    /// &lt;summary&gt;使い終えたオブジェクトをプールへ返却する（Destroy しない）。&lt;/summary&gt;
+    /// &lt;summary&gt;使い終えたオブジェクトを返却する。保持数の上限を超えた分は破棄する。&lt;/summary&gt;
     public void Return(GameObject g) =&gt; _pool.Release(g);
 
     /// &lt;summary&gt;
@@ -312,11 +297,9 @@ public class GObjectPool
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

@@ -10,7 +10,7 @@ namespace Enemy.Enemy
     /// HP・攻撃力・コスト等の数値に加え、移動方法（MoveStrategy）や弾種・エフェクトまで
     /// データとして外部化することで、プログラマーを介さずプランナーが
     /// Unity エディタ上で敵を新規作成・バランス調整できるワークフローを実現する。
-    /// Range / Tooltip / Header で入力ミスを防ぎ、調整コストを下げている。
+    /// Range で入力範囲を制限し、Tooltip で項目を説明し、Header で設定を分類する。
     /// </summary>
     [CreateAssetMenu(menuName = "CreateConfig/EnemyConfig", fileName = "EnemyConfig")]
     public class EnemyConfig : ScriptableObject

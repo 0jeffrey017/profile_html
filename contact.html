@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -49,36 +49,23 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/portfolio.css?v=20261015">
 </head>
 
-<body class="page">
+<body class="page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="index.html">About / 自己紹介</a></li>
-                    <li><a href="games.html">Games / ゲーム</a></li>
-                    <li><a href="background.html">Background / 経歴</a></li>
-                    <li><a href="contact.html" class="is-active">Contact / 連絡先</a></li>
-                    <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="index.html"><span>01</span>About</a></li><li><a href="games.html"><span>02</span>Works</a></li><li><a href="background.html"><span>03</span>Background</a></li><li><a href="contact.html" class="is-active" aria-current="page"><span>04</span>Contact</a></li><li><a href="Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
-        <main class="page-main contact-page-main" id="main-content">
+        <main class="page-main contact-page-main" id="main-content"><div class="page-heading"><p class="eyebrow-label">04 / 連絡先</p><h1>Contact<span>.</span></h1><p>制作に関するご質問・ご連絡はこちらから。</p></div>
             <!-- <h2 class="page-title" style="text-align:center;"><span class="en">Contact</span> / 連絡先</h2>
             <p class="page-lead" style="text-align:center;">お気軽にご連絡ください。</p> -->
 
             <div class="contact-card">
+                <p>採用や制作実績に関するお問い合わせは、以下のメールアドレスへご連絡ください。</p>
                 <div class="contact-item">
                     <span class="material-symbols-outlined">mail</span>
-                    <a href="mailto:0jeffrey017@gmail.com">0jeffrey017@gmail.com</a>
+                    <a href="mailto:leesangchieh2028@gmail.com">leesangchieh2028@gmail.com</a>
                 </div>
                 <div class="contact-item">
                     <img class="brand-icon" src="Image/icons/github-mark.svg" alt="GitHub">
@@ -112,9 +99,7 @@
             </div>
         </main>
 
-        <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
-        </div>
+        <footer class="page-footer-mini"><span>© 2026 Jeffrey LEE</span><span>GAME PROGRAMMER / PORTFOLIO</span><a href="index.html">Back to home ↑</a></footer>
     </div>
 
     <!-- Scripts -->

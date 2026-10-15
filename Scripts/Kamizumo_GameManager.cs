@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 /// タイトル演出・ゲーム開始・リスタートの一連のフローを UniTask で制御するマネージャー。
 /// コルーチンや多重コールバックに頼らず async/await で記述することで、
 /// 「入力待ち」と「カメラ演出」を並行させつつ可読性の高いフロー制御を実現。
-/// destroyCancellationToken でシーン破棄時の安全なキャンセルも保証する。
+/// タイトル演出中の待機は destroyCancellationToken でオブジェクトの破棄に連動させる。
 /// </summary>
 public class GameManager : MonoBehaviour
 {

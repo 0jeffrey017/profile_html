@@ -32,6 +32,45 @@ def generate_games():
     for game in games_data:
         content = template_content
 
+        # Keep the recruitment summary derived from the same project data as the page.
+        esc = lambda value: html.escape(str(value), quote=True)
+        roles = game.get('responsible', [])
+        summary = (
+            '<dl class="project-summary">'
+            f'<div><dt>制作体制</dt><dd>{esc(game.get("team", ""))}</dd></div>'
+            f'<div><dt>制作期間</dt><dd>{esc(game.get("period", ""))}</dd></div>'
+            f'<div><dt>私の担当</dt><dd>{esc(" / ".join(roles[:2]))}</dd></div></dl>'
+        )
+        content = content.replace('{{REVIEW_SUMMARY}}', summary)
+        focus = game.get('review_focus', {})
+        focus_html = ''
+        if focus:
+            focus_html = (
+                '<section class="review-focus" aria-label="実装の見どころ">'
+                '<h2>実装の見どころ</h2>'
+                f'<p>{esc(focus.get("detail", ""))}</p>'
+                '<a class="text-link" href="#problems" data-tab-target="problems">課題と対応を読む →</a> '
+                '<a class="text-link" href="#code" data-tab-target="code">コード抜粋を読む →</a>'
+                '</section>'
+            )
+        content = content.replace('{{REVIEW_FOCUS}}', focus_html)
+        preview = game.get('video_preview') or os.path.splitext(game.get('image_path', ''))[0] + '.mp4'
+        preview_html = (
+            '<div class="game-detail-image">'
+            f'<img src="../{esc(game.get("image_path", ""))}" '
+            f'alt="{esc(game.get("title", ""))}の作品画像" loading="lazy"></div>'
+        )
+        if os.path.isfile(preview):
+            preview_html = (
+                '<figure class="project-preview">'
+                f'<video controls playsinline preload="none" poster="../{esc(game.get("image_path", ""))}" '
+                f'aria-label="{esc(game.get("title", ""))}のプレイ動画">'
+                f'<source src="../{esc(preview)}" type="video/mp4">'
+                f'<a href="../{esc(preview)}">プレイ動画を開く</a></video>'
+                '<figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>'
+            )
+        content = content.replace('{{LOCAL_PREVIEW}}', preview_html)
+
         # --- Prev / Next game links (wraparound over released games) ---
         n = len(nav_list)
         if n > 1 and id(game) in nav_index:

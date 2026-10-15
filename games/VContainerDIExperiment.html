@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">VContainer DI Experiment</h1>
                 <p class="detail-subtitle">Architecture Experiment Game</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>7日</dd></div><div><dt>私の担当</dt><dd>企画・設計・実装（個人制作）</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
                 </div>
@@ -92,34 +78,35 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>純粋なゲームロジックとオブジェクトの依存関係を疎結合に保つため、DIコンテナ「VContainer」を導入した実験的ミニゲームです。</p>
+                                <p>VContainerを使い、オブジェクトの生成と依存関係の管理をまとめたミニゲームです。データ管理と画面表示を分け、Presenterを介して連携するMVPの構成も検証しました。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 6000.3.8f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
+                                        <span class="meta-label">制作期間</span>
                                         <span class="meta-value">7日</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows, WebGL)</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows・WebGL）</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>個人製作（企画・設計・実装の全工程を担当）</li>
+    <li>企画・設計・実装（個人制作）</li>
 </ul>
                                 </div>
                             </div>
@@ -129,9 +116,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/ClickGame_image.webp" alt="VContainer DI Experiment Screenshot" loading="lazy">
-                                </div>
+                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/ClickGame_image.webp" aria-label="VContainer DI Experimentのプレイ動画"><source src="../Image/GameImage/ClickGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/ClickGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/WebGLGames_01/1_Click" data-link-type="play">
@@ -145,19 +130,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>密結合になりがちなシングルトンパターンへの過度な依存からの脱却</p>
+                    <p>各クラスが参照先を直接探す構成では、変更や再利用が難しくなります。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>VContainerによる依存性の注入（DI）を実践。クラス間の結合度を下げ、テストと再利用が容易な設計を構築</p>
+                    <p>VContainerで必要な参照を外部から渡し、各クラスが生成や参照先の検索を担当しない構成にしました。</p>
                 </div>
 
             </div>
@@ -172,9 +157,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">LifetimeScopeで依存関係の登録を一元管理し、PresenterはコンストラクタインジェクションでModel/Viewを受け取る。new・Find・シングルトン参照を排除して結合度を下げ、テスト・再利用が容易な構成を実現。R3によるリアクティブなデータバインディングも併用</div>
+                    <div class="code-explanation">LifetimeScopeでModel・View・Presenterを登録し、Presenterは必要な参照をコンストラクターで受け取ります。Modelの値の変化をR3で購読し、表示へ反映します。</div>
                     <div class="code-container">
                         <div class="code-header">VContainerによるDIとMVP統合</div>
                         <pre><code class="language-csharp">using System;
@@ -199,7 +184,7 @@ public class GameLifeTimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
-        // Model はアプリ全体で1つ（Singleton）
+        // このスコープで単一の Model を共有する（Singleton）
         builder.Register&lt;MainGameModel&gt;(Lifetime.Singleton);
 
         // シーン上の MonoBehaviour を解決対象として登録
@@ -265,7 +250,7 @@ public class MainGamePresenter : IStartable, IDisposable
     private void OnClick() =&gt; _ballSimulationManager.HandleClickSpawn();
     private void OnGetMoney(uint money) =&gt; _mainGameModel.Money.Value += money;
 
-    // 購読をまとめて破棄し、メモリリークを防ぐ
+    // DisposableBag に登録した R3 の購読を解除する
     public void Dispose() =&gt; _disposableBag.Dispose();
 }
 </code></pre>
@@ -330,11 +315,9 @@ public class MainGamePresenter : IStartable, IDisposable
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

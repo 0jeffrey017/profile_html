@@ -7,7 +7,7 @@ namespace RhythmGame
     /// <summary>
     /// 現在落下中のノーツをレーンごとにヒット時刻順で保持する。
     /// これにより、キー入力時にそのレーンで最も古い未判定ノーツを即座に取得できる。
-    /// 判定ロジック（Perfect/Good/Miss）はStep2で追加。
+    /// 入力との時間差を判定し、時間を過ぎたノーツを Miss として処理する。
     /// </summary>
     public class JudgementManager : MonoBehaviour
     {
@@ -62,7 +62,7 @@ namespace RhythmGame
 
             float now = chartPlayer.SongTime;
 
-            // 入力されないままヒット窓を完全に過ぎたノーツはMiss。
+            // 入力されないまま判定時間を過ぎたノーツは Miss。
             // 各Queueの先頭が最も古いので、そこから順に処理していく。
             for (int lane = 0; lane < _laneQueues.Length; lane++)
             {

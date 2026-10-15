@@ -1,0 +1,314 @@
+/* Shared portfolio design. Loaded after the legacy page styles. */
+:root {
+  --paper: #f5f4ef;
+  --ink: #20221f;
+  --muted: #61645d;
+  --rule: #d5d7ce;
+  --accent: #bc431c;
+  --surface: #eeeee7;
+  --text-light: var(--muted);
+  --text-color: var(--ink);
+  --primary-color: var(--ink);
+  --primary-hover: var(--accent);
+  --accent-color: var(--accent);
+  --border-color: var(--rule);
+  --font-heading: 'Inter', 'Noto Sans JP', sans-serif;
+  --font-body: 'Inter', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  --mono: 'Consolas', 'SFMono-Regular', monospace;
+}
+html { scrollbar-gutter: stable; scroll-padding-top: 104px; }
+body.portfolio {
+  background: var(--paper);
+  color: var(--ink); height: auto; min-height: 100vh; overflow: visible; font-size: 16px;
+  position: relative; isolation: isolate;
+}
+.sakura-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .65; }
+.portfolio .background-control { position: fixed; right: 20px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; min-height: 44px; padding: 10px 16px; background: var(--paper); border: 1px solid var(--rule); color: var(--muted); font: 12px/1.7 var(--font-body); }
+.portfolio .background-control:hover { border-color: var(--accent); color: var(--ink); }
+body.portfolio:has(.background-control) { padding-bottom: 76px; }
+body.portfolio .container { width: min(100% - 96px, 1344px); max-width: 1344px; height: auto; min-height: 100vh; padding: 0; margin: 0 auto; display: flex; flex-direction: column; }
+body.portfolio #canvas { display: none; }
+.portfolio a { color: inherit; text-decoration: none; }
+.portfolio button, .portfolio a { -webkit-tap-highlight-color: transparent; }
+.portfolio button { font: inherit; cursor: pointer; }
+.portfolio a:focus-visible, .portfolio button:focus-visible, .portfolio input:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.portfolio [hidden] { display: none !important; }
+.portfolio .site-header { height: 88px; min-height: 88px; flex: 0 0 auto; padding: 0; margin: 0; top: 0; background: transparent; border-bottom: none; backdrop-filter: none; z-index: 50; }
+.portfolio .logo { font-size: 17px; font-weight: 700; letter-spacing: -.04em; display: inline-flex; align-items: center; gap: 12px; }
+.brand-symbol { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--ink); font-size: 14px; letter-spacing: -.07em; }
+.brand-name small { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; font-weight: 400; color: var(--muted); margin-top: 3px; }
+.portfolio .site-nav ul { display: flex; list-style: none; padding: 0; gap: 28px; align-items: center; }
+.portfolio .site-nav a { display: flex; gap: 5px; align-items: center; min-height: 44px; font-size: 12px; font-weight: 500; }
+.portfolio .site-nav a span { font-family: var(--mono); color: var(--muted); font-size: 10px; }
+.portfolio .site-nav a.is-active, .portfolio .site-nav a:hover { color: var(--accent); }
+.portfolio .site-nav a::after { background: var(--accent); height: 1px; bottom: 5px; }
+.portfolio .nav-toggle { width: 44px; height: 44px; }
+@media (min-width: 761px) { .portfolio .nav-toggle { display: none; } }
+.portfolio .nav-toggle span { background: var(--ink); }
+.page-eyebrow, .eyebrow-label { font: 11px/1.6 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.page-eyebrow { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 28px; color: var(--muted); }
+.status-label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); letter-spacing: .02em; }
+.status-label::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+.portfolio-home { flex: 1; }
+.hero { display: grid; grid-template-columns: 1.07fr 1fr; align-items: center; gap: 64px; padding: 62px 0 72px; position: relative; isolation: isolate; }
+.hero > * { min-width: 0; }
+.hero-description { text-align: left; }
+.hero-name { text-align: left; }
+.portfolio .skip-link { color: white; }
+.hero-copy h1 { font-size: clamp(58px, 6.7vw, 98px); line-height: .98; font-weight: 750; letter-spacing: -.075em; margin: 0 0 28px; }
+.hero-copy h1 span { color: var(--accent); }
+.hero-name { font-size: 18px; letter-spacing: .04em; font-weight: 600; margin-bottom: 16px; }
+.hero-name span { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 12px; }
+.hero-description { color: var(--muted); line-height: 1.9; max-width: 480px; font-size: 14px; }
+.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
+.action-primary, .action-secondary { display: inline-flex; align-items: center; justify-content: space-between; gap: 36px; min-height: 48px; font-size: 13px; font-weight: 600; }
+.portfolio .action-primary { background: var(--ink); color: var(--paper); padding: 13px 23px; border: 1px solid var(--ink); transition: background .2s; }
+.portfolio .action-primary:hover { background: var(--accent); border-color: var(--accent); }
+.action-secondary { border-bottom: 1px solid var(--ink); }
+.arrow { font-family: sans-serif; font-size: 21px; font-weight: 400; }
+.hero-visual { position: relative; padding: 16px; border: 1px solid var(--rule); background: #eaeae3; transform: rotate(1.5deg); }
+.hero-visual .visual-topline { display: flex; justify-content: space-between; font: 10px var(--mono); letter-spacing: .09em; margin-bottom: 14px; }
+.hero-artwork { display: block; background: #101110; overflow: hidden; }
+.hero-artwork img { display: block; width: 100%; height: auto; aspect-ratio: 1.42; object-fit: contain; transition: transform .4s; }
+.hero-artwork:hover img { transform: scale(1.035); }
+.hero-artwork:focus-visible { outline-offset: -4px; }
+.visual-bottomline { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; }
+.visual-bottomline strong { font-size: 22px; }
+.visual-bottomline span { font: 10px var(--mono); color: var(--muted); }
+.hero-annotation { position: absolute; right: -12px; bottom: 48px; padding: 11px 16px; background: var(--accent); color: white; font: 11px var(--mono); letter-spacing: .08em; transform: rotate(-3deg); }
+.expertise-strip { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 19px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font: 12px var(--mono); color: var(--muted); }
+.expertise-strip span:first-child { font-size: 10px; letter-spacing: .1em; }
+.section-block { padding: 76px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 92px; }
+.section-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; }
+.section-top h2, .page-heading h1 { font-size: clamp(36px, 4vw, 56px); line-height: 1.15; font-weight: 650; letter-spacing: -.05em; margin: 7px 0 0; }
+.section-top h2 small { font-size: 12px; font-weight: 400; color: var(--muted); letter-spacing: .02em; margin-left: 12px; }
+.text-link { display: inline-flex; gap: 22px; align-items: center; min-height: 44px; font-size: 12px; border-bottom: 1px solid var(--ink); }
+.work-grid, .portfolio .featured-list, .portfolio .games-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 32px; padding: 0; width: 100%; }
+.work-card { display: block; min-width: 0; }
+.work-media { display: block; position: relative; aspect-ratio: 16/10; background: #e9eae2; overflow: hidden; border: 1px solid var(--rule); }
+.work-media img, .work-media video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.work-media video { position: absolute; inset: 0; opacity: 0; transition: opacity .25s; background: #151815; }
+.work-media video.is-playing { opacity: 1; }
+.work-card:hover .work-media { border-color: var(--ink); }
+.work-index { position: absolute; top: 14px; left: 14px; background: var(--paper); padding: 6px 9px; font: 10px var(--mono); color: var(--ink); }
+.work-content { padding: 18px 0 0; }
+.work-top { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.work-top h3 { margin: 0; font-size: 24px; letter-spacing: -.035em; line-height: 1.35; }
+.work-kind { color: var(--accent); font: 10px var(--mono); letter-spacing: .04em; margin-bottom: 8px; }
+.work-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--muted); font-size: 11px; margin: 12px 0; }
+.work-description { color: var(--muted); font-size: 13px; line-height: 1.9; margin: 0; }
+.work-tags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; font: 10px var(--mono); color: var(--muted); }
+.work-tags span { border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
+.skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.skill-entry { padding-top: 20px; border-top: 1px solid var(--ink); }
+.skill-entry .skill-number { font: 11px var(--mono); color: var(--accent); }
+.skill-entry h3 { font-size: 21px; margin: 22px 0 15px; letter-spacing: -.03em; }
+.skill-entry p { font-size: 14px; line-height: 1.9; color: var(--muted); }
+.skill-entry .skill-tools { font: 11px/1.8 var(--mono); padding-top: 20px; }
+.about-layout { display: grid; grid-template-columns: .65fr 1.35fr; gap: 80px; }
+.about-portrait { width: 280px; max-width: 100%; height: auto; aspect-ratio: 152 / 184; object-fit: cover; border: 1px solid var(--rule); margin-bottom: 20px; }
+.about-id h3 { font-size: 21px; margin: 0 0 8px; }
+.about-id p { font: 12px var(--mono); color: var(--muted); }
+.about-prose p { font-size: 15px; color: var(--muted); line-height: 2; margin-bottom: 24px; }
+.about-prose h3 { font-size: 17px; margin: 32px 0 12px; }
+.about-prose .text-link { color: var(--ink); }
+.contact-callout { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; padding: 64px 0; }
+.contact-callout h2 { margin: 9px 0 14px; font-size: clamp(34px, 5vw, 64px); letter-spacing: -.055em; font-weight: 600; }
+.contact-callout p { color: var(--muted); font-size: 13px; }
+.portfolio .page-footer-mini { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; margin-top: auto; border-top: 1px solid var(--rule); background: transparent; font: 10px/1.6 var(--mono); color: var(--muted); }
+.footer-note { letter-spacing: .08em; }
+.portfolio .page-main { display: block; flex: 1; overflow: visible; padding: 0 0 64px; min-height: auto; }
+.page-heading { padding: 56px 0 40px; }
+.page-heading p { color: var(--muted); font-size: 14px; line-height: 1.9; max-width: 680px; margin-top: 24px; }
+.filter-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; padding: 18px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.filter-button { min-height: 44px; padding: 9px 18px; border: 1px solid transparent; color: var(--muted); background: transparent; font-size: 12px !important; }
+.filter-button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.filter-button:hover { border-color: var(--ink); }
+.results-count { margin-left: auto; font: 11px var(--mono); color: var(--muted); }
+.portfolio .featured-games { margin: 0 0 60px; padding: 0; }
+.portfolio .featured-heading { font-size: 17px; margin: 0 0 24px; font-weight: 500; letter-spacing: -.01em; text-align: left; }
+.portfolio .page-main-Line { border: 0; border-top: 1px solid var(--rule); margin: 48px 0; }
+.portfolio .bg-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; width: 100%; max-width: none; }
+.portfolio .bg-col { min-width: 0; }
+.portfolio .bg-col h3 { font-size: 21px; padding: 0 0 20px; border-bottom: 1px solid var(--ink); margin: 0 0 12px; }
+.portfolio .timeline-list { border: 0; margin: 0; padding: 0; list-style: none; }
+.portfolio .timeline-list li { padding: 22px 0; margin: 0; font-size: 14px; line-height: 1.9; border-bottom: 1px solid var(--rule); }
+.portfolio .timeline-list li::before { display: none; }
+.timeline-date { display: block; font: 11px var(--mono); color: var(--accent); margin-bottom: 9px; }
+.portfolio .qualifications-list { display: block; padding: 0; margin: 0; list-style: none; }
+.portfolio .qualifications-tag { padding: 24px 0; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; box-shadow: none; background: none; display: flex; gap: 18px; }
+.portfolio .qual-icon { color: var(--accent); font-size: 24px; }
+.portfolio .qual-body strong { font-size: 15px; }
+.portfolio .qual-body ul { padding: 0; margin: 12px 0 0; list-style: none; }
+.portfolio .qual-body li { font-size: 13px; line-height: 1.8; color: var(--muted); }
+.portfolio .contact-card { width: 100%; max-width: none; border: 0; border-radius: 0; padding: 0; background: none; box-shadow: none; display: flex; align-items: stretch; gap: 0; flex-direction: column; }
+.portfolio .contact-card > p { color: var(--muted); margin: 0 0 36px; }
+.portfolio .contact-item { width: 100%; max-width: none; border-bottom: 1px solid var(--rule); padding: 20px 0; gap: 22px; display: flex; align-items: center; font-size: 17px; }
+.portfolio .contact-item a { min-height: 44px; display: flex; align-items: center; overflow-wrap: anywhere; }
+.portfolio .contact-item a:hover { color: var(--accent); }
+.portfolio .contact-item .brand-icon { width: 22px; height: 22px; object-fit: contain; }
+.portfolio .resume-main { overflow: visible; }
+.portfolio .resume-toolbar { padding: 0 0 24px; }
+.portfolio .resume-download { background: var(--ink); color: var(--paper); min-height: 48px; padding: 12px 20px; border-radius: 0; }
+.portfolio .resume-frame { width: 100%; min-height: 900px; height: 80vh; border: 1px solid var(--rule); }
+/* Details use document scrolling, rather than independently scrolling panels. */
+body.portfolio.game-detail-page .game-detail-main { display: block; flex: 1; min-height: auto; padding-bottom: 64px; }
+.portfolio .detail-head { padding: 44px 0 12px; }
+.portfolio .detail-title { margin: 0 0 16px; font-size: clamp(32px, 4vw, 56px); letter-spacing: -.045em; line-height: 1.3; }
+.portfolio .detail-subtitle { font: 12px/1.7 var(--mono); color: var(--muted); margin-bottom: 30px; }
+.portfolio .tab-bar { gap: 8px; margin: 0 0 32px; border-bottom: 1px solid var(--rule); }
+.portfolio .tab-btn { min-height: 48px; padding: 12px 17px; font-size: 13px; font-family: var(--font-body); border-bottom: 2px solid transparent; color: var(--muted); }
+.portfolio .tab-btn.is-active { color: var(--ink); border-bottom-color: var(--accent); }
+.portfolio .tab-panel { height: auto; overflow: visible; padding: 0; }
+.portfolio .tab-panel.is-active { display: block; }
+.portfolio .overview-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, .9fr); gap: 64px; }
+.portfolio .content-block { margin-bottom: 36px; }
+.portfolio .tab-panel .content-block { margin-bottom: 36px; }
+.portfolio .tab-panel .content-block h3 { display: block; font-size: 17px; font-weight: 600; border-bottom: 1px solid var(--rule); padding-bottom: 16px; margin-bottom: 20px; }
+.portfolio .content-block p, .portfolio .content-block li { font-size: 14px; line-height: 2; color: var(--muted); }
+.portfolio .content-block ul { padding-left: 20px; }
+.portfolio .overview-meta { gap: 16px 24px; }
+.portfolio .overview-meta .meta-item { padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.portfolio .meta-label { color: var(--muted); font: 12px/1.7 var(--font-body); }
+.portfolio .meta-value { font-size: 14px; }
+body.portfolio.game-detail-page .game-meta-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 0; padding: 24px; box-shadow: none; }
+.portfolio .game-detail-image { border-radius: 0; box-shadow: none; overflow: hidden; }
+.portfolio .game-detail-image:hover { transform: none; }
+.portfolio .game-detail-image img { height: auto; max-height: none; width: 100%; object-fit: contain; }
+.portfolio .play-button, .portfolio .manual-button { border-radius: 0; font-size: 14px; min-height: 48px; }
+.portfolio .play-button { background: var(--ink); color: white; }
+.portfolio .play-button.disabled { cursor: not-allowed; color: #5e605a; background: #d9dbd2; }
+.portfolio .manual-button { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.portfolio .challenge-card { border: 1px solid var(--rule); border-radius: 0; box-shadow: none; padding: 28px; margin: 0 0 24px; background: transparent; display: grid; grid-template-columns: 1fr 1.6fr; gap: 36px; }
+.portfolio .challenge-card h4 { color: var(--accent); font: 11px var(--mono); margin-bottom: 14px; }
+.portfolio .challenge-section, .portfolio .solution-section { border: 0; padding: 0; background: transparent; }
+.portfolio .challenge-card p { margin: 0; }
+.portfolio .code-container { border-radius: 0; box-shadow: none; margin: 16px 0 40px; }
+.portfolio .code-header { width: 100%; min-height: 56px; text-transform: none; font-size: 14px; color: var(--ink); text-align: left; }
+.portfolio .code-explanation { color: var(--muted); font-size: 16px; line-height: 1.9; margin: 28px 0 16px; max-width: 76ch; }
+.portfolio .code-panel-title { display: block; font-size: 17px; font-weight: 600; margin: 0 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.portfolio .code-container pre { max-height: none; }
+.portfolio .code-container.collapsed pre { max-height: 0; }
+.portfolio .tech-image { max-width: 1100px; margin: 0 auto; }
+.portfolio .game-nav-link { font-size: 12px; min-height: 44px; display: inline-flex; align-items: center; gap: 12px; max-width: 35%; }
+.portfolio .game-nav-link .gnl-title { overflow-wrap: anywhere; }
+.portfolio .gameplay-overlay { z-index: 100; background: rgb(14 17 14 / 80%); }
+.portfolio .overlay-content { border-radius: 0; }
+.portfolio .close-overlay { min-width: 44px; min-height: 44px; }
+.loading-message, .error-message { padding: 32px 0; font-size: 14px; color: var(--muted); }
+.empty-message { grid-column: 1/-1; padding: 48px 0; }
+@media (min-width: 1500px) { .hero { gap: 100px; padding-top: 80px; padding-bottom: 88px; } }
+@media (max-width: 1050px) {
+  body.portfolio .container { width: calc(100% - 56px); }
+  .portfolio .site-nav ul { gap: 18px; }
+  .hero { gap: 36px; }
+  .hero-copy h1 { font-size: 68px; }
+  .hero-annotation { right: -8px; }
+  .about-layout { gap: 44px; }
+  .portfolio .bg-layout { gap: 40px; }
+  .portfolio .overview-grid { gap: 32px; grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); }
+}
+@media (max-width: 760px) {
+  body.portfolio .container { width: calc(100% - 40px); }
+  .portfolio .site-header { height: 72px; min-height: 72px; }
+  .portfolio .logo { font-size: 15px; }
+  .portfolio .site-nav ul { display: none; }
+  .portfolio .nav-toggle { display: flex; }
+  .portfolio .site-nav.is-open ul { position: absolute; inset: 71px 0 auto; display: flex; flex-direction: column; align-items: stretch; background: rgb(245 244 239 / 78%); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--rule); padding: 18px 24px; gap: 4px; box-shadow: 0 12px 18px #20221f0a; }
+  .portfolio .site-nav a { padding: 8px 0; font-size: 14px; }
+  .portfolio .site-nav a::after { display: none; }
+  .page-eyebrow { font-size: 9px; padding-top: 22px; }
+  .status-label { font-size: 10px; }
+  .hero { grid-template-columns: 1fr; gap: 44px; padding: 48px 0; }
+  .hero-copy h1 { font-size: clamp(30px, 10.2vw, 76px); }
+  .hero-description { font-size: 14px; }
+  .hero-visual { margin: 0 6px; }
+  .expertise-strip { gap: 14px; flex-wrap: wrap; font-size: 11px; justify-content: flex-start; }
+  .expertise-strip span:first-child { width: 100%; }
+  .section-block { padding: 48px 0; }
+  .section-top { align-items: flex-start; gap: 12px; }
+  .section-top h2 { font-size: 34px; }
+  .section-top h2 small { display: block; margin: 12px 0 0; }
+  .section-top .text-link { font-size: 11px; gap: 8px; white-space: nowrap; }
+  .work-grid, .portfolio .featured-list, .portfolio .games-grid { grid-template-columns: 1fr; gap: 36px; }
+  .work-top h3 { font-size: 22px; }
+  .work-description { font-size: 14px; }
+  .skills-grid { grid-template-columns: 1fr; gap: 28px; }
+  .skill-entry h3 { margin-top: 16px; }
+  .skill-entry .skill-tools { padding-top: 10px; }
+  .about-layout { grid-template-columns: 1fr; gap: 28px; }
+  .about-id { display: block; }
+  .about-portrait { width: 220px; height: auto; margin: 0 0 20px; }
+  .about-id h3 { margin: 0 0 8px; }
+  .about-id p { align-self: start; }
+  .contact-callout { grid-template-columns: 1fr; padding: 48px 0; gap: 12px; }
+  .contact-callout .action-primary { justify-self: start; }
+  .portfolio .page-footer-mini { flex-wrap: wrap; font-size: 9px; gap: 12px; }
+  .page-heading { padding: 42px 0 30px; }
+  .page-heading h1 { font-size: 44px; }
+  .portfolio .bg-layout { grid-template-columns: 1fr; gap: 48px; }
+  .results-count { width: 100%; margin: 8px 0 0; }
+  .filter-button { padding: 9px 12px; }
+  .portfolio .overview-grid { grid-template-columns: 1fr; gap: 24px; }
+  .portfolio .game-sidebar { grid-row: 1; }
+  .portfolio .challenge-card { grid-template-columns: 1fr; gap: 24px; padding: 22px; }
+  .portfolio .tab-bar { gap: 0; }
+  .portfolio .tab-btn { padding: 12px 9px; font-size: 12px; }
+  .portfolio .detail-title { font-size: 32px; }
+  .portfolio .game-nav-link { max-width: 44%; }
+  .portfolio .footer-copy { order: 3; width: 100%; text-align: center; }
+  .portfolio .resume-frame { min-height: 600px; }
+  .portfolio .contact-item { font-size: 15px; gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .portfolio *, .portfolio *::before, .portfolio *::after { animation: none !important; transition: none !important; }
+}
+
+/* Recruitment reading order: contribution, implementation, then evidence. */
+.portfolio .hero-role { color: var(--accent); margin: 0 0 22px; }
+.portfolio .hero-copy h1 { font-size: clamp(30px, 3.5vw, 50px); line-height: 1.45; letter-spacing: -.045em; margin-bottom: 24px; font-weight: 700; }
+.portfolio .hero-description { font-size: 16px; line-height: 1.9; }
+.hero-resume { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; border-bottom: 1px solid var(--rule); }
+.career-highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); margin: 0; padding: 28px 0 34px; gap: 32px; }
+.career-highlights > div { min-width: 0; padding-left: 24px; border-left: 1px solid var(--rule); }
+.career-highlights > div:first-child { padding-left: 0; border-left: 0; }
+.career-highlights dt { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.career-highlights dd { margin: 0; }
+.career-highlights strong { font-size: 30px; line-height: 1.5; font-weight: 600; letter-spacing: -.035em; }
+.career-highlights strong span { font-size: 13px; font-weight: 400; letter-spacing: 0; }
+.career-highlights p { font-size: 13px; line-height: 1.8; color: var(--muted); margin-top: 8px; }
+.portfolio .work-description, .portfolio .skill-entry p, .portfolio .content-block p, .portfolio .content-block li { font-size: 16px; }
+.work-evidence { display: inline-block; padding: 6px 10px; margin-bottom: 14px; background: var(--surface); border-left: 2px solid var(--accent); font-size: 12px; line-height: 1.6; }
+.work-contribution { display: grid; grid-template-columns: auto 1fr; gap: 12px; border-top: 1px solid var(--rule); margin: 18px 0 0; padding-top: 16px; font-size: 14px; line-height: 1.9; }
+.work-contribution dt { color: var(--muted); }
+.work-contribution dd { min-width: 0; margin: 0; }
+.work-focus { margin-top: 16px; font-size: 14px; line-height: 1.9; color: var(--muted); }
+.work-focus > span { display: block; color: var(--ink); font-size: 12px; margin-bottom: 4px; }
+.work-readmore { display: flex; justify-content: space-between; align-items: center; min-height: 44px; margin-top: 16px; font-size: 13px; color: var(--accent); }
+.skill-entry .text-link { font-size: 13px; margin-top: 16px; }
+.project-summary { display: grid; grid-template-columns: 1fr .45fr 1.2fr; gap: 24px; margin: 0 0 32px; padding: 24px 0; border-block: 1px solid var(--rule); }
+.project-summary > div { min-width: 0; }
+.project-summary dt { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.project-summary dd { margin: 0; font-size: 14px; line-height: 1.9; }
+.review-focus { padding: 24px; border-left: 3px solid var(--accent); background: var(--surface); margin-bottom: 36px; }
+.review-focus h2 { font-size: 18px; margin: 0 0 12px; }
+.review-focus p { font-size: 16px; line-height: 1.9; margin-bottom: 16px; }
+.review-focus .text-link { margin-right: 16px; font-size: 13px; }
+.project-preview { margin: 0 0 24px; }
+.project-preview video { display: block; width: 100%; aspect-ratio: 16/10; object-fit: contain; background: #151815; }
+.project-preview figcaption { color: var(--muted); font-size: 12px; line-height: 1.8; margin-top: 10px; }
+.project-preview video:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .portfolio .hero-copy h1 { font-size: clamp(25px, 6.9vw, 46px); }
+  .career-highlights { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; }
+  .career-highlights > div, .career-highlights > div:first-child { border-left: 2px solid var(--accent); padding-left: 16px; }
+  .career-highlights dt { margin-bottom: 4px; }
+  .career-highlights strong { font-size: 25px; }
+  .career-highlights p { margin-top: 2px; }
+  .project-summary { grid-template-columns: 1fr; gap: 16px; }
+  .project-summary > div { display: grid; grid-template-columns: 64px 1fr; gap: 12px; }
+  .project-summary dt { padding-top: 4px; margin: 0; }
+  .portfolio .tab-bar { flex-wrap: wrap; }
+  .work-contribution { grid-template-columns: 1fr; gap: 4px; }
+}

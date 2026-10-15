@@ -8,7 +8,7 @@ using UnityEngine;
 /// Model（PlayerModel の GameContext）の値の変化を UniRx で購読し、
 /// View（MainUIViewer）へ反映するだけの「中間者」に徹する。
 /// Model は View を知らず、View は Model を知らない。両者を Presenter が仲介することで
-/// 結合度を極限まで下げ、UI 刷新やロジック変更が互いに波及しない設計を実現する。
+/// Model の値を UI へ反映する処理を Presenter にまとめる。
 /// </summary>
 public class MainUIPresenter : MonoBehaviour
 {

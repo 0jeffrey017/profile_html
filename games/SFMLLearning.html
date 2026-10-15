@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SFML Learning | Jeffrey LEE</title>
-    <meta name="description" content="SFML Learning - C++ & SFML Low-Level Programming Project">
+    <meta name="description" content="SFML Learning - C++ & SFML Programming Study">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/SFMLLearning.html">
 
@@ -18,7 +18,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="SFML Learning | Jeffrey LEE">
-    <meta property="og:description" content="SFML Learning - C++ & SFML Low-Level Programming Project">
+    <meta property="og:description" content="SFML Learning - C++ & SFML Programming Study">
     <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/SFML_image.webp">
     <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/SFMLLearning.html">
     <meta property="og:locale" content="ja_JP">
@@ -26,14 +26,14 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SFML Learning | Jeffrey LEE">
-    <meta name="twitter:description" content="SFML Learning - C++ & SFML Low-Level Programming Project">
+    <meta name="twitter:description" content="SFML Learning - C++ & SFML Programming Study">
     <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/SFML_image.webp">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">SFML Learning</h1>
-                <p class="detail-subtitle">C++ & SFML Low-Level Programming Project</p>
+                <p class="detail-subtitle">C++ & SFML Programming Study</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>1か月</dd></div><div><dt>私の担当</dt><dd>企画・設計・実装（個人制作）</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
                 </div>
@@ -92,34 +78,35 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>ゲームエンジンの内部挙動とC++のメモリ管理、オブジェクト設計を深く理解するために構築した、フレームワーク不使用の学習用プロジェクトです。</p>
+                                <p>ゲームの基本処理とC++のオブジェクト設計を学ぶため、円や矩形を移動・描画するプログラムを制作しました。Unityなどのゲームエンジンを使わず、C++とSFMLで実装しています。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">SFML 2.6.2</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
-                                        <span class="meta-value">1ヶ月</span>
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">1か月</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows, Linux)</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows・Linux）</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>個人製作（企画・設計・実装の全工程を担当）</li>
+    <li>企画・設計・実装（個人制作）</li>
 </ul>
                                 </div>
                             </div>
@@ -129,9 +116,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/SFML_image.webp" alt="SFML Learning Screenshot" loading="lazy">
-                                </div>
+                                <div class="game-detail-image"><img src="../Image/GameImage/SFML_image.webp" alt="SFML Learningの作品画像" loading="lazy"></div>
                                 
                                 <div class="sidebar-video">
                                     <div class="video-container">
@@ -156,19 +141,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>C++ネイティブ開発におけるクラス構造の肥大化と密結合化</p>
+                    <p>ウィンドウや図形の設定を、描画・移動の処理と分けて管理したいと考えました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>データとロジックを分離するEntity Component System（ECS）の概念を意識した構造設計を取り入れ、拡張性を担保</p>
+                    <p>設定をconfig.txtから読み込む構成にし、円と矩形をそれぞれのクラスで扱いました。表示する図形の数値を、設定ファイルから変更できます。</p>
                 </div>
 
             </div>
@@ -183,9 +168,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">外部の.txtデータから設定を読み込み、ランタイム上で動的に形状（Shape）を生成・管理するロジックを実装</div>
+                    <div class="code-explanation">config.txtからウィンドウ、フォント、図形の設定を読み込みます。読み込んだ値から円と矩形を作成し、画面の端で跳ね返るように動かします。</div>
                     <div class="code-container">
                         <div class="code-header">データ駆動型生成システム</div>
                         <pre><code class="language-cpp">#include &lt;SFML/Graphics.hpp&gt;
@@ -451,11 +436,9 @@ int main()
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

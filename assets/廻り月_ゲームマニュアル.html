@@ -836,7 +836,7 @@
     <a class="skip" href="#ui">本文へ移動</a>
     <header class="top">
         <div class="wrap"><a class="wordmark" href="#home">廻り月</a>
-            <nav aria-label="マニュアルの目次"><a href="#ui">UI説明</a><a href="#rules">ルール</a><a href="#numbers">ゲーム数値</a><a
+            <nav aria-label="マニュアルの目次"><a href="#ui">画面の見方</a><a href="#rules">ルール</a><a href="#numbers">ゲーム数値</a><a
                     href="#enemies">敵</a><a href="#controls">操作方法</a><a href="#implementation">プログラム</a></nav><button
                 id="print">印刷 / PDF</button>
         </div>
@@ -854,7 +854,7 @@
             <section id="ui">
                 <div class="section-head">
                     <div class="section-num">01 / USER INTERFACE</div>
-                    <h2>UI説明</h2>
+                    <h2>画面の見方</h2>
                     <p class="muted">メニュー画面で遊び方を選び、ゲーム画面で探索状況を確認し、リザルト画面でプレイを振り返ります。</p>
                 </div>
                 <article class="screen-block" id="menu-screen">
@@ -980,12 +980,12 @@
                                     <td>敵から攻撃を受けた回数です。</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">追跡を外した回数</th>
+                                    <th scope="row">追跡を振り切った回数</th>
                                     <td>敵側の検知状態が外れた回数です。</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">評価</th>
-                                    <td>時間・攻撃・被弾・追跡を外した回数を組み合わせ、「秀」「良」「可」で評価します。</td>
+                                    <td>時間・攻撃・被弾・追跡を振り切った回数を組み合わせ、「秀」「良」「可」で評価します。</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">結果表示後の操作</th>
@@ -1072,7 +1072,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="caption">探索エリアは生成設定の基準サイズです。外周・特別区画を除きます。難しい設定では敵の生成予算も増えます。</p>
+                <p class="caption">探索エリアは生成設定の基準サイズです。外周・特別区画を除きます。難しい設定では敵の配置に使うコストの上限も増えます。</p>
                 <h3>月の段階と正気度の減少</h3>
                 <div class="table-wrap">
                     <table class="numeric">
@@ -1117,7 +1117,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p class="note">新月では追加の祈りができません。通常難易度は正気度が満タンでも約2秒分しか残りません。</p>
+                <p class="note">新月では追加の祈りができません。通常難易度では、正気度が最大でも約2秒で0になります。</p>
                 <h3>収集とゲージの条件</h3>
                 <div class="table-wrap">
                     <table>
@@ -1161,7 +1161,7 @@
                                 <th scope="col">時間</th>
                                 <th scope="col">有効攻撃</th>
                                 <th scope="col">被弾</th>
-                                <th scope="col">追跡を外した回数</th>
+                                <th scope="col">追跡を振り切った回数</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1275,7 +1275,7 @@
         <p class="muted">担当した5項目について、実装内容と工夫を紹介します。</p>
     </div>
     <div class="ownership-summary">
-        <h3>Responsible part / 担当部分</h3>
+        <h3>担当内容 / My Contribution</h3>
         <ul>
             <li>ゲーム進行の FSM と非同期状態遷移の実装</li>
             <li>VContainer の LifetimeScope / Installer による依存関係の構成</li>

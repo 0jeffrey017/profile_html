@@ -1,89 +1,91 @@
+/* Code samples share the portfolio's paper, ink, and accent palette. */
 .code-container {
-    background: #1e1e1e; 
-    border-radius: 8px;
-    margin: 2rem 0;
+    background: var(--surface, #eeeee7);
+    border: 1px solid var(--rule, #d5d7ce);
+    border-radius: 0;
+    margin: 16px 0 40px;
     overflow: hidden;
-    border: 1px solid #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
 }
-
 .code-header {
-    background: #2d2d2d;
-    color: #999;
-    padding: 12px 16px;
-    font-size: 0.75rem;
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #333;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    user-select: none;
-    transition: background 0.2s ease;
+    gap: 24px;
+    width: 100%;
+    min-height: 56px;
+    padding: 16px 24px;
+    background: var(--paper, #f5f4ef);
+    color: var(--ink, #20221f);
+    border: 0;
+    border-bottom: 1px solid var(--rule, #d5d7ce);
+    font: 500 14px/1.7 var(--font-body, sans-serif);
+    letter-spacing: 0;
+    text-align: left;
+    cursor: pointer;
+    transition: background .2s ease;
 }
-
 .code-header:hover {
-    background: #353535;
-    color: #fff;
+    background: var(--surface, #eeeee7);
+    color: var(--ink, #20221f);
 }
-
 .code-header::after {
-    content: '\25BC';
-    font-size: 0.7rem;
-    transition: transform 0.3s ease;
-    opacity: 0.6;
+    content: '−';
+    flex: 0 0 auto;
+    color: var(--accent, #bc431c);
+    font: 24px/1 var(--mono, monospace);
 }
-
-.code-container.collapsed .code-header::after {
-    transform: rotate(-90deg);
-}
-
+.code-container.collapsed .code-header { border-bottom-color: transparent; }
+.code-container.collapsed .code-header::after { content: '+'; }
 .code-container pre {
-    margin: 0 !important;
-    padding: 1.25rem;
+    margin: 0;
+    padding: 24px;
+    max-width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
-    max-height: 5000px;
+    overscroll-behavior-x: contain;
+    scrollbar-color: var(--muted, #61645d) var(--surface, #eeeee7);
+    scrollbar-width: thin;
+    tab-size: 4;
 }
-
 .code-container.collapsed pre {
     max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-block: 0;
     overflow: hidden;
 }
-
-.code-container code {
-    font-family: 'Consolas', 'Monaco', 'Cascadia Code', monospace;
-    font-size: 0.9rem;
-    line-height: 1.6;
+.code-container code,
+.code-container code.hljs {
+    display: block;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+    color: var(--ink, #20221f);
+    font: 14px/1.85 var(--mono, monospace);
+    white-space: pre;
 }
-
-.code-container pre::-webkit-scrollbar {
-    height: 8px;
-}
-.code-container pre::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .code-container {
-        margin: 1.5rem 0;
-        border-radius: 6px;
-    }
-    
-    .code-container pre {
-        padding: 1rem;
-    }
-    
-    .code-container code {
-        font-size: 0.8rem;
-        line-height: 1.5;
-    }
+/* Muted syntax colors on the warm paper surface. */
+.code-container .hljs-comment,
+.code-container .hljs-quote { color: #62665a; }
+.code-container .hljs-keyword,
+.code-container .hljs-selector-tag,
+.code-container .hljs-literal,
+.code-container .hljs-meta { color: #984027; }
+.code-container .hljs-string,
+.code-container .hljs-regexp,
+.code-container .hljs-addition { color: #42623a; }
+.code-container .hljs-number,
+.code-container .hljs-symbol,
+.code-container .hljs-attr { color: #805320; }
+.code-container .hljs-title,
+.code-container .hljs-type,
+.code-container .hljs-built_in { color: #315d70; }
+.code-container .hljs-variable,
+.code-container .hljs-params,
+.code-container .hljs-subst { color: var(--ink, #20221f); }
+.code-container .hljs-deletion { color: #9b3434; }
+.code-container .hljs-emphasis { font-style: italic; }
+.code-container .hljs-strong { font-weight: 700; }
+@media (max-width: 760px) {
+    .code-header { padding: 14px 16px; gap: 16px; }
+    .code-container pre { padding: 20px 16px; }
+    .code-container code,
+    .code-container code.hljs { font-size: 13px; }
 }
