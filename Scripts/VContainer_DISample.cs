@@ -6,15 +6,14 @@ using VContainer.Unity;
 /*
  * VContainer DI Experiment（担当：個人開発 / アーキテクチャ実験）
  *
- * DIコンテナ「VContainer」で依存関係の登録と注入を一元管理。
- * シングルトンへの直接参照をやめ、各クラスは「必要なものをコンストラクタで受け取る」だけに。
- * これにより結合度が下がり、テスト・再利用が容易な構成を実現する。
+ * VContainer で依存関係を登録し、各クラスに必要な参照を渡す。
+ * 各クラスがシングルトンを直接参照せず、コンストラクターで参照を受け取る構成を検証する。
  */
 
 /// <summary>
 /// 依存関係の登録を行うコンテナの設定クラス（VContainerのエントリポイント）。
-/// 「何を・どの生存期間で・どう生成するか」をここに集約することで、
-/// 各クラスは生成や参照解決の責務から解放される。
+/// 登録する型と生存期間、生成方法をここで指定する。
+/// 各クラスは、必要な参照をコンテナから受け取る。
 /// </summary>
 public class GameLifeTimeScope : LifetimeScope
 {
@@ -35,12 +34,12 @@ public class GameLifeTimeScope : LifetimeScope
 
 /// <summary>
 /// Model と View を仲介する Presenter（MVP）。
-/// 依存物は全て「コンストラクタインジェクション」で受け取るため、newもFindも不要。
-/// IStartable / IDisposable を実装し、初期化と後始末をライフサイクルに乗せる。
+/// 必要な参照はコンストラクターで受け取る。
+/// IStartable / IDisposable で初期化と購読解除のタイミングを管理する。
 /// </summary>
 public class MainGamePresenter : IStartable, IDisposable
 {
-    // readonly で注入後の差し替えを禁止し、依存の不変性を保証
+    // readonly で、受け取った参照の再代入を防ぐ。
     private readonly MainGameView _mainGameView;
     private readonly MainGameModel _mainGameModel;
     private readonly ClickView _clickView;

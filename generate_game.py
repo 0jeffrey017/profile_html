@@ -6,7 +6,7 @@ import re
 SITE_BASE_URL = 'https://0jeffrey017.github.io/profile_html'
 
 def generate_games():
-    # Load template
+    # ゲーム詳細ページのテンプレートを読み込む。
     template_path = 'game_template.html'
     if not os.path.exists(template_path):
         print(f"Error: {template_path} not found.")
@@ -15,7 +15,7 @@ def generate_games():
     with open(template_path, 'r', encoding='utf-8') as f:
         template_content = f.read()
 
-    # Load data
+    # 各作品の紹介文と設定を読み込む。
     data_path = 'data/games_data.json'
     if not os.path.exists(data_path):
         print(f"Error: {data_path} not found.")
@@ -24,15 +24,15 @@ def generate_games():
     with open(data_path, 'r', encoding='utf-8') as f:
         games_data = json.load(f)
 
-    # Prev/Next navigation order: released games in JSON array order (wraparound).
+    # 公開済み作品を JSON の順に並べ、前後の作品へのリンクを作る。
     nav_list = [g for g in games_data if g.get('status') == 'released']
     nav_index = {id(g): i for i, g in enumerate(nav_list)}
 
-    # Generate files
+    # 作品ごとにテンプレートへデータを埋め込む。
     for game in games_data:
         content = template_content
 
-        # Keep the recruitment summary derived from the same project data as the page.
+        # 制作体制・期間・担当の要約も、本文と同じ作品データから作る。
         esc = lambda value: html.escape(str(value), quote=True)
         roles = game.get('responsible', [])
         summary = (
@@ -71,32 +71,32 @@ def generate_games():
             )
         content = content.replace('{{LOCAL_PREVIEW}}', preview_html)
 
-        # --- Prev / Next game links (wraparound over released games) ---
+        # 最初と最後の作品をつなぎ、前後の作品へ移動できるようにする。
         n = len(nav_list)
         if n > 1 and id(game) in nav_index:
             i = nav_index[id(game)]
             prev_game = nav_list[(i - 1) % n]
             next_game = nav_list[(i + 1) % n]
         else:
-            # Unreleased game (not in nav list) or only one game: link to self.
+            # 一覧にない作品や、作品が1件だけの場合は自身へリンクする。
             prev_game = next_game = game
         content = content.replace('{{PREV_FILENAME}}', prev_game.get('filename', '#'))
         content = content.replace('{{PREV_TITLE}}', html.escape(prev_game.get('title', '')))
         content = content.replace('{{NEXT_FILENAME}}', next_game.get('filename', '#'))
         content = content.replace('{{NEXT_TITLE}}', html.escape(next_game.get('title', '')))
         
-        # Handle Technical Image conditional block
+        # 技術図がなければ、図の表示領域ごと取り除く。
         tech_image = game.get('game_technical_image', '')
         if not tech_image:
-            # Remove the entire block including markers
+            # 開始・終了マーカーを含む表示領域を取り除く。
             content = re.sub(r'<!-- TECHNICAL_IMAGE_START -->.*?<!-- TECHNICAL_IMAGE_END -->', '', content, flags=re.DOTALL)
         else:
-            # Keep the block but remove the markers
+            # 表示領域を残し、生成用のマーカーだけを取り除く。
             content = content.replace('<!-- TECHNICAL_IMAGE_START -->', '')
             content = content.replace('<!-- TECHNICAL_IMAGE_END -->', '')
             content = content.replace('{{GAME_TECHNICAL_IMAGE}}', tech_image)
             
-        # Handle Video conditional block
+        # 動画の URL がある作品だけ、埋め込み動画を表示する。
         video_url = game.get('video_embed_url', '')
         video_enbed_url = None
         if not video_url:
@@ -107,7 +107,7 @@ def generate_games():
             video_enbed_url = get_embed_url(video_url)
             content = content.replace('{{VIDEO_EMBED_URL}}', video_enbed_url)
 
-        # Handle Gallery conditional block
+        # スクリーンショットがある作品だけ、ギャラリーを表示する。
         gallery_items = game.get('screenshot_gallery', [])
         if not gallery_items:
             content = re.sub(r'<!-- GALLERY_START -->.*?<!-- GALLERY_END -->', '', content, flags=re.DOTALL)
@@ -119,10 +119,10 @@ def generate_games():
                 gallery_html += f'<div class="screenshot-item"><img src="{img_path}" alt="Screenshot" loading="lazy"></div>\n'
             content = content.replace('{{SCREENSHOT_GALLERY}}', gallery_html)
 
-        # Handle Code Sample conditional block
+        # コードサンプルを読み込み、紹介文とともに表示する。
         code_config = game.get('code_sample')
 
-        # Convert to list if it's a single object
+        # サンプルが1件の形式でも、リストに揃えて処理する。
         if code_config and isinstance(code_config, dict):
             code_config = [code_config]
 
@@ -163,10 +163,10 @@ def generate_games():
 
         credit = game.get('credit', [])
         if not credit:
-            # Remove the entire block including markers
+            # クレジットがなければ、マーカーを含む表示領域を取り除く。
             content = re.sub(r'<!-- CREDIT_START -->.*?<!-- CREDIT_END -->', '', content, flags=re.DOTALL)
         else:
-            # Keep the block but remove the markers
+            # クレジットの表示領域を残し、マーカーだけを取り除く。
             content = content.replace('<!-- CREDIT_START -->', '')
             content = content.replace('<!-- CREDIT_END -->', '')
 
@@ -217,7 +217,7 @@ def generate_games():
         content = content.replace('{{PERIOD}}', game.get('period', ''))
         content = content.replace('{{IMAGE_PATH}}', game.get('image_path', ''))
 
-        # Absolute URLs for SEO / OGP
+        # 検索・SNS 向けのページ URL と画像 URL を絶対 URL で設定する。
         page_url = f"{SITE_BASE_URL}/games/{game.get('filename', '')}"
         abs_image = f"{SITE_BASE_URL}/{game.get('image_path', '')}"
         content = content.replace('{{PAGE_URL}}', page_url)
@@ -238,7 +238,7 @@ def generate_games():
         )
         content = content.replace('                                {{MANUAL_BUTTON}}\n', f'                                {manual_button}\n' if manual_button else '')
         
-        # Disable button if link is empty or just '#'
+        # 公開先が未設定の場合は、プレイ・ダウンロードボタンを無効にする。
         if not play_link or play_link == '#':
             content = content.replace('{{PLAY_BUTTON_DISABLED}}', 'disabled')
         else:

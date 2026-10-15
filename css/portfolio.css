@@ -134,7 +134,7 @@ body.portfolio #canvas { display: none; }
 .skill-entry p { font-size: 14px; line-height: 1.9; color: var(--muted); }
 .skill-entry .skill-tools { font: 11px/1.8 var(--mono); padding-top: 20px; }
 .about-layout { display: grid; grid-template-columns: .65fr 1.35fr; gap: 80px; }
-.about-portrait { width: 280px; max-width: 100%; height: auto; aspect-ratio: 152 / 184; object-fit: cover; border: 1px solid var(--rule); margin-bottom: 20px; }
+.about-portrait { width: 280px; max-width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--rule); margin-bottom: 20px;border-radius: 8px;filter: drop-shadow(10px 10px 7px lightblue);} 
 .about-id h3 { font-size: 21px; margin: 0 0 8px; }
 .about-id p { font: 12px var(--mono); color: var(--muted); }
 .about-prose p { font-size: 15px; color: var(--muted); line-height: 2; margin-bottom: 24px; }
@@ -156,7 +156,7 @@ body.portfolio #canvas { display: none; }
 .portfolio .featured-games { margin: 0 0 60px; padding: 0; }
 .portfolio .featured-heading { font-size: 17px; margin: 0 0 24px; font-weight: 500; letter-spacing: -.01em; text-align: left; }
 .portfolio .page-main-Line { border: 0; border-top: 1px solid var(--rule); margin: 48px 0; }
-.portfolio .bg-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; width: 100%; max-width: none; }
+.portfolio .bg-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: start; width: 100%; max-width: none; }
 .portfolio .bg-col { min-width: 0; }
 .portfolio .bg-col h3 { font-size: 21px; padding: 0 0 20px; border-bottom: 1px solid var(--ink); margin: 0 0 12px; }
 .portfolio .timeline-list { border: 0; margin: 0; padding: 0; list-style: none; }
@@ -169,6 +169,13 @@ body.portfolio #canvas { display: none; }
 .portfolio .qual-body strong { font-size: 15px; }
 .portfolio .qual-body ul { padding: 0; margin: 12px 0 0; list-style: none; }
 .portfolio .qual-body li { font-size: 13px; line-height: 1.8; color: var(--muted); }
+.portfolio .bg-col .qualifications-list { display: grid; gap: 0; }
+.portfolio .bg-col .qualifications-tag { align-items: flex-start; gap: 16px; padding: 24px 0; }
+.portfolio .bg-col .qualifications-tag .qual-icon { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 8px; background: var(--surface); color: var(--accent); font-size: 22px; line-height: 1; }
+.portfolio .bg-col .qualifications-tag .qual-body { flex: 1; min-width: 0; padding-top: 3px; overflow-wrap: anywhere; }
+.portfolio .bg-col .qualifications-tag .qual-body > strong { display: block; font-size: 16px; font-weight: 600; line-height: 1.7; color: var(--ink); }
+.portfolio .bg-col .qualifications-tag .qual-body ul { margin: 8px 0 0; padding: 0; }
+.portfolio .bg-col .qualifications-tag .qual-body ul li { font-size: 14px; line-height: 1.8; color: var(--muted); }
 .portfolio .contact-card { width: 100%; max-width: none; border: 0; border-radius: 0; padding: 0; background: none; box-shadow: none; display: flex; align-items: stretch; gap: 0; flex-direction: column; }
 .portfolio .contact-card > p { color: var(--muted); margin: 0 0 36px; }
 .portfolio .contact-item { width: 100%; max-width: none; border-bottom: 1px solid var(--rule); padding: 20px 0; gap: 22px; display: flex; align-items: center; font-size: 17px; }
@@ -276,8 +283,9 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
   .skill-entry h3 { margin-top: 16px; }
   .skill-entry .skill-tools { padding-top: 10px; }
   .about-layout { grid-template-columns: 1fr; gap: 28px; }
-  .about-id { display: block; }
-  .about-portrait { width: 220px; height: auto; margin: 0 0 20px; }
+  #about > .section-top { flex-direction: column; align-items: center; text-align: center; }
+  .about-id { display: block; text-align: center; }
+  .about-portrait { display: block; width: 220px; height: auto; margin: 0 auto 20px; }
   .about-id h3 { margin: 0 0 8px; }
   .about-id p { align-self: start; }
   .contact-callout { grid-template-columns: 1fr; padding: 48px 0; gap: 12px; }

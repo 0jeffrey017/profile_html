@@ -21,7 +21,7 @@ private async UniTask ProcessTransitionQueueAsync(CancellationToken token)
 
             try
             {
-                // 終了処理と開始処理が完了してから、待機者へ完了を通知。
+                // 状態の終了・開始処理を待ち、遷移要求の呼び出し元へ完了を通知する。
                 await TransitionTo(request.State, token);
                 request.Complete();
             }
@@ -72,7 +72,7 @@ private async UniTask TransitionTo(EGameState nextState, CancellationToken token
     _currentState = _stateFactory.Create(nextState);
     _currentStateType = nextState;
 
-    // 新状態の初期化・演出が完了してからプレイ可能な状態だけ再開。
+    // 次の状態の初期化と演出を待ち、プレイ可能な状態なら操作を再開する。
     await _currentState.OnEnter(token);
     _pauseService.SetPaused(nextState is not EGameState.MainGame and not EGameState.Tutorial);
 }

@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// タイトル演出・ゲーム開始・リスタートの一連のフローを UniTask で制御するマネージャー。
-/// コルーチンや多重コールバックに頼らず async/await で記述することで、
-/// 「入力待ち」と「カメラ演出」を並行させつつ可読性の高いフロー制御を実現。
+/// async/await で進行順序を記述し、入力待ちとカメラ演出を並行して進める。
 /// タイトル演出中の待機は destroyCancellationToken でオブジェクトの破棄に連動させる。
 /// </summary>
 public class GameManager : MonoBehaviour
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
     /// <summary>ゲームオーバー後、S キー入力を待ってシーンをリロードする。</summary>
     private async UniTask WaitForRestart()
     {
-        // 毎フレーム Yield しながら入力を監視（コールバック地獄を回避）
+        // 毎フレーム Yield し、開始キーが押されるまで入力を確認する。
         while (!Keyboard.current.sKey.wasPressedThisFrame)
             await UniTask.Yield(PlayerLoopTiming.Update);
 

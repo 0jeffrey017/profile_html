@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -205,7 +205,7 @@ public class GObjectPool
             maxSize: _maxSize);
     }
 
-    /// &lt;summary&gt;指定位置にオブジェクトを取り出す（再利用 or 新規生成）。&lt;/summary&gt;
+    /// &lt;summary&gt;オブジェクトを再利用または新規生成し、指定位置に配置する。&lt;/summary&gt;
     public GameObject Get(Vector3 position)
     {
         GameObject go = _pool.Get();
@@ -218,7 +218,7 @@ public class GObjectPool
 
     /// &lt;summary&gt;
     /// 新規生成時のみ実行される初期化。レイヤー設定・当たり判定の付与・
-    /// 自身（プール）への参照渡しをまとめ、生成箇所の責務を集約する。
+    /// プールへの参照の設定をまとめる。
     /// &lt;/summary&gt;
     private GameObject Initialization(GameObject prefab, int layerID)
     {
@@ -229,7 +229,7 @@ public class GObjectPool
         var collider = g.AddComponent&lt;SphereCollider&gt;();
         collider.isTrigger = true;
 
-        // 自身を渡すことで、各オブジェクトが「使い終わったら自分でプールへ戻る」ことを可能にする
+        // 使用後にプールへ戻れるよう、返却先の参照を渡す。
         controller.Setup(this, Random.Range(5, 12));
         g.transform.rotation = Quaternion.Euler(0, -90, 90);
         return g;
@@ -265,7 +265,7 @@ public class GObjectPool
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Space Key: Jump
+                                    Spaceキー：ジャンプ
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">

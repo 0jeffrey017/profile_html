@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -167,8 +167,8 @@ using UnityEngine.AI;
 
 /// &lt;summary&gt;
 /// ボス（巨大イカ）のAI制御。NavMeshAgent による移動を土台に、
-/// プレイヤーとの「距離」に応じて 巡回 → 追跡 → 近・中・遠距離攻撃 を切り替える
-/// 多段階の行動ロジックを実装。各攻撃はクールダウンで管理し、
+/// プレイヤーとの距離に応じて、巡回・追跡・近距離攻撃・中距離攻撃を切り替える。
+/// 各攻撃はクールダウンで管理し、
 /// 弾は物理計算で算出した放物線軌道でプレイヤーへ撃ち込む。
 /// （担当：ボス戦のAI・戦闘ロジック全般）
 /// &lt;/summary&gt;
@@ -192,7 +192,7 @@ public class EnemySquidController : MonoBehaviour
 
     private void Update()
     {
-        // プレイヤーとの距離を各範囲の球で判定（近いほど強力な攻撃へ移行）
+    // 各半径の球で、プレイヤーが視認範囲・攻撃範囲に入っているかを判定する。
         bool inSight   = Physics.CheckSphere(transform.position, _signtRange, WhatIsPlayer);
         bool inAttack  = Physics.CheckSphere(transform.position, _attackRange, WhatIsPlayer);
         bool inAttack2 = Physics.CheckSphere(transform.position, _attackRange_02, WhatIsPlayer);
@@ -300,7 +300,7 @@ public class EnemySquidController : MonoBehaviour
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    WASD: Move, Mouse: Fishing / Attack
+                                    WASD：移動 ／ マウス：釣り・攻撃
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">

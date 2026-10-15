@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 /// <summary>
 /// ボス（巨大イカ）のAI制御。NavMeshAgent による移動を土台に、
-/// プレイヤーとの「距離」に応じて 巡回 → 追跡 → 近・中・遠距離攻撃 を切り替える
-/// 多段階の行動ロジックを実装。各攻撃はクールダウンで管理し、
+/// プレイヤーとの距離に応じて、巡回・追跡・近距離攻撃・中距離攻撃を切り替える。
+/// 各攻撃はクールダウンで管理し、
 /// 弾は物理計算で算出した放物線軌道でプレイヤーへ撃ち込む。
 /// （担当：ボス戦のAI・戦闘ロジック全般）
 /// </summary>
@@ -28,7 +28,7 @@ public class EnemySquidController : MonoBehaviour
 
     private void Update()
     {
-        // プレイヤーとの距離を各範囲の球で判定（近いほど強力な攻撃へ移行）
+    // 各半径の球で、プレイヤーが視認範囲・攻撃範囲に入っているかを判定する。
         bool inSight   = Physics.CheckSphere(transform.position, _signtRange, WhatIsPlayer);
         bool inAttack  = Physics.CheckSphere(transform.position, _attackRange, WhatIsPlayer);
         bool inAttack2 = Physics.CheckSphere(transform.position, _attackRange_02, WhatIsPlayer);

@@ -45,7 +45,7 @@ public class SaveManager : MonoBehaviour
         Debug.Log("save success");
     }
 
-    /// <summary>JSON ファイルを読み込み、型 T として復元する汎用ロード。</summary>
+    /// <summary>JSON ファイルを読み込み、指定した型 T のデータに戻す。</summary>
     public T LoadDataFromJson<T>(string path)
     {
         if (!File.Exists(path)) return default; // 未保存なら既定値を返す

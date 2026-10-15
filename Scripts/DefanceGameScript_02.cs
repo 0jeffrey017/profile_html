@@ -8,8 +8,8 @@ namespace Enemy.Enemy
     /// <summary>
     /// 敵1種類分のマスターデータを保持する ScriptableObject。
     /// HP・攻撃力・コスト等の数値に加え、移動方法（MoveStrategy）や弾種・エフェクトまで
-    /// データとして外部化することで、プログラマーを介さずプランナーが
-    /// Unity エディタ上で敵を新規作成・バランス調整できるワークフローを実現する。
+    /// データとして保存する。プランナーは Unity エディターで
+    /// 敵の設定を作成し、数値や挙動を調整できる。
     /// Range で入力範囲を制限し、Tooltip で項目を説明し、Header で設定を分類する。
     /// </summary>
     [CreateAssetMenu(menuName = "CreateConfig/EnemyConfig", fileName = "EnemyConfig")]

@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -351,14 +351,14 @@ public partial class BallSimulationManager : MonoBehaviour
     {
         if (!_jobScheduled) return;
 
-        // 一時配列はジョブ完了に依存して破棄（依存付き Dispose で安全に解放）
+        // ジョブの完了後に一時配列を解放するよう、Dispose に依存関係を渡す。
         _inputPositionsCopy.Dispose(_jobHandle);
         _inputVelocitiesCopy.Dispose(_jobHandle);
 
         // LateUpdate でジョブの完了を待ってから結果を反映する
         _jobHandle.Complete();
 
-        // 計算結果を Transform へ反映（描画はメインスレッドの責務）
+        // 計算結果をメインスレッドで Transform へ反映する。
         for (int i = 0; i &lt; _positions.Length; i++)
         {
             // _ballTransforms[i].position = _positions[i]; など
@@ -405,7 +405,7 @@ public partial class BallSimulationManager : MonoBehaviour
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Mouse Click: Spawn Ball
+                                    マウスクリック：ボールを生成
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
