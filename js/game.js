@@ -1,184 +1,60 @@
-// game.js - Background Animation
-
-(function() {
-    "use strict";
-
-    // --- Mobile hamburger navigation (vanilla JS; runs on every page,
-    //     including pages where jQuery is not loaded) ---
-    function initNav() {
-        const toggle = document.querySelector('.nav-toggle');
-        const nav = document.querySelector('.site-nav');
-        if (!toggle || !nav) return;
-
-        function setOpen(open) {
-            nav.classList.toggle('is-open', open);
-            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        }
-
-        toggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            setOpen(!nav.classList.contains('is-open'));
-        });
-
-        // close when a link is tapped
-        nav.addEventListener('click', function (e) {
-            if (e.target.closest('a')) setOpen(false);
-        });
-
-        // close on outside click / Escape
-        document.addEventListener('click', function (e) {
-            if (nav.classList.contains('is-open') &&
-                !nav.contains(e.target) && !toggle.contains(e.target)) {
-                setOpen(false);
-            }
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') setOpen(false);
-        });
+(() => {
+  'use strict';
+  if (document.body.classList.contains('portfolio')) {
+    const background = document.createElement('script');
+    background.src = new URL('sakura-background.js', document.currentScript.src).href;
+    background.async = true;
+    document.head.append(background);
+  }
+  const nav = document.querySelector('.site-nav');
+  const toggle = document.querySelector('.nav-toggle');
+  const setOpen = open => { nav?.classList.toggle('is-open', open); toggle?.setAttribute('aria-expanded', String(open)); };
+  toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  nav?.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('click', e => { if (!nav?.contains(e.target) && !toggle?.contains(e.target)) setOpen(false); });
+  document.querySelectorAll('.code-header').forEach(header => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = header.className; button.innerHTML = header.innerHTML;
+    header.replaceWith(button);
+    button.setAttribute('aria-expanded', String(!button.parentElement.classList.contains('collapsed')));
+    button.addEventListener('click', () => { const folded = button.parentElement.classList.toggle('collapsed'); button.setAttribute('aria-expanded', String(!folded)); });
+  });
+  const overlay = document.getElementById('gameplay-overlay');
+  const play = document.getElementById('play-game-btn');
+  const close = document.getElementById('close-overlay');
+  const iframe = document.getElementById('game-iframe');
+  const start = document.getElementById('start-game-btn');
+  const main = document.querySelector('main');
+  const header = document.querySelector('.site-header');
+  const footer = document.querySelector('.page-footer-mini');
+  function closeGame() {
+    if (!overlay || overlay.style.display === 'none') return;
+    overlay.style.display = 'none'; iframe.src = ''; document.body.style.overflow = '';
+    [main, header, footer].forEach(el => { if (el) el.inert = false; });
+    play.focus();
+  }
+  if (overlay) { overlay.setAttribute('role','dialog'); overlay.setAttribute('aria-modal','true'); overlay.setAttribute('aria-label','ゲームをプレイ'); iframe.title = 'ゲーム画面'; }
+  if (play?.classList.contains('disabled')) play.disabled = true;
+  play?.addEventListener('click', () => {
+    const url = play.dataset.url;
+    if (!url || url === '#') return;
+    if (play.dataset.linkType === 'download') { window.open(url, '_blank', 'noopener,noreferrer'); return; }
+    overlay.style.display = 'flex'; overlay.classList.remove('gameplay-active');
+    document.getElementById('game-container').style.display = 'none';
+    document.getElementById('start-btn-container').style.display = '';
+    document.body.style.overflow = 'hidden';
+    [main, header, footer].forEach(el => { if (el) el.inert = true; }); close.focus();
+  });
+  start?.addEventListener('click', () => { overlay.classList.add('gameplay-active'); document.getElementById('game-container').style.display = 'block'; document.getElementById('start-btn-container').style.display = 'none'; iframe.src = play.dataset.url; });
+  close?.addEventListener('click', closeGame);
+  overlay?.addEventListener('click', e => { if (e.target === overlay) closeGame(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { setOpen(false); closeGame(); }
+    if (e.key === 'Tab' && overlay && overlay.style.display !== 'none') {
+      const items = [...overlay.querySelectorAll('button, iframe, a[href]')].filter(el => el.getClientRects().length && !el.disabled);
+      const first = items[0], last = items.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initNav);
-    } else {
-        initNav();
-    }
-
-    console.log("game.js: Initializing background animation...");
-
-    const canvas = document.getElementById('canvas');
-    if (!canvas) {
-        console.warn("game.js: Canvas element not found.");
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    let W = canvas.width = window.innerWidth;
-    let H = canvas.height = window.innerHeight;
-    const pixels = [];
-    const fov = 250;
-
-    // Initialize pixels
-    for (let x = -400; x < 400; x += 5) {
-        for (let z = -250; z < 250; z += 5) {
-            pixels.push({ x: x, y: 100, z: z });
-        }
-    }
-
-    function render(ts) {
-        // Use 0 if ts is undefined (first frame)
-        const timestamp = ts || 0;
-        
-        const width = Math.floor(W);
-        const height = Math.floor(H);
-        
-        if (width <= 0 || height <= 0) return;
-
-        const len = pixels.length;
-        ctx.fillStyle = 'rgb(155, 224, 173)'; // Original green color
-
-        for (let i = 0; i < len; i++) {
-            const pixel = pixels[i];
-            const scale = fov / (fov + pixel.z);
-            const x2d = Math.round(pixel.x * scale + width / 2);
-            const y2d = Math.round(pixel.y * scale + height / 2);
-
-            if (x2d >= 0 && x2d < width && y2d >= 0 && y2d < height) {
-                // Using 1x1 rects to match original pixel look
-                ctx.fillRect(x2d, y2d, 1, 1);
-            }
-
-            pixel.z -= 0.4;
-            pixel.y = height / 14 + Math.sin(i / len * 15 + (timestamp / 450)) * 10;
-            
-            if (pixel.z < -fov) {
-                pixel.z += 2 * fov;
-            }
-        }
-    }
-
-    function drawFrame(ts) {
-        requestAnimationFrame(drawFrame);
-        ctx.fillStyle = '#f0f0f0';
-        ctx.fillRect(0, 0, W, H);
-        render(ts);
-    }
-
-    window.addEventListener('resize', () => {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-    });
-
-    // Start animation
-    requestAnimationFrame(drawFrame);
-    console.log("game.js: Animation started.");
-
-    // UI Interactions
-    $(function() {
-        console.log("game.js: Initializing UI interactions...");
-        
-        // Code container folding
-        $(document).on('click', '.code-header', function() {
-            $(this).parent('.code-container').toggleClass('collapsed');
-        });
-
-        // Gameplay Overlay Interactions
-        const $overlay = $('#gameplay-overlay');
-        const $instructionScreen = $('#instruction-screen');
-        const $gameContainer = $('#game-container');
-        const $gameIframe = $('#game-iframe');
-
-        $('#play-game-btn').on('click', function() {
-            const gameUrl = $(this).data('url');
-            if (!gameUrl || gameUrl === '#') return;
-            if ($(this).data('link-type') === 'download') {
-                window.open(gameUrl, '_blank', 'noopener,noreferrer');
-                return;
-            }
-
-            $overlay.fadeIn(300);
-            $overlay.removeClass('gameplay-active');
-            $instructionScreen.show();
-            $('#start-btn-container').show(); // Show start button
-            $gameContainer.hide();
-            $gameIframe.attr('src', '');
-            
-            // Store URL for start button
-            $('#start-game-btn').data('url', gameUrl);
-        });
-
-        $('#start-game-btn').on('click', function() {
-            const gameUrl = $(this).data('url');
-            $overlay.addClass('gameplay-active');
-            $('#start-btn-container').hide(); // Hide button after start
-            $gameContainer.fadeIn(300);
-            $gameIframe.attr('src', gameUrl);
-        });
-
-        $('#close-overlay').on('click', function(e) {
-            e.stopPropagation();
-            $overlay.fadeOut(300, function() {
-                $gameIframe.attr('src', '');
-                $overlay.removeClass('gameplay-active');
-            });
-        });
-
-        // Close overlay on background click
-        $overlay.on('click', function(e) {
-            if (e.target === this) {
-                $overlay.fadeOut(300, function() {
-                    $gameIframe.attr('src', '');
-                });
-            }
-        });
-
-        // Close overlay on ESC key
-        $(document).on('keydown', function(e) {
-            if (e.key === "Escape" && $overlay.is(':visible')) {
-                $overlay.fadeOut(300, function() {
-                    $gameIframe.attr('src', '');
-                });
-            }
-        });
-    });
-
+  });
 })();

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Projects / 制作実績 | Jeffrey LEE</title>
-    <meta name="description" content="リイショウケツ（Jeffrey LEE）の制作実績。Unity・C#を中心としたゲーム開発プロジェクトをカルーセルで紹介。">
+    <meta name="description" content="リイショウケツ（Jeffrey LEE）の制作実績。Unity・C#を中心としたゲーム作品と、担当内容・実装例を紹介。">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games.html">
 
@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -49,54 +49,20 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/pages.css">
+<link rel="stylesheet" href="css/portfolio.css?v=20261015">
 </head>
 
-<body class="page games-page">
+<body class="page games-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="index.html">About / 自己紹介</a></li>
-                    <li><a href="games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="background.html">Background / 経歴</a></li>
-                    <li><a href="contact.html">Contact / 連絡先</a></li>
-                    <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="index.html"><span>01</span>About</a></li><li><a href="games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="background.html"><span>03</span>Background</a></li><li><a href="contact.html"><span>04</span>Contact</a></li><li><a href="Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
-        <main class="page-main" id="main-content">
+        <main class="page-main" id="main-content"><div class="page-heading"><p class="eyebrow-label">02 / 制作作品</p><h1>Works<span>.</span></h1><p>ゲーム制作と技術検証。各作品で担当した実装・課題・コードを紹介します。</p></div><div class="filter-bar" role="group" aria-label="制作形態で絞り込み"><button class="filter-button" data-filter="all" aria-pressed="true">すべて</button><button class="filter-button" data-filter="team" aria-pressed="false">チーム制作</button><button class="filter-button" data-filter="solo" aria-pressed="false">個人制作</button><span class="results-count" aria-live="polite" id="results-count"></span></div><section class="featured-games" id="featured-games" aria-labelledby="featured-title"><h2 class="featured-heading" id="featured-title">Selected works / 代表作品</h2><div class="featured-list" id="featured-list"></div></section><hr class="page-main-Line"><section class="featured-games" id="all-games" aria-labelledby="all-title"><h2 class="featured-heading" id="all-title">More projects / その他の作品</h2><div class="games-grid" id="games-grid"><p class="loading-message">作品を読み込んでいます。</p></div></section></main>
 
-            <section class="featured-games" id="featured-games" aria-label="イチオシ作品 / Featured">
-                <h2 class="featured-heading">★ イチオシ作品 / Top pick</h2>
-                <div class="featured-list" id="featured-list">
-                    <!-- games-carousel.js が動的に生成 -->
-                </div>
-            </section>
-            <hr class="page-main-Line">
-
-            <section class="featured-games" id="all-games" aria-label="ゲーム作品 / Games">
-                <h2 class="featured-heading">ゲーム作品 / Games</h2>
-                <div class="games-grid" id="games-grid">
-                    <!-- games-carousel.js が動的に生成 -->
-                </div>
-            </section>
-            
-        </main>
-
-        <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
-        </div>
+        <footer class="page-footer-mini"><span>© 2026 Jeffrey LEE</span><span>GAME PROGRAMMER / PORTFOLIO</span><a href="index.html">Back to home ↑</a></footer>
     </div>
 
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/game.js"></script>
     <script src="js/games-carousel.js"></script>
 </body>

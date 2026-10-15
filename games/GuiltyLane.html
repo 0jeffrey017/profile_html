@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">Guilty Lane</h1>
                 <p class="detail-subtitle">Dark Adventure Game / Hackathon Work</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>チーム開発(プログラマー5人)</dd></div><div><dt>制作期間</dt><dd>4か月</dd></div><div><dt>私の担当</dt><dd>メインアイテムシステム・イベントフラグ管理</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
                 </div>
@@ -92,31 +78,32 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>借金を抱えた主人公は、ある企業の「線路管理業務」に雇われる。その作業は、レバーを引いてトロッコの行き先を決めるだけだった。だがその先には、必ず“誰か”がいる──。これは選ぶ者が背負う“罪の軌道”の物語。究極の選択が今始まる。</p>
+                                <p>借金を抱えた主人公が「線路管理業務」に就き、レバーでトロッコの行き先を選ぶ物語です。選択によって誰かの運命が変わる状況を描きます。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 2022.3.61f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
-                                        <span class="meta-value">4ヶ月</span>
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">4か月</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-label">対応環境</span>
                                         <span class="meta-value">調整中</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
     <li>メインアイテムシステム・イベントフラグ管理</li>
@@ -129,9 +116,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/Guilty_Lane_image.webp" alt="Guilty Lane Screenshot" loading="lazy">
-                                </div>
+                                <div class="game-detail-image"><img src="../Image/GameImage/Guilty_Lane_image.webp" alt="Guilty Laneの作品画像" loading="lazy"></div>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button disabled" data-url="" data-link-type="play">
@@ -145,19 +130,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>複数人開発における、ゲーム内データ構造およびイベント仕様の統一</p>
+                    <p>複数人で制作するため、データ構造とイベントの仕様を揃える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>仕様書の綿密なドキュメント化と定例会議の実施により、認識の乖離やアセットの不整合を徹底的に防止</p>
+                    <p>仕様を文書にまとめ、定例の打ち合わせで確認しながら、データとイベントの扱いを調整しました。</p>
                 </div>
 
             </div>
@@ -172,9 +157,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">抽象基底ItemSOBaseを継承しUseItem()を書くだけで新アイテムを追加でき、既存コードを変更しない（開放閉鎖原則）。効果はGameContextのイベントフラグ経由で本体に伝搬させ、UIとロジックを疎結合に維持。プランナーがエディタ上でアイテムを量産できるワークフローも実現</div>
+                    <div class="code-explanation">アイテム共通のデータをItemSOBaseにまとめ、使用時の効果は派生クラスへ分けています。インベントリ側は共通のUseItemを呼ぶため、効果ごとの分岐を持たずに扱えます。</div>
                     <div class="code-container">
                         <div class="code-header">ScriptableObjectによる拡張可能なアイテムシステム</div>
                         <pre><code class="language-csharp">using UnityEngine;
@@ -209,7 +194,7 @@ public abstract class ItemSOBase : ScriptableObject
 }
 
 /// &lt;summary&gt;
-/// 具体アイテムの例：「投資」。10%の確率で相続が5倍になるハイリスクな賭け。
+/// 具体アイテムの例：「投資」。乱数の条件に応じて結果のフラグを設定する。
 /// 効果は context のイベントフラグを立てるだけに留め、実際の倍率反映は
 /// ゲーム本体が同フラグを参照して行う（責務の分離）。
 /// &lt;/summary&gt;
@@ -218,7 +203,7 @@ public class Investment : ItemSOBase
 {
     public override void UseItem(GameContext context)
     {
-        // 10% を引ければ成功フラグを立てる
+        // 0〜99 の乱数が 10 以下なら成功フラグを立てる
         if (Random.Range(0, 100) &lt;= 10)
         {
             context.IsInvestmentEffect = true;
@@ -318,11 +303,9 @@ public class NewInventoryManager : MonoBehaviour
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

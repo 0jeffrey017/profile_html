@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">{{TITLE}}</h1>
                 <p class="detail-subtitle">{{SUBTITLE}}</p>
+                {{REVIEW_SUMMARY}}
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     <!-- TECHNICAL_IMAGE_START -->
                     <button type="button" class="tab-btn" data-tab="technical">技術図 / Technical</button>
                     <!-- TECHNICAL_IMAGE_END -->
@@ -96,29 +82,30 @@
                                 <h3>Overview / 概要</h3>
                                 {{OVERVIEW}}
                             </div>
+                            {{REVIEW_FOCUS}}
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">{{ENGINE}}</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
+                                        <span class="meta-label">制作期間</span>
                                         <span class="meta-value">{{PERIOD}}</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
+                                        <span class="meta-label">対応環境</span>
                                         <span class="meta-value">{{PLATFORM}}</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
+                                        <span class="meta-label">プレイ人数</span>
                                         <span class="meta-value">{{PLAYERS}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     {{RESPONSIBLE}}
                                 </div>
@@ -143,9 +130,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../{{IMAGE_PATH}}" alt="{{TITLE}} Screenshot" loading="lazy">
-                                </div>
+                                {{LOCAL_PREVIEW}}
                                 <!-- VIDEO_START -->
                                 <div class="sidebar-video">
                                     <div class="video-container">
@@ -171,7 +156,7 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             {{CHALLENGES_SOLUTIONS}}
                         </div>
@@ -182,7 +167,7 @@
                 <!-- TECHNICAL_IMAGE_START -->
                 <section class="tab-panel" data-panel="technical">
                     <div class="content-block">
-                        <h3>Technical Image / 技術図</h3>
+                        <h3>設計・処理の流れ / Architecture &amp; Flow</h3>
                         <div class="game-detail-image tech-image">
                             <a href="../{{GAME_TECHNICAL_IMAGE}}" target="_blank">
                                 <img src="../{{GAME_TECHNICAL_IMAGE}}" alt="{{TITLE}} Technical Diagram" loading="lazy">
@@ -195,7 +180,7 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     <!-- CODE_SAMPLES_START -->
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     {{CODE_SAMPLES}}
                     <!-- CODE_SAMPLES_END -->
                 </section>
@@ -256,11 +241,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

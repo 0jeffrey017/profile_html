@@ -30,7 +30,7 @@ public abstract class ItemSOBase : ScriptableObject
 }
 
 /// <summary>
-/// 具体アイテムの例：「投資」。10%の確率で相続が5倍になるハイリスクな賭け。
+/// 具体アイテムの例：「投資」。乱数の条件に応じて結果のフラグを設定する。
 /// 効果は context のイベントフラグを立てるだけに留め、実際の倍率反映は
 /// ゲーム本体が同フラグを参照して行う（責務の分離）。
 /// </summary>
@@ -39,7 +39,7 @@ public class Investment : ItemSOBase
 {
     public override void UseItem(GameContext context)
     {
-        // 10% を引ければ成功フラグを立てる
+        // 0〜99 の乱数が 10 以下なら成功フラグを立てる
         if (Random.Range(0, 100) <= 10)
         {
             context.IsInvestmentEffect = true;

@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">回れ回れ</h1>
                 <p class="detail-subtitle">Rhythm Game</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>14日</dd></div><div><dt>私の担当</dt><dd>企画・設計・実装（個人制作）</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
                 </div>
@@ -92,34 +78,35 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>楽曲に同期して落下するノーツを、レーンごとのキー入力でタイミングよく叩くリズムアクションゲームです。Perfect / Good / Bad / Miss の判定システムと、譜面（チャート）データ駆動の再生処理を実装しました。</p>
+                                <p>楽曲に合わせて落下するノーツを、レーンごとのキー入力で叩くリズムゲームです。JSON形式の譜面を読み込み、ノーツの判定時刻と入力時刻の差からPerfect・Good・Badを判定します。判定時間を過ぎたノーツはMissとして扱います。</p>
                             </div>
+                            
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 6000.3.8f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
+                                        <span class="meta-label">制作期間</span>
                                         <span class="meta-value">14日</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows, WebGL)</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows・WebGL）</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>個人製作（企画・設計・実装の全工程を担当）</li>
+    <li>企画・設計・実装（個人制作）</li>
 </ul>
                                 </div>
                             </div>
@@ -142,9 +129,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/RhythmGame_image.webp" alt="回れ回れ Screenshot" loading="lazy">
-                                </div>
+                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/RhythmGame_image.webp" aria-label="回れ回れのプレイ動画"><source src="../Image/GameImage/RhythmGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/RhythmGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260620_RhythmGame/" data-link-type="play">
@@ -158,19 +143,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>入力タイミングを正確に判定し、Perfect/Good/Bad/Missを破綻なく振り分ける</p>
+                    <p>ノーツの判定時刻と入力時刻の差を比較し、各レーンで正しく判定する必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>レーンごとにノーツをQueueで保持し、常に先頭（最も古い未判定ノーツ）と入力時刻の差分を比較。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理する判定ロジックを構築</p>
+                    <p>レーンごとのキューで次のノーツを管理し、入力との時間差で判定します。判定時間を過ぎたノーツはUpdateでMissとして処理します。</p>
                 </div>
 
             </div>
@@ -179,12 +164,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>大量のノーツを生成・破棄するためのGCスパイク（処理落ち）の懸念</p>
+                    <p>多数のノーツの生成と破棄による負荷を抑える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>オブジェクトプール（NotePool）パターンを導入。ノーツの使い回しに加え、プール再利用を検知するUseIdで「自分のオブジェクト」のみを安全に返却する仕組みを実装</p>
+                    <p>NotePoolでノーツを再利用します。UseIdを照合し、再利用された別のノーツを誤って返却しないようにしました。</p>
                 </div>
 
             </div>
@@ -199,9 +184,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">レーンごとにActiveNoteをQueueで保持し、入力時に先頭ノーツとの時間差からPerfect/Good/Bad/Missを判定。許容窓を超えた遅れノーツはUpdateで見逃しMissとして処理。プール再利用を検知するUseIdで、返却すべき視覚オブジェクトの取り違えを防ぐ核心ロジック</div>
+                    <div class="code-explanation">レーンごとのキューで次のノーツを管理し、入力との時間差からPerfect・Good・Badを判定します。判定時間を過ぎたノーツはMissとして処理します。UseIdを照合し、再利用された別のノーツを誤って返却しないようにしています。</div>
                     <div class="code-container">
                         <div class="code-header">レーンQueueによるノーツ判定システム</div>
                         <pre><code class="language-csharp">using System;
@@ -213,7 +198,7 @@ namespace RhythmGame
     /// &lt;summary&gt;
     /// 現在落下中のノーツをレーンごとにヒット時刻順で保持する。
     /// これにより、キー入力時にそのレーンで最も古い未判定ノーツを即座に取得できる。
-    /// 判定ロジック（Perfect/Good/Miss）はStep2で追加。
+    /// 入力との時間差を判定し、時間を過ぎたノーツを Miss として処理する。
     /// &lt;/summary&gt;
     public class JudgementManager : MonoBehaviour
     {
@@ -268,7 +253,7 @@ namespace RhythmGame
 
             float now = chartPlayer.SongTime;
 
-            // 入力されないままヒット窓を完全に過ぎたノーツはMiss。
+            // 入力されないまま判定時間を過ぎたノーツは Miss。
             // 各Queueの先頭が最も古いので、そこから順に処理していく。
             for (int lane = 0; lane &lt; _laneQueues.Length; lane++)
             {
@@ -414,11 +399,9 @@ namespace RhythmGame
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>

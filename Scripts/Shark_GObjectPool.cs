@@ -3,13 +3,13 @@ using UnityEngine.Pool;
 
 /// <summary>
 /// 大量に出現・消滅する食べ物オブジェクトを使い回すためのオブジェクトプール。
-/// Instantiate / Destroy の頻発による GC スパイク（処理落ち）を防ぐため、
+/// Instantiate / Destroy の回数を減らすため、
 /// Unity 標準の ObjectPool をラップし、生成時の初期化処理を一元化する。
 /// </summary>
 public class GObjectPool
 {
     private readonly ObjectPool<GameObject> _pool;
-    private readonly int _defaultNumber = 30; // 事前確保数
+    private readonly int _defaultNumber = 30; // プールの初期容量（オブジェクトの事前生成数ではない）
     private readonly int _maxSize = 100;       // 上限（超過分は破棄）
 
     public GObjectPool(GameObject prefab, int layerID, int defaultNumber = 30, int maxSize = 100)
@@ -35,7 +35,7 @@ public class GObjectPool
         return go;
     }
 
-    /// <summary>使い終えたオブジェクトをプールへ返却する（Destroy しない）。</summary>
+    /// <summary>使い終えたオブジェクトを返却する。保持数の上限を超えた分は破棄する。</summary>
     public void Return(GameObject g) => _pool.Release(g);
 
     /// <summary>

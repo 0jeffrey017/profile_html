@@ -11,8 +11,8 @@ namespace State
     /// ゲーム全体の進行を制御する有限ステートマシン（FSM）。
     /// 各状態（State）は OnEnter → RunState → OnExit のライフサイクルを持ち、
     /// UniTask により「状態の実行完了」を await で待つことで、複雑なゲーム進行を
-    /// コールバックに頼らず直線的かつ堅牢に記述できる。
-    /// CancellationToken でシーン破棄・アプリ終了時の安全な中断も保証する。
+    /// 処理の順序に沿って記述できる。
+    /// CancellationToken でアプリ終了時のキャンセル要求を受け取る。
     /// </summary>
     public static class GameStateMachine
     {
@@ -58,7 +58,7 @@ namespace State
             }
             finally
             {
-                // 終了処理は必ず通る finally に集約し、リソース解放とシーン遷移を保証
+                // finally に終了時のリソース解放とシーン遷移をまとめる
                 _tokenSource.Dispose();
                 _tokenSource = null;
                 SceneManager.LoadScene("Result");

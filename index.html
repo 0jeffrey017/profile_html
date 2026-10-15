@@ -34,7 +34,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -71,101 +71,147 @@
       "knowsAbout": ["Unity", "C#", "C++", "Game Programming", "FSM", "Dependency Injection", "MVP architecture"]
     }
     </script>
+    <link rel="stylesheet" href="css/portfolio.css?v=20261015">
 </head>
 
-<body class="page">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
+<body class="page portfolio">
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
+        <header class="site-header"><a class="logo" href="index.html" aria-label="Jeffrey LEE ホーム"><span
+                    class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME
+                        PROGRAMMER</small></span></a>
+            <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
                 <ul>
-                    <li><a href="index.html" class="is-active">About / 自己紹介</a></li>
-                    <li><a href="games.html">Games / ゲーム</a></li>
-                    <li><a href="background.html">Background / 経歴</a></li>
-                    <li><a href="contact.html">Contact / 連絡先</a></li>
-                    <li><a href="Resume/Resume.html">Resume / 履歴書</a></li>
+                    <li><a href="index.html" class="is-active" aria-current="page"><span>01</span>About</a></li>
+                    <li><a href="games.html"><span>02</span>Works</a></li>
+                    <li><a href="background.html"><span>03</span>Background</a></li>
+                    <li><a href="contact.html"><span>04</span>Contact</a></li>
+                    <li><a href="Resume/Resume.html"><span>05</span>Resume</a></li>
                 </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            </nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav"
+                aria-expanded="false"><span></span><span></span><span></span></button>
         </header>
 
-        <main class="page-main" id="main-content">
-            <div class="profile-layout">
-                <!-- 左：プロフィール -->
-                <div class="profile-rail">
-                    <img src="Image/Jeffrey_image.jpg" alt="Jeffrey LEE Profile" class="profile-img">
-                    <h1 class="hero-title"><span class="highlight">リイショウケツ</span><br><span class="highlight">Jeffrey LEE</span></h1>
-                    <h2 class="hero-subtitle">Game Developer &amp; Engineer</h2>
-                    <div class="hero-chips">
-                        <span class="hero-chip">Unity</span>
-                        <span class="hero-chip">C#</span>
-                        <span class="hero-chip">C/C++</span>
-                        <span class="hero-chip">CI/CD</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">7チーム中 2位</span>
-                        <span class="hero-stat-label">企業連携プロジェクト・準優勝</span>
-                    </div>
-                    <p class="hero-tagline">
-                        Unity・C#を中心としたゲームプログラマー。<strong>企業連携プロジェクトでメインプログラマーを務め準優勝</strong>。
-                        FSM・DI・MVPなどモダンな設計で「チームで作りやすく、変化に強いコード」を追求します。
-                    </p>
+        <main class="portfolio-home" id="main-content">
+            <div class="page-eyebrow"><span>PORTFOLIO / 2026</span><span class="status-label">2028年3月 卒業見込み</span></div>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-copy">
+                    <p class="eyebrow-label hero-role">UNITY / C# · GAME PROGRAMMER</p>
+                    <h1 id="hero-title">ゲームの流れを、<br>設計から実装まで<span>。</span></h1>
+                    <p class="hero-name">リイショウケツ <span>/ Jeffrey LEE</span></p>
+                    <p class="hero-description">
+                        ゲーム進行・マップ生成・非同期処理を中心に、Unityでゲームを開発しています。チーム制作ではシステム同士の連携を担当し、遊びの流れを支える実装に取り組んでいます。</p>
+                    <div class="hero-actions"><a class="action-primary" href="#selected-works">代表作品を見る <span
+                                class="arrow">↗</span></a><a class="action-secondary"
+                            href="https://github.com/0jeffrey017" target="_blank" rel="noopener noreferrer">GitHub
+                            <span>↗</span></a><a class="hero-resume" href="Resume/Resume.html">履歴書を見る →</a></div>
                 </div>
-
-                <!-- 中央：自己紹介 -->
-                <div class="profile-col">
-                    <h3>About Me / 自己紹介</h3>
-                    <p class="bio-text">
-                        台湾出身。食品科学を専攻後、5年間のカスタマーエンジニア経験を経て、
-                        2025年より東京デザイナーテクノロジーセンター専門学校にてゲームプログラミングを学んでいます。
-                        <br><br>
-                        中学生のころ『ソードアート・オンライン』に出会い、
-                        「プレイヤーが心から没入できる体験」をつくる側に立ちたいという思いを抱き続けてきました。
-                        その夢に向かって、Unity・C#を中心に実践的な開発に取り組んだ結果、
-                        企業連携プロジェクトではメインプログラマーとして全7チーム中準優勝を達成しました。
-                        <br><br>
-                        技術面では、VContainer・UniTask・Unity DOTSなどのモダンな設計を積極的に採用し、
-                        「チームで作りやすく、変化に強いコード」を常に意識しています。
-                        また、JLPT N1・基本情報技術者試験の取得を通じ、日本語での高度な技術議論と
-                        情報科学の基礎力も証明してきました。
-                    </p>
-                    <div class="content-block self-pr-block">
-                        <h4>自己PR</h4>
-                        <p class="bio-text">
-                            異業種から1年弱でゲーム開発の実務レベルに到達し、企業連携プロジェクトでは
-                            メインプログラマーとして全7チーム中準優勝という結果に結びつけました。
-                            FSM・DI・MVPといった設計原則を独学で習得し、即座に実プロジェクトへ適用できる
-                            学習速度と実装力が強みです。日本語でのコミュニケーション力（JLPT N1）と
-                            情報科学の基礎（基本情報技術者試験）を併せ持ち、技術と対話の両面でチームに貢献します。
+                <div class="hero-visual">
+                    <div class="visual-topline"><span>FEATURED PROJECT / 01</span><span>TEAM DEVELOPMENT</span></div><a
+                        class="hero-artwork" href="games/Crescent_Moon.html"><img
+                            src="Image/GameImage/Crescent_Moon_image.webp" alt="廻り月 — 作品詳細を見る" width="3508"
+                            height="2480"></a>
+                    <div class="visual-bottomline"><strong>廻り月</strong><span>Unity / C# <span
+                                aria-hidden="true">↗</span></span></div><span class="hero-annotation">TOKYO GAME SHOW
+                        2026</span>
+                </div>
+            </section>
+            <dl class="career-highlights" aria-label="制作実績の要点">
+                <div>
+                    <dt>企業連携プロジェクト</dt>
+                    <dd><strong>2位<span> / 7チーム</span></strong>
+                        <p>メインプログラマーとして参加</p>
+                    </dd>
+                </div>
+                <div>
+                    <dt>東京ゲームショウ2026</dt>
+                    <dd><strong>出展作品</strong>
+                        <p>『廻り月』でプログラマーリーダーを担当</p>
+                    </dd>
+                </div>
+                <div>
+                    <dt>ゲームプログラマー志望</dt>
+                    <dd><strong>2028<span>年3月 卒業見込み</span></strong>
+                        <p>TECH.C. / 台湾出身・東京で学習中</p>
+                    </dd>
+                </div>
+            </dl>
+            <div class="expertise-strip"><span>DEVELOPMENT TOOLKIT</span><strong>Unity</strong><strong>C# /
+                    C++</strong><strong>VContainer</strong><strong>R3 / UniTask</strong><strong>Git / GitHub</strong>
+            </div>
+            <section class="section-block" id="selected-works">
+                <div class="section-top">
+                    <h2>Selected works<small>担当と実装から見る代表作品</small></h2><a class="text-link" href="games.html">すべての作品
+                        <span>↗</span></a>
+                </div>
+                <div class="work-grid" id="home-featured">
+                    <p class="loading-message">作品を読み込んでいます。</p>
+                </div>
+            </section>
+            <section class="section-block">
+                <div class="section-top">
+                    <h2>What I build<small>技術・設計</small></h2>
+                </div>
+                <div class="skills-grid">
+                    <article class="skill-entry"><span class="eyebrow-label">01 / ARCHITECTURE</span>
+                        <h3>ゲームの流れを設計する</h3>
+                        <p>状態ごとの役割を分け、演出や読み込みを含むゲーム進行を実装しています。</p>
+                        <p class="skill-tools">FSM / UniTask / イベント駆動</p><a class="text-link"
+                            href="games/Crescent_Moon.html#code">状態遷移のコードを見る →</a>
+                    </article>
+                    <article class="skill-entry"><span class="eyebrow-label">02 / IMPLEMENTATION</span>
+                        <h3>変更しやすい構成を考える</h3>
+                        <p>依存関係と表示処理を整理し、機能の追加や調整に対応できる構成を学んでいます。</p>
+                        <p class="skill-tools">VContainer / MVP / R3</p><a class="text-link"
+                            href="games/VContainerDIExperiment.html#code">DI・MVPの実装を見る →</a>
+                    </article>
+                    <article class="skill-entry"><span class="eyebrow-label">03 / OPTIMIZATION</span>
+                        <h3>処理と作業の負荷を減らす</h3>
+                        <p>Job SystemとBurstを使った並列計算を検証し、ビルド・公開手順の自動化にも取り組んでいます。</p>
+                        <p class="skill-tools">Job System / Burst / GitHub Actions</p><a class="text-link"
+                            href="games/UnityJobSystemBurstCompiler.html#code">並列計算の実装を見る →</a>
+                    </article>
+                </div>
+            </section>
+            <section class="section-block" id="about">
+                <div class="section-top">
+                    <h2>About me<small>自己紹介</small></h2><a class="text-link" href="background.html">経歴・資格
+                        <span>↗</span></a>
+                </div>
+                <div class="about-layout">
+                    <div class="about-id"><img class="about-portrait" src="Image/Jeffrey_image.jpg" alt="リイショウケツ"
+                            loading="lazy" width="152" height="184">
+                        <h3>リイショウケツ</h3>
+                        <p>Jeffrey LEE<br>Game programmer / Taiwan → Tokyo</p>
+                    </div>
+                    <div class="about-prose">
+                        <p>台湾出身です。東海大学で食品科学を学んだ後、カスタマーエンジニアとして約4年半勤務しました。2025年4月から、TECH.C.東京デザインテクノロジーセンター専門学校でゲームプログラミングを学んでいます。<br><br>中学生のころに『ソードアート・オンライン』に出会い、プレイヤーが物語や世界に没入できるゲームを作りたいと考えるようになりました。現在はUnityとC#を中心に、個人制作とチーム制作に取り組んでいます。
+                        </p>
+                        <h3>制作で大切にしていること</h3>
+                        <p>学んだ技術を制作に取り入れ、課題の解決につなげることが強みです。『廻り月』では、演出や読み込み中に状態遷移が重なる問題に対し、遷移要求を順番に処理する仕組みを実装しました。<br><br>設計では、処理の役割を分け、変更がほかの機能に及ぼす影響を抑えることを意識しています。FSM・DI・MVPなどの手法も、制作中の課題に合わせて取り入れています。
+                        </p>
+                        <h3>これから取り組みたいこと</h3>
+                        <p>今後はC++のメモリ管理や並列処理への理解を深め、大量のオブジェクトを扱うゲームの処理負荷を軽減できるようになりたいと考えています。<br><br>また、リアルタイム通信やマルチプレイの仕組みに関心があります。通信の遅延や切断も考慮し、安定して遊べるゲームを作るための知識を身につけたいです。ビルドの自動化など、チームの作業を支える開発環境の改善にも取り組んでいきます。
                         </p>
                     </div>
                 </div>
-
-                <!-- 右：今後の展望 -->
-                <div class="profile-col">
-                    <h3>The Future / 今後の展望</h3>
-                    <p class="bio-text">
-                        大切にしているのは、「動くものを作る」ことに留まらず、<strong>チームと事業に長期的な価値を残す設計</strong>を追求する姿勢です。C/C++による低レイヤーへの理解を土台に、UnityとDOTSを活用した大規模・高パフォーマンスなタイトル開発で、技術的な意思決定を担えるエンジニアへ成長していきたいと考えています。
-                        <br><br>
-                        また、リアルタイム通信やマルチプレイ基盤といった、<strong>安定性と拡張性が事業の生命線となる領域</strong>に強い関心があります。仕様変更や規模拡大に耐えうるアーキテクチャを設計し、プロダクトの寿命を延ばすことで開発組織に貢献したいです。
-                        <br><br>
-                        加えて、CI/CDによる自動化や開発フローの改善を通じて、<strong>チーム全体の生産性を底上げする</strong>取り組みにも継続して挑戦します。周囲を巻き込みながらプロダクトを前進させられる人材を目指しています。
-                    </p>
-                </div>
-            </div>
+            </section>
+            <section class="contact-callout">
+                <div>
+                    <p class="eyebrow-label">LET’S CONNECT</p>
+                    <h2>お問い合わせ</h2>
+                    <p>ご連絡はメール、または各プロフィールからお願いします。</p>
+                </div><a class="action-primary" href="contact.html">連絡先を見る <span>↗</span></a>
+            </section>
         </main>
 
-        <div class="page-footer-mini">
-            &copy; 2026 Jeffrey LEE. All rights reserved.
-        </div>
+        <footer class="page-footer-mini"><span>© 2026 Jeffrey LEE</span><span>GAME PROGRAMMER / PORTFOLIO</span><a
+                href="index.html">Back to home ↑</a></footer>
     </div>
 
     <!-- Scripts -->
     <script src="js/game.js"></script>
+    <script src="js/games-carousel.js"></script>
 </body>
 
 </html>

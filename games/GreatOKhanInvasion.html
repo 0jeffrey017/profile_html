@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>グレート-O-カーンの侵略物語 | Jeffrey LEE</title>
-    <meta name="description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta name="description" content="グレート-O-カーンの侵略物語 - 2D Run Game / Industry Collaboration">
     <meta name="author" content="リイショウケツ / Jeffrey LEE">
     <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/GreatOKhanInvasion.html">
 
@@ -18,7 +18,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Jeffrey LEE Portfolio">
     <meta property="og:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
-    <meta property="og:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta property="og:description" content="グレート-O-カーンの侵略物語 - 2D Run Game / Industry Collaboration">
     <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RunGame_image.webp">
     <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/GreatOKhanInvasion.html">
     <meta property="og:locale" content="ja_JP">
@@ -26,14 +26,14 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="グレート-O-カーンの侵略物語 | Jeffrey LEE">
-    <meta name="twitter:description" content="グレート-O-カーンの侵略物語 - 2D Endless Run Game / Enterprise Collaboration">
+    <meta name="twitter:description" content="グレート-O-カーンの侵略物語 - 2D Run Game / Industry Collaboration">
     <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/RunGame_image.webp">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -43,7 +43,6 @@
 
     <!-- CSS Reset & Libs -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/base.css">
@@ -51,35 +50,22 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
 </head>
 
-<body class="game-detail-page">
+<body class="game-detail-page portfolio">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <canvas id="canvas"></canvas>
     <div class="container">
-        <header class="site-header">
-            <div class="logo">リイショウケツ/Jeffrey LEE</div>
-            <nav class="site-nav" id="site-nav">
-                <ul>
-                    <li><a href="../index.html">About / 自己紹介</a></li>
-                    <li><a href="../games.html" class="is-active">Games / ゲーム</a></li>
-                    <li><a href="../background.html">Background / 経歴</a></li>
-                    <li><a href="../contact.html">Contact / 連絡先</a></li>
-                    <li><a href="../Resume/Resume.html">Resume / 履歴書</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </header>
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
         <main class="game-detail-main" id="main-content">
             <div class="detail-head">
                 <h1 class="detail-title">グレート-O-カーンの侵略物語</h1>
-                <p class="detail-subtitle">2D Endless Run Game / Enterprise Collaboration</p>
+                <p class="detail-subtitle">2D Run Game / Industry Collaboration</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>チーム開発(プランナー1人/プログラマー5人/2Dデザイナー1人/3Dデザイナー1人)</dd></div><div><dt>制作期間</dt><dd>4か月</dd></div><div><dt>私の担当</dt><dd>ゲーム全体の設計とメインシステムの実装 / Input SystemによるPC・モバイルの入力制御</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
-                    <button type="button" class="tab-btn" data-tab="problems">問題解決 / Solutions</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="technical">技術図 / Technical</button>
                     
@@ -94,38 +80,39 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>ドミネーターとして世界を支配するために突き進むステージ制ランゲーム。綿密な設計思想に基づいた、高品質なアーキテクチャの構築を目指しました。</p>
+                                <p>世界の支配を目指してステージを進むランゲームです。メインプログラマーとして、ゲーム進行、入力制御、マップ生成、データ管理を担当しました。</p><p>企業連携プロジェクトで全7チーム中2位を獲得した作品です。</p>
                             </div>
+                            <section class="review-focus" aria-label="実装の見どころ"><h2>実装の見どころ</h2><p>プログラマー5人のチームでメインシステムを担当。FSMで進行処理を整理し、MVPでUIとゲームロジックの役割を分けました。</p><a class="text-link" href="#problems" data-tab-target="problems">課題と対応を読む →</a> <a class="text-link" href="#code" data-tab-target="code">コード抜粋を読む →</a></section>
                             <div class="content-block">
-                                <h3>Information / 情報</h3>
+                                <h3>作品情報</h3>
                                 <div class="overview-meta">
                                     <div class="meta-item">
-                                        <span class="meta-label">Engine</span>
+                                        <span class="meta-label">開発環境</span>
                                         <span class="meta-value">Unity 2022.3.61f1</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Period</span>
-                                        <span class="meta-value">4ヶ月</span>
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">4か月</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Platform</span>
-                                        <span class="meta-value">PC (Windows, WebGL), Mobile</span>
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows・WebGL）、モバイル</span>
                                     </div>
                                     <div class="meta-item">
-                                        <span class="meta-label">Players</span>
-                                        <span class="meta-value">Single Player（1人用）</span>
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="content-block">
-                                <h3>Responsible part / 担当部分</h3>
+                                <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>ゲーム全体のメインシステムおよびアーキテクチャの設計</li>
-    <li>New Input Systemを用いた、PC・モバイル両対応のマルチプラットフォーム入力制御</li>
-    <li>有限ステートマシン（FSM）によるゲーム全体のフローおよびキャラクターアクションの管理</li>
-    <li>ステージマップの動的生成およびアイテムの確率ベースランダムスポーンシステムの構築</li>
-    <li>ScriptableObjectを用いたマスターデータ管理システムの設計（ゲームバランス調整の容易化）</li>
+    <li>ゲーム全体の設計とメインシステムの実装</li>
+    <li>Input SystemによるPC・モバイルの入力制御</li>
+    <li>FSMによるゲーム進行とキャラクターの状態管理</li>
+    <li>ステージマップの動的生成と、確率に応じたアイテム配置</li>
+    <li>ScriptableObjectによるマスターデータ管理</li>
 </ul>
                                 </div>
                             </div>
@@ -146,9 +133,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <div class="game-detail-image">
-                                    <img src="../Image/GameImage/RunGame_image.webp" alt="グレート-O-カーンの侵略物語 Screenshot" loading="lazy">
-                                </div>
+                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/RunGame_image.webp" aria-label="グレート-O-カーンの侵略物語のプレイ動画"><source src="../Image/GameImage/RunGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/RunGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://www.njpw.co.jp/games/great-o-khan/" data-link-type="play">
@@ -162,19 +147,19 @@
                 <!-- ===== 問題解決 パネル ===== -->
                 <section class="tab-panel" data-panel="problems">
                     <div class="content-block">
-                        <h3>Challenges &amp; Solutions / 問題点と解決方法</h3>
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
                         <div>
                             
             <div class="challenge-card">
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>ゲーム全体の進行フローやイベントが複雑化し、仕様変更やデバッグが困難になる</p>
+                    <p>ゲームの進行に伴ってイベントが増え、状態ごとの処理を整理する必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>有限ステートマシン（FSM）による堅牢な状態遷移管理を導入。各状態のロジックをカプセル化し、高度な拡張性を実現</p>
+                    <p>FSMを使い、各状態の開始・実行・終了処理を分けました。UniTaskで処理の完了を待ち、次の状態へ進みます。</p>
                 </div>
 
             </div>
@@ -183,12 +168,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>チュートリアルや連打イベントなど、タイムアウトとユーザー入力を並行して待つ複雑な非同期処理</p>
+                    <p>演出や入力待ちを含む処理の順序が追いにくくなっていました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>UniTaskとR3（Reactive）による非同期イベント制御を実装。Callback地獄を完全に排除し、可読性と正確性を確保</p>
+                    <p>UniTaskのasync/awaitで進行を記述し、データの変更をUIへ伝える処理にはUniRxを使いました。</p>
                 </div>
 
             </div>
@@ -197,12 +182,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>演出が単調になりがちで、プレイヤーへのフィードバックやゲームとしての手触りが不足する</p>
+                    <p>プレイヤーの行動に合わせた、動きのある演出を加える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>DOTweenを活用した動的なTweenアニメーションを随所に実装。オブジェクトの緩急ある挙動により、爽快感のあるUXを提供</p>
+                    <p>DOTweenで動きの速度やタイミングを調整し、行動に応じたアニメーションを実装しました。</p>
                 </div>
 
             </div>
@@ -211,12 +196,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>複数人でのチーム開発における、ソースコードやアセットの競合（コンフリクト）の多発</p>
+                    <p>複数人で同じプロジェクトを編集するため、変更を取り込む手順を揃える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>Git / GitHubのGit Flowをベースとしたブランチ戦略を運用。タスクごとに細かくマージすることで、安全な並行開発を維持</p>
+                    <p>Git/GitHubで作業ごとにブランチを分け、小さな変更単位でマージする運用にしました。</p>
                 </div>
 
             </div>
@@ -225,12 +210,12 @@
 
                 <div class="challenge-section">
                     <h4>Problem / 問題点</h4>
-                    <p>UIの表示表現とゲームのメインロジックが混在し、UI変更に伴うバグが頻発する</p>
+                    <p>UI表示とゲームロジックを分け、表示変更の影響を抑える必要がありました。</p>
                 </div>
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>MVP（Model-View-Presenter）パターンを採用。データ、表示、仲介層を明確に分離し、UI刷新にも耐えうる高い保守性を確保</p>
+                    <p>MVPを使い、データ管理とUI表示を分け、両者の連携をPresenterにまとめました。</p>
                 </div>
 
             </div>
@@ -243,7 +228,7 @@
                 
                 <section class="tab-panel" data-panel="technical">
                     <div class="content-block">
-                        <h3>Technical Image / 技術図</h3>
+                        <h3>設計・処理の流れ / Architecture &amp; Flow</h3>
                         <div class="game-detail-image tech-image">
                             <a href="../Image/RunGame_class.png" target="_blank">
                                 <img src="../Image/RunGame_class.png" alt="グレート-O-カーンの侵略物語 Technical Diagram" loading="lazy">
@@ -256,9 +241,9 @@
                 <!-- ===== コード パネル（スクロール可） ===== -->
                 <section class="tab-panel" data-panel="code">
                     
-                    <h3 class="code-panel-title">Sample Code / サンプルコード</h3>
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">UniTaskとFSMを統合し、複雑なゲーム内イベントの非同期制御を実現。例えば『連打による敵撃退イベント』において、時間切れ（Timer）とプレイヤー入力（Input）を同時に監視し、いずれかの条件が満たされた時点で安全に状態を遷移させるロジックを実装</div>
+                    <div class="code-explanation">各状態の開始・実行・終了処理をUniTaskで順に待ち、次の状態へ移るFSMです。外部からの状態遷移要求を受け取る仕組みも設けています。</div>
                     <div class="code-container">
                         <div class="code-header">FSM & UniTask 連携システム</div>
                         <pre><code class="language-csharp">using System;
@@ -274,8 +259,8 @@ namespace State
     /// ゲーム全体の進行を制御する有限ステートマシン（FSM）。
     /// 各状態（State）は OnEnter → RunState → OnExit のライフサイクルを持ち、
     /// UniTask により「状態の実行完了」を await で待つことで、複雑なゲーム進行を
-    /// コールバックに頼らず直線的かつ堅牢に記述できる。
-    /// CancellationToken でシーン破棄・アプリ終了時の安全な中断も保証する。
+    /// 処理の順序に沿って記述できる。
+    /// CancellationToken でアプリ終了時のキャンセル要求を受け取る。
     /// &lt;/summary&gt;
     public static class GameStateMachine
     {
@@ -321,7 +306,7 @@ namespace State
             }
             finally
             {
-                // 終了処理は必ず通る finally に集約し、リソース解放とシーン遷移を保証
+                // finally に終了時のリソース解放とシーン遷移をまとめる
                 _tokenSource.Dispose();
                 _tokenSource = null;
                 SceneManager.LoadScene(&quot;Result&quot;);
@@ -373,7 +358,7 @@ namespace State
 </code></pre>
                     </div>
                     
-                    <div class="code-explanation">UniRxを活用してModelの変更を検知し、Viewへ伝達するMVP（Model-View-Presenter）パターンの実装例。結合度を極限まで下げる設計を実践</div>
+                    <div class="code-explanation">Modelのコイン数・距離・ライフなどをUniRxで購読し、対応するUI表示へ反映します。</div>
                     <div class="code-container">
                         <div class="code-header">MVPアーキテクチャ Presenter層</div>
                         <pre><code class="language-csharp">using Player;
@@ -386,7 +371,7 @@ using UnityEngine;
 /// Model（PlayerModel の GameContext）の値の変化を UniRx で購読し、
 /// View（MainUIViewer）へ反映するだけの「中間者」に徹する。
 /// Model は View を知らず、View は Model を知らない。両者を Presenter が仲介することで
-/// 結合度を極限まで下げ、UI 刷新やロジック変更が互いに波及しない設計を実現する。
+/// Model の値を UI へ反映する処理を Presenter にまとめる。
 /// &lt;/summary&gt;
 public class MainUIPresenter : MonoBehaviour
 {
@@ -466,11 +451,9 @@ public class MainUIPresenter : MonoBehaviour
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            hljs.highlightAll();
+            if (window.hljs) hljs.highlightAll();
         });
     </script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/game.js"></script>
     <script src="../js/game-tabs.js"></script>
 </body>
