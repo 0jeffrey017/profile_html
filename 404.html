@@ -1,74 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 Not Found | Jeffrey LEE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ページが見つかりません | Jeffrey LEE</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" href="https://0jeffrey017.github.io/profile_html/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="https://0jeffrey017.github.io/profile_html/favicon.ico" sizes="48x48">
-    <!-- 404はどのパスでも配信されるため、外部CSSに依存しない自己完結ページにする -->
+    <meta name="theme-color" content="#f5f4ef">
+    <link rel="icon" href="/profile_html/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/profile_html/favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="/profile_html/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Critical styling keeps recovery links usable even if shared assets fail. -->
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Inter', 'Poppins', sans-serif;
-            background: #f9fafb;
-            color: #0e0e0e;
-        }
-
-        .notfound {
-            text-align: center;
-            padding: 24px;
-        }
-
-        .notfound-code {
-            font-size: 6rem;
-            font-weight: 800;
-            color: #003371;
-            line-height: 1;
-            margin: 0 0 8px;
-        }
-
-        .notfound-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 0 0 12px;
-        }
-
-        .notfound-text {
-            color: #555;
-            margin: 0 0 28px;
-        }
-
-        .notfound-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #003371;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 999px;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
-
-        .notfound-btn:hover {
-            background: #004494;
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f5f4ef; color: #20221f; font: 16px/1.8 'Inter', 'Noto Sans JP', sans-serif; }
+        a { color: inherit; }
+        .container { width: min(100% - 40px, 1344px); min-height: 100vh; margin: 0 auto; display: flex; flex-direction: column; }
+        .site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 0; }
+        .site-nav ul { display: flex; flex-wrap: wrap; gap: 16px; padding: 0; list-style: none; }
+        .nav-toggle { display: none; }
+        .notfound-main { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 80px; flex: 1; padding: 80px 0 100px; }
+        .notfound-main > * { min-width: 0; }
+        .notfound-number { margin: 0; color: var(--accent, #bc431c); font-size: clamp(140px, 19vw, 260px); line-height: 1; letter-spacing: -.08em; font-weight: 600; }
+        .notfound-caption { display: block; margin-top: 24px; color: var(--muted, #61645d); font: 12px/1.6 var(--mono, monospace); letter-spacing: .16em; }
+        .notfound-copy h1 { margin: 0 0 24px; font-size: clamp(28px, 3vw, 42px); line-height: 1.55; font-weight: 600; letter-spacing: -.03em; text-wrap: balance; }
+        .notfound-copy p { margin: 0; max-width: 34em; color: var(--muted, #61645d); line-height: 1.9; text-align: left; }
+        .notfound-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 32px; }
+        .notfound-actions a { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 48px; padding: 12px 20px; text-decoration: none; }
+        .notfound-actions .action-primary { color: #f5f4ef; background: #20221f; border: 1px solid #20221f; }
+        .notfound-actions .action-secondary { border-bottom: 1px solid #20221f; padding-inline: 0; }
+        a:focus-visible { outline: 3px solid #bc431c; outline-offset: 5px; }
+        .page-footer-mini { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 24px 0; color: #61645d; font-size: 12px; }
+        .skip-link { position: absolute; top: -100px; left: 20px; padding: 10px 16px; background: #20221f; color: #fff; z-index: 100; }
+        .skip-link:focus { top: 12px; }
+        @media (max-width: 760px) {
+            .notfound-main { grid-template-columns: 1fr; align-content: center; gap: 40px; padding: 48px 0 64px; }
+            .notfound-number { font-size: clamp(128px, 38vw, 200px); }
+            .notfound-caption { margin-top: 16px; }
+            .notfound-copy h1 { font-size: 28px; }
+            .notfound-actions { gap: 12px 24px; margin-top: 24px; }
         }
     </style>
+    <!-- Root-relative URLs also work when this page serves a missing nested URL. -->
+    <link rel="stylesheet" href="/profile_html/css/base.css">
+    <link rel="stylesheet" href="/profile_html/css/layout.css">
+    <link rel="stylesheet" href="/profile_html/css/portfolio.css?v=20261015">
 </head>
-
-<body>
-    <main class="notfound">
-        <p class="notfound-code">404</p>
-        <h1 class="notfound-title">ページが見つかりません / Page Not Found</h1>
-        <p class="notfound-text">お探しのページは移動または削除された可能性があります。</p>
-        <a class="notfound-btn" href="https://0jeffrey017.github.io/profile_html/index.html">トップページへ戻る</a>
-    </main>
+<body class="page portfolio page-notfound">
+    <a href="#main-content" class="skip-link">本文へ移動</a>
+    <div class="container">
+        <header class="site-header"><a class="logo" href="/profile_html/index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="/profile_html/index.html"><span>01</span>About</a></li><li><a href="/profile_html/games.html"><span>02</span>Works</a></li><li><a href="/profile_html/background.html"><span>03</span>Background</a></li><li><a href="/profile_html/contact.html"><span>04</span>Contact</a></li><li><a href="/profile_html/Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
+        <main class="notfound-main" id="main-content" tabindex="-1">
+            <div aria-hidden="true">
+                <p class="notfound-number">404</p>
+                <span class="notfound-caption">PAGE NOT FOUND</span>
+            </div>
+            <div class="notfound-copy">
+                <h1>ページが見つかりません</h1>
+                <p>お探しのページは、移動または削除された可能性があります。<br>ホームまたは作品一覧から、改めてお探しください。</p>
+                <div class="notfound-actions">
+                    <a class="action-primary" href="/profile_html/index.html">ホームに戻る <span aria-hidden="true">→</span></a>
+                    <a class="action-secondary" href="/profile_html/games.html">作品一覧を見る <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer-mini">
+            <span>© 2026 Jeffrey LEE</span>
+            <span>GAME PROGRAMMER / PORTFOLIO</span>
+        </footer>
+    </div>
+    <script src="/profile_html/js/game.js"></script>
 </body>
-
 </html>

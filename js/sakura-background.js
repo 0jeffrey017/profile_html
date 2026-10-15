@@ -646,15 +646,23 @@ const fragmentSource = `
     const control = document.createElement('button');
     control.type = 'button';
     control.className = 'background-control';
-    let paused = motionPreference.matches;
+    const preferenceKey = 'portfolio:sakura-paused';
+    let savedPause = false;
+    try { savedPause = sessionStorage.getItem(preferenceKey) === 'true'; } catch (_) { /* Storage may be disabled. */ }
+    let paused = motionPreference.matches || savedPause;
     let frame = 0;
     let previous = 0;
     let elapsed = 0;
     let ready = false;
 
     function updateControl() {
-        control.textContent = paused ? '背景の動きを再生' : '背景の動きを止める';
-        control.setAttribute('aria-pressed', String(paused));
+        const icon = paused
+            ? '<path d="m9 5 10 7-10 7Z" />'
+            : '<path d="M8 5v14M16 5v14" />';
+        control.innerHTML = `<svg class="background-control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icon}</svg><span class="background-control-action">${paused ? '背景を再生' : '背景を停止'}</span>`;
+        control.setAttribute('aria-label', paused ? '桜の背景アニメーションを再生する' : '桜の背景アニメーションを一時停止する');
+        control.title = paused ? '桜の背景：停止中' : '桜の背景：再生中';
+        control.dataset.paused = String(paused);
     }
 
     function draw() {
@@ -709,7 +717,9 @@ const fragmentSource = `
         ready = true;
         resize();
         updateControl();
-        document.body.append(control);
+        const header = document.querySelector('.site-header');
+        if (header) header.insertBefore(control, header.querySelector('.nav-toggle'));
+        else document.querySelector('.page-footer-mini')?.append(control);
         syncAnimation();
     } catch (_) {
         canvas.remove();
@@ -717,7 +727,11 @@ const fragmentSource = `
         return;
     }
 
-    control.addEventListener('click', () => { paused = !paused; syncAnimation(); });
+    control.addEventListener('click', () => {
+        paused = !paused;
+        try { sessionStorage.setItem(preferenceKey, String(paused)); } catch (_) { /* The control works without storage. */ }
+        syncAnimation();
+    });
     motionPreference.addEventListener('change', event => { paused = event.matches; syncAnimation(); });
     document.addEventListener('visibilitychange', syncAnimation);
     window.addEventListener('resize', resize, {passive: true});
