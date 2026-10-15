@@ -4,15 +4,14 @@ using UnityEngine;
  * Guilty Lane — アイテムシステム（担当：メインアイテムシステム・イベントフラグ管理）
  *
  * ScriptableObject を基盤に「抽象基底クラス + 各アイテム1クラス」で構成。
- * 新しいアイテムは ItemSOBase を継承して UseItem() を書くだけで追加でき、
- * 既存コードを一切変更しない（開放閉鎖原則）。効果は GameContext の
- * イベントフラグを通じてゲーム本体へ伝搬させ、UI とロジックを疎結合に保つ。
+ * 新しいアイテムは ItemSOBase を継承し、UseItem() に効果を実装して追加する。
+ * 効果は GameContext のイベントフラグを通じてゲーム本体へ伝える。
  */
 
 /// <summary>
 /// 全アイテム共通のデータ（名前・価格・説明など）と「使用」インターフェースを定義する抽象基底。
-/// ScriptableObject 化することで、プランナーが Unity エディタ上でアセットとして
-/// アイテムを量産・調整できる（プログラマーを介さないワークフロー）。
+/// ScriptableObject を使い、プランナーが Unity エディターで
+/// アイテムのデータを作成・調整できるようにする。
 /// </summary>
 public abstract class ItemSOBase : ScriptableObject
 {
@@ -54,8 +53,8 @@ public class Investment : ItemSOBase
 
 /// <summary>
 /// インベントリ管理（抜粋）。スロットの選択／使用を仲介する。
-/// アイテムの「中身」を一切知らず、ItemSOBase 越しに UseItem() を呼ぶだけなので、
-/// アイテムが何種類増えてもこのクラスは変更不要。
+/// 効果の詳細は各アイテムに任せ、ItemSOBase の UseItem() を呼ぶ。
+/// 共通の使用手順を変えずに、アイテムごとの効果を追加できる。
 /// </summary>
 public class NewInventoryManager : MonoBehaviour
 {

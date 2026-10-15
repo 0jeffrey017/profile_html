@@ -6,16 +6,14 @@ using UnityEngine;
 /*
  * 逢魔々城 — 弾の挙動を Strategy パターンで切り替える設計（担当：敵AI・武器攻撃システム）
  *
- * 弾の「飛び方」「着弾時の処理」を BulletStrategy（抽象ScriptableObject）として外部化。
- * 直進・山なり・追尾などの挙動を、弾本体（BulletBase）と分けて、
- * Strategy アセットを差し替えるだけで切り替えられる（開放閉鎖原則）。
- * ScriptableObject 化により、プランナーがエディタ上で挙動を組み替えられるのも利点。
+ * 飛び方と着弾時の処理を BulletStrategy に定義し、弾本体（BulletBase）から分ける。
+ * プランナーは Unity エディターで Strategy アセットを差し替え、挙動を切り替えられる。
  */
 
 namespace Enemy.Strategy.BulletStrategys
 {
     /// <summary>
-    /// 全ての弾挙動が継承する抽象戦略クラス。発射時・衝突時の振る舞いを定義する。
+    /// 弾の挙動を定義する抽象クラス。発射時と衝突時の処理を派生クラスで実装する。
     /// </summary>
     public abstract class BulletStrategy : ScriptableObject
     {
@@ -44,7 +42,7 @@ namespace Enemy.Strategy.BulletStrategys
         {
             if (collision.gameObject != _target) return;
 
-            // 着弾相手が IDamageable なら被ダメージ処理を呼び、弾はプールへ返却
+            // 着弾相手が IDamageable ならダメージ処理を呼び、弾をプールへ返す。
             if (collision.gameObject.TryGetComponent<IDamageable>(out var damageable))
             {
                 damageable.TakeDamage(bullet.Damage);

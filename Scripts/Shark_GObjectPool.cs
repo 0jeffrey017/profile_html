@@ -27,7 +27,7 @@ public class GObjectPool
             maxSize: _maxSize);
     }
 
-    /// <summary>指定位置にオブジェクトを取り出す（再利用 or 新規生成）。</summary>
+    /// <summary>オブジェクトを再利用または新規生成し、指定位置に配置する。</summary>
     public GameObject Get(Vector3 position)
     {
         GameObject go = _pool.Get();
@@ -40,7 +40,7 @@ public class GObjectPool
 
     /// <summary>
     /// 新規生成時のみ実行される初期化。レイヤー設定・当たり判定の付与・
-    /// 自身（プール）への参照渡しをまとめ、生成箇所の責務を集約する。
+    /// プールへの参照の設定をまとめる。
     /// </summary>
     private GameObject Initialization(GameObject prefab, int layerID)
     {
@@ -51,7 +51,7 @@ public class GObjectPool
         var collider = g.AddComponent<SphereCollider>();
         collider.isTrigger = true;
 
-        // 自身を渡すことで、各オブジェクトが「使い終わったら自分でプールへ戻る」ことを可能にする
+        // 使用後にプールへ戻れるよう、返却先の参照を渡す。
         controller.Setup(this, Random.Range(5, 12));
         g.transform.rotation = Quaternion.Euler(0, -90, 90);
         return g;

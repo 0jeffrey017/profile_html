@@ -59,14 +59,14 @@ public partial class BallSimulationManager : MonoBehaviour
     {
         if (!_jobScheduled) return;
 
-        // 一時配列はジョブ完了に依存して破棄（依存付き Dispose で安全に解放）
+        // ジョブの完了後に一時配列を解放するよう、Dispose に依存関係を渡す。
         _inputPositionsCopy.Dispose(_jobHandle);
         _inputVelocitiesCopy.Dispose(_jobHandle);
 
         // LateUpdate でジョブの完了を待ってから結果を反映する
         _jobHandle.Complete();
 
-        // 計算結果を Transform へ反映（描画はメインスレッドの責務）
+        // 計算結果をメインスレッドで Transform へ反映する。
         for (int i = 0; i < _positions.Length; i++)
         {
             // _ballTransforms[i].position = _positions[i]; など

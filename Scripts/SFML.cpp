@@ -37,7 +37,7 @@ public:
         text.setFillColor(color);
     }
 
-    /// <summary>速度ぶん移動し、ウィンドウ端に達したら速度を反転して跳ね返す。</summary>
+    /// <summary>速度に応じて移動し、ウィンドウの端で跳ね返す。</summary>
     void move(const int& windowWidth, const int& windowHeight) {
         circle.move(m_SX, m_SY);
         sf::Vector2f pos = circle.getPosition();

@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -212,7 +212,7 @@ public:
         text.setFillColor(color);
     }
 
-    /// &lt;summary&gt;速度ぶん移動し、ウィンドウ端に達したら速度を反転して跳ね返す。&lt;/summary&gt;
+    /// &lt;summary&gt;速度に応じて移動し、ウィンドウの端で跳ね返す。&lt;/summary&gt;
     void move(const int&amp; windowWidth, const int&amp; windowHeight) {
         circle.move(m_SX, m_SY);
         sf::Vector2f pos = circle.getPosition();
@@ -404,7 +404,7 @@ int main()
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Keyboard
+                                    キーボードで操作
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">

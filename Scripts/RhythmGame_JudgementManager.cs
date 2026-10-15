@@ -35,8 +35,8 @@ namespace RhythmGame
                 UseId = obj != null ? obj.UseId : -1;
             }
 
-            // 視覚オブジェクトがまだこのノーツのものであるのは、その後に別のノーツへ
-            // 再利用されていない場合のみ（再利用されるとUseIdが変化している）。
+            // 別のノーツに再利用されると UseId が変わる。
+            // ID が一致する間だけ、このノーツの表示として扱う。
             public bool IsObjectStillMine =>
                 Object != null && Object.UseId == UseId;
         }
@@ -102,11 +102,9 @@ namespace RhythmGame
         }
 
         /// <summary>
-        /// | 判定 | 許容 ||---|---|
-        ///| Perfect | ±0.05秒 |
-        ///| Good    | ±0.12秒 |
-        ///| Bad     | ±0.20秒 |
-        ///| 窓外     | 無視（早押し）／ Update で見逃しMiss（遅れ）|
+        /// 入力時刻との差が ±0.05秒以内なら Perfect、±0.12秒以内なら Good、
+        /// ±0.20秒以内なら Bad と判定する。
+        /// 早すぎる入力は無視し、遅れたノーツは Update で Miss にする。
         /// </summary>
         /// <param name="lane"></param>
         /// <param name="time"></param>

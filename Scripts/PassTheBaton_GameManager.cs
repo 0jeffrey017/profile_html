@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 入力を「検知」して値・イベントとしてプレイヤーへ橋渡しするだけに留め、
-    /// 移動やジャンプの実装詳細は BigfloppaControls 側へ委譲する。
+    /// 入力を受け取ってプレイヤーへ渡す。
+    /// 移動とジャンプの処理は BigfloppaControls 側で行う。
     /// </summary>
     private void HandlePlayerInput()
     {

@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -226,8 +226,8 @@ namespace RhythmGame
                 UseId = obj != null ? obj.UseId : -1;
             }
 
-            // 視覚オブジェクトがまだこのノーツのものであるのは、その後に別のノーツへ
-            // 再利用されていない場合のみ（再利用されるとUseIdが変化している）。
+            // 別のノーツに再利用されると UseId が変わる。
+            // ID が一致する間だけ、このノーツの表示として扱う。
             public bool IsObjectStillMine =&gt;
                 Object != null &amp;&amp; Object.UseId == UseId;
         }
@@ -293,11 +293,9 @@ namespace RhythmGame
         }
 
         /// &lt;summary&gt;
-        /// | 判定 | 許容 ||---|---|
-        ///| Perfect | ±0.05秒 |
-        ///| Good    | ±0.12秒 |
-        ///| Bad     | ±0.20秒 |
-        ///| 窓外     | 無視（早押し）／ Update で見逃しMiss（遅れ）|
+        /// 入力時刻との差が ±0.05秒以内なら Perfect、±0.12秒以内なら Good、
+        /// ±0.20秒以内なら Bad と判定する。
+        /// 早すぎる入力は無視し、遅れたノーツは Update で Miss にする。
         /// &lt;/summary&gt;
         /// &lt;param name=&quot;lane&quot;&gt;&lt;/param&gt;
         /// &lt;param name=&quot;time&quot;&gt;&lt;/param&gt;
@@ -367,7 +365,7 @@ namespace RhythmGame
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Key Input: XCNMでレーンのノーツをタイミングよく叩く
+                                    X・C・N・Mキー：各レーンのノーツに合わせて入力
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">

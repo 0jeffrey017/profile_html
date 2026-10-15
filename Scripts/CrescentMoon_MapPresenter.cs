@@ -5,7 +5,7 @@
 
 private void Bind()
 {
-    // Model の変更を購読し、View の更新完了後に各システムへ通知。
+    // Model の変更を受け取り、View の更新を待って各システムへ通知する。
     _mapGeneratorModel.CurrentMap
         .SubscribeAwait(async (v, ct) =>
         {
@@ -15,7 +15,7 @@ private void Bind()
             await _gameEventBroker.Publish(new MapItemGenerationEvent(v), ct);
             await _gameEventBroker.Publish(new MapSunFlowerGenerationEvent( _mapGeneratorModel.CurrentSunFlowerMap.CurrentValue), ct);
             await _gameEventBroker.Publish(new MapTempleExitGenerationEvent( _mapGeneratorModel.CurrentTempleExitMap.CurrentValue), ct);
-            // 新しいマップ通知が来たら、前の購読処理のキャンセルを要求。
+            // Switch により、次の通知を受け取ると前の非同期処理にキャンセルを要求する。
         }, AwaitOperation.Switch).AddTo(_Disposable);
     
     _gameEventBroker

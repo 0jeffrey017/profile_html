@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -260,7 +260,7 @@ private async UniTask ProcessTransitionQueueAsync(CancellationToken token)
 
             try
             {
-                // 終了処理と開始処理が完了してから、待機者へ完了を通知。
+                // 状態の終了・開始処理を待ち、遷移要求の呼び出し元へ完了を通知する。
                 await TransitionTo(request.State, token);
                 request.Complete();
             }
@@ -311,7 +311,7 @@ private async UniTask TransitionTo(EGameState nextState, CancellationToken token
     _currentState = _stateFactory.Create(nextState);
     _currentStateType = nextState;
 
-    // 新状態の初期化・演出が完了してからプレイ可能な状態だけ再開。
+    // 次の状態の初期化と演出を待ち、プレイ可能な状態なら操作を再開する。
     await _currentState.OnEnter(token);
     _pauseService.SetPaused(nextState is not EGameState.MainGame and not EGameState.Tutorial);
 }
@@ -328,7 +328,7 @@ private async UniTask TransitionTo(EGameState nextState, CancellationToken token
 
 private void Bind()
 {
-    // Model の変更を購読し、View の更新完了後に各システムへ通知。
+    // Model の変更を受け取り、View の更新を待って各システムへ通知する。
     _mapGeneratorModel.CurrentMap
         .SubscribeAwait(async (v, ct) =&gt;
         {
@@ -338,7 +338,7 @@ private void Bind()
             await _gameEventBroker.Publish(new MapItemGenerationEvent(v), ct);
             await _gameEventBroker.Publish(new MapSunFlowerGenerationEvent( _mapGeneratorModel.CurrentSunFlowerMap.CurrentValue), ct);
             await _gameEventBroker.Publish(new MapTempleExitGenerationEvent( _mapGeneratorModel.CurrentTempleExitMap.CurrentValue), ct);
-            // 新しいマップ通知が来たら、前の購読処理のキャンセルを要求。
+            // Switch により、次の通知を受け取ると前の非同期処理にキャンセルを要求する。
         }, AwaitOperation.Switch).AddTo(_Disposable);
     
     _gameEventBroker

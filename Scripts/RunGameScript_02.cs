@@ -6,9 +6,8 @@ using UnityEngine;
 /// <summary>
 /// MVP（Model-View-Presenter）パターンの Presenter 層。
 /// Model（PlayerModel の GameContext）の値の変化を UniRx で購読し、
-/// View（MainUIViewer）へ反映するだけの「中間者」に徹する。
-/// Model は View を知らず、View は Model を知らない。両者を Presenter が仲介することで
-/// Model の値を UI へ反映する処理を Presenter にまとめる。
+/// View（MainUIViewer）へ反映する。
+/// Model と View を直接参照させず、UI の更新処理を Presenter にまとめる。
 /// </summary>
 public class MainUIPresenter : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class MainUIPresenter : MonoBehaviour
     private void Start()
     {
         // Model の各 ReactiveProperty を購読し、変化があれば対応する View 更新を呼ぶ。
-        // 「データが変わったら自動で画面に反映される」宣言的なバインディング。
+        // データの変更に合わせて画面を更新する。
         playerModel.GameContext.CoinCount.Subscribe(c => mainUIViewer.SetCoin(c));
         playerModel.GameContext.DistanceCount.Subscribe(d => mainUIViewer.SetDistance(d));
         playerModel.GameContext.DominationCount.Subscribe(d => mainUIViewer.SetDominationBar(d));

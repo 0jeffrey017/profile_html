@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -369,9 +369,8 @@ using UnityEngine;
 /// &lt;summary&gt;
 /// MVP（Model-View-Presenter）パターンの Presenter 層。
 /// Model（PlayerModel の GameContext）の値の変化を UniRx で購読し、
-/// View（MainUIViewer）へ反映するだけの「中間者」に徹する。
-/// Model は View を知らず、View は Model を知らない。両者を Presenter が仲介することで
-/// Model の値を UI へ反映する処理を Presenter にまとめる。
+/// View（MainUIViewer）へ反映する。
+/// Model と View を直接参照させず、UI の更新処理を Presenter にまとめる。
 /// &lt;/summary&gt;
 public class MainUIPresenter : MonoBehaviour
 {
@@ -381,7 +380,7 @@ public class MainUIPresenter : MonoBehaviour
     private void Start()
     {
         // Model の各 ReactiveProperty を購読し、変化があれば対応する View 更新を呼ぶ。
-        // 「データが変わったら自動で画面に反映される」宣言的なバインディング。
+        // データの変更に合わせて画面を更新する。
         playerModel.GameContext.CoinCount.Subscribe(c =&gt; mainUIViewer.SetCoin(c));
         playerModel.GameContext.DistanceCount.Subscribe(d =&gt; mainUIViewer.SetDistance(d));
         playerModel.GameContext.DominationCount.Subscribe(d =&gt; mainUIViewer.SetDominationBar(d));
@@ -419,7 +418,7 @@ public class MainUIPresenter : MonoBehaviour
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Keyboard / Touch
+                                    キーボードまたはタッチ操作
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">

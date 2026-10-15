@@ -54,7 +54,7 @@
 </head>
 
 <body class="game-detail-page portfolio">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">本文へ移動</a>
     <div class="container">
         <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>About</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../background.html"><span>03</span>Background</a></li><li><a href="../contact.html"><span>04</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>05</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
 
@@ -213,16 +213,14 @@ using UnityEngine;
 /*
  * 逢魔々城 — 弾の挙動を Strategy パターンで切り替える設計（担当：敵AI・武器攻撃システム）
  *
- * 弾の「飛び方」「着弾時の処理」を BulletStrategy（抽象ScriptableObject）として外部化。
- * 直進・山なり・追尾などの挙動を、弾本体（BulletBase）と分けて、
- * Strategy アセットを差し替えるだけで切り替えられる（開放閉鎖原則）。
- * ScriptableObject 化により、プランナーがエディタ上で挙動を組み替えられるのも利点。
+ * 飛び方と着弾時の処理を BulletStrategy に定義し、弾本体（BulletBase）から分ける。
+ * プランナーは Unity エディターで Strategy アセットを差し替え、挙動を切り替えられる。
  */
 
 namespace Enemy.Strategy.BulletStrategys
 {
     /// &lt;summary&gt;
-    /// 全ての弾挙動が継承する抽象戦略クラス。発射時・衝突時の振る舞いを定義する。
+    /// 弾の挙動を定義する抽象クラス。発射時と衝突時の処理を派生クラスで実装する。
     /// &lt;/summary&gt;
     public abstract class BulletStrategy : ScriptableObject
     {
@@ -251,7 +249,7 @@ namespace Enemy.Strategy.BulletStrategys
         {
             if (collision.gameObject != _target) return;
 
-            // 着弾相手が IDamageable なら被ダメージ処理を呼び、弾はプールへ返却
+            // 着弾相手が IDamageable ならダメージ処理を呼び、弾をプールへ返す。
             if (collision.gameObject.TryGetComponent&lt;IDamageable&gt;(out var damageable))
             {
                 damageable.TakeDamage(bullet.Damage);
@@ -300,8 +298,8 @@ namespace Enemy.Enemy
     /// &lt;summary&gt;
     /// 敵1種類分のマスターデータを保持する ScriptableObject。
     /// HP・攻撃力・コスト等の数値に加え、移動方法（MoveStrategy）や弾種・エフェクトまで
-    /// データとして外部化することで、プログラマーを介さずプランナーが
-    /// Unity エディタ上で敵を新規作成・バランス調整できるワークフローを実現する。
+    /// データとして保存する。プランナーは Unity エディターで
+    /// 敵の設定を作成し、数値や挙動を調整できる。
     /// Range で入力範囲を制限し、Tooltip で項目を説明し、Header で設定を分類する。
     /// &lt;/summary&gt;
     [CreateAssetMenu(menuName = &quot;CreateConfig/EnemyConfig&quot;, fileName = &quot;EnemyConfig&quot;)]
@@ -371,7 +369,7 @@ namespace Enemy.Enemy
                             </div>
                             <div class="instruction-body">
                                 <div class="instruction-details">
-                                    Mouse (Drag & Dropで武器を配置)
+                                    マウス：ドラッグ＆ドロップで武器を配置
                                 </div>
                             </div>
                             <div id="start-btn-container" class="instruction-footer">
