@@ -1013,6 +1013,7 @@
         "players": "Single Player（1人用）",
         "how_to_play": "WASD / 矢印キー: 移動 ／ Shift: ダッシュ ／ Space: 攻撃 ／ C: 月を見上げる ／ M: ミニマップ ／ Esc: メニュー（ゲームパッドにも対応）",
         "play_link": "https://drive.google.com/file/d/104uoYHInbPZnVooUKUsclEOVSfv-0T6D/view?usp=sharing",
+        "game_technical_image": "Image/Crescent_Moon_class.png",
         "code_sample": [
             {
                 "path": "Scripts/CrescentMoon_GameStateMachine.cs",
