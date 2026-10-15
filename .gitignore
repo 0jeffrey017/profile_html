@@ -1,3 +1,4 @@
 /.agents
 /design-system
-/*.py
+*.py
+/output
