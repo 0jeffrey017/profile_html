@@ -71,7 +71,7 @@
       "knowsAbout": ["Unity", "C#", "C++", "Game Programming", "FSM", "Dependency Injection", "MVP architecture"]
     }
     </script>
-    <link rel="stylesheet" href="css/portfolio.css?v=20261017-experience-icons">
+    <link rel="stylesheet" href="css/portfolio.css?v=20261017-experience-gantt">
 </head>
 
 <body class="page portfolio">
@@ -131,16 +131,13 @@
             <section class="expertise-strip" aria-labelledby="expertise-title">
                 <div class="expertise-heading">
                     <h2 id="expertise-title">開発経験</h2>
-                    <p class="expertise-legend"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5"/></svg>丸1つ＝半年の学習・制作経験 <span>2026年10月現在</span></p>
+                    <p data-experience-note>開始・終了日は未設定です。</p>
                 </div>
-                <dl class="expertise-list">
-                    <div><dt>Unity / C#</dt><dd><svg class="expertise-duration" viewBox="0 0 112 20" role="img" aria-label="2年の学習・制作経験"><circle class="experience-filled" cx="10" cy="10" r="6"/><circle class="experience-filled" cx="38" cy="10" r="6"/><circle class="experience-filled" cx="66" cy="10" r="6"/><circle class="experience-filled" cx="94" cy="10" r="6"/></svg></dd></div>
-                    <div><dt>Unreal Engine</dt><dd><svg class="expertise-duration" viewBox="0 0 112 20" role="img" aria-label="半年の学習・制作経験"><circle class="experience-filled" cx="10" cy="10" r="6"/><circle class="experience-empty" cx="38" cy="10" r="6"/><circle class="experience-empty" cx="66" cy="10" r="6"/><circle class="experience-empty" cx="94" cy="10" r="6"/></svg></dd></div>
-                    <div><dt>C++</dt><dd><svg class="expertise-duration" viewBox="0 0 112 20" role="img" aria-label="1年の学習・制作経験"><circle class="experience-filled" cx="10" cy="10" r="6"/><circle class="experience-filled" cx="38" cy="10" r="6"/><circle class="experience-empty" cx="66" cy="10" r="6"/><circle class="experience-empty" cx="94" cy="10" r="6"/></svg></dd></div>
-                    <div><dt>Java</dt><dd><svg class="expertise-duration" viewBox="0 0 112 20" role="img" aria-label="1年の学習・制作経験"><circle class="experience-filled" cx="10" cy="10" r="6"/><circle class="experience-filled" cx="38" cy="10" r="6"/><circle class="experience-empty" cx="66" cy="10" r="6"/><circle class="experience-empty" cx="94" cy="10" r="6"/></svg></dd></div>
-                    <div><dt>Git / GitHub</dt><dd><svg class="expertise-duration" viewBox="0 0 112 20" role="img" aria-label="2年の学習・制作経験"><circle class="experience-filled" cx="10" cy="10" r="6"/><circle class="experience-filled" cx="38" cy="10" r="6"/><circle class="experience-filled" cx="66" cy="10" r="6"/><circle class="experience-filled" cx="94" cy="10" r="6"/></svg></dd></div>
-                </dl>
-                <div class="expertise-toolkit"><p>その他の使用技術</p><ul><li>R3 / UniTask / VContainer / LitMotion</li><li>Spring Boot / MySQL</li><li>GitHub Actions</li></ul></div>
+                <div class="experience-chart" data-experience-chart>
+                    <p>Unity / C#・Unreal Engine・C++・Java・Git / GitHub</p>
+                    <noscript>期間の図表を表示するにはJavaScriptを有効にしてください。</noscript>
+                </div>
+                <div class="expertise-toolkit"><p>その他の使用技術</p><ul><li>Spring Boot / MySQL</li><li>GitHub Actions</li></ul></div>
             </section>
             <section class="section-block" id="selected-works">
                 <div class="section-top">
@@ -207,6 +204,7 @@
     <!-- Scripts -->
     <script src="js/game.js"></script>
     <script src="js/games-carousel.js"></script>
+    <script src="js/development-experience.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,10 @@
+[
+  { "tool": "Unity / C#", "start": "2025-04", "end": "Now", "previewMonths": 24 },
+  { "tool": "Unreal Engine", "start": "2026-04", "end": "Now", "previewMonths": 6 },
+  { "tool": "C++", "start": "2026-04", "end": "Now", "previewMonths": 12 },
+  { "tool": "Java", "start": "2024-04", "end": "2025-03", "previewMonths": 12 },
+  { "tool": "Git / GitHub", "start": "2025-04", "end": "Now", "previewMonths": 24 },
+  { "tool": "UniTask", "start": "2025-09", "end": "Now", "previewMonths": 6 },
+  { "tool": "UniRx/R3", "start": "2025-09", "end": "Now", "previewMonths": 12 },
+  { "tool": "Vcontainter", "start": "2026-03", "end": "Now", "previewMonths": 12 }
+]
