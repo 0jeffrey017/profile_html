@@ -94,8 +94,24 @@ body.portfolio #canvas { display: none; }
 .visual-bottomline strong { font-size: 22px; }
 .visual-bottomline span { font: 10px var(--mono); color: var(--muted); }
 .hero-annotation { position: absolute; right: -12px; bottom: 48px; padding: 11px 16px; background: var(--accent); color: white; font: 11px var(--mono); letter-spacing: .08em; transform: rotate(-3deg); }
-.expertise-strip { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 19px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font: 12px var(--mono); color: var(--muted); }
-.expertise-strip span:first-child { font-size: 10px; letter-spacing: .1em; }
+.expertise-strip { padding: 24px 0; border-block: 1px solid var(--rule); }
+.expertise-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 24px; }
+.expertise-heading h2 { margin: 0; font-size: 17px; font-weight: 600; }
+.expertise-heading p { color: var(--muted); font-size: 12px; line-height: 1.8; text-align: left; }
+.expertise-heading p span { margin-left: 12px; }
+.expertise-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin: 0; }
+.expertise-list > div { min-width: 0; padding-left: 24px; border-left: 1px solid var(--rule); }
+.expertise-list > div:first-child { padding-left: 0; border-left: 0; }
+.expertise-list dt { font: 14px/1.6 var(--mono); color: var(--muted); }
+.expertise-list dd { margin: 8px 0 0; }
+.expertise-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.expertise-legend svg { width: 14px; height: 14px; fill: var(--accent); flex: 0 0 auto; }
+.expertise-duration { display: block; width: 112px; max-width: 100%; height: 24px; }
+.expertise-duration .experience-filled { fill: var(--accent); stroke: var(--accent); stroke-width: 1.5; }
+.expertise-duration .experience-empty { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.expertise-toolkit { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 24px; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; line-height: 1.8; }
+.expertise-toolkit p { text-align: left; }
+.expertise-toolkit ul { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; padding: 0; margin: 0; }
 .section-block { padding: 76px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 92px; }
 .section-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; }
 .section-top h2, .page-heading h1 { font-size: clamp(36px, 4vw, 56px); line-height: 1.15; font-weight: 650; letter-spacing: -.05em; margin: 7px 0 0; }
@@ -140,6 +156,63 @@ body.portfolio #canvas { display: none; }
 .about-prose p { font-size: 15px; color: var(--muted); line-height: 2; margin-bottom: 24px; }
 .about-prose h3 { font-size: 17px; margin: 32px 0 12px; }
 .about-prose .text-link { color: var(--ink); }
+.about-preview-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); align-items: center; gap: 64px; }
+.about-preview-layout .about-portrait { margin-bottom: 0; }
+.about-preview-layout h3 { font-size: 24px; line-height: 1.6; margin: 12px 0 16px; }
+.about-preview-layout p { max-width: 42em; text-align: left; font-size: 16px; line-height: 1.95; color: var(--muted); }
+.about-preview-layout .eyebrow-label { font-size: 12px; }
+.about-preview-layout .text-link { margin-top: 20px; }
+.profile-story { padding: 16px 0 48px; }
+.profile-page .about-prose p { font-size: 16px; }
+.profile-page .about-prose h2 { font-size: 22px; line-height: 1.6; margin: 36px 0 16px; font-weight: 600; }
+.profile-page .about-id h2 { font-size: 21px; line-height: 1.6; margin: 12px 0 8px; }
+.profile-page .about-id p { text-align: left; font-size: 13px; line-height: 1.8; }
+.profile-interests { border-top: 1px solid var(--rule); padding: 32px 0; }
+.profile-interests-heading { margin-bottom: 24px; }
+.profile-interests-heading .eyebrow-label { color: var(--muted); }
+.profile-interests-heading h2 { font-size: 28px; line-height: 1.5; font-weight: 600; margin: 8px 0 0; }
+.interest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.interest-card { min-width: 0; border: 1px solid var(--rule); background: var(--paper); }
+.interest-card, .interest-card * { box-sizing: border-box; }
+.interest-image { display: flex; position: relative; align-items: center; justify-content: center; height: 280px; padding: 16px 16px 36px; background: var(--surface); }
+.interest-image img { display: block; max-width: 100%; height: 100%; width: auto; object-fit: contain; }
+.interest-image-hint { position: absolute; bottom: 10px; right: 16px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+.interest-image:hover .interest-image-hint { color: var(--accent); }
+.interest-copy { padding: 20px 20px 16px; min-height: 140px; }
+.interest-copy h3 { font-size: 20px; line-height: 1.6; margin: 0 0 8px; font-weight: 600; text-wrap: balance; }
+.interest-copy p { font-size: 16px; line-height: 1.8; color: var(--muted); margin: 0; text-align: left; }
+.interest-copy .interest-credit { font-size: 12px; margin-top: 8px; }
+.interest-details { border-top: 1px solid var(--rule); }
+.interest-details summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 12px 20px; list-style: none; cursor: pointer; font-size: 14px; font-weight: 500; line-height: 1.7; }
+.interest-details summary::-webkit-details-marker { display: none; }
+.interest-details summary:hover { color: var(--accent); background: var(--surface); }
+.interest-details summary:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.interest-disclosure-icon { position: relative; width: 14px; height: 14px; flex: 0 0 14px; }
+.interest-disclosure-icon::before, .interest-disclosure-icon::after { content: ''; position: absolute; background: currentColor; }
+.interest-disclosure-icon::before { width: 12px; height: 1px; left: 1px; top: 6px; }
+.interest-disclosure-icon::after { width: 1px; height: 12px; left: 6px; top: 1px; }
+.interest-details[open] .interest-disclosure-icon::after { display: none; }
+.favorite-games-list { list-style: none; margin: 0; padding: 0 20px 8px; }
+.favorite-games-list > li { border-top: 1px solid var(--rule); padding: 16px 0; }
+.profile-page .favorite-games-list h4 { font-size: 16px; font-weight: 500; color: var(--ink); line-height: 1.7; margin: 0; }
+.favorite-work-number { display: inline-block; min-width: 28px; margin-right: 8px; color: var(--muted); font: 12px var(--mono); }
+.favorite-games-list h4 + .favorite-game-focus { margin-top: 10px; }
+.favorite-games-list p { text-align: left; margin: 0; }
+.favorite-game-focus { font-size: 17px; font-weight: 600; line-height: 1.7; }
+.favorite-copy-draft { display: inline-block; vertical-align: middle; margin-right: 8px; padding: 1px 6px; border: 1px solid var(--rule); color: var(--muted); font-size: 11px; line-height: 1.6; font-weight: 400; }
+.favorite-game-description, .favorite-game-interest { font-size: 16px; line-height: 1.9; color: var(--muted); margin-top: 8px !important; }
+.favorite-game-interest { border-left: 2px solid var(--accent); padding-left: 12px; }
+.favorite-game-interest span { display: block; font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+.profile-outlook { max-width: 48em; padding-bottom: 24px; }
+@media (max-width: 700px) {
+  .interest-grid { grid-template-columns: 1fr; gap: 20px; }
+  .interest-image { height: 240px; }
+  .interest-copy { min-height: 0; padding: 16px; }
+  .interest-copy h3 { font-size: 18px; }
+  .interest-details summary { padding-inline: 16px; }
+  .profile-interests-heading h2 { font-size: 24px; }
+}
+.profile-next { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; padding: 32px 0 0; border-top: 1px solid var(--rule); }
 .contact-callout { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; padding: 64px 0; }
 .contact-callout h2 { margin: 9px 0 14px; font-size: clamp(34px, 5vw, 64px); letter-spacing: -.055em; font-weight: 600; }
 .contact-callout p { color: var(--muted); font-size: 13px; }
@@ -269,8 +342,15 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
   .hero-copy h1 { font-size: clamp(30px, 10.2vw, 76px); }
   .hero-description { font-size: 14px; }
   .hero-visual { margin: 0 6px; }
-  .expertise-strip { gap: 14px; flex-wrap: wrap; font-size: 11px; justify-content: flex-start; }
-  .expertise-strip span:first-child { width: 100%; }
+  .expertise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .expertise-list > div { padding-left: 16px; }
+  .expertise-list > div:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .expertise-heading { margin-bottom: 20px; }
+  .expertise-heading p span { display: block; margin-left: 0; }
+  .expertise-toolkit { grid-template-columns: 1fr; gap: 8px; }
+  .about-preview-layout { grid-template-columns: 1fr; gap: 28px; }
+  .about-preview-layout .about-portrait { width: 220px; }
+  .about-preview-layout h3 { font-size: 22px; }
   .section-block { padding: 48px 0; }
   .section-top { align-items: flex-start; gap: 12px; }
   .section-top h2 { font-size: 34px; }
@@ -312,6 +392,7 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
   .portfolio *, .portfolio *::before, .portfolio *::after { animation: none !important; transition: none !important; }
 }
 @media (max-width: 380px) {
+  .background-control-context { display: none; }
   .portfolio .logo { font-size: 13px; gap: 6px; }
   .brand-symbol { width: 30px; height: 30px; }
   .brand-name small { font-size: 7.5px; }

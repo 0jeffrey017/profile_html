@@ -659,7 +659,7 @@ const fragmentSource = `
         const icon = paused
             ? '<path d="m9 5 10 7-10 7Z" />'
             : '<path d="M8 5v14M16 5v14" />';
-        control.innerHTML = `<svg class="background-control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icon}</svg><span class="background-control-action">${paused ? '背景を再生' : '背景を停止'}</span>`;
+        control.innerHTML = `<svg class="background-control-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icon}</svg><span class="background-control-action"><span class="background-control-context">背景を</span>${paused ? '再生' : '停止'}</span>`;
         control.setAttribute('aria-label', paused ? '桜の背景アニメーションを再生する' : '桜の背景アニメーションを一時停止する');
         control.title = paused ? '桜の背景：停止中' : '桜の背景：再生中';
         control.dataset.paused = String(paused);

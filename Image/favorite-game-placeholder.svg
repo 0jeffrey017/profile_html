@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#eeeee7"/>
+  <g fill="none" stroke="#d5d7ce" stroke-width="2">
+    <path d="M32 80V32h48M880 32h48v48M928 460v48h-48M80 508H32v-48"/>
+    <rect x="426" y="177" width="108" height="76" rx="4"/>
+    <path d="m426 239 31-31 24 24 18-18 35 35"/>
+    <circle cx="504" cy="197" r="7"/>
+  </g>
+  <text x="480" y="310" text-anchor="middle" fill="#61645d" font-family="'Noto Sans JP','Yu Gothic',sans-serif" font-size="27">ゲーム画像（仮）</text>
+  <text x="480" y="350" text-anchor="middle" fill="#61645d" font-family="'Noto Sans JP','Yu Gothic',sans-serif" font-size="18">好きな場面の画像をここに</text>
+</svg>
