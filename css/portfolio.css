@@ -320,6 +320,9 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
 /* Recruitment reading order: contribution, implementation, then evidence. */
 .portfolio .hero-role { color: var(--accent); margin: 0 0 22px; }
 .portfolio .hero-copy h1 { font-size: clamp(30px, 3.5vw, 50px); line-height: 1.45; letter-spacing: -.045em; margin-bottom: 24px; font-weight: 700; }
+.portfolio .hero-copy h1 .hero-name-latin { color: var(--ink); font-size: .72em; font-weight: 500; letter-spacing: .04em; }
+.portfolio .hero-tagline { font-size: clamp(16px, 1.4vw, 19px); font-weight: 500; line-height: 1.8; letter-spacing: .02em; }
+.portfolio .hero-tagline span { font: inherit; color: var(--accent); margin-left: 0; }
 .portfolio .hero-description { font-size: 16px; line-height: 1.9; }
 .hero-resume { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; border-bottom: 1px solid var(--rule); }
 .career-highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); margin: 0; padding: 28px 0 34px; gap: 32px; }
