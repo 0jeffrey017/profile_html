@@ -291,6 +291,7 @@ def generate_sitemap():
     static_pages = [
         'index.html',
         'games.html',
+        'profile.html',
         'background.html',
         'contact.html',
         'Resume/Resume.html',
