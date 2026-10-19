@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
-<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261019-highlights">
 </head>
 
 <body class="game-detail-page portfolio">
@@ -65,6 +65,7 @@
                 {{REVIEW_SUMMARY}}
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="highlights">見どころ / Highlights</button>
                     <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     <!-- TECHNICAL_IMAGE_START -->
                     <button type="button" class="tab-btn" data-tab="technical">技術図 / Technical</button>
@@ -82,7 +83,6 @@
                                 <h3>Overview / 概要</h3>
                                 {{OVERVIEW}}
                             </div>
-                            {{REVIEW_FOCUS}}
                             <div class="content-block">
                                 <h3>作品情報</h3>
                                 <div class="overview-meta">
@@ -151,6 +151,10 @@
                             </div>
                         </aside>
                     </div>
+                </section>
+
+                <section class="tab-panel" data-panel="highlights">
+                    {{REVIEW_FOCUS}}
                 </section>
 
                 <!-- ===== 問題解決 パネル ===== -->
@@ -228,7 +232,7 @@
             <a class="game-nav-link prev" href="{{PREV_FILENAME}}" rel="prev">
                 <span class="gnl-arrow">←</span><span class="gnl-title">{{PREV_TITLE}}</span>
             </a>
-            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <span class="footer-copy">&copy; 2026 SANGCHIEH LEE. All rights reserved.</span>
             <a class="game-nav-link next" href="{{NEXT_FILENAME}}" rel="next">
                 <span class="gnl-title">{{NEXT_TITLE}}</span><span class="gnl-arrow">→</span>
             </a>

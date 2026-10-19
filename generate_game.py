@@ -42,15 +42,41 @@ def generate_games():
             f'<div><dt>私の担当</dt><dd>{esc(" / ".join(roles[:2]))}</dd></div></dl>'
         )
         content = content.replace('{{REVIEW_SUMMARY}}', summary)
-        focus = game.get('review_focus', {})
+        focus = game.get('review_focus') or {'detail': game.get('description', '')}
+        highlights = game.get('highlights') or [{'title': '実装の見どころ', 'text': focus.get('detail', '')}]
         focus_html = ''
-        if focus:
-            focus_html = (
-                '<section class="review-focus" aria-label="実装の見どころ">'
-                '<h2>実装の見どころ</h2>'
-                f'<p>{esc(focus.get("detail", ""))}</p>'
-                '<a class="text-link" href="#problems" data-tab-target="problems">課題と対応を読む →</a> '
-                '<a class="text-link" href="#code" data-tab-target="code">コード抜粋を読む →</a>'
+        for highlight_index, highlight in enumerate(highlights, start=1):
+            media_html = ''
+            for media in highlight.get('media', []):
+                source = media.get('src', '')
+                if not source:
+                    continue
+                source_url = esc('../' + source)
+                caption = media.get('caption', '')
+                if media.get('type') == 'image':
+                    visual = f'<a class="highlight-image-link" href="{source_url}" target="_blank" rel="noopener noreferrer" aria-label="{esc((media.get("alt") or highlight.get("title", "画像")) + "（別タブで拡大）")}"><img src="{source_url}" alt="{esc(media.get("alt", caption))}" loading="lazy"></a>'
+                elif media.get('type') == 'video':
+                    poster_path = media.get('poster') or game.get('image_path', '')
+                    poster = f' poster="{esc("../" + poster_path)}"' if poster_path else ''
+                    visual = (
+                        f'<video controls playsinline preload="auto"{poster} aria-label="{esc(media.get("alt", caption) or "見どころ動画")}">'
+                        f'<source src="{source_url}"><a href="{source_url}">動画を開く</a></video>'
+                    )
+                else:
+                    continue
+                media_label = '画像 · クリックで拡大' if media.get('type') == 'image' else '動画 · 再生して確認'
+                media_html += f'<figure class="highlight-media"><div class="highlight-media-label">{media_label}</div>{visual}'
+                if caption:
+                    media_html += f'<figcaption>{esc(caption)}</figcaption>'
+                media_html += '</figure>'
+            focus_html += (
+                f'<section class="review-focus highlight-story{" has-media" if media_html else ""}">'
+                '<div class="highlight-copy">'
+                f'<span class="highlight-number">HIGHLIGHT / {highlight_index:02d}</span>'
+                f'<h2>{esc(highlight.get("title", "見どころ"))}</h2>'
+                f'<p>{esc(highlight.get("text", ""))}</p>'
+                '</div>'
+                f'<div class="highlight-gallery">{media_html}</div>'
                 '</section>'
             )
         content = content.replace('{{REVIEW_FOCUS}}', focus_html)
@@ -63,7 +89,7 @@ def generate_games():
         if os.path.isfile(preview):
             preview_html = (
                 '<figure class="project-preview">'
-                f'<video controls playsinline preload="none" poster="../{esc(game.get("image_path", ""))}" '
+                f'<video controls playsinline preload="auto" poster="../{esc(game.get("image_path", ""))}" '
                 f'aria-label="{esc(game.get("title", ""))}のプレイ動画">'
                 f'<source src="../{esc(preview)}" type="video/mp4">'
                 f'<a href="../{esc(preview)}">プレイ動画を開く</a></video>'

@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="../css/game-detail.css">
     <link rel="stylesheet" href="../css/code-sample.css">
     <link rel="stylesheet" href="../css/game-tabs.css">
-<link rel="stylesheet" href="../css/portfolio.css?v=20261015">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261019-highlights">
 </head>
 
 <body class="game-detail-page portfolio">
@@ -65,6 +65,7 @@
                 <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>7日</dd></div><div><dt>私の担当</dt><dd>企画・設計・実装・演出（個人制作）</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="highlights">見どころ / Highlights</button>
                     <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
                     
                     <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
@@ -80,7 +81,6 @@
                                 <h3>Overview / 概要</h3>
                                 <p>WASDで移動し、マウスで照準を合わせて射撃します。時間とともに敵の同時出現数が増えるサバイバル形式です。入力、ゲーム状態、表示を分ける設計にも取り組みました。</p>
                             </div>
-                            
                             <div class="content-block">
                                 <h3>作品情報</h3>
                                 <div class="overview-meta">
@@ -116,7 +116,7 @@
 
                         <aside class="game-sidebar">
                             <div class="game-meta-card">
-                                <figure class="project-preview"><video controls playsinline preload="none" poster="../Image/GameImage/ShootingGame_image.webp" aria-label="撃つのプレイ動画"><source src="../Image/GameImage/ShootingGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/ShootingGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
+                                <figure class="project-preview"><video controls playsinline preload="auto" poster="../Image/GameImage/ShootingGame_image.webp" aria-label="撃つのプレイ動画"><source src="../Image/GameImage/ShootingGame_image.mp4" type="video/mp4"><a href="../Image/GameImage/ShootingGame_image.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
                                 
 
                                 <button type="button" id="play-game-btn" class="play-button " data-url="https://0jeffrey017.github.io/20260704_ShootingGame/" data-link-type="play">
@@ -125,6 +125,10 @@
                             </div>
                         </aside>
                     </div>
+                </section>
+
+                <section class="tab-panel" data-panel="highlights">
+                    <section class="review-focus highlight-story"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 01</span><h2>実装の見どころ</h2><p>マウスで狙い、迫る敵を撃つ2Dシューティングです。弾の再利用と、経路探索・射線判定を組み合わせた敵AIを実装しました。</p></div><div class="highlight-gallery"></div></section>
                 </section>
 
                 <!-- ===== 問題解決 パネル ===== -->
@@ -370,7 +374,7 @@ public class EnemyView : MonoBehaviour, IDamageable
             <a class="game-nav-link prev" href="RhythmGame.html" rel="prev">
                 <span class="gnl-arrow">←</span><span class="gnl-title">回れ回れ</span>
             </a>
-            <span class="footer-copy">&copy; 2026 Jeffrey LEE. All rights reserved.</span>
+            <span class="footer-copy">&copy; 2026 SANGCHIEH LEE. All rights reserved.</span>
             <a class="game-nav-link next" href="Crescent_Moon.html" rel="next">
                 <span class="gnl-title">廻り月</span><span class="gnl-arrow">→</span>
             </a>
