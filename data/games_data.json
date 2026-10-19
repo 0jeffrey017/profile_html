@@ -447,7 +447,19 @@
             "detail": "プログラマー5人のチームでメインシステムを担当。FSMで進行処理を整理し、MVPでUIとゲームロジックの役割を分けました。",
             "evidence": "企業連携プロジェクト 全7チーム中2位"
         },
-        "video_preview": "Image/GameImage/RunGame_image.mp4"
+        "video_preview": "Image/GameImage/RunGame_image.mp4",
+        "highlights": [
+            {
+                "title": "黒パンレスラーの演出",
+                "text": "ParticleSystemで入場の炎を再現、カットシーンでカメラの動きで衝撃を再現",
+                "media": [
+                    {
+                        "type": "video",
+                        "src": "Image/GameImage/RunGame_image_Boss.mp4"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": "7",
