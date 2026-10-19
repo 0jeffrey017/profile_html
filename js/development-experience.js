@@ -13,12 +13,16 @@
     const [year, month] = value.split('-').map(Number);
     return year * 12 + month - 1;
   };
-  const monthLabel = index => `${Math.floor(index / 12)}.${String(index % 12 + 1).padStart(2, '0')}`;
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     node.className = className;
     if (text !== undefined) node.textContent = text;
     return node;
+  };
+  const durationLabel = months => {
+    const years = Math.floor(months / 12);
+    const remainder = months % 12;
+    return `${years ? `${years}年` : ''}${remainder ? `${remainder}か月` : ''}` || '1か月未満';
   };
   fetch('data/development-experience.json')
     .then(response => {
@@ -35,30 +39,31 @@
       const dated = rows.filter(row => row.valid);
       const preview = dated.length === 0;
       const previewMax = Math.max(24, ...rows.map(row => Number(row.previewMonths) || 0));
-      const start = preview ? 0 : Math.min(...dated.map(row => row.startIndex));
-      const end = preview ? previewMax : Math.max(start + 1, ...dated.map(row => Math.max(row.endIndex, row.startIndex + 1)));
-      const span = end - start;
+      const longest = preview ? previewMax : Math.max(...dated.map(row => Math.max(1, row.endIndex - row.startIndex)));
+      const span = Math.max(24, Math.ceil(longest / 12) * 12);
       const chart = element('div', 'experience-gantt');
+      const years = span / 12;
+      chart.style.setProperty('--experience-years', years);
       const header = element('div', 'experience-gantt-header');
-      header.append(element('span', 'experience-tool-heading', 'ツール'));
+      header.append(element('span', 'experience-tool-heading', 'スキル'));
       const axis = element('div', 'experience-axis');
-      const ticks = Math.min(4, span);
-      for (let i = 0; i <= ticks; i++) {
-        axis.append(element('span', '', preview ? `${Math.round(span * i / ticks)}か月` : monthLabel(Math.round(start + span * i / ticks))));
+      for (let year = 0; year < years; year++) {
+        axis.append(element('span', '', `${year}〜${year + 1}年`));
       }
       header.append(axis);
       chart.append(header);
       rows.forEach(row => {
         const line = element('div', 'experience-gantt-row');
-        line.append(element('span', 'experience-tool', row.tool));
         const track = element('div', 'experience-track');
         const months = preview ? Math.max(0, Number(row.previewMonths) || 0) : row.valid ? Math.max(1, row.endIndex - row.startIndex) : 0;
+        const summary = element('div', 'experience-summary');
+        summary.append(element('span', 'experience-tool', row.tool));
+        line.append(summary);
         if (months) {
-          const offset = preview ? 0 : row.startIndex - start;
           const bar = element('div', `experience-bar${preview ? ' is-preview' : ''}`);
-          bar.style.left = `${offset / span * 100}%`;
+          bar.style.left = '0';
           bar.style.width = `${months / span * 100}%`;
-          const description = preview ? `${row.tool}：${months}か月の経験（長さのみの仮配置）` : `${row.tool}：${row.start} 〜 ${row.end}`;
+          const description = preview ? `${row.tool}：${months}か月の経験（長さのみの仮配置）` : `${row.tool}：約${durationLabel(months)}、${row.start} 〜 ${row.end === 'Now' ? '現在' : row.end}`;
           track.setAttribute('role', 'img');
           track.setAttribute('aria-label', description);
           bar.title = description;
@@ -70,7 +75,7 @@
         chart.append(line);
       });
       host.replaceChildren(chart);
-      note.textContent = preview ? '開始・終了日は未設定です。現在は経験期間の長さだけを仮配置しています。' : '学習・制作に取り組んだ期間';
+      note.textContent = preview ? '1区切り＝1年。' : '学習・制作の経験期間';
     })
     .catch(() => {
       note.textContent = '開発経験の期間を読み込めませんでした。';
