@@ -1068,6 +1068,40 @@
             "detail": "演出・読み込み中に重なる状態遷移をキューで順に処理。マップ再生成では、表示の更新完了を待って経路・配置の更新へ進める構成にしました。",
             "evidence": "東京ゲームショウ2026 出展"
         },
-        "video_preview": "Image/GameImage/Crescent_Moon_image.mp4"
+        "video_preview": "Image/GameImage/Crescent_Moon_image.mp4",
+        "highlights": [
+            {
+                "title": "タイトルの演出",
+                "text": "TimeLineでタイトルの演出を実装",
+                "media": [
+                    {
+                        "type": "video",
+                        "src": "Image/GameImage/Crescent_Moon_image_TimeLine.mp4"
+                    }
+                ]
+            },
+            {
+                "title": "攻撃とダメージのエフェクト",
+                "text": "FullScreenShaderを使って、ダメージを表現する。攻撃と血はVFXで表現する",
+                "media": [
+                    {
+                        "type": "video",
+                        "src": "Image/GameImage/Crescent_Moon_image_BeAttackEffect.mp4",
+                        "caption": "鹿に攻撃"
+                    }
+                ]
+            },
+            {
+                "title": "月を見上げる演出",
+                "text": "2Dなので、カメラを回転する見上げる感じを表現する、見上げた後出口と祠は表示する",
+                "media": [
+                    {
+                        "type": "video",
+                        "src": "Image/GameImage/Crescent_Moon_image_LookUpMoon.mp4",
+                        "caption": "月を見上げる"
+                    }
+                ]
+            }
+        ]
     }
 ]

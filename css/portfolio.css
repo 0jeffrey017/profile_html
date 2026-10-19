@@ -437,6 +437,28 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
 .review-focus h2 { font-size: 18px; margin: 0 0 12px; }
 .review-focus p { font-size: 16px; line-height: 1.9; margin-bottom: 16px; }
 .review-focus .text-link { margin-right: 16px; font-size: 13px; }
+.highlight-story { padding: 32px 0 40px; margin-bottom: 24px; border: 0; border-bottom: 1px solid var(--rule); background: transparent; }
+.highlight-story.has-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 36px; align-items: start; }
+.highlight-copy { min-width: 0; }
+.highlight-number { display: block; margin-bottom: 16px; font: 11px/1.6 var(--mono); letter-spacing: .08em; color: var(--accent); }
+.highlight-story h2 { font-size: clamp(20px, 2vw, 28px); line-height: 1.5; overflow-wrap: anywhere; margin-bottom: 16px; }
+.highlight-story p { max-width: 65ch; font-size: 15px; line-height: 1.9; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.highlight-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; min-width: 0; }
+.highlight-gallery:empty { display: none; }
+.highlight-media { min-width: 0; margin: 0; }
+.highlight-media:only-child { grid-column: 1 / -1; }
+.highlight-media-label { margin-bottom: 8px; font-size: 12px; color: var(--muted); }
+.highlight-image-link { display: block; cursor: zoom-in; }
+.highlight-media img, .highlight-media video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: #151815; border: 1px solid var(--rule); }
+.highlight-media figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.highlight-media video:focus-visible, .highlight-image-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 1024px) {
+  .highlight-story.has-media { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 600px) {
+  .highlight-gallery { grid-template-columns: 1fr; gap: 24px; }
+  .highlight-story { padding: 24px 0 32px; }
+}
 .project-preview { margin: 0 0 24px; }
 .project-preview video { display: block; width: 100%; aspect-ratio: 16/10; object-fit: contain; background: #151815; }
 .project-preview figcaption { color: var(--muted); font-size: 12px; line-height: 1.8; margin-top: 10px; }
