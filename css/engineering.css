@@ -1,0 +1,71 @@
+/* Engineering content follows the shared portfolio tokens. */
+.portfolio.engineering-page :is(h1, h2, h3, p, li), .portfolio .engineering-preview :is(h2, h3, p), .portfolio .engineering-banner :is(h2, p) { text-align: left; }
+.engineering-intro { color: var(--muted); margin: -8px 0 28px; font-size: 16px; line-height: 1.9; }
+.engineering-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.portfolio .engineering-path { display: flex; flex-direction: column; min-width: 0; padding: 28px; background: var(--surface); border: 1px solid var(--rule); transition: border-color var(--motion-feedback) ease; }
+.portfolio .engineering-path:hover { border-color: var(--accent); }
+.engineering-path .eyebrow-label { color: var(--accent); }
+.engineering-path h3 { margin: 24px 0 16px; font-size: 21px; line-height: 1.7; letter-spacing: -.03em; }
+.engineering-path p { margin-bottom: 28px; color: var(--muted); font-size: 16px; line-height: 1.9; }
+.engineering-path .engineering-path-tools { margin: 0 0 24px; font: 13px/1.9 var(--mono); overflow-wrap: anywhere; }
+.engineering-path-link { display: flex; justify-content: space-between; gap: 12px; padding-top: 16px; margin-top: auto; border-top: 1px solid var(--rule); font-size: 14px; }
+.engineering-topics { display: flex; flex-wrap: wrap; gap: 8px; padding: 24px 0; border-block: 1px solid var(--rule); }
+.engineering-topics a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 16px; border: 1px solid var(--rule); font-size: 14px; }
+.engineering-topics a span { font: 12px var(--mono); color: var(--accent); }
+.engineering-topics a:hover, .engineering-topics a:active { background: var(--surface); border-color: var(--ink); }
+.engineering-reading-note { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; padding: 28px 0 48px; color: var(--muted); }
+.engineering-reading-note > p { margin: 0; font-size: 16px; line-height: 1.9; max-width: 58em; }
+.engineering-reading-note > .eyebrow-label { font-size: 12px; padding-top: 4px; }
+.engineering-story { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: 64px; border-top: 1px solid var(--ink); padding: 48px 0 64px; scroll-margin-top: 32px; }
+.engineering-story:target { border-top-color: var(--accent); }
+.engineering-story-heading, .engineering-story-body { min-width: 0; }
+.engineering-story-heading .eyebrow-label { color: var(--accent); }
+.engineering-story h2 { margin: 20px 0; font-size: clamp(24px, 2.5vw, 34px); line-height: 1.6; letter-spacing: -.035em; text-wrap: balance; }
+.engineering-project { font-size: 16px; line-height: 1.7; }
+.engineering-tags { color: var(--muted); font: 13px/1.9 var(--mono); margin-top: 12px; overflow-wrap: anywhere; }
+.engineering-reasoning { display: grid; gap: 24px; margin: 0; }
+.engineering-reasoning dt { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.engineering-reasoning dd { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.95; }
+.engineering-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); list-style: none; padding: 0; margin: 32px 0; border: 1px solid var(--rule); background: var(--surface); }
+.engineering-flow li { padding: 16px 12px; font-size: 13px; line-height: 1.8; border-left: 1px solid var(--rule); }
+.engineering-flow li:first-child { border-left: 0; }
+.engineering-flow li span { display: block; color: var(--accent); font: 12px/1.6 var(--mono); margin-bottom: 8px; }
+.engineering-code { border-block: 1px solid var(--rule); }
+.engineering-code summary { cursor: pointer; min-height: 56px; padding: 16px 4px; font-size: 15px; line-height: 1.8; }
+.engineering-code summary span { display: block; color: var(--muted); font: 12px/1.8 var(--mono); overflow-wrap: anywhere; padding-left: 18px; }
+.engineering-code summary:hover { color: var(--accent); }
+.engineering-code summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.engineering-code-content { min-width: 0; padding: 8px 0 24px; }
+.engineering-code-content p { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.engineering-code pre { max-width: 100%; padding: 24px; background: var(--ink); color: var(--paper); white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 4; font: 13px/1.9 var(--mono); margin: 0 0 16px; }
+.engineering-code pre:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.engineering-detail-link { margin-top: 24px; }
+.engineering-page .text-link, .engineering-banner .text-link { min-height: 44px; }
+.engineering-end { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 32px 0 64px; }
+.engineering-end p { color: var(--muted); font-size: 16px; }
+.engineering-banner { display: flex; justify-content: space-between; align-items: center; gap: 32px; background: var(--surface); border: 1px solid var(--rule); padding: 28px; margin-bottom: 32px; }
+.engineering-banner h2 { font-size: 24px; margin: 8px 0; }
+.engineering-banner p { font-size: 16px; line-height: 1.9; color: var(--muted); }
+.engineering-banner .eyebrow-label { font-size: 12px; color: var(--accent); }
+.engineering-banner .text-link { flex-shrink: 0; }
+@media (max-width: 1050px) {
+  .engineering-paths { gap: 16px; }
+  .portfolio .engineering-path { padding: 20px; }
+  .engineering-story { gap: 32px; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); }
+}
+@media (max-width: 760px) {
+  .engineering-paths, .engineering-story, .engineering-reading-note { grid-template-columns: 1fr; }
+  .engineering-story { gap: 28px; padding: 32px 0 48px; }
+  .engineering-story h2 { margin: 12px 0; }
+  .engineering-reading-note { gap: 12px; padding-bottom: 32px; }
+  .engineering-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .engineering-flow li:nth-child(3) { border-left: 0; }
+  .engineering-flow li:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .engineering-end, .engineering-banner { flex-direction: column; align-items: flex-start; }
+  .engineering-banner { padding: 24px; gap: 16px; }
+  .engineering-code pre { padding: 16px; font-size: 12px; }
+  .engineering-preview .section-top { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .engineering-path { transition: none !important; }
+}
