@@ -141,7 +141,7 @@
         ],
         "image_path": "Image/GameImage/sumoGame_image.webp",
         "platform": "PC（Windows・WebGL）",
-        "how_to_play": "A・Lキー：交互に連打して攻撃",
+        "how_to_play": "A・Lキー：交互に連打して相手を倒す",
         "players": "1人",
         "play_link": "https://0jeffrey017.github.io/WebGLGames_01/2_Kamizumo",
         "code_sample": [
