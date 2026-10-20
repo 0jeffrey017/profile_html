@@ -55,13 +55,13 @@ body.portfolio #canvas { display: none; }
 .portfolio .logo { font-size: 17px; font-weight: 700; letter-spacing: -.04em; display: inline-flex; align-items: center; gap: 12px; }
 .brand-symbol { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--ink); font-size: 14px; letter-spacing: -.07em; }
 .brand-name small { display: block; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; font-weight: 400; color: var(--muted); margin-top: 3px; }
-.portfolio .site-nav ul { display: flex; list-style: none; padding: 0; gap: 28px; align-items: center; }
+.portfolio .site-nav ul { display: flex; list-style: none; padding: 0; gap: 20px; align-items: center; }
 .portfolio .site-nav a { display: flex; gap: 5px; align-items: center; min-height: 44px; font-size: 14px; font-weight: 500; }
 .portfolio .site-nav a span { font-family: var(--mono); color: var(--muted); font-size: 10px; }
 .portfolio .site-nav a.is-active, .portfolio .site-nav a:hover { color: var(--accent); }
 .portfolio .site-nav a::after { background: var(--accent); height: 1px; bottom: 5px; }
 .portfolio .nav-toggle { width: 44px; height: 44px; }
-@media (min-width: 1051px) { .portfolio .nav-toggle { display: none; } }
+@media (min-width: 1201px) { .portfolio .nav-toggle { display: none; } }
 .portfolio .nav-toggle span { background: var(--ink); }
 .page-eyebrow, .eyebrow-label { font: 11px/1.6 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .page-eyebrow { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 28px; color: var(--muted); }
@@ -254,7 +254,7 @@ body.portfolio #canvas { display: none; }
 .portfolio .bg-col .qualifications-list { display: grid; gap: 0; }
 .portfolio .bg-col .qualifications-tag { align-items: flex-start; gap: 16px; padding: 24px 0; }
 .portfolio .bg-col .qualifications-tag .qual-icon { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 8px; background: var(--surface); color: var(--accent); font-size: 22px; line-height: 1; }
-.portfolio .bg-col .qualifications-tag .qual-body { flex: 1; min-width: 0; padding-top: 3px; overflow-wrap: anywhere; }
+.portfolio .bg-col .qualifications-tag .qual-body { flex: 1; min-width: 0; padding-top: 3px; overflow-wrap: break-word; }
 .portfolio .bg-col .qualifications-tag .qual-body > strong { display: block; font-size: 16px; font-weight: 600; line-height: 1.7; color: var(--ink); }
 .portfolio .bg-col .qualifications-tag .qual-body ul { margin: 8px 0 0; padding: 0; }
 .portfolio .bg-col .qualifications-tag .qual-body ul li { font-size: 14px; line-height: 1.8; color: var(--muted); }
@@ -308,14 +308,14 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
 .portfolio .code-container.collapsed pre { max-height: 0; }
 .portfolio .tech-image { max-width: 1100px; margin: 0 auto; }
 .portfolio .game-nav-link { font-size: 12px; min-height: 44px; display: inline-flex; align-items: center; gap: 12px; max-width: 35%; }
-.portfolio .game-nav-link .gnl-title { overflow-wrap: anywhere; }
+.portfolio .game-nav-link .gnl-title { overflow-wrap: break-word; }
 .portfolio .gameplay-overlay { z-index: 100; background: rgb(14 17 14 / 80%); }
 .portfolio .overlay-content { border-radius: 0; }
 .portfolio .close-overlay { min-width: 44px; min-height: 44px; }
 .loading-message, .error-message { padding: 32px 0; font-size: 14px; color: var(--muted); }
 .empty-message { grid-column: 1/-1; padding: 48px 0; }
 @media (min-width: 1500px) { .hero { gap: 100px; padding-top: 80px; padding-bottom: 88px; } }
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
   body.portfolio .container { width: calc(100% - 56px); }
   .portfolio .site-nav { position: absolute; inset: 100% 0 auto; margin: 0; }
   .portfolio .background-control { margin-left: auto; }
@@ -441,8 +441,8 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
 .highlight-story.has-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 36px; align-items: start; }
 .highlight-copy { min-width: 0; }
 .highlight-number { display: block; margin-bottom: 16px; font: 11px/1.6 var(--mono); letter-spacing: .08em; color: var(--accent); }
-.highlight-story h2 { font-size: clamp(20px, 2vw, 28px); line-height: 1.5; overflow-wrap: anywhere; margin-bottom: 16px; }
-.highlight-story p { max-width: 65ch; font-size: 15px; line-height: 1.9; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.highlight-story h2 { font-size: clamp(20px, 2vw, 28px); line-height: 1.5; overflow-wrap: break-word; margin-bottom: 16px; }
+.highlight-story p { max-width: 65ch; font-size: 15px; line-height: 1.9; white-space: pre-line; overflow-wrap: break-word; margin: 0; }
 .highlight-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; min-width: 0; }
 .highlight-gallery:empty { display: none; }
 .highlight-media { min-width: 0; margin: 0; }
@@ -450,7 +450,7 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
 .highlight-media-label { margin-bottom: 8px; font-size: 12px; color: var(--muted); }
 .highlight-image-link { display: block; cursor: zoom-in; }
 .highlight-media img, .highlight-media video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; background: #151815; border: 1px solid var(--rule); }
-.highlight-media figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.highlight-media figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.8; overflow-wrap: break-word; }
 .highlight-media video:focus-visible, .highlight-image-link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 1024px) {
   .highlight-story.has-media { grid-template-columns: 1fr; gap: 24px; }

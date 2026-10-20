@@ -51,6 +51,8 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/pages.css">
 
+    <link rel="stylesheet" href="css/engineering.css">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -71,7 +73,7 @@
       "knowsAbout": ["Unity", "C#", "C++", "Game Programming", "FSM", "Dependency Injection", "MVP architecture"]
     }
     </script>
-    <link rel="stylesheet" href="css/portfolio.css?v=20261017-experience-gantt">
+    <link rel="stylesheet" href="css/portfolio.css?v=20261020-engineering">
 </head>
 
 <body class="page portfolio">
@@ -80,7 +82,7 @@
         <header class="site-header"><a class="logo" href="index.html" aria-label="Jeffrey LEE ホーム"><span
                     class="brand-symbol">JL</span><span class="brand-name">SANGCHIEH LEE<small>GAME
                         PROGRAMMER</small></span></a>
-            <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="index.html" class="is-active" aria-current="page"><span>01</span>Home</a></li><li><a href="games.html"><span>02</span>Works</a></li><li><a href="profile.html"><span>03</span>About me</a></li><li><a href="background.html"><span>04</span>Background</a></li><li><a href="contact.html"><span>05</span>Contact</a></li><li><a href="Resume/Resume.html"><span>06</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav"
+            <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="index.html" class="is-active" aria-current="page"><span>01</span>Home</a></li><li><a href="games.html"><span>02</span>Works</a></li><li><a href="engineering.html"><span>03</span>Engineering</a></li><li><a href="profile.html"><span>04</span>About me</a></li><li><a href="background.html"><span>05</span>Background</a></li><li><a href="contact.html"><span>06</span>Contact</a></li><li><a href="Resume/Resume.html"><span>07</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav"
                 aria-expanded="false"><span></span><span></span><span></span></button>
         </header>
 
@@ -148,29 +150,41 @@
                     <p class="loading-message">作品を読み込んでいます。</p>
                 </div>
             </section>
-            <section class="section-block">
+            <section class="section-block engineering-preview" id="engineering" aria-labelledby="engineering-preview-title">
                 <div class="section-top">
-                    <h2>What I build<small>技術・設計</small></h2>
+                    <h2 id="engineering-preview-title">What I build<small>ゲームの仕組み・設計・実装</small></h2>
+                    <a class="text-link" href="engineering.html">設計とコードを読む <span aria-hidden="true">↗</span></a>
                 </div>
-                <div class="skills-grid">
-                    <article class="skill-entry"><span class="eyebrow-label">01 / ARCHITECTURE</span>
-                        <h3>ゲームの流れを設計する</h3>
-                        <p>状態ごとの役割を分け、演出や読み込みを含むゲーム進行を実装しています。</p>
-                        <p class="skill-tools">FSM / UniTask / イベント駆動</p><a class="text-link"
-                            href="games/Crescent_Moon.html#code">状態遷移のコードを見る →</a>
-                    </article>
-                    <article class="skill-entry"><span class="eyebrow-label">02 / IMPLEMENTATION</span>
+                <p class="engineering-intro">ゲームの仕組みを起点に、設計の考え方と実装を紹介します。</p>
+                <div class="engineering-paths">
+                    <a href="engineering.html#map" class="engineering-path">
+                        <span class="eyebrow-label">01 / GAME SYSTEM</span>
+                        <h3>月を見上げると、世界が変わる</h3>
+                        <p>『廻り月』のマップ再生成。表示・経路・配置の更新順序を揃え、ゲームの仕組みを支えています。</p>
+                        <p class="engineering-path-tools">R3 / UniTask / イベント駆動</p>
+                        <span class="engineering-path-link">マップ生成の設計と実装 <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a href="engineering.html#state" class="engineering-path">
+                        <span class="eyebrow-label">02 / ARCHITECTURE</span>
+                        <h3>演出とゲーム進行をつなぐ</h3>
+                        <p>状態ごとの役割を分け、演出や読み込みを含む非同期の状態遷移を一つずつ処理します。</p>
+                        <p class="engineering-path-tools">FSM / UniTask / CancellationToken</p>
+                        <span class="engineering-path-link">状態遷移の設計と実装 <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a href="engineering.html#di" class="engineering-path">
+                        <span class="eyebrow-label">03 / IMPLEMENTATION</span>
                         <h3>変更しやすい構成を考える</h3>
-                        <p>依存関係と表示処理を整理し、機能の追加や調整に対応できる構成を学んでいます。</p>
-                        <p class="skill-tools">VContainer / MVP / R3</p><a class="text-link"
-                            href="games/VContainerDIExperiment.html#code">DI・MVPの実装を見る →</a>
-                    </article>
-                    <article class="skill-entry"><span class="eyebrow-label">03 / OPTIMIZATION</span>
-                        <h3>処理と作業の負荷を減らす</h3>
-                        <p>Job SystemとBurstを使った並列計算を検証し、ビルド・公開手順の自動化にも取り組んでいます。</p>
-                        <p class="skill-tools">Job System / Burst / GitHub Actions</p><a class="text-link"
-                            href="games/UnityJobSystemBurstCompiler.html#code">並列計算の実装を見る →</a>
-                    </article>
+                        <p>依存関係と表示処理を整理し、機能の追加や調整に対応できる構成をミニゲームで検証しています。</p>
+                        <p class="engineering-path-tools">VContainer / MVP / R3</p>
+                        <span class="engineering-path-link">DI・MVPの設計と実装 <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a href="engineering.html#jobs" class="engineering-path">
+                        <span class="eyebrow-label">04 / OPTIMIZATION</span>
+                        <h3>大量のボールを、並列に計算する</h3>
+                        <p>Job SystemとBurstを使って物理計算を分担。ジョブの登録から結果の反映、メモリの解放まで検証しています。</p>
+                        <p class="engineering-path-tools">Job System / Burst / NativeArray</p>
+                        <span class="engineering-path-link">並列計算の設計と実装 <span aria-hidden="true">↗</span></span>
+                    </a>
                 </div>
             </section>
             <section class="section-block about-preview" id="about">

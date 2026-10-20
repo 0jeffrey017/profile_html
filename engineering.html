@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering / ゲームの設計とコード | Jeffrey LEE</title>
+    <meta name="description"
+        content="ゲームの仕組み、設計の考え方、コードの抜粋を紹介。FSM、マップ生成、依存性注入、並列計算など6つの実装テーマを掲載。">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/engineering.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
+    <meta property="og:title" content="Engineering / ゲームの設計とコード | Jeffrey LEE">
+    <meta property="og:description" content="ゲームの仕組みから設計とコードを紹介。マップ生成、FSM、DI・MVP、アイテム設計、並列計算、オブジェクト再利用の6テーマ。">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/Jeffrey_image.jpg">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/engineering.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Engineering / ゲームの設計とコード | Jeffrey LEE">
+    <meta name="twitter:description" content="ゲームの仕組みから設計とコードを紹介。マップ生成、FSM、DI・MVP、アイテム設計、並列計算、オブジェクト再利用の6テーマ。">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/Jeffrey_image.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_forward,description,download,favorite,home,link,mail,mobile,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/pages.css">
+
+
+    <link rel="stylesheet" href="css/portfolio.css?v=20261020-engineering">
+<link rel="stylesheet" href="css/engineering.css">
+</head>
+
+<body class="page portfolio engineering-page">
+<a href="#main-content" class="skip-link">本文へ移動</a><div class="container"><header class="site-header"><a class="logo" href="index.html" aria-label="Jeffrey LEE ホーム"><span
+                    class="brand-symbol">JL</span><span class="brand-name">SANGCHIEH LEE<small>GAME
+                        PROGRAMMER</small></span></a>
+            <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="index.html"><span>01</span>Home</a></li><li><a href="games.html"><span>02</span>Works</a></li><li><a href="engineering.html" class="is-active" aria-current="page"><span>03</span>Engineering</a></li><li><a href="profile.html"><span>04</span>About me</a></li><li><a href="background.html"><span>05</span>Background</a></li><li><a href="contact.html"><span>06</span>Contact</a></li><li><a href="Resume/Resume.html"><span>07</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav"
+                aria-expanded="false"><span></span><span></span><span></span></button>
+        </header>
+<main class="page-main" id="main-content"><div class="page-heading"><p class="eyebrow-label">03 / 設計と実装</p><h1>Engineering<span>.</span></h1><p>遊びの仕組みを、コードにする。<br>制作したゲームを題材に、何を考え、どう設計し、実装したかを紹介します。</p></div>
+<nav class="engineering-topics" aria-label="技術テーマから読む"><a href="#map"><span>01</span>マップ生成</a><a href="#state"><span>02</span>状態遷移</a><a href="#di"><span>03</span>DI・MVP</a><a href="#items"><span>04</span>アイテム設計</a><a href="#jobs"><span>05</span>並列計算</a><a href="#pool"><span>06</span>再利用</a></nav>
+<div class="engineering-reading-note"><p class="eyebrow-label">HOW TO READ</p><p>「考えたこと」から処理の流れをたどり、気になるテーマのコードを開いて読めます。作品ページには担当内容や課題と対応も掲載しています。</p></div>
+<article class="engineering-story" id="map" aria-labelledby="title-map">
+        <div class="engineering-story-heading"><p class="eyebrow-label">01 / GAME SYSTEM</p><h2 id="title-map">月を見上げると、世界が変わる</h2><p class="engineering-project">廻り月</p><p class="engineering-tags">R3 / UniTask / イベント通知</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>再生成したマップに、表示・移動経路・アイテム配置をどう追従させるか。</dd></div><div><dt>設計・実装</dt><dd>プレイヤーの現在位置を生成の基準にします。マップの変更通知を受けたら、表示の更新を待ち、経路の再構築と配置のイベントを順番に配信します。</dd></div><div><dt>コードの着眼点</dt><dd>非同期処理を呼ぶ順番と、完了を待つ箇所。更新を始める通知が来たときのキャンセル要求も、コードで確認できます。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>現在位置を取得</li><li><span>02</span>マップ生成</li><li><span>03</span>表示を更新</li><li><span>04</span>経路・配置を更新</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / CrescentMoon_MapPresenter.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="CrescentMoon_MapPresenter.csのコード抜粋"><code>    _mapGeneratorModel.CurrentMap
+        .SubscribeAwait(async (v, ct) =&gt;
+        {
+            await _mapViewer.HandleMapView(v);
+            // マップ表示 → 経路再構築 → アイテム配置の順序を揃える。
+            await _gameEventBroker.Publish(new MapNavMeshGenerationEvent(), ct);
+            await _gameEventBroker.Publish(new MapItemGenerationEvent(v), ct);
+            await _gameEventBroker.Publish(new MapSunFlowerGenerationEvent( _mapGeneratorModel.CurrentSunFlowerMap.CurrentValue), ct);
+            await _gameEventBroker.Publish(new MapTempleExitGenerationEvent( _mapGeneratorModel.CurrentTempleExitMap.CurrentValue), ct);
+            // Switch により、次の通知を受け取ると前の非同期処理にキャンセルを要求する。
+        }, AwaitOperation.Switch).AddTo(_Disposable);</code></pre><a class="text-link" href="Scripts/CrescentMoon_MapPresenter.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/Crescent_Moon.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article><article class="engineering-story" id="state" aria-labelledby="title-state">
+        <div class="engineering-story-heading"><p class="eyebrow-label">02 / CODE DESIGN</p><h2 id="title-state">ゲーム進行を、一つずつ確実に切り替える</h2><p class="engineering-project">廻り月</p><p class="engineering-tags">FSM / UniTask / CancellationToken</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>演出や読み込みを待つ間に、別の状態遷移が重なったらどうするか。</dd></div><div><dt>設計・実装</dt><dd>遷移要求をキューに入れて一つずつ処理します。現在の状態の終了と次の状態の開始を待ち、要求元に完了・例外・キャンセルを通知します。</dd></div><div><dt>コードの着眼点</dt><dd>状態を切り替える前後のawaitと、操作を止める範囲。詳細ページでは、遷移キューとエラー処理を含む実装を掲載しています。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>遷移要求をキューへ</li><li><span>02</span>現在の状態を終了</li><li><span>03</span>次の状態を開始</li><li><span>04</span>完了を通知</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / CrescentMoon_GameStateMachine.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="CrescentMoon_GameStateMachine.csのコード抜粋"><code>private async UniTask TransitionTo(EGameState nextState, CancellationToken token)
+{
+    // 遷移中はゲームプレイを停止し、旧状態の終了を待つ。
+    _pauseService.SetPaused(true);
+
+    if (_currentState != null)
+    {
+        await _currentState.OnExit(token);
+    }
+
+    _currentState = _stateFactory.Create(nextState);
+    _currentStateType = nextState;
+
+    // 次の状態の初期化と演出を待ち、プレイ可能な状態なら操作を再開する。
+    await _currentState.OnEnter(token);
+    _pauseService.SetPaused(nextState is not EGameState.MainGame and not EGameState.Tutorial);
+    }</code></pre><a class="text-link" href="Scripts/CrescentMoon_GameStateMachine.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/Crescent_Moon.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article><article class="engineering-story" id="di" aria-labelledby="title-di">
+        <div class="engineering-story-heading"><p class="eyebrow-label">03 / ARCHITECTURE</p><h2 id="title-di">表示とルールの役割を分ける</h2><p class="engineering-project">VContainer DI Experiment</p><p class="engineering-tags">VContainer / MVP / R3</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>必要な参照と、画面を更新する処理をどこにまとめるか。</dd></div><div><dt>設計・実装</dt><dd>LifetimeScopeで依存関係を登録し、PresenterがModelとViewをコンストラクターで受け取ります。Modelの値の変化を購読し、対応する表示へ反映します。</dd></div><div><dt>コードの着眼点</dt><dd>クラスが依存する相手と、表示更新の置き場所。依存性注入とMVPを、ミニゲームで検証した例です。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>依存関係を登録</li><li><span>02</span>Presenterへ渡す</li><li><span>03</span>Modelの変化を購読</li><li><span>04</span>Viewを更新</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / VContainer_DISample.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="VContainer_DISample.csのコード抜粋"><code>    public MainGamePresenter(MainGameView view,
+        BallSimulationManager ballSimulationManager,
+        MainGameModel mainGameModel,
+        ClickView clickView)
+    {
+        _mainGameView = view;
+        _mainGameModel = mainGameModel;
+        _ballSimulationManager = ballSimulationManager;
+        _clickView = clickView;
+    }</code></pre><a class="text-link" href="Scripts/VContainer_DISample.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/VContainerDIExperiment.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article><article class="engineering-story" id="items" aria-labelledby="title-items">
+        <div class="engineering-story-heading"><p class="eyebrow-label">04 / GAMEPLAY</p><h2 id="title-items">アイテム効果を追加しやすくする</h2><p class="engineering-project">Guilty Lane</p><p class="engineering-tags">ScriptableObject / 継承 / データ設計</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>アイテムの種類が増えても、共通の使用処理を保つには。</dd></div><div><dt>設計・実装</dt><dd>名前・価格などの共通データをItemSOBaseにまとめ、固有の効果は派生クラスに実装します。インベントリ側は、選択中のアイテムのUseItemを呼びます。</dd></div><div><dt>コードの着眼点</dt><dd>共通データと効果の境界。ゲーム本体への効果の伝え方も、作品のコードからたどれます。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>アイテムを選択</li><li><span>02</span>共通のUseItemを呼ぶ</li><li><span>03</span>固有の効果を実行</li><li><span>04</span>ゲーム本体へ反映</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / GuiltyLane_ItemSystem.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="GuiltyLane_ItemSystem.csのコード抜粋"><code>public abstract class ItemSOBase : ScriptableObject
+{
+    [Header(&quot;Item Data&quot;)]
+    public Sprite itemSprite;
+    public string itemName;
+    public int itemID;
+    [TextArea] public string itemDescription;
+    public int price;
+    public bool permanent; // 永続効果か使い切りか
+    public int quantity;
+
+    /// &lt;summary&gt;各アイテム固有の効果。派生クラスが個別に実装する。&lt;/summary&gt;
+    public abstract void UseItem(GameContext context);
+    }</code></pre><a class="text-link" href="Scripts/GuiltyLane_ItemSystem.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/GuiltyLane.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article><article class="engineering-story" id="jobs" aria-labelledby="title-jobs">
+        <div class="engineering-story-heading"><p class="eyebrow-label">05 / PERFORMANCE</p><h2 id="title-jobs">大量のボールの計算を分担する</h2><p class="engineering-project">Unity Job System &amp; Burst Compiler</p><p class="engineering-tags">IJobParallelFor / Burst / NativeArray</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>大量のボールの計算を並列に進め、結果をいつ画面に反映するか。</dd></div><div><dt>設計・実装</dt><dd>IJobParallelForでボールの物理計算を分担します。Updateでジョブを登録し、LateUpdateで完了を待って結果を反映します。一時配列の解放にもジョブの依存関係を渡します。</dd></div><div><dt>コードの着眼点</dt><dd>計算の登録・完了待ち・メモリの解放。ここでは実装の検証を紹介しており、処理時間の比較結果は未掲載です。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>入力データを用意</li><li><span>02</span>ジョブを登録</li><li><span>03</span>計算の完了を待つ</li><li><span>04</span>結果を反映</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / ClickGame_JobScheduling.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="ClickGame_JobScheduling.csのコード抜粋"><code>        // ジョブの完了後に一時配列を解放するよう、Dispose に依存関係を渡す。
+        _inputPositionsCopy.Dispose(_jobHandle);
+        _inputVelocitiesCopy.Dispose(_jobHandle);
+
+        // LateUpdate でジョブの完了を待ってから結果を反映する
+        _jobHandle.Complete();</code></pre><a class="text-link" href="Scripts/ClickGame_JobScheduling.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/UnityJobSystemBurstCompiler.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article><article class="engineering-story" id="pool" aria-labelledby="title-pool">
+        <div class="engineering-story-heading"><p class="eyebrow-label">06 / RESOURCE MANAGEMENT</p><h2 id="title-pool">オブジェクトの再利用</h2><p class="engineering-project">Shark Avoid Game</p><p class="engineering-tags">ObjectPool / 生成・返却 / 初期化</p></div>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>出現と消滅を繰り返す食べ物を、毎回作り直さずに扱うには。</dd></div><div><dt>設計・実装</dt><dd>Unity標準のObjectPoolを使い、取り出すと表示、返却すると非表示にします。新規生成時のレイヤーや当たり判定の設定は、初期化処理にまとめます。</dd></div><div><dt>コードの着眼点</dt><dd>新規生成するときだけ行う処理と、再利用のたびに行う処理の違い。保持数の上限を超えたオブジェクトは破棄します。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>プールから取得</li><li><span>02</span>表示・位置を設定</li><li><span>03</span>ゲーム内で使用</li><li><span>04</span>非表示にして返却</li></ol>
+        <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / Shark_GObjectPool.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="Shark_GObjectPool.csのコード抜粋"><code>        _pool = new ObjectPool&lt;GameObject&gt;(
+            createFunc: () =&gt; Initialization(prefab, layerID), // 新規生成時のみ呼ばれる
+            actionOnGet: g =&gt; g.SetActive(true),               // 取り出し時：再有効化
+            actionOnRelease: g =&gt; g.SetActive(false),          // 返却時：非表示にして保持
+            actionOnDestroy: Object.Destroy,                   // 上限超過時：破棄
+            collectionCheck: false,
+            defaultCapacity: _defaultNumber,
+            maxSize: _maxSize);</code></pre><a class="text-link" href="Scripts/Shark_GObjectPool.cs">掲載用ソース全体を開く <span aria-hidden="true">↗</span></a></div></details>
+        <a class="text-link engineering-detail-link" href="games/SharkAvoidGame.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
+    </article>
+<div class="engineering-end"><p>ゲームの画面やプレイ動画もあわせて紹介しています。</p><a class="action-primary" href="games.html">制作作品を見る <span aria-hidden="true">↗</span></a></div>
+</main><footer class="page-footer-mini"><span>© 2026 SANGCHIEH LEE</span><span>GAME PROGRAMMER / PORTFOLIO</span><a
+                href="index.html">Back to home ↑</a></footer></div><script src="js/game.js"></script></body></html>
