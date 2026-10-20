@@ -68,8 +68,8 @@
 <div class="engineering-reading-note"><p class="eyebrow-label">HOW TO READ</p><p>「考えたこと」から処理の流れをたどり、気になるテーマのコードを開いて読めます。作品ページには担当内容や課題と対応も掲載しています。</p></div>
 <article class="engineering-story" id="map" aria-labelledby="title-map">
         <div class="engineering-story-heading"><p class="eyebrow-label">01 / GAME SYSTEM</p><h2 id="title-map">月を見上げると、世界が変わる</h2><p class="engineering-project">廻り月</p><p class="engineering-tags">R3 / UniTask / イベント通知</p></div>
-        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>再生成したマップに、表示・移動経路・アイテム配置をどう追従させるか。</dd></div><div><dt>設計・実装</dt><dd>プレイヤーの現在位置を生成の基準にします。マップの変更通知を受けたら、表示の更新を待ち、経路の再構築と配置のイベントを順番に配信します。</dd></div><div><dt>コードの着眼点</dt><dd>非同期処理を呼ぶ順番と、完了を待つ箇所。更新を始める通知が来たときのキャンセル要求も、コードで確認できます。</dd></div></dl>
-        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>現在位置を取得</li><li><span>02</span>マップ生成</li><li><span>03</span>表示を更新</li><li><span>04</span>経路・配置を更新</li></ol>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>再生成したマップに、表示・移動経路・アイテム配置をどう追従させるか。</dd></div><div><dt>設計・実装</dt><dd>プレイヤーの現在位置を生成の基準にします。マップの変更通知を受けたら、マップデータの再構築と生成のイベントを順番に配信します。</dd></div><div><dt>コードの着眼点</dt><dd>非同期処理を呼ぶ順番と、完了を待つ箇所。更新を始める通知が来たときのキャンセル要求も、コードで確認できます。</dd></div></dl>
+        <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>現在位置を取得</li><li><span>02</span>マップデータ生成</li><li><span>03</span>マップ生成</li><li><span>04</span>生成完了のイベント</li></ol>
         <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / CrescentMoon_MapPresenter.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="CrescentMoon_MapPresenter.csのコード抜粋"><code>    _mapGeneratorModel.CurrentMap
         .SubscribeAwait(async (v, ct) =&gt;
         {
@@ -121,7 +121,7 @@
         <a class="text-link engineering-detail-link" href="games/VContainerDIExperiment.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
     </article><article class="engineering-story" id="items" aria-labelledby="title-items">
         <div class="engineering-story-heading"><p class="eyebrow-label">04 / GAMEPLAY</p><h2 id="title-items">アイテム効果を追加しやすくする</h2><p class="engineering-project">Guilty Lane</p><p class="engineering-tags">ScriptableObject / 継承 / データ設計</p></div>
-        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>アイテムの種類が増えても、共通の使用処理を保つには。</dd></div><div><dt>設計・実装</dt><dd>名前・価格などの共通データをItemSOBaseにまとめ、固有の効果は派生クラスに実装します。インベントリ側は、選択中のアイテムのUseItemを呼びます。</dd></div><div><dt>コードの着眼点</dt><dd>共通データと効果の境界。ゲーム本体への効果の伝え方も、作品のコードからたどれます。</dd></div></dl>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>アイテムの種類が増えても、共通の使用処理を保つには。</dd></div><div><dt>設計・実装</dt><dd>名前・価格などの共通データをItemSOBaseにまとめ、固有の効果は派生クラスに実装します。インベントリ側は、選択中のアイテムのUseItemを呼びます。</dd></div><div><dt>コードの着眼点</dt><dd>共通データと個別の効果を分解するよる、ItemとPlayerを疎結合ができます</dd></div></dl>
         <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>アイテムを選択</li><li><span>02</span>共通のUseItemを呼ぶ</li><li><span>03</span>固有の効果を実行</li><li><span>04</span>ゲーム本体へ反映</li></ol>
         <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / GuiltyLane_ItemSystem.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="GuiltyLane_ItemSystem.csのコード抜粋"><code>public abstract class ItemSOBase : ScriptableObject
 {
@@ -140,7 +140,7 @@
         <a class="text-link engineering-detail-link" href="games/GuiltyLane.html#code">作品の解説・コードを見る <span aria-hidden="true">→</span></a></div>
     </article><article class="engineering-story" id="jobs" aria-labelledby="title-jobs">
         <div class="engineering-story-heading"><p class="eyebrow-label">05 / PERFORMANCE</p><h2 id="title-jobs">大量のボールの計算を分担する</h2><p class="engineering-project">Unity Job System &amp; Burst Compiler</p><p class="engineering-tags">IJobParallelFor / Burst / NativeArray</p></div>
-        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>大量のボールの計算を並列に進め、結果をいつ画面に反映するか。</dd></div><div><dt>設計・実装</dt><dd>IJobParallelForでボールの物理計算を分担します。Updateでジョブを登録し、LateUpdateで完了を待って結果を反映します。一時配列の解放にもジョブの依存関係を渡します。</dd></div><div><dt>コードの着眼点</dt><dd>計算の登録・完了待ち・メモリの解放。ここでは実装の検証を紹介しており、処理時間の比較結果は未掲載です。</dd></div></dl>
+        <div class="engineering-story-body"><dl class="engineering-reasoning"><div><dt>考えたこと</dt><dd>大量のボールの計算を並列に進め、結果をいつ画面に反映するか。</dd></div><div><dt>設計・実装</dt><dd>IJobParallelForでボールの物理計算を分担します。Updateでジョブを登録し、LateUpdateで完了を待って結果を反映します。一時配列の解放にもジョブの依存関係を渡します。</dd></div><div><dt>コードの着眼点</dt><dd>ボールの当たり判定をColliderを使わず、GPUにデータだけ渡す計算すること。Unityで計算したデータを反映する</dd></div></dl>
         <ol class="engineering-flow" aria-label="処理の流れ"><li><span>01</span>入力データを用意</li><li><span>02</span>ジョブを登録</li><li><span>03</span>計算の完了を待つ</li><li><span>04</span>結果を反映</li></ol>
         <details class="engineering-code"><summary>コードの抜粋を読む <span>C# / ClickGame_JobScheduling.cs</span></summary><div class="engineering-code-content"><p>掲載用コードサンプルの一部を抜粋しています。</p><pre tabindex="0" aria-label="ClickGame_JobScheduling.csのコード抜粋"><code>        // ジョブの完了後に一時配列を解放するよう、Dispose に依存関係を渡す。
         _inputPositionsCopy.Dispose(_jobHandle);
