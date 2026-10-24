@@ -62,7 +62,7 @@
             <div class="detail-head">
                 <h1 class="detail-title">廻り月</h1>
                 <p class="detail-subtitle">2D Exploration Action Game</p>
-                <dl class="project-summary"><div><dt>制作体制</dt><dd>チーム開発(プランナー3人/プログラマー5人/2Dデザイナー5人)</dd></div><div><dt>制作期間</dt><dd>5か月</dd></div><div><dt>私の担当</dt><dd>プログラマーリーダー（プログラマー5人のチーム） / ゲーム進行と非同期の状態遷移</dd></div></dl>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>チーム開発(プランナー3人/プログラマー1人/2Dデザイナー5人)</dd></div><div><dt>制作期間</dt><dd>5か月</dd></div><div><dt>私の担当</dt><dd>メインプログラマ / ゲーム進行と非同期の状態遷移</dd></div></dl>
                 <div class="tab-bar">
                     <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
                     <button type="button" class="tab-btn" data-tab="highlights">見どころ / Highlights</button>
@@ -81,7 +81,7 @@
                         <div class="overview-content">
                             <div class="content-block">
                                 <h3>Overview / 概要</h3>
-                                <p>東京ゲームショウ2026に出展した、月が照らす異世界の回廊から脱出を目指す2D探索アクションです。プランナー3人・プログラマー5人・2Dデザイナー5人の計13人で、5か月間制作しました。</p><p>月を見上げると、プレイヤーの現在位置をもとにマップが再生成されます。敵を倒し、攻撃をかわしながら、変化する回廊を探索します。</p><p>私はプログラマー5人のチームでプログラマーリーダーを務め、ゲーム進行とマップ生成、システム間のイベント連携、アセット読み込みを担当しました。状態遷移の競合とマップの更新順序に対する工夫を、課題と対応・コードの各タブで紹介しています。</p>
+                                <p>東京ゲームショウ2026に出展した、月が照らす異世界の回廊から脱出を目指す2D探索アクションです。5か月間制作しました。</p><p>月を見上げると、プレイヤーの現在位置をもとにマップが再生成されます。敵を倒し、攻撃をかわしながら、変化する回廊を探索します。</p><p>メインプログラマを務め、ゲーム進行とマップ生成、システム間のイベント連携、アセット読み込みを担当しました。状態遷移の競合とマップの更新順序に対する工夫を、課題と対応・コードの各タブで紹介しています。</p>
                             </div>
                             <div class="content-block">
                                 <h3>作品情報</h3>
@@ -108,7 +108,7 @@
                                 <h3>担当内容 / My Contribution</h3>
                                 <div>
                                     <ul>
-    <li>プログラマーリーダー（プログラマー5人のチーム）</li>
+    <li>メインプログラマ</li>
     <li>ゲーム進行と非同期の状態遷移</li>
     <li>VContainerを使った依存関係の設定</li>
     <li>月イベントに連動したマップ生成</li>
@@ -136,7 +136,7 @@
                 </section>
 
                 <section class="tab-panel" data-panel="highlights">
-                    <section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 01</span><h2>タイトルの演出</h2><p>TimeLineでタイトルの演出を実装</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="見どころ動画"><source src="../Image/GameImage/Crescent_Moon_image_TimeLine.mp4"><a href="../Image/GameImage/Crescent_Moon_image_TimeLine.mp4">動画を開く</a></video></figure></div></section><section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 02</span><h2>攻撃とダメージのエフェクト</h2><p>FullScreenShaderを使って、ダメージを表現する。攻撃と血はVFXで表現する</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="鹿に攻撃"><source src="../Image/GameImage/Crescent_Moon_image_BeAttackEffect.mp4"><a href="../Image/GameImage/Crescent_Moon_image_BeAttackEffect.mp4">動画を開く</a></video><figcaption>鹿に攻撃</figcaption></figure></div></section><section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 03</span><h2>月を見上げる演出</h2><p>2Dなので、カメラを回転する見上げる感じを表現する、見上げた後出口と祠は表示する</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="月を見上げる"><source src="../Image/GameImage/Crescent_Moon_image_LookUpMoon.mp4"><a href="../Image/GameImage/Crescent_Moon_image_LookUpMoon.mp4">動画を開く</a></video><figcaption>月を見上げる</figcaption></figure></div></section>
+                    <section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 01</span><h2>タイトルの演出</h2><p>TimeLineでタイトルの演出を実装</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="見どころ動画"><source src="../Image/GameImage/Crescent_Moon_image_TimeLine.mp4"><a href="../Image/GameImage/Crescent_Moon_image_TimeLine.mp4">動画を開く</a></video></figure></div></section><section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 02</span><h2>攻撃とダメージのエフェクト</h2><p>FullScreenShaderを使って、ダメージを表現する。攻撃と血はVFXで表現する</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="鹿に攻撃される"><source src="../Image/GameImage/Crescent_Moon_image_BeAttackEffect.mp4"><a href="../Image/GameImage/Crescent_Moon_image_BeAttackEffect.mp4">動画を開く</a></video><figcaption>鹿に攻撃される</figcaption></figure></div></section><section class="review-focus highlight-story has-media"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 03</span><h2>月を見上げる演出</h2><p>カメラを回転する見上げる感じを表現する、見上げた後出口と祠は波紋と色で表示する</p></div><div class="highlight-gallery"><figure class="highlight-media"><div class="highlight-media-label">動画 · 再生して確認</div><video controls playsinline preload="auto" poster="../Image/GameImage/Crescent_Moon_image.webp" aria-label="月を見上げる"><source src="../Image/GameImage/Crescent_Moon_image_LookUpMoon.mp4"><a href="../Image/GameImage/Crescent_Moon_image_LookUpMoon.mp4">動画を開く</a></video><figcaption>月を見上げる</figcaption></figure></div></section>
                 </section>
 
                 <!-- ===== 問題解決 パネル ===== -->
@@ -168,7 +168,7 @@
 
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
-                    <p>R3でマップの変更を受け取り、表示更新の完了後にNavMesh・アイテム・日輪草・出口の生成イベントを順番に配信します。</p>
+                    <p>R3でマップの変更を受け取り、表示更新の完了後にNavMesh・敵・日輪草・出口の生成イベントを順番に配信します。</p>
                 </div>
 
             </div>
@@ -183,20 +183,6 @@
                 <div class="solution-section">
                     <h4>Solution / 解決策</h4>
                     <p>VContainerのInstallerで依存関係の登録を機能ごとに分け、型付きEventBrokerで連携します。非同期ハンドラーの完了はUniTask.WhenAllで待ち、購読解除にはIDisposableを使います。</p>
-                </div>
-
-            </div>
-            
-            <div class="challenge-card">
-
-                <div class="challenge-section">
-                    <h4>Problem / 問題点</h4>
-                    <p>プログラマーの習熟度に差があり、タスクの分担を決めるのが難しい状況でした。</p>
-                </div>
-
-                <div class="solution-section">
-                    <h4>Solution / 解決策</h4>
-                    <p>まずゲーム全体を設計し、機能ごとに実装範囲を整理しました。そのうえで各機能をタスクに分け、担当を割り振りやすくしました。</p>
                 </div>
 
             </div>
