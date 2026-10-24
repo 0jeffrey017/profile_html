@@ -93,7 +93,7 @@ body.portfolio #canvas { display: none; }
 .visual-bottomline { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; }
 .visual-bottomline strong { font-size: 22px; }
 .visual-bottomline span { font: 10px var(--mono); color: var(--muted); }
-.hero-annotation { position: absolute; right: -12px; bottom: 48px; padding: 11px 16px; background: var(--accent); color: white; font: 11px var(--mono); letter-spacing: .08em; transform: rotate(-3deg); }
+.hero-annotation { position: absolute; right: -12px; bottom: 48px; padding: 16px 21px; background: var(--accent); color: white; font: 14px var(--mono); letter-spacing: .08em; transform: rotate(-3deg); }
 .expertise-strip { padding: 24px 0; border-block: 1px solid var(--rule); }
 .expertise-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 24px; }
 .expertise-heading h2 { margin: 0; font-size: 17px; font-weight: 600; }

@@ -163,7 +163,7 @@
                     
                     <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
                     
-                    <div class="code-explanation">距離に応じて巡回・追跡・近距離攻撃・中距離攻撃を切り替えます。残り時間に応じた遠距離攻撃も設け、弾の初速度は着弾までの時間から計算します。</div>
+                    <div class="code-explanation">距離に応じて巡回・追跡・近距離攻撃・中距離攻撃を切り替えます。残り時間に応じた遠距離攻撃も設け、弾の初速度はプレイヤーの位置で逆算して、三角関数でXYの速度を算出。当たり判定はプレイヤーを中心の円にランダムの点を選択</div>
                     <div class="code-container">
                         <div class="code-header">距離ベースのボスAIと放物線弾道</div>
                         <pre><code class="language-csharp">using UnityEngine;

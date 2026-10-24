@@ -2,6 +2,7 @@
 .portfolio.engineering-page :is(h1, h2, h3, p, li), .portfolio .engineering-preview :is(h2, h3, p), .portfolio .engineering-banner :is(h2, p) { text-align: left; }
 .engineering-intro { color: var(--muted); margin: -8px 0 28px; font-size: 16px; line-height: 1.9; }
 .engineering-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.engineering-path-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .portfolio .engineering-path { display: flex; flex-direction: column; min-width: 0; padding: 28px; background: var(--surface); border: 1px solid var(--rule); transition: border-color var(--motion-feedback) ease; }
 .portfolio .engineering-path:hover { border-color: var(--accent); }
 .engineering-path .eyebrow-label { color: var(--accent); }
