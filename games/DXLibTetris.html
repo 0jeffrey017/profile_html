@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>テトリス | Jeffrey LEE</title>
+    <meta name="description" content="テトリス - C++ / DxLib — Falling Block Puzzle">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/DXLibTetris.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
+    <meta property="og:title" content="テトリス | Jeffrey LEE">
+    <meta property="og:description" content="テトリス - C++ / DxLib — Falling Block Puzzle">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Tetris_cover.svg">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/DXLibTetris.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="テトリス | Jeffrey LEE">
+    <meta name="twitter:description" content="テトリス - C++ / DxLib — Falling Block Puzzle">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/Tetris_cover.svg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261019-highlights">
+</head>
+
+<body class="game-detail-page portfolio">
+    <a href="#main-content" class="skip-link">本文へ移動</a>
+    <div class="container">
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>Home</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../engineering.html"><span>03</span>Engineering</a></li><li><a href="../profile.html"><span>04</span>About me</a></li><li><a href="../background.html"><span>05</span>Background</a></li><li><a href="../contact.html"><span>06</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>07</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="detail-head">
+                <h1 class="detail-title">テトリス</h1>
+                <p class="detail-subtitle">C++ / DxLib — Falling Block Puzzle</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>未記載</dd></div><div><dt>私の担当</dt><dd>盤面管理・ブロック生成・移動と回転 / ライン消去・スコア・落下位置の表示</dd></div></dl>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="highlights">見どころ / Highlights</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>C++とDxLibで、10×20マスの盤面にブロックを積むテトリスを制作しました。横一列を揃えるとラインが消え、スコアが加算されます。</p><p>盤面データ、描画、ブロック生成、移動、スコア、落下位置の表示をクラスに分けて実装しています。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>作品情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">開発環境</span>
+                                        <span class="meta-value">DxLib / C++</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">未記載</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows）</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>担当内容 / My Contribution</h3>
+                                <div>
+                                    <ul>
+    <li>盤面管理・ブロック生成・移動と回転</li>
+    <li>ライン消去・スコア・落下位置の表示</li>
+</ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <div class="game-detail-image"><img src="../Image/GameImage/Tetris_cover.svg" alt="テトリスの作品画像" loading="lazy"></div>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button disabled" data-url="" data-link-type="play">
+                                    Play Game
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="tab-panel" data-panel="highlights">
+                    <section class="review-focus highlight-story"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 01</span><h2>盤面と操作の実装</h2><p>盤面の状態をもとに移動と回転を判定し、500ミリ秒ごとに自動落下させます。次のブロックと着地位置を表示して、先を考えて操作できるようにしました。</p></div><div class="highlight-gallery"></div></section>
+                </section>
+
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
+                        <div>
+                            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ブロックを回転させたときに、壁や固定ブロックと重ならないようにする必要がありました。</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>回転中心から各マスの移動先を計算し、すべてのマスが盤面内かつ固定ブロックと重ならない場合にだけ盤面を更新します。</p>
+                </div>
+
+            </div>
+            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>操作中のブロックが、どこに着地するかを表示する必要がありました。</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>ブロック全体が落下できる距離を調べ、着地先の空きマスに影を配置します。更新前には前フレームの影を消去します。</p>
+                </div>
+
+            </div>
+            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
+                
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
+                    
+                    <div class="code-explanation">回転後の全マスを検証してから、盤面のブロック位置をまとめて更新します。</div>
+                    <div class="code-container">
+                        <div class="code-header">移動・回転と衝突判定</div>
+                        <pre><code class="language-cpp">#include &quot;BlockMovement.h&quot;
+#include &lt;DxLib.h&gt;
+
+void BlockMovement::Update(Board&amp; board)
+{
+    KeyBoard.Update();
+
+    if (KeyBoard.Input_GetKeyboardDown(KEY_INPUT_SPACE))
+    {
+        TurnClockWise(board);
+    }
+    else if (KeyBoard.Input_GetKeyboardDown(KEY_INPUT_D))
+    {
+        Move(board, 1, 0);
+    }
+    else if (KeyBoard.Input_GetKeyboardDown(KEY_INPUT_A))
+    {
+        Move(board, -1, 0);
+    }
+    else if (KeyBoard.Input_GetKeyboardDown(KEY_INPUT_S) || KeyBoard.Input_GetKeyboard(KEY_INPUT_S) &gt;= 60)
+    {
+        MoveDown(board);
+    }
+        
+}
+
+void BlockMovement::SetPivot(int x, int y, bool isO)
+{
+    this-&gt;pivotX = x;
+    this-&gt;pivotY = y;
+    this-&gt;isBlockO = isO;
+}
+
+std::array&lt;int, 2&gt; BlockMovement::GetPivot() const
+{
+    return {pivotX, pivotY};
+}
+
+bool BlockMovement::UpdateBlockOnBoardDown(Board&amp; board)
+{
+    return MoveDown(board);
+}
+
+bool BlockMovement::TurnClockWise(Board&amp; board)
+{
+    if (isBlockO)
+    {
+        return false;
+    }
+    const auto before = board.GetTypeInCell(Board::Falling);
+    if (before.empty())
+    {
+        return false;
+    }
+
+    std::vector&lt;std::array&lt;int, 2&gt;&gt; after;
+    for (const auto&amp; pos : before)
+    {
+        int x = pivotX - (pos[1] - pivotY);
+        int y = pivotY + (pos[0] - pivotX);
+        if (!board.IsInside(x, y) || board.ReadAt(x, y) == Board::Fixed)
+        {
+            return false;
+        }
+        after.push_back({x, y});
+    }
+
+    for (const auto&amp; pos : before)
+    {
+        board.WriteAt(pos[0], pos[1]) = Board::Empty;
+    }
+    for (const auto&amp; pos : after)
+    {
+        board.WriteAt(pos[0], pos[1]) = Board::Falling;
+    }
+    return true;
+}
+
+bool BlockMovement::Move(Board&amp; board, int dx, int dy)
+{
+    const auto positions = board.GetTypeInCell(Board::Falling);
+    if (positions.empty())
+    {
+        return false;
+    }
+
+    for (const auto&amp; pos : positions)
+    {
+        int x = pos[0] + dx;
+        int y = pos[1] + dy;
+        if (!board.IsInside(x, y) || board.ReadAt(x, y) == Board::Fixed)
+        {
+            return false;
+        }
+    }
+
+    for (const auto&amp; pos : positions)
+    {
+        board.WriteAt(pos[0], pos[1]) = Board::Empty;
+    }
+    for (const auto&amp; pos : positions)
+    {
+        board.WriteAt(pos[0] + dx, pos[1] + dy) = Board::Falling;
+    }
+
+    if (!isBlockO){
+        pivotX += dx;
+        pivotY += dy;
+    }
+    return true;
+}
+
+bool BlockMovement::MoveDown(Board&amp; board)
+{
+    if (Move(board, 0, 1))
+    {
+        return true;
+    }
+    board.FixFallingBlock();
+    return false;
+}
+</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">盤面の底や固定ブロックに接触するまでの距離を調べ、着地位置に影を表示します。</div>
+                    <div class="code-container">
+                        <div class="code-header">落下位置のプレビュー</div>
+                        <pre><code class="language-cpp">#include &quot;ShadowSystem.h&quot;
+
+#include &lt;algorithm&gt;
+
+void ShadowSystem::Update(Board&amp; board)
+{
+    Clear(board);
+    auto fallingBlock = board.GetTypeInCell(Board::Falling);
+    
+    if (fallingBlock.empty())
+    {
+        return;
+    }
+    
+    int max_y = 0;
+    
+    for (auto block : fallingBlock)
+    {
+        max_y = std::max(max_y,block.at(1));
+    }
+
+    int dy = 0;
+    
+    while (true)
+    {
+        bool canFall = true;
+
+        for (const auto&amp; block : fallingBlock)
+        {
+            int x = block[0];
+            int y = block[1] + dy + 1;
+
+            if (!board.IsInside(x, y) ||
+                board.ReadAt(x, y) == Board::Fixed)
+            {
+                canFall = false;
+                break;
+            }
+        }
+
+        if (!canFall)
+        {
+            break;
+        }
+
+        ++dy;
+    }
+    for (const auto&amp; block : fallingBlock)
+    {
+        int x = block[0];
+        int y = block[1] + dy;
+
+        if (board.ReadAt(x, y) == Board::Empty)
+        {
+            board.WriteAt(x, y) = Board::Shadow;
+        }
+    }
+}
+
+void ShadowSystem::Clear(Board&amp; board)
+{
+    auto fallingBlock = board.GetTypeInCell(Board::Shadow);
+    if (fallingBlock.empty())
+    {
+        return;
+    }
+    
+    for (auto block : fallingBlock)
+    {
+        board.WriteAt(block.at(0),block.at(1)) = Board::Empty;
+    }
+}
+</code></pre>
+                    </div>
+                    
+                    
+                </section>
+            </div>
+        </main>
+
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    A / D：左右移動 ／ S：落下 ／ Space：時計回りに回転 ／ Esc：終了
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="Crescent_Moon.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">廻り月</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 SANGCHIEH LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (window.hljs) hljs.highlightAll();
+        });
+    </script>
+    <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
+</body>
+
+</html>

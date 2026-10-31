@@ -78,7 +78,8 @@
             "detail": "ボールの計算をIJobParallelForで並列化。ジョブの実行・完了待ち・一時配列の解放まで実装しています。掲載内容は実装の検証で、処理時間の比較結果は未掲載です。",
             "evidence": "個人制作 / Job System・Burst"
         },
-        "video_preview": "Image/GameImage/Unity Job System & Burst Compiler_image.mp4"
+        "video_preview": "Image/GameImage/Unity Job System & Burst Compiler_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "9",
@@ -152,7 +153,8 @@
                 "explanation": "Sキーが押されるまでカメラを旋回させ、入力後にゲームを開始します。タイトル演出中は、オブジェクトの破棄に合わせて待機処理をキャンセルします。"
             }
         ],
-        "video_preview": "Image/GameImage/sumoGame_image.mp4"
+        "video_preview": "Image/GameImage/sumoGame_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "3",
@@ -217,7 +219,8 @@
                 "explanation": "LifetimeScopeでModel・View・Presenterを登録し、Presenterは必要な参照をコンストラクターで受け取ります。Modelの値の変化をR3で購読し、表示へ反映します。"
             }
         ],
-        "video_preview": "Image/GameImage/ClickGame_image.mp4"
+        "video_preview": "Image/GameImage/ClickGame_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "4",
@@ -282,7 +285,8 @@
                 "explanation": "GameManagerで移動とジャンプの入力を検知し、プレイヤー側へ渡します。イントロ演出が終わってから操作を受け付ける流れも管理します。"
             }
         ],
-        "video_preview": "Image/GameImage/PassTheBaton_image.mp4"
+        "video_preview": "Image/GameImage/PassTheBaton_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "5",
@@ -335,7 +339,8 @@
                 "intro": "データ駆動型生成システム",
                 "explanation": "config.txtからウィンドウ、フォント、図形の設定を読み込みます。読み込んだ値から円と矩形を作成し、画面の端で跳ね返るように動かします。"
             }
-        ]
+        ],
+        "published_on": "2026-06-18"
     },
     {
         "id": "1",
@@ -463,7 +468,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "published_on": "2026-06-18"
     },
     {
         "id": "7",
@@ -523,7 +529,8 @@
                 "intro": "ScriptableObjectによる拡張可能なアイテムシステム",
                 "explanation": "アイテム共通のデータをItemSOBaseにまとめ、使用時の効果は派生クラスへ分けています。インベントリ側は共通のUseItemを呼ぶため、効果ごとの分岐を持たずに扱えます。"
             }
-        ]
+        ],
+        "published_on": "2026-06-18"
     },
     {
         "id": "8",
@@ -605,7 +612,8 @@
                 "explanation": "敵のHP、攻撃力、移動方法、弾種をScriptableObjectで設定します。Tooltipで項目の意味を示し、Rangeで数値の入力範囲を制限しています。"
             }
         ],
-        "video_preview": "Image/GameImage/DefanceGame_image.mp4"
+        "video_preview": "Image/GameImage/DefanceGame_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "2",
@@ -669,7 +677,8 @@
             }
         ],
         "video_embed_url": "https://youtu.be/_mwkGeVx6As",
-        "video_preview": "Image/GameImage/SpaceCat_image.mp4"
+        "video_preview": "Image/GameImage/SpaceCat_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "10",
@@ -730,7 +739,8 @@
                 "explanation": "距離に応じて巡回・追跡・近距離攻撃・中距離攻撃を切り替えます。残り時間に応じた遠距離攻撃も設け、弾の初速度はプレイヤーの位置で逆算して、三角関数でXYの速度を算出。当たり判定はプレイヤーを中心の円にランダムの点を選択"
             }
         ],
-        "video_preview": "Image/GameImage/Ikasu_image.mp4"
+        "video_preview": "Image/GameImage/Ikasu_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "11",
@@ -791,7 +801,8 @@
                 "explanation": "Unity標準のObjectPoolで食べ物を再利用します。取り出すと表示し、返却すると非表示にします。新規生成時のレイヤーや当たり判定の設定もまとめています。"
             }
         ],
-        "video_preview": "Image/GameImage/AvoidGame_image.mp4"
+        "video_preview": "Image/GameImage/AvoidGame_image.mp4",
+        "published_on": "2026-06-18"
     },
     {
         "id": "12",
@@ -878,7 +889,8 @@
                 "explanation": "レーンごとのキューで次のノーツを管理し、入力との時間差からPerfect・Good・Badを判定します。判定時間を過ぎたノーツはMissとして処理します。UseIdを照合し、再利用された別のノーツを誤って返却しないようにしています。"
             }
         ],
-        "video_preview": "Image/GameImage/RhythmGame_image.mp4"
+        "video_preview": "Image/GameImage/RhythmGame_image.mp4",
+        "published_on": "2026-06-23"
     },
     {
         "id": "13",
@@ -963,7 +975,8 @@
                 "explanation": "NavMeshでプレイヤーへの経路を更新し、攻撃範囲内で射線が通るときに発砲します。敵が倒されたらスコアを通知し、徐々に消える演出を再生してから破棄します。"
             }
         ],
-        "video_preview": "Image/GameImage/ShootingGame_image.mp4"
+        "video_preview": "Image/GameImage/ShootingGame_image.mp4",
+        "published_on": "2026-07-09"
     },
     {
         "id": "14",
@@ -1113,6 +1126,73 @@
                         "caption": "月を見上げる"
                     }
                 ]
+            }
+        ],
+        "published_on": "2026-10-03"
+    },
+    {
+        "id": "15",
+        "filename": "DXLibTetris.html",
+        "title": "テトリス",
+        "subtitle": "C++ / DxLib — Falling Block Puzzle",
+        "description": "C++とDxLibで制作した落ち物パズルです。ブロックの移動・回転、ライン消去、次ブロックと落下位置の表示を実装しました。",
+        "overview": "<p>C++とDxLibで、10×20マスの盤面にブロックを積むテトリスを制作しました。横一列を揃えるとラインが消え、スコアが加算されます。</p><p>盤面データ、描画、ブロック生成、移動、スコア、落下位置の表示をクラスに分けて実装しています。</p>",
+        "engine": "DxLib / C++",
+        "team": "個人開発",
+        "period": "1か月",
+        "status": "released",
+        "published_on": "2026-10-31",
+        "responsible": [
+            "盤面管理・ブロック生成・移動と回転",
+            "ライン消去・スコア・落下位置の表示"
+        ],
+        "challenges_solutions": [
+            {
+                "challenge": "ブロックを回転させたときに、壁や固定ブロックと重ならないようにする必要がありました。",
+                "solution": "回転中心から各マスの移動先を計算し、すべてのマスが盤面内かつ固定ブロックと重ならない場合にだけ盤面を更新します。"
+            },
+            {
+                "challenge": "操作中のブロックが、どこに着地するかを表示する必要がありました。",
+                "solution": "ブロック全体が落下できる距離を調べ、着地先の空きマスに影を配置します。更新前には前フレームの影を消去します。"
+            }
+        ],
+        "tags": [
+            {
+                "type": "cpp",
+                "name": "C++"
+            },
+            {
+                "type": "engine",
+                "name": "DxLib"
+            },
+            {
+                "type": "vcs",
+                "name": "Git/GitHub"
+            }
+        ],
+        "image_path": "Image/GameImage/Tetris_cover.svg",
+        "platform": "PC（Windows）",
+        "players": "1人",
+        "how_to_play": "A / D：左右移動 ／ S：落下 ／ Space：時計回りに回転 ／ Esc：終了",
+        "play_link": "",
+        "code_sample": [
+            {
+                "path": "Scripts/Tetris_BlockMovement.cpp",
+                "language": "cpp",
+                "intro": "移動・回転と衝突判定",
+                "explanation": "回転後の全マスを検証してから、盤面のブロック位置をまとめて更新します。"
+            },
+            {
+                "path": "Scripts/Tetris_ShadowSystem.cpp",
+                "language": "cpp",
+                "intro": "落下位置のプレビュー",
+                "explanation": "盤面の底や固定ブロックに接触するまでの距離を調べ、着地位置に影を表示します。"
+            }
+        ],
+        "highlights": [
+            {
+                "title": "盤面と操作の実装",
+                "text": "盤面の状態をもとに移動と回転を判定し、500ミリ秒ごとに自動落下させます。次のブロックと着地位置を表示して、先を考えて操作できるようにしました。"
             }
         ]
     }

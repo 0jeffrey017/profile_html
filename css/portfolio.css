@@ -476,3 +476,7 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
   .portfolio .tab-bar { flex-wrap: wrap; }
   .work-contribution { grid-template-columns: 1fr; gap: 4px; }
 }
+
+.language-filter, #language-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.language-filter { margin: -18px 0 36px; }
+.filter-label { font-size: 13px; color: var(--muted); margin-right: 10px; }
