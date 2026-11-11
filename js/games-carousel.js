@@ -46,27 +46,57 @@
       });
     }
     document.addEventListener('visibilitychange', () => { if (document.hidden) stopPreviews(); });
-    matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', event => { if (event.matches) stopPreviews(); });
+    const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+    motionPreference.addEventListener('change', event => { if (event.matches) stopPreviews(); });
     function previews() {
-      if (!matchMedia('(hover: hover)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!matchMedia('(hover: hover)').matches) return;
       document.querySelectorAll('.work-card').forEach(card => {
         const video = card.querySelector('video'); if (!video) return;
-        card.addEventListener('mouseenter', () => { video.play().then(() => { if (card.matches(':hover')) video.classList.add('is-playing'); else video.pause(); }).catch(()=>{}); });
+        card.addEventListener('mouseenter', () => {
+          if (motionPreference.matches || document.hidden) return;
+          video.play().then(() => {
+            if (card.matches(':hover') && !motionPreference.matches && !document.hidden) video.classList.add('is-playing');
+            else video.pause();
+          }).catch(() => {});
+        });
         card.addEventListener('mouseleave', () => { video.pause(); video.classList.remove('is-playing'); });
       });
     }
-    function render(filter = 'all') {
+    let activeFilter = 'all';
+    let activeLanguage = 'all';
+    // 掲載日が同じ作品は登録IDが新しいものを先に表示する。
+    const newestFirst = (a, b) => (b.published_on || '').localeCompare(a.published_on || '') || Number(b.id) - Number(a.id);
+    const languages = new Map();
+    all.forEach(game => (game.tags || []).forEach(tag => {
+      if (['csharp', 'cpp', 'language'].includes(tag.type)) languages.set(tag.name, tag.name);
+    }));
+    const languageFilters = document.getElementById('language-filters');
+    if (languageFilters) {
+      languageFilters.innerHTML = '<button type="button" class="filter-button" data-language="all" aria-pressed="true">すべて</button>' +
+        [...languages].map(([value, label]) => `<button type="button" class="filter-button" data-language="${escape(value)}" aria-pressed="false">${escape(label)}</button>`).join('');
+      languageFilters.addEventListener('click', event => {
+        const button = event.target.closest('[data-language]');
+        if (!button) return;
+        activeLanguage = button.dataset.language;
+        languageFilters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        render();
+      });
+    }
+    function render() {
       stopPreviews();
-      const games = all.filter(game => filter === 'all' || (filter === 'solo' ? solo(game) : !solo(game)));
+      const games = all.filter(game => (activeFilter === 'all' || (activeFilter === 'solo' ? solo(game) : !solo(game))) && (activeLanguage === 'all' || (game.tags || []).some(tag => ['csharp', 'cpp', 'language'].includes(tag.type) && tag.name === activeLanguage)));
       const selected = games.filter(game => game.star).sort((a,b)=>(a.featured_order ?? 99)-(b.featured_order ?? 99));
       if (home) home.innerHTML = selected.map(card).join('');
       if (featured) { featured.innerHTML = selected.map(card).join(''); document.getElementById('featured-games').hidden = !selected.length; }
-      if (grid) { const others = games.filter(game => !game.star); grid.innerHTML = others.map(card).join(''); document.getElementById('all-games').hidden = !others.length; }
-      const count = document.getElementById('results-count'); if (count) count.textContent = `${filter === 'all' ? 'すべて' : filter === 'team' ? 'チーム制作' : '個人制作'}：${games.length}作品`;
+      if (grid) { const others = games.filter(game => !game.star).sort(newestFirst); grid.innerHTML = others.map(card).join(''); document.getElementById('all-games').hidden = !others.length; }
+      const count = document.getElementById('results-count'); if (count) count.textContent = `${activeFilter === 'all' ? 'すべて' : activeFilter === 'team' ? 'チーム制作' : '個人制作'} / ${activeLanguage === 'all' ? '全言語' : activeLanguage}：${games.length}作品`;
+      const empty = document.getElementById('games-empty');
+      if (empty) empty.remove();
+      if (grid && !games.length) grid.parentElement.insertAdjacentHTML('afterend', '<p id="games-empty" role="status">条件に合う作品はありません。</p>');
       previews();
     }
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
-      document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); render(button.dataset.filter);
+      document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button))); activeFilter = button.dataset.filter; render();
     }));
     render();
   } catch (error) {
