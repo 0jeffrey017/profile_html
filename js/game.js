@@ -45,7 +45,13 @@
     document.body.style.overflow = 'hidden';
     [main, header, footer].forEach(el => { if (el) el.inert = true; }); close.focus();
   });
-  start?.addEventListener('click', () => { overlay.classList.add('gameplay-active'); document.getElementById('game-container').style.display = 'block'; document.getElementById('start-btn-container').style.display = 'none'; iframe.src = play.dataset.url; });
+  start?.addEventListener('click', () => {
+    overlay.classList.add('gameplay-active');
+    document.getElementById('game-container').style.display = 'block';
+    close.focus();
+    document.getElementById('start-btn-container').style.display = 'none';
+    iframe.src = play.dataset.url;
+  });
   close?.addEventListener('click', closeGame);
   overlay?.addEventListener('click', e => { if (e.target === overlay) closeGame(); });
   document.addEventListener('keydown', e => {

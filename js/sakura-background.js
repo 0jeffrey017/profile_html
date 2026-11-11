@@ -729,10 +729,11 @@ const fragmentSource = `
 
     control.addEventListener('click', () => {
         paused = !paused;
-        try { sessionStorage.setItem(preferenceKey, String(paused)); } catch (_) { /* The control works without storage. */ }
+        savedPause = paused;
+        try { sessionStorage.setItem(preferenceKey, String(savedPause)); } catch (_) { /* The control works without storage. */ }
         syncAnimation();
     });
-    motionPreference.addEventListener('change', event => { paused = event.matches; syncAnimation(); });
+    motionPreference.addEventListener('change', event => { paused = event.matches || savedPause; syncAnimation(); });
     document.addEventListener('visibilitychange', syncAnimation);
     window.addEventListener('resize', resize, {passive: true});
     canvas.addEventListener('webglcontextlost', event => {

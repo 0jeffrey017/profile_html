@@ -1171,6 +1171,7 @@
             }
         ],
         "image_path": "Image/GameImage/Tetris_cover.svg",
+        "video_preview":"Image/GameImage/Tetris_cover.mp4",
         "platform": "PC（Windows）",
         "players": "1人",
         "how_to_play": "A / D：左右移動 ／ S：落下 ／ Space：時計回りに回転 ／ Esc：終了",
@@ -1193,6 +1194,100 @@
             {
                 "title": "盤面と操作の実装",
                 "text": "盤面の状態をもとに移動と回転を判定し、500ミリ秒ごとに自動落下させます。次のブロックと着地位置を表示して、先を考えて操作できるようにしました。"
+            }
+        ]
+    },
+    {
+        "id": "16",
+        "filename": "DxLibRunGame.html",
+        "title": "DxLibランゲーム",
+        "subtitle": "2D Side-Scrolling Action",
+        "description": "自動でスクロールするステージを、左右移動とジャンプで進む2Dランゲームです。",
+        "overview": "<p>C++とDxLibで、地形が横に流れる2Dランゲームを制作しました。右端に新しい地形を追加し、左端の列を取り除くことでスクロールを続けます。プレイヤーは左右移動とジャンプで罠を避けます。</p>",
+        "responsible": [
+            "地形の生成とスクロール",
+            "プレイヤー操作・衝突判定・アニメーション"
+        ],
+        "challenges_solutions": [
+            {
+                "challenge": "移動量が大きいフレームでも、地面をすり抜けないようにする必要がありました。",
+                "solution": "移動を横軸と縦軸に分け、各軸を1ピクセル以下の刻みで進めながら地面との重なりを確認します。"
+            }
+        ],
+        "how_to_play": "A / D：左右移動 ／ Space：ジャンプ ／ R：ゲームオーバー後に再挑戦 ／ Esc：終了",
+        "image_path": "Image/GameImage/DxLibRunGame_cover.png",
+        "video_preview":"Image/GameImage/DxLibRunGame_cover.mp4",
+        "code_sample": [
+            {
+                "path": "Scripts/DxLibRunGame_PlayerController.cpp",
+                "language": "cpp",
+                "intro": "移動とタイル衝突",
+                "explanation": "各軸で移動先を細かく確認し、地面に触れたら速度を止めます。接地状態と移動方向からアニメーションも切り替えます。"
+            }
+        ],
+        "engine": "DxLib / C++",
+        "team": "個人開発",
+        "period": "2週間",
+        "status": "released",
+        "published_on": "2026-11-11",
+        "platform": "PC（Windows）",
+        "players": "1人",
+        "play_link": "",
+        "tags": [
+            {
+                "type": "cpp",
+                "name": "C++"
+            },
+            {
+                "type": "engine",
+                "name": "DxLib"
+            }
+        ]
+    },
+    {
+        "id": "17",
+        "filename": "DxLibSnake.html",
+        "title": "スネークゲーム",
+        "subtitle": "Grid-Based Snake Game",
+        "description": "ヘビを操作してカエルを集めるゲームです。餌を食べると体が伸び、移動間隔が短くなります。",
+        "overview": "<p>C++とDxLibで、マス目の盤面を進むスネークゲームを制作しました。カエルを食べると得点が増え、ヘビの体が伸びます。壁や自分の胴体にぶつかるとゲームオーバーになります。</p>",
+        "responsible": [
+            "盤面管理・方向入力・衝突判定",
+            "餌の配置・得点・描画"
+        ],
+        "challenges_solutions": [
+            {
+                "challenge": "ヘビが曲がっても、体と尾が頭の通った経路をたどる必要がありました。",
+                "solution": "通過したマスごとに進行方向を記録し、尾をその方向へ進めます。餌を食べたときは尾を残し、頭だけを前へ進めて体を伸ばします。"
+            }
+        ],
+        "how_to_play": "W / A / S / D：方向転換 ／ R：ゲームオーバー・クリア後に再挑戦",
+        "image_path": "Image/GameImage/DxLibSnake_cover.png",
+        "video_preview":"Image/GameImage/DxLibSnake_cover.mp4",
+        "code_sample": [
+            {
+                "path": "Scripts/DxLibSnake_PlayerMoveSystem.cpp",
+                "language": "cpp",
+                "intro": "頭と尾の移動・衝突判定",
+                "explanation": "入力を次の移動まで保持し、移動先の壁・胴体・餌を判定してから頭と尾の位置を更新します。"
+            }
+        ],
+        "engine": "DxLib / C++",
+        "team": "個人開発",
+        "period": "2週間",
+        "status": "released",
+        "published_on": "2026-11-11",
+        "platform": "PC（Windows）",
+        "players": "1人",
+        "play_link": "",
+        "tags": [
+            {
+                "type": "cpp",
+                "name": "C++"
+            },
+            {
+                "type": "engine",
+                "name": "DxLib"
             }
         ]
     }

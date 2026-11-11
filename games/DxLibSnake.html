@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>スネークゲーム | Jeffrey LEE</title>
+    <meta name="description" content="スネークゲーム - Grid-Based Snake Game">
+    <meta name="author" content="リイショウケツ / Jeffrey LEE">
+    <link rel="canonical" href="https://0jeffrey017.github.io/profile_html/games/DxLibSnake.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="48x48">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeffrey LEE Portfolio">
+    <meta property="og:title" content="スネークゲーム | Jeffrey LEE">
+    <meta property="og:description" content="スネークゲーム - Grid-Based Snake Game">
+    <meta property="og:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/DxLibSnake_cover.png">
+    <meta property="og:url" content="https://0jeffrey017.github.io/profile_html/games/DxLibSnake.html">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="スネークゲーム | Jeffrey LEE">
+    <meta name="twitter:description" content="スネークゲーム - Grid-Based Snake Game">
+    <meta name="twitter:image" content="https://0jeffrey017.github.io/profile_html/Image/GameImage/DxLibSnake_cover.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=arrow_back,arrow_forward,close,favorite,home,mail,mobile,play_arrow,search,settings,sports_esports"
+        rel="stylesheet" />
+
+    <!-- CSS Reset & Libs -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/game-detail.css">
+    <link rel="stylesheet" href="../css/code-sample.css">
+    <link rel="stylesheet" href="../css/game-tabs.css">
+<link rel="stylesheet" href="../css/portfolio.css?v=20261019-highlights">
+</head>
+
+<body class="game-detail-page portfolio">
+    <a href="#main-content" class="skip-link">本文へ移動</a>
+    <div class="container">
+        <header class="site-header"><a class="logo" href="../index.html" aria-label="Jeffrey LEE ホーム"><span class="brand-symbol">JL</span><span class="brand-name">Jeffrey LEE<small>GAME PROGRAMMER</small></span></a><nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"><ul><li><a href="../index.html"><span>01</span>Home</a></li><li><a href="../games.html" class="is-active" aria-current="page"><span>02</span>Works</a></li><li><a href="../engineering.html"><span>03</span>Engineering</a></li><li><a href="../profile.html"><span>04</span>About me</a></li><li><a href="../background.html"><span>05</span>Background</a></li><li><a href="../contact.html"><span>06</span>Contact</a></li><li><a href="../Resume/Resume.html"><span>07</span>Resume</a></li></ul></nav><button type="button" class="nav-toggle" aria-label="メニュー" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button></header>
+
+        <main class="game-detail-main" id="main-content">
+            <div class="detail-head">
+                <h1 class="detail-title">スネークゲーム</h1>
+                <p class="detail-subtitle">Grid-Based Snake Game</p>
+                <dl class="project-summary"><div><dt>制作体制</dt><dd>個人開発</dd></div><div><dt>制作期間</dt><dd>2週間</dd></div><div><dt>私の担当</dt><dd>盤面管理・方向入力・衝突判定 / 餌の配置・得点・描画</dd></div></dl>
+                <div class="tab-bar">
+                    <button type="button" class="tab-btn is-active" data-tab="overview">概要 / Overview</button>
+                    <button type="button" class="tab-btn" data-tab="highlights">見どころ / Highlights</button>
+                    <button type="button" class="tab-btn" data-tab="problems">課題と対応 / Solutions</button>
+                    
+                    <button type="button" class="tab-btn" data-tab="code">コード / Code</button>
+                </div>
+            </div>
+
+            <div class="detail-body">
+                <!-- ===== Overview パネル ===== -->
+                <section class="tab-panel is-active" data-panel="overview">
+                    <div class="overview-grid">
+                        <div class="overview-content">
+                            <div class="content-block">
+                                <h3>Overview / 概要</h3>
+                                <p>C++とDxLibで、マス目の盤面を進むスネークゲームを制作しました。カエルを食べると得点が増え、ヘビの体が伸びます。壁や自分の胴体にぶつかるとゲームオーバーになります。</p>
+                            </div>
+                            <div class="content-block">
+                                <h3>作品情報</h3>
+                                <div class="overview-meta">
+                                    <div class="meta-item">
+                                        <span class="meta-label">開発環境</span>
+                                        <span class="meta-value">DxLib / C++</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">制作期間</span>
+                                        <span class="meta-value">2週間</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">対応環境</span>
+                                        <span class="meta-value">PC（Windows）</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">プレイ人数</span>
+                                        <span class="meta-value">1人</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-block">
+                                <h3>担当内容 / My Contribution</h3>
+                                <div>
+                                    <ul>
+    <li>盤面管理・方向入力・衝突判定</li>
+    <li>餌の配置・得点・描画</li>
+</ul>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <aside class="game-sidebar">
+                            <div class="game-meta-card">
+                                <figure class="project-preview"><video controls playsinline preload="auto" poster="../Image/GameImage/DxLibSnake_cover.png" aria-label="スネークゲームのプレイ動画"><source src="../Image/GameImage/DxLibSnake_cover.mp4" type="video/mp4"><a href="../Image/GameImage/DxLibSnake_cover.mp4">プレイ動画を開く</a></video><figcaption>プレイ動画 / 再生ボタンで開始</figcaption></figure>
+                                
+
+                                <button type="button" id="play-game-btn" class="play-button disabled" data-url="" data-link-type="play">
+                                    Play Game
+                                </button>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="tab-panel" data-panel="highlights">
+                    <section class="review-focus highlight-story"><div class="highlight-copy"><span class="highlight-number">HIGHLIGHT / 01</span><h2>実装の見どころ</h2><p>ヘビを操作してカエルを集めるゲームです。餌を食べると体が伸び、移動間隔が短くなります。</p></div><div class="highlight-gallery"></div></section>
+                </section>
+
+                <!-- ===== 問題解決 パネル ===== -->
+                <section class="tab-panel" data-panel="problems">
+                    <div class="content-block">
+                        <h3>課題と対応 / Challenges &amp; Solutions</h3>
+                        <div>
+                            
+            <div class="challenge-card">
+
+                <div class="challenge-section">
+                    <h4>Problem / 問題点</h4>
+                    <p>ヘビが曲がっても、体と尾が頭の通った経路をたどる必要がありました。</p>
+                </div>
+
+                <div class="solution-section">
+                    <h4>Solution / 解決策</h4>
+                    <p>通過したマスごとに進行方向を記録し、尾をその方向へ進めます。餌を食べたときは尾を残し、頭だけを前へ進めて体を伸ばします。</p>
+                </div>
+
+            </div>
+            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== 技術図 パネル（技術図がある場合のみ） ===== -->
+                
+
+                <!-- ===== コード パネル（スクロール可） ===== -->
+                <section class="tab-panel" data-panel="code">
+                    
+                    <h3 class="code-panel-title">コード抜粋 / Code Samples</h3>
+                    
+                    <div class="code-explanation">入力を次の移動まで保持し、移動先の壁・胴体・餌を判定してから頭と尾の位置を更新します。</div>
+                    <div class="code-container">
+                        <div class="code-header">頭と尾の移動・衝突判定</div>
+                        <pre><code class="language-cpp">#include &quot;PlayerMoveSystem.h&quot;
+
+#include &lt;DxLib.h&gt;
+#include &lt;cassert&gt;
+#include &lt;iterator&gt;
+
+#include &quot;Map.h&quot;
+#include &quot;Input.h&quot;
+#include &quot;MoveResult.h&quot;
+
+void PlayerMoveSystem::InputUpdate()
+{
+    if (Input::Input_GetKeyboardDown(KEY_INPUT_W) &amp;&amp; direction != std::array{0,1})
+    {
+        directionBuffer.at(0) = 0;
+        directionBuffer.at(1) = -1;
+    }
+    if (Input::Input_GetKeyboardDown(KEY_INPUT_S) &amp;&amp; direction != std::array{0,-1})
+    {
+        directionBuffer.at(0) = 0;
+        directionBuffer.at(1) = 1;
+    }
+    if (Input::Input_GetKeyboardDown(KEY_INPUT_D) &amp;&amp; direction != std::array{-1,0})
+    {
+        directionBuffer.at(0) = 1;
+        directionBuffer.at(1) = 0;
+    }
+    if (Input::Input_GetKeyboardDown(KEY_INPUT_A) &amp;&amp; direction != std::array{1,0})
+    {
+        directionBuffer.at(0) = -1;
+        directionBuffer.at(1) = 0;
+    }
+}
+
+MoveResult PlayerMoveSystem::Update(Map&amp; map)
+{
+    auto&amp; board = map.mapArray;
+    auto&amp; directions = map.directionArray;
+    auto&amp; turnArrays = map.turnAngleArray;
+    const auto isInside = [&amp;](long long x, long long y)
+    {
+        return y &gt;= 0 &amp;&amp; y &lt; std::ssize(board) &amp;&amp; y &lt; std::ssize(directions)
+            &amp;&amp; x &gt;= 0 &amp;&amp; x &lt; std::ssize(board[y]) &amp;&amp; x &lt; std::ssize(directions[y]);
+    };
+
+    const auto [headX, headY] = map.GetChar(&#x27;h&#x27;);
+    const auto [tailX, tailY] = map.GetChar(&#x27;t&#x27;);
+    if (!isInside(headX, headY) || !isInside(tailX, tailY))
+    {
+        return MoveResult::InvalidMap;
+    }
+
+    const int nextHeadX = headX + directionBuffer[0];
+    const int nextHeadY = headY + directionBuffer[1];
+    if (!isInside(nextHeadX, nextHeadY))
+    {
+        return MoveResult::HitWall;
+    }
+
+    const char target = board[nextHeadY][nextHeadX];
+    if (target == &#x27;b&#x27;)
+    {
+        return MoveResult::HitBody;
+    }
+
+    const bool ateFood = target == &#x27;f&#x27;;
+    if (!ateFood)
+    {
+        const auto [dx, dy] = directions[tailY][tailX];
+        const auto nextTailX = static_cast&lt;long long&gt;(tailX) + dx;
+        const auto nextTailY = static_cast&lt;long long&gt;(tailY) + dy;
+        if (!isInside(nextTailX, nextTailY) || board[nextTailY][nextTailX] != &#x27;b&#x27;)
+        {
+            return MoveResult::InvalidMap;
+        }
+
+        board[tailY][tailX] = &#x27;.&#x27;;
+        board[nextTailY][nextTailX] = &#x27;t&#x27;;
+    }
+
+    turnArrays[headY][headX] = {
+        directionBuffer[0] - direction[0],
+        directionBuffer[1] - direction[1]
+    };
+    direction = directionBuffer;
+    directions[headY][headX] = direction;
+    directions[nextHeadY][nextHeadX] = direction;
+    board[headY][headX] = &#x27;b&#x27;;
+    assert(board[nextHeadY][nextHeadX] == &#x27;.&#x27; || board[nextHeadY][nextHeadX] == &#x27;f&#x27;);
+    board[nextHeadY][nextHeadX] = &#x27;h&#x27;;
+    return ateFood ? MoveResult::AteFood : MoveResult::Moved;
+}
+</code></pre>
+                    </div>
+                    
+                    
+                </section>
+            </div>
+        </main>
+
+        <!-- Play Game オーバーレイ -->
+        <div id="gameplay-overlay" class="gameplay-overlay" style="display: none;">
+            <div class="overlay-content">
+                <div class="overlay-header">
+                    <button class="close-overlay" id="close-overlay" aria-label="Close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <div class="overlay-scroll-container">
+                    <div id="game-container" class="game-container" style="display: none;">
+                        <iframe id="game-iframe" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="instruction-screen" class="instruction-screen">
+                        <div class="instruction-card">
+                            <div class="instruction-header">
+                                <span class="material-symbols-outlined header-icon">sports_esports</span>
+                                <h2>How to Play / 操作方法</h2>
+                            </div>
+                            <div class="instruction-body">
+                                <div class="instruction-details">
+                                    W / A / S / D：方向転換 ／ R：ゲームオーバー・クリア後に再挑戦
+                                </div>
+                            </div>
+                            <div id="start-btn-container" class="instruction-footer">
+                                <button id="start-game-btn" class="start-game-btn">
+                                    <span>Start Game</span>
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer-mini">
+            <a class="game-nav-link prev" href="DxLibRunGame.html" rel="prev">
+                <span class="gnl-arrow">←</span><span class="gnl-title">DxLibランゲーム</span>
+            </a>
+            <span class="footer-copy">&copy; 2026 SANGCHIEH LEE. All rights reserved.</span>
+            <a class="game-nav-link next" href="UnityJobSystemBurstCompiler.html" rel="next">
+                <span class="gnl-title">Unity Job System &amp; Burst Compiler</span><span class="gnl-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JSファイルの読み込み -->
+    <!-- highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            if (window.hljs) hljs.highlightAll();
+        });
+    </script>
+    <script src="../js/game.js"></script>
+    <script src="../js/game-tabs.js"></script>
+</body>
+
+</html>

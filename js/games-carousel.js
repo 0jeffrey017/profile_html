@@ -46,12 +46,19 @@
       });
     }
     document.addEventListener('visibilitychange', () => { if (document.hidden) stopPreviews(); });
-    matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', event => { if (event.matches) stopPreviews(); });
+    const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+    motionPreference.addEventListener('change', event => { if (event.matches) stopPreviews(); });
     function previews() {
-      if (!matchMedia('(hover: hover)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!matchMedia('(hover: hover)').matches) return;
       document.querySelectorAll('.work-card').forEach(card => {
         const video = card.querySelector('video'); if (!video) return;
-        card.addEventListener('mouseenter', () => { video.play().then(() => { if (card.matches(':hover')) video.classList.add('is-playing'); else video.pause(); }).catch(()=>{}); });
+        card.addEventListener('mouseenter', () => {
+          if (motionPreference.matches || document.hidden) return;
+          video.play().then(() => {
+            if (card.matches(':hover') && !motionPreference.matches && !document.hidden) video.classList.add('is-playing');
+            else video.pause();
+          }).catch(() => {});
+        });
         card.addEventListener('mouseleave', () => { video.pause(); video.classList.remove('is-playing'); });
       });
     }
