@@ -125,6 +125,10 @@ body.portfolio #canvas { display: none; }
 .section-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; }
 .section-top h2, .page-heading h1 { font-size: clamp(36px, 4vw, 56px); line-height: 1.15; font-weight: 650; letter-spacing: -.05em; margin: 7px 0 0; }
 .section-top h2 small { font-size: 12px; font-weight: 400; color: var(--muted); letter-spacing: .02em; margin-left: 12px; }
+.update-list { list-style: none; margin: 0; padding: 0; }
+.update-list li { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 24px; padding: 16px 0; border-top: 1px solid var(--rule); line-height: 1.7; }
+.update-list time { color: var(--muted); font-family: var(--mono); }
+.update-list span { word-break: normal; overflow-wrap: anywhere; }
 .text-link { display: inline-flex; gap: 22px; align-items: center; min-height: 44px; font-size: 12px; border-bottom: 1px solid var(--ink); }
 .work-grid, .portfolio .featured-list, .portfolio .games-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 32px; padding: 0; width: 100%; }
 .work-card { display: block; min-width: 0; }
@@ -361,6 +365,7 @@ body.portfolio.game-detail-page .game-meta-card { background: var(--surface); bo
   .section-top { align-items: flex-start; gap: 12px; }
   .section-top h2 { font-size: 34px; }
   .section-top h2 small { display: block; margin: 12px 0 0; }
+  .update-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .section-top .text-link { font-size: 11px; gap: 8px; white-space: nowrap; }
   .work-grid, .portfolio .featured-list, .portfolio .games-grid { grid-template-columns: 1fr; gap: 36px; }
   .work-top h3 { font-size: 22px; }
